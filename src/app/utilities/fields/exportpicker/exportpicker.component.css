@@ -1,0 +1,59 @@
+.export-tile {
+    padding: 30px 25px;
+}
+
+.export-option {
+    min-width: 300px;
+    text-align: center;
+}
+
+.export-option:hover {
+    cursor: pointer;
+}
+
+.export-option:hover .export-option-image{
+    background-color:#e5e5e5;
+}
+
+.export-option-image {
+    padding: 20px;
+}
+
+.export-option-content {
+    background-color: #f8f8f8;
+    text-align: left;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.image {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    margin: 20px;
+}
+
+.export-option .json-image {
+    background: url(../../../../assets/icons/json-accent.svg);
+}
+
+.export-option .xml-image {
+    background: url(../../../../assets/icons/xml-accent.svg);
+}
+
+.export-option .csv-image {
+    background: url(../../../../assets/icons/csv-accent.svg);
+}
+
+.export-option .txt-image {
+    background: url(../../../../assets/icons/txt-accent.svg);
+}
+
+.export-option .export-option-image {
+    background-color: #efefef;
+}
+
+.export-option.active .export-option-image {
+    background-color: #ffeb3b;
+}

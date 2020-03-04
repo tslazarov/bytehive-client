@@ -1,0 +1,34 @@
+<mat-toolbar class="top-navbar sticky" (scroll)="onWindowScroll($event)">
+    <mat-toolbar-row>
+        <img src="../assets/logo.svg" alt="logo" class="logo" (click)="navigate('/')" />
+        <span class="spacer"></span>
+        <button disableRipple mat-button (click)="navigate('/')">{{homeLabel | localize: 'homeLabel':'navigation':'label'}}</button>
+        <button disableRipple mat-button (click)="navigate('/hive')">{{hiveLabel | localize: 'hiveLabel':'navigation':'label'}}</button>
+        <button disableRipple mat-button (click)="navigate('/faq')">{{faqLabel | localize: 'faqLabel':'navigation':'label'}}</button>
+        <button disableRipple mat-flat-button class="language-picker" [matMenuTriggerFor]="language" aria-label="Select language">
+            <span class="icon language-icon left-icon"></span>
+            <span class="language-label">{{currentLanguageLabel}}</span>
+            <mat-icon class="right-icon">keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu class="language-menu" #language="matMenu">
+            <div mat-menu-item>
+                <button disableRipple mat-button (click)="changeLanguage('en')">
+                    <span class="icon language-en-icon left-icon"></span>
+                    <span>English</span>
+                </button>
+            </div>
+            <div mat-menu-item>
+                <button disableRipple mat-button (click)="changeLanguage('bg')">
+                    <span class="icon language-bg-icon left-icon"></span>
+                    <span>Български</span>
+                </button>
+            </div>
+        </mat-menu>
+        <button [disableRipple]="true" mat-flat-button class="signin" (click)="navigate('/signin')">{{signinLabel | localize:
+            'signinLabel':'navigation':'label' | uppercase }}</button>
+        <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon> -->
+        <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon> -->
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

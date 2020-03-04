@@ -1,0 +1,55 @@
+.craw-tile {
+    padding: 30px 25px;
+}
+
+.craw-option {
+    min-width: 300px;
+    text-align: center;
+}
+
+.craw-option:hover {
+    cursor: pointer;
+}
+
+.craw-option:hover .craw-option-image{
+    background-color:#e5e5e5;
+}
+
+.craw-option-image {
+    padding: 20px;
+}
+
+.craw-option-content {
+    background-color: #f8f8f8;
+    text-align: left;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.image {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    margin: 20px;
+}
+
+.craw-option .listdetail-image {
+    background: url(../../../../assets/icons/list-detail-accent.svg);
+}
+
+.craw-option .list-image {
+    background: url(../../../../assets/icons/list-accent.svg);
+}
+
+.craw-option .detail-image {
+    background: url(../../../../assets/icons/detail-accent.svg);
+}
+
+.craw-option .craw-option-image {
+    background-color: #efefef;
+}
+
+.craw-option.active .craw-option-image {
+    background-color: #ffeb3b;
+}

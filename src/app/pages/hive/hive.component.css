@@ -1,0 +1,37 @@
+.next {
+    min-width: 150px;
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.next:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.back {
+    min-width: 150px;
+    background-color: #dfdfdf;
+    color: #212121;
+}
+
+.back:hover {
+    background-color: #212121;
+    color: #ffffff;
+}
+
+.form-content {
+    min-height: 400px;
+}
+
+.small-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+}
+
+.edit-icon {
+    margin-top: 5px;
+    background: url(../../../assets/icons/edit-accent.svg);
+}

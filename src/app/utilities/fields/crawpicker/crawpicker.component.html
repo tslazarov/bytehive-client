@@ -1,0 +1,43 @@
+<div [formGroup]="parentForm">
+    <div class="row">
+        <div class="col-lg-4 col-md-12 craw-tile">
+            <div class="craw-option" [class.active]="isOptionActive(crawTypes.ListDetail)" (click)="selectOption(crawTypes.ListDetail)">
+                <div class="craw-option-image">
+                    <span class="image listdetail-image"></span>
+                </div>
+                <div class="craw-option-content">
+                    <h5>List & Detail pages</h5>
+                    <div>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12 craw-tile">
+            <div class="craw-option" [class.active]="isOptionActive(crawTypes.List)" (click)="selectOption(crawTypes.List)">
+                <div class="craw-option-image">
+                    <span class="image list-image"></span>
+                </div>
+                <div class="craw-option-content">
+                    <h5>List pages</h5>
+                    <div>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12 craw-tile">
+            <div class="craw-option" [class.active]="isOptionActive(crawTypes.Detail)" (click)="selectOption(crawTypes.Detail)">
+                <div class="craw-option-image">
+                    <span class="image detail-image"></span>
+                </div>
+                <div class="craw-option-content">
+                    <h5>Detail pages</h5>
+                    <div>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
