@@ -1,0 +1,56 @@
+<div [formGroup]="parentForm">
+    <div class="row">
+        <div class="col-xl-3 col-lg-6 col-sm-12 export-tile">
+            <div class="export-option" [class.active]="isOptionActive(exportTypes.Json)" (click)="selectOption(exportTypes.Json)">
+                <div class="export-option-image">
+                    <span class="image json-image"></span>
+                </div>
+                <div class="export-option-content">
+                    <h5>JSON Format</h5>
+                    <div>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-12 export-tile">
+            <div class="export-option" [class.active]="isOptionActive(exportTypes.Xml)" (click)="selectOption(exportTypes.Xml)">
+                <div class="export-option-image">
+                    <span class="image xml-image"></span>
+                </div>
+                <div class="export-option-content">
+                    <h5>XML Format</h5>
+                    <div>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-12 export-tile">
+            <div class="export-option" [class.active]="isOptionActive(exportTypes.Csv)" (click)="selectOption(exportTypes.Csv)">
+                <div class="export-option-image">
+                    <span class="image csv-image"></span>
+                </div>
+                <div class="export-option-content">
+                    <h5>CSV Format</h5>
+                    <div>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-12 export-tile">
+            <div class="export-option" [class.active]="isOptionActive(exportTypes.Txt)" (click)="selectOption(exportTypes.Txt)">
+                <div class="export-option-image">
+                    <span class="image txt-image"></span>
+                </div>
+                <div class="export-option-content">
+                    <h5>TXT Format</h5>
+                    <div>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,135 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.logo {
+    height: 50px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.top-navbar {
+    background-color: #ffffff;
+    z-index: 100;
+}
+
+.top-navbar-inverse {
+    background-color: #ffeb3b;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.top-navbar .mat-toolbar-row {
+    padding: 0px 30px !important;
+}
+
+.top-navbar .mat-button {
+    padding: 0px 20px !important;
+    margin: 0px 10px !important;
+}
+
+.top-navbar .mat-flat-button {
+    margin: 0px 10px !important;
+}
+
+.top-navbar .mat-flat-button {
+    min-width: 170px;
+}
+
+.top-navbar .mat-button:hover {
+    color: #ffeb3b;
+}
+
+.top-navbar-inverse .mat-button:hover {
+    color: #ffffff;
+}
+
+.top-navbar .signin {
+    background-color: #212121;
+    color: #ffffff;
+}
+
+.top-navbar .signin:hover {
+    background-color: #212121;
+    color: #ffeb3b;
+}
+
+.top-navbar .language-picker {
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.top-navbar .language-picker:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.top-navbar-inverse .language-picker {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.top-navbar-inverse .language-picker:hover {
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.top-navbar-inverse .signin {
+    background-color: #212121;
+    color: #ffeb3b;
+}
+
+.top-navbar-inverse .signin:hover {
+    color: #ffffff;
+}
+
+/* icons */
+.icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+}
+
+.left-icon {
+    margin-right: 10px;
+}
+
+.right-icon {
+    margin-left: 15px;
+}
+
+.top-navbar .language-icon {
+    background: url(../assets/icons/language-white.svg);
+}
+
+.top-navbar-inverse .language-icon {
+    background: url(../assets/icons/language-accent.svg);
+}
+
+.top-navbar .language-picker:hover .language-icon {
+    background: url(../assets/icons/language-accent.svg);
+}
+
+.top-navbar-inverse .language-picker:hover .language-icon {
+    background: url(../assets/icons/language-white.svg);
+}
+
+.language-en-icon {
+    background: url(../assets/icons/language-en-accent.svg);
+}
+
+.language-bg-icon {
+    background: url(../assets/icons/language-bg-accent.svg);
+}
+
+.language-label {
+    display: inline-block;
+    min-width: 72px;
+}

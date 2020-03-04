@@ -1,0 +1,118 @@
+<div class="page-content">
+    <mat-horizontal-stepper linear #stepper [disableRipple]="true">
+        <ng-template matStepperIcon="edit">
+            <span class="small-icon edit-icon"></span>
+        </ng-template>
+        <mat-step [stepControl]="crawTypeFormGroup">
+            <form [formGroup]="crawTypeFormGroup">
+                <ng-template matStepLabel>
+                    {{selectPagesTypeLabel | localize: 'selectPagesTypeLabel':'hive':'label'}}
+                </ng-template>
+                <div class="form-content">
+                    <bh-crawpicker [parentForm]="crawTypeFormGroup"></bh-crawpicker>
+                </div>
+                <div class="row p-2">
+                    <div class="col-md-6 col-sm-12 left">
+                    </div>
+                    <div class="col-md-6 col-sm-12 right">
+                        <button disableRipple mat-flat-button class="next" matStepperNext>
+                            {{nextLabel | localize: 'nextLabel':'hive':'label' | uppercase}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>
+                    {{selectDataSourceLabel | localize: 'selectDataSourceLabel':'hive':'label'}}
+                </ng-template>
+                <div class="form-content">
+                    <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                    </mat-form-field>
+                </div>
+                <div class="row p-2">
+                    <div class="col-md-6 col-sm-12 left">
+                        <button disableRipple mat-flat-button class="back" matStepperPrevious>
+                            {{previousLabel | localize: 'previousLabel':'hive':'label' | uppercase}}
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-sm-12 right">
+                        <button disableRipple mat-flat-button class="next" matStepperNext>
+                            {{nextLabel | localize: 'nextLabel':'hive':'label' | uppercase}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+            <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>
+                    {{setDataMappingsLabel | localize: 'setDataMappingsLabel':'hive':'label'}}
+                </ng-template>
+                <div class="form-content">
+                    <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                    </mat-form-field>
+                </div>
+                <div class="row p-2">
+                    <div class="col-md-6 col-sm-12 left">
+                        <button disableRipple mat-flat-button class="back" matStepperPrevious>
+                            {{previousLabel | localize: 'previousLabel':'hive':'label' | uppercase}}
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-sm-12 right">
+                        <button disableRipple mat-flat-button class="next" matStepperNext>
+                            {{nextLabel | localize: 'nextLabel':'hive':'label' | uppercase}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="exportTypeFormGroup">
+            <form [formGroup]="exportTypeFormGroup">
+                <ng-template matStepLabel>
+                    {{selectExportTypeLabel | localize: 'selectExportTypeLabel':'hive':'label'}}
+                </ng-template>
+                <div class="form-content">
+                    <bh-exportpicker [parentForm]="exportTypeFormGroup"></bh-exportpicker>
+                </div>
+                <div class="row p-2">
+                    <div class="col-md-6 col-sm-12 left">
+                        <button disableRipple mat-flat-button class="back" matStepperPrevious>
+                            {{previousLabel | localize: 'previousLabel':'hive':'label' | uppercase}}
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-sm-12 right">
+                        <button disableRipple mat-flat-button class="next" matStepperNext>
+                            {{nextLabel | localize: 'nextLabel':'hive':'label' | uppercase}}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>
+                {{confirmRequestLabel | localize: 'confirmRequestLabel':'hive':'label'}}
+            </ng-template>
+            <div class="form-content">
+                Confirm
+            </div>
+            <div class="row p-2">
+                <div class="col-md-6 col-sm-12 left">
+                    <button disableRipple mat-flat-button class="back" matStepperPrevious>
+                        {{previousLabel | localize: 'previousLabel':'hive':'label' | uppercase}}
+                    </button>
+                </div>
+                <div class="col-md-6 col-sm-12 right">
+                    <button disableRipple mat-flat-button class="next" matStepperNext>
+                        {{confirmLabel | localize: 'confirmLabel':'hive':'label' | uppercase}}
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>
