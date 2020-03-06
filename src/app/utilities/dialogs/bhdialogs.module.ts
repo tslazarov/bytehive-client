@@ -6,17 +6,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 
-import { CrawpickerComponent } from './crawpicker/crawpicker.component';
-import { ExportpickerComponent } from './exportpicker/exportpicker.component';
-import { CommunicationService } from '../../services/communication.service';
-import { DatamappingComponent } from './datamapping/datamapping.component';
-
-
 @NgModule({
     declarations: [
-        CrawpickerComponent,
-        ExportpickerComponent,
-        DatamappingComponent
     ],
     imports: [
         MaterialModule,
@@ -27,13 +18,11 @@ import { DatamappingComponent } from './datamapping/datamapping.component';
         MonacoEditorModule
     ],
     exports: [
-        CrawpickerComponent,
-        ExportpickerComponent,
-        DatamappingComponent
+    ],
+    entryComponents: [
     ],
     providers: [
         TranslationService,
-        CommunicationService
     ]
 })
-export class BhFieldsModule { }
+export class BhDialogsModule { }

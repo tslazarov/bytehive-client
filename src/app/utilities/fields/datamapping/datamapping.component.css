@@ -1,0 +1,12 @@
+.full-width {
+    width: 100%;
+}
+
+.field-mapping {
+    padding: 2px 0px;
+    word-wrap: break-word;
+}
+
+.field-mapping:hover {
+    cursor: pointer;
+}

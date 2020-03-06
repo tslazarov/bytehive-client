@@ -51,6 +51,40 @@ export class LabelsMessages {
                 'en': 'Confirm',
                 'bg': 'Потвърди'
             }
+        },
+        'datamapping': {
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'markupLabel': {
+                'en': 'Markup',
+                'bg': 'Маркер'
+            },
+            'insertFieldNameLabel': {
+                'en': '<insert field name>',
+                'bg': '<въведи име на поле>'
+            },
+            'insertFieldMarkupLabel': {
+                'en': '<insert field markup>',
+                'bg': '<въведи маркер на поле>'
+            },
+            'automaticLabel': {
+                'en': 'Automatic',
+                'bg': 'Автоматично'
+            },
+            'visualLabel': {
+                'en': 'Visual',
+                'bg': 'Визуално'
+            },
+            'codeLabel': {
+                'en': 'Code',
+                'bg': 'През код'
+            },
+            'manualLabel': {
+                'en': 'Manual',
+                'bg': 'Ръчно'
+            }
         }
     }
     static readonly messages = {

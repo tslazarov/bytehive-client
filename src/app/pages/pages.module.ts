@@ -6,6 +6,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MaterialModule } from '../utilities/libraries/material.module';
 import { BhFieldsModule } from '../utilities/fields/bhfields.module';
 import { PipesModule } from '../utilities/pipes/pipes.module';
+import { BhDialogsModule } from '../utilities/dialogs/bhdialogs.module';
 
 import { HomeComponent } from './home/home.component';
 import { HiveComponent } from './hive/hive.component';
@@ -13,6 +14,8 @@ import { SigninComponent } from './signin/signin.component';
 import { FaqComponent } from './faq/faq.component';
 import { SignupComponent } from './signup/signup.component';
 import { CommunicationService } from '../services/communication.service';
+
+import { ClientService } from '../services/client.service';
 
 @NgModule({
     imports: [
@@ -22,6 +25,7 @@ import { CommunicationService } from '../services/communication.service';
         ReactiveFormsModule,
         MaterialModule,
         BhFieldsModule,
+        BhDialogsModule,
         PipesModule
     ],
     declarations: [
@@ -33,7 +37,8 @@ import { CommunicationService } from '../services/communication.service';
     ],
     entryComponents: [],
     providers: [
-        CommunicationService
+        CommunicationService,
+        ClientService
     ]
 })
 export class PagesModule { }

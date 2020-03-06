@@ -63,14 +63,13 @@ export class HiveComponent implements OnInit, OnDestroy {
     }
 
     setLabelsMessages(): void {
-        console.log('test');
-        this.selectPagesTypeLabel = this.translationService.localizeValue("selectPagesTypeLabel", "hive", "label");
-        this.selectDataSourceLabel = this.translationService.localizeValue("selectDataSourceLabel", "hive", "label");
-        this.setDataMappingsLabel = this.translationService.localizeValue("setDataMappingsLabel", "hive", "label");
-        this.selectExportTypeLabel = this.translationService.localizeValue("selectExportTypeLabel", "hive", "label");
-        this.confirmRequestLabel = this.translationService.localizeValue("confirmRequestLabel", "hive", "label");
-        this.previousLabel = this.translationService.localizeValue("previousLabel", "hive", "label");
-        this.nextLabel = this.translationService.localizeValue("nextLabel", "hive", "label");
-        this.confirmLabel = this.translationService.localizeValue("confirmLabel", "hive", "label");
+        this.selectPagesTypeLabel = this.translationService.localizeValue('selectPagesTypeLabel', 'hive', 'label');
+        this.selectDataSourceLabel = this.translationService.localizeValue('selectDataSourceLabel', 'hive', 'label');
+        this.setDataMappingsLabel = this.translationService.localizeValue('setDataMappingsLabel', 'hive', 'label');
+        this.selectExportTypeLabel = this.translationService.localizeValue('selectExportTypeLabel', 'hive', 'label');
+        this.confirmRequestLabel = this.translationService.localizeValue('confirmRequestLabel', 'hive', 'label');
+        this.previousLabel = this.translationService.localizeValue('previousLabel', 'hive', 'label');
+        this.nextLabel = this.translationService.localizeValue('nextLabel', 'hive', 'label');
+        this.confirmLabel = this.translationService.localizeValue('confirmLabel', 'hive', 'label');
     }
 }

@@ -17,12 +17,11 @@ export class TranslationService {
             TranslationService.language = languageKey;
         }
         else {
-            TranslationService.language = "en";
+            TranslationService.language = "bg";
         }
     }
 
     localizeValue(fieldName: string, pageName: string, type: string): string {
-        console.log(fieldName + ' ' + pageName + ' ' + TranslationService.language);
         try {
             switch (type) {
                 case "label": {
@@ -45,13 +44,13 @@ export class TranslationService {
             TranslationService.language = languageKey;
         }
         else {
-            TranslationService.language = "en";
+            TranslationService.language = "bg";
         }
     }
 
     getLanguage() {
         let languageKey = localStorage.getItem(Constants.LANGUAGE_KEY);
 
-        return languageKey ? languageKey : 'en';
+        return languageKey ? languageKey : 'bg';
     }
 }
