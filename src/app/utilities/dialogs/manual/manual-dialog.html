@@ -70,7 +70,7 @@
     <div class="row pt-3">
         <div class="col-12">
             <button class="save" disableRipple mat-flat-button (click)="save()">
-                <span>SAVE</span>
+                <span>{{saveLabel | localize: 'saveLabel':'manual-dialog':'label' | uppercase}}</span>
             </button>
         </div>
     </div>

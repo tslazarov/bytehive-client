@@ -1,5 +1,6 @@
 import { Component, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { TranslationService } from '../../../services/translation.service';
 
 @Component({
     selector: 'code-dialog',
@@ -9,19 +10,37 @@ import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 export class CodeDialog {
 
     editorOptions: any;
-    code: string;
+
+    // labels
+    generateLabel: string;
+    saveLabel: string;
 
     constructor(public dialogRef: MatDialogRef<CodeDialog>,
+        private translationService: TranslationService,
         @Inject(MAT_DIALOG_DATA) public data: any) {
         this.editorOptions = { theme: 'vs-light', language: 'html' };
-        this.code = data.markup;
+        this.setLabelsMessages();
+    }
+
+    setLabelsMessages() {
+        this.generateLabel = this.translationService.localizeValue('generateLabel', 'code-dialog', 'label');
+        this.saveLabel = this.translationService.localizeValue('saveLabel', 'code-dialog', 'label');
     }
 
     close(): void {
         this.dialogRef.close();
     }
+
+    save(): void {
+        this.dialogRef.close(this.data);
+    }
+
+    generate(): void {
+
+    }
 }
 
 export class CodeData {
     markup: string;
+    code: string;
 }

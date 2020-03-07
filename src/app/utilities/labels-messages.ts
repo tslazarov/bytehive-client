@@ -138,6 +138,34 @@ export class LabelsMessages {
             'rule4Label': {
                 'en': 'div.test>span.test2',
                 'bg': 'div.test>span.test2'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            }
+        },
+        'automatic-dialog': {
+            'expectedOutputLabel': {
+                'en': 'Enter expected output',
+                'bg': 'Въведи очаквам резултат'
+            },
+            'generateLabel': {
+                'en': 'Generate',
+                'bg': 'Генерирай'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            }
+        },
+        'code-dialog': {
+            'generateLabel': {
+                'en': 'Generate',
+                'bg': 'Генерирай'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
             }
         }
     }

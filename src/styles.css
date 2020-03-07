@@ -56,6 +56,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 80%;
 }
 
+.automatic-wrapper .mat-form-field {
+    padding-top: 8px !important;
+}
+
+.code-dialog-header .mat-form-field {
+    padding-top: 6px !important;
+}
+
 /* Custom mat menus */
 
 .language-menu.mat-menu-panel .mat-button-focus-overlay {

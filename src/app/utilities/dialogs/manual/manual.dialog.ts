@@ -22,6 +22,7 @@ export class ManualDialog {
     rule3Label: string;
     markup4Label: string;
     rule4Label: string;
+    saveLabel: string;
 
     constructor(public dialogRef: MatDialogRef<ManualDialog>,
         private translationService: TranslationService,
@@ -42,6 +43,7 @@ export class ManualDialog {
         this.rule3Label = this.translationService.localizeValue('rule3Label', 'manual-dialog', 'label');
         this.markup4Label = this.translationService.localizeValue('markup4Label', 'manual-dialog', 'label');
         this.rule4Label = this.translationService.localizeValue('rule4Label', 'manual-dialog', 'label');
+        this.saveLabel = this.translationService.localizeValue('saveLabel', 'manual-dialog', 'label');
     }
 
     close(): void {
@@ -55,4 +57,5 @@ export class ManualDialog {
 
 export class ManualData {
     markup: string;
+    detailUrl: string;
 }

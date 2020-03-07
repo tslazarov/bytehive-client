@@ -8,7 +8,29 @@
             </button>
         </div>
     </div>
-    <div class="visual-wrapper">
-        <h1>Visual here</h1>
+    <div class="automatic-wrapper">
+        <div class="row">
+            <div class="col-9">
+                <mat-form-field floatLabel="never" class="full-width pt-3">
+                    <input class="markup-input" matInput autocomplete="off" placeholder="{{expectedOutputLabel | localize: 'expectedOutputLabel':'automatic-dialog':'label'}}"
+                        [(ngModel)]="output" />
+                </mat-form-field>
+            </div>
+            <div class="col-3 center">
+                <button [ngClass]="!output ? 'generate disabled': 'generate'" disableRipple mat-flat-button (click)="generate()" [disabled]="!output">
+                    <span>{{generateLabel | localize: 'generateLabel':'automatic-dialog':'label' | uppercase}}</span>
+                </button>
+            </div>
+        </div>
+        <mat-form-field floatLabel="never" class="full-width pt-3">
+            <textarea class="markup-input" matInput autocomplete="off" rows="6" disabled [(ngModel)]="data.markup"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="row pt-3">
+        <div class="col-12">
+            <button class="save" disableRipple mat-flat-button (click)="save()">
+                <span>{{saveLabel | localize: 'saveLabel':'automatic-dialog':'label' | uppercase}}</span>
+            </button>
+        </div>
     </div>
 </div>

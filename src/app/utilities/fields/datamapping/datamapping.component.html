@@ -47,13 +47,13 @@
                         </button>
                     </div>
                     <div mat-menu-item>
-                        <button disableRipple mat-button (click)="visualMapping('bg')">
+                        <button disableRipple mat-button (click)="visualMapping(fieldMapping)">
                             <span class="icon language-bg-icon left-icon"></span>
                             <span>{{visualLabel | localize: 'visualLabel':'datamapping':'label'}}</span>
                         </button>
                     </div>
                     <div mat-menu-item>
-                        <button disableRipple mat-button (click)="codeMapping('bg')">
+                        <button disableRipple mat-button (click)="codeMapping(fieldMapping)">
                             <span class="icon language-bg-icon left-icon"></span>
                             <span>{{codeLabel | localize: 'codeLabel':'datamapping':'label'}}</span>
                         </button>

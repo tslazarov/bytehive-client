@@ -9,6 +9,7 @@ import { TranslationService } from '../../../services/translation.service';
 import { CodeViewDialog, CodeViewData } from '../../dialogs/codeview/codeview.dialog';
 import { CodeData, CodeDialog } from '../../dialogs/code/code.dialog';
 import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
+import { AutomaticData, AutomaticDialog } from '../../dialogs/automatic/automatic.dialog';
 
 @Component({
     selector: 'bh-datamapping',
@@ -79,7 +80,14 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     }
 
     automaticMapping(fieldMapping: FieldMapping) {
+        let automaticData = new AutomaticData();
+        automaticData.markup = fieldMapping.formGroup.value.fieldMarkup;
 
+        let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', height: '380px', autoFocus: false, data: automaticData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+        });
     }
 
     visualMapping(fieldMapping: FieldMapping) {
@@ -87,6 +95,10 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     }
 
     codeMapping(fieldMapping: FieldMapping) {
+        if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
+            this.parentForm.controls['detailUrl'].markAsTouched();
+            return;
+        }
 
         // TODO: send request to proxy
 
@@ -94,19 +106,28 @@ export class DatamappingComponent implements OnInit, OnDestroy {
             .pipe(first())
             .subscribe((markup) => {
                 let codeData = new CodeData();
-                codeData.markup = markup;
+                codeData.code = markup;
+                codeData.markup = fieldMapping.formGroup.value.fieldMarkup;
 
                 let dialogRef = this.dialog.open(CodeDialog, { width: '90vw', height: '90vh', autoFocus: false, data: codeData });
 
                 dialogRef.afterClosed().subscribe(result => {
-                    console.log(result);
+                    if (result && result.markup) {
+                        fieldMapping.formGroup.patchValue({ fieldMarkup: result.markup });
+                    }
                 });
             });
     }
 
     manualMapping(fieldMapping: FieldMapping) {
+        if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
+            this.parentForm.controls['detailUrl'].markAsTouched();
+            return;
+        }
+
         let manualData = new ManualData();
         manualData.markup = fieldMapping.formGroup.value.fieldMarkup;
+        manualData.detailUrl = this.parentForm.value.detailUrl;
 
         let dialogRef = this.dialog.open(ManualDialog, { width: '60vw', height: '380px', autoFocus: false, data: manualData });
 
