@@ -1,4 +1,5 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Guid } from '../utilities/helpers/guid';
 
 export class FieldMapping {
 
@@ -7,7 +8,7 @@ export class FieldMapping {
     editMode: boolean;
 
     constructor(private formBuilder: FormBuilder) {
-        this.id = 'test';
+        this.id = Guid.new();
 
         this.formGroup = this.formBuilder.group({
             fieldName: ['', Validators.required],

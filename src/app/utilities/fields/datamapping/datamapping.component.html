@@ -1,18 +1,26 @@
-<h4>Data mapping</h4>
-
-<div class="row pl-3">
-    <mat-form-field>
-        <input matInput>
-    </mat-form-field>
+<h4 class="pt-3">{{dataMappingLabel | localize: 'dataMappingLabel':'datamapping':'label'}}</h4>
+<div [formGroup]="parentForm" class="row pt-5">
+    <div class="col-10 detail-url-wrapper pb-3">
+        <mat-form-field floatLabel="never">
+            <mat-label>{{detailUrlLabel | localize: 'detailUrlLabel':'datamapping':'label'}}</mat-label>
+            <input matInput autocomplete="off" formControlName="detailUrl">
+        </mat-form-field>
+    </div>
+    <div class="col-2 code-button-wrap">
+        <button [ngClass]="parentForm.invalid ? 'code-button disabled': 'code-button'" mat-icon-button (click)="codeView()" [disabled]="parentForm.invalid">
+            <span *ngIf="!parentForm.invalid" class="icon code-icon large-icon"></span>
+            <span *ngIf="parentForm.invalid" class="icon code-disabled-icon large-icon"></span>
+        </button>
+    </div>
 </div>
 <div>
     <div class="row pb-3">
-        <div class="col-xl-4 col-lg-12 center">{{nameLabel | localize: 'nameLabel':'datamapping':'label' | uppercase}}</div>
-        <div class="col-xl-7 col-lg-12 center">{{markupLabel | localize: 'markupLabel':'datamapping':'label' | uppercase}}</div>
+        <div class="col-xl-4 col-lg-12 center bold">{{nameLabel | localize: 'nameLabel':'datamapping':'label' | uppercase}}</div>
+        <div class="col-xl-6 col-lg-12 center bold">{{markupLabel | localize: 'markupLabel':'datamapping':'label' | uppercase}}</div>
     </div>
-    <div class="row " *ngFor="let fieldMapping of fieldMappings">
-        <div [formGroup]="fieldMapping.formGroup" class="row full-width">
-            <div class="col-xl-4 col-lg-12 center pl-5">
+    <div *ngFor="let fieldMapping of fieldMappings">
+        <div [formGroup]="fieldMapping.formGroup" class="row field-row">
+            <div class="col-xl-4 col-lg-12 center">
                 <div *ngIf="!fieldMapping.editMode" class="field-mapping" (click)="toggleEditMode(fieldMapping, true)">
                     <span class="italic" *ngIf="!fieldMapping.formGroup.controls.fieldName.value">{{insertFieldNameLabel
                         | localize: 'insertFieldNameLabel':'datamapping':'label'}}
@@ -21,11 +29,11 @@
                 </div>
                 <div *ngIf="fieldMapping.editMode">
                     <mat-form-field>
-                        <input matInput class="center" (focusout)="toggleEditMode(fieldMapping, false)" formControlName="fieldName">
+                        <input matInput autocomplete="off" class="center" (focusout)="toggleEditMode(fieldMapping, false)" formControlName="fieldName">
                     </mat-form-field>
                 </div>
             </div>
-            <div class="col-xl-7 col-lg-12 center pl-5">
+            <div class="col-xl-6 col-lg-12 center">
                 <div class="field-mapping">
                     <span [matMenuTriggerFor]="markup" class="italic" *ngIf="!fieldMapping.formGroup.controls.fieldMarkup.value">{{insertFieldMarkupLabel
                         | localize: 'insertFieldMarkupLabel':'datamapping':'label'}}</span>
@@ -51,21 +59,36 @@
                         </button>
                     </div>
                     <div mat-menu-item>
-                        <button disableRipple mat-button (click)="manualMapping('bg')">
+                        <button disableRipple mat-button (click)="manualMapping(fieldMapping)">
                             <span class="icon language-bg-icon left-icon"></span>
                             <span>{{manualLabel | localize: 'manualLabel':'datamapping':'label'}}</span>
                         </button>
                     </div>
                 </mat-menu>
             </div>
-            <div class="col-xl-1 col-lg-12 center">
-                <button mat-icon-button aria-label="Example icon-button with a heart icon" (click)="removeMapping(fieldMapping.id)">
-                    <mat-icon>favorite</mat-icon>
+            <div class="col-xl-2 col-lg-12 remove-button-wrap">
+                <button class="remove-button" mat-icon-button aria-label="Example icon-button with a heart icon" (click)="removeMapping(fieldMapping.id)">
+                    <span class="icon remove-icon large-icon"></span>
                 </button>
             </div>
         </div>
+        <div class="row">
+            <div class="mat-divider full-width"></div>
+        </div>
     </div>
-    <div class="row">
-        <button (click)="addMapping()">Add</button>
+    <div class="row pt-3">
+        <div class="col-12 add-button-wrap">
+            <button disableRipple mat-flat-button class="add" (click)="addMapping()">
+                <mat-icon>addition</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div class="row full-width pb-5 pt-3">
+        <div class="col-12 center">
+            <button disableRipple mat-flat-button [ngClass]="parentForm.invalid ? 'validate disabled': 'validate'" (click)="validate()"
+                [disabled]="parentForm.invalid">
+                <span>VALIDATE</span>
+            </button>
+        </div>
     </div>
 </div>

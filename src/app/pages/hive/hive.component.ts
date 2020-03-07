@@ -4,6 +4,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 import { TranslationService } from '../../services/translation.service';
 import { CommunicationService } from '../../services/communication.service';
+import { FieldMapping } from '../../models/fieldmapping.model';
 
 @Component({
     selector: 'app-hive',
@@ -14,18 +15,19 @@ import { CommunicationService } from '../../services/communication.service';
     }]
 })
 export class HiveComponent implements OnInit, OnDestroy {
+
+    // data
     crawTypeFormGroup: FormGroup;
-    secondFormGroup: FormGroup;
-    thirdFormGroup: FormGroup;
+    dataSourceMappingFormGroup: FormGroup;
     exportTypeFormGroup: FormGroup;
+    fieldMappings: FieldMapping[];
 
     // subscriptions
     languageChangeSubscription: any;
 
     // labels
     selectPagesTypeLabel: string;
-    selectDataSourceLabel: string;
-    setDataMappingsLabel: string;
+    selectDataSourceMappingLabel: string;
     selectExportTypeLabel: string;
     confirmRequestLabel: string;
     previousLabel: string;
@@ -45,17 +47,17 @@ export class HiveComponent implements OnInit, OnDestroy {
             crawType: ['', Validators.required]
         });
 
-        this.secondFormGroup = this.formBuilder.group({
-            secondCtrl: ['', Validators.required]
-        });
+        const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
-        this.thirdFormGroup = this.formBuilder.group({
-            secondCtrl: ['', Validators.required]
+        this.dataSourceMappingFormGroup = this.formBuilder.group({
+            detailUrl: ['', [Validators.required, Validators.pattern(reg)]]
         });
 
         this.exportTypeFormGroup = this.formBuilder.group({
             exportType: ['', Validators.required]
         });
+
+        this.fieldMappings = [];
     }
 
     ngOnDestroy(): void {
@@ -64,8 +66,7 @@ export class HiveComponent implements OnInit, OnDestroy {
 
     setLabelsMessages(): void {
         this.selectPagesTypeLabel = this.translationService.localizeValue('selectPagesTypeLabel', 'hive', 'label');
-        this.selectDataSourceLabel = this.translationService.localizeValue('selectDataSourceLabel', 'hive', 'label');
-        this.setDataMappingsLabel = this.translationService.localizeValue('setDataMappingsLabel', 'hive', 'label');
+        this.selectDataSourceMappingLabel = this.translationService.localizeValue('selectDataSourceMappingLabel', 'hive', 'label');
         this.selectExportTypeLabel = this.translationService.localizeValue('selectExportTypeLabel', 'hive', 'label');
         this.confirmRequestLabel = this.translationService.localizeValue('confirmRequestLabel', 'hive', 'label');
         this.previousLabel = this.translationService.localizeValue('previousLabel', 'hive', 'label');

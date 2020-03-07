@@ -1,11 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ClientService } from '../../../services/client.service';
 import { first } from 'rxjs/operators';
 import { FieldMapping } from '../../../models/fieldmapping.model';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { CommunicationService } from '../../../services/communication.service';
 import { TranslationService } from '../../../services/translation.service';
+import { CodeViewDialog, CodeViewData } from '../../dialogs/codeview/codeview.dialog';
+import { CodeData, CodeDialog } from '../../dialogs/code/code.dialog';
+import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
 
 @Component({
     selector: 'bh-datamapping',
@@ -14,13 +17,15 @@ import { TranslationService } from '../../../services/translation.service';
 })
 export class DatamappingComponent implements OnInit, OnDestroy {
 
-    // common
-    fieldMappings: FieldMapping[];
+    @Input() parentForm: FormGroup;
+    @Input() fieldMappings: FieldMapping[];
 
     // subscriptions
     languageChangeSubscription: any;
 
     // labels
+    dataMappingLabel: string;
+    detailUrlLabel: string;
     nameLabel: string;
     markupLabel: string;
     insertFieldNameLabel: string;
@@ -38,17 +43,6 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         private translationService: TranslationService) { }
 
     ngOnInit() {
-        this.fieldMappings = [];
-        let mapping = new FieldMapping(this.formBuilder);
-
-        console.log(mapping.formGroup);
-        this.fieldMappings.push(mapping);
-
-        this.clientService.getPageMarkup('https://btvnovinite.bg/')
-            .pipe(first())
-            .subscribe((markup) => {
-            });
-
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(e => {
             this.setLabelsMessages();
         });
@@ -59,6 +53,8 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     }
 
     setLabelsMessages() {
+        this.detailUrlLabel = this.translationService.localizeValue('detailUrlLabel', 'datamapping', 'label');
+        this.dataMappingLabel = this.translationService.localizeValue('dataMappingLabel', 'datamapping', 'label');
         this.nameLabel = this.translationService.localizeValue('nameLabel', 'datamapping', 'label');
         this.markupLabel = this.translationService.localizeValue('markupLabel', 'datamapping', 'label');
         this.insertFieldNameLabel = this.translationService.localizeValue('insertFieldNameLabel', 'datamapping', 'label');
@@ -92,10 +88,52 @@ export class DatamappingComponent implements OnInit, OnDestroy {
 
     codeMapping(fieldMapping: FieldMapping) {
 
+        // TODO: send request to proxy
+
+        this.clientService.getPageMarkup(this.parentForm.value.detailUrl)
+            .pipe(first())
+            .subscribe((markup) => {
+                let codeData = new CodeData();
+                codeData.markup = markup;
+
+                let dialogRef = this.dialog.open(CodeDialog, { width: '90vw', height: '90vh', autoFocus: false, data: codeData });
+
+                dialogRef.afterClosed().subscribe(result => {
+                    console.log(result);
+                });
+            });
     }
 
     manualMapping(fieldMapping: FieldMapping) {
+        let manualData = new ManualData();
+        manualData.markup = fieldMapping.formGroup.value.fieldMarkup;
 
+        let dialogRef = this.dialog.open(ManualDialog, { width: '60vw', height: '380px', autoFocus: false, data: manualData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.markup) {
+                fieldMapping.formGroup.patchValue({ fieldMarkup: result.markup });
+            }
+        });
+    }
+
+    codeView() {
+        if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
+            this.parentForm.controls['detailUrl'].markAsTouched();
+            return;
+        }
+        // TODO: send request to proxy
+
+        this.clientService.getPageMarkup(this.parentForm.value.detailUrl)
+            .pipe(first())
+            .subscribe((markup) => {
+                let codeViewData = new CodeViewData();
+                codeViewData.markup = markup;
+
+                let dialogRef = this.dialog.open(CodeViewDialog, { width: '90vw', height: '90vh', autoFocus: false, data: codeViewData });
+
+                dialogRef.afterClosed().subscribe(result => { });
+            });
     }
 
     toggleEditMode(fieldMapping: FieldMapping, editable: boolean) {

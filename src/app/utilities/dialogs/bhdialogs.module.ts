@@ -5,9 +5,19 @@ import { TranslationService } from '../../services/translation.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { CodeViewDialog } from './codeview/codeview.dialog';
+import { CodeDialog } from './code/code.dialog';
+import { VisualDialog } from './visual/visual.dialog';
+import { ManualDialog } from './manual/manual.dialog';
+import { AutomaticDialog } from './automatic/automatic.dialog';
 
 @NgModule({
     declarations: [
+        CodeViewDialog,
+        CodeDialog,
+        VisualDialog,
+        ManualDialog,
+        AutomaticDialog
     ],
     imports: [
         MaterialModule,
@@ -20,6 +30,11 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
     exports: [
     ],
     entryComponents: [
+        CodeViewDialog,
+        CodeDialog,
+        VisualDialog,
+        ManualDialog,
+        AutomaticDialog
     ],
     providers: [
         TranslationService,

@@ -1,0 +1,39 @@
+.close-icon {
+    background: url(../../../../assets/icons/close-accent.svg);
+}
+
+.close-button {
+    background-color: #ffffff;
+}
+
+.close-button:hover {
+    background-color: #efefef;
+}
+
+.visual-wrapper {
+    height: calc(90vh - 100px);
+}
+
+.save {
+    min-width: 150px;
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.save:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.markup-input {
+    resize: none;
+    word-wrap: break-word;
+}
+
+.manual-wrapper {
+    min-height: 220px;
+}

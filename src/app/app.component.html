@@ -6,20 +6,20 @@
         <button disableRipple mat-button (click)="navigate('/hive')">{{hiveLabel | localize: 'hiveLabel':'navigation':'label'}}</button>
         <button disableRipple mat-button (click)="navigate('/faq')">{{faqLabel | localize: 'faqLabel':'navigation':'label'}}</button>
         <button disableRipple mat-flat-button class="language-picker" [matMenuTriggerFor]="language" aria-label="Select language">
-            <span class="icon language-icon left-icon"></span>
+            <span class="icon language-icon left-icon medium-icon"></span>
             <span class="language-label">{{currentLanguageLabel}}</span>
             <mat-icon class="right-icon">keyboard_arrow_down</mat-icon>
         </button>
         <mat-menu class="language-menu" #language="matMenu">
             <div mat-menu-item>
                 <button disableRipple mat-button (click)="changeLanguage('en')">
-                    <span class="icon language-en-icon left-icon"></span>
+                    <span class="icon language-en-icon left-icon medium-icon"></span>
                     <span>English</span>
                 </button>
             </div>
             <div mat-menu-item>
                 <button disableRipple mat-button (click)="changeLanguage('bg')">
-                    <span class="icon language-bg-icon left-icon"></span>
+                    <span class="icon language-bg-icon left-icon medium-icon"></span>
                     <span>Български</span>
                 </button>
             </div>

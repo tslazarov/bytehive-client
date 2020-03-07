@@ -52,6 +52,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     min-width: 300px;
 }
 
+.detail-url-wrapper .mat-form-field {
+    width: 80%;
+}
+
 /* Custom mat menus */
 
 .language-menu.mat-menu-panel .mat-button-focus-overlay {
@@ -79,6 +83,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     min-width: 170px !important; 
 }
 
+.manual-wrapper .mat-tab-body-content {
+    overflow: hidden;
+}
+
 /* Bootstrap customizations */
 
 button:focus {
@@ -104,6 +112,27 @@ button:focus {
 }
 
 .bold {
-    font-weight: 700;
+    font-weight: 500;
+}
+
+/* icons */
+.icon {
+    display: inline-block;
+    background-size: cover;
+}
+
+.large-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.medium-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.small-icon {
+    width: 16px;
+    height: 16px;
 }
 

@@ -10,3 +10,97 @@
 .field-mapping:hover {
     cursor: pointer;
 }
+
+.field-row>div {
+    padding-top: 13px;
+    padding-bottom: 9px;
+}
+
+.add {
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.add:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.validate {
+    min-width: 150px;
+    background-color: #212121;
+    color: #ffffff;
+}
+
+.validate.disabled {
+    min-width: 150px;
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.validate.disabled:hover {
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.validate:hover {
+    background-color: #212121;
+    color: #ffeb3b;
+}
+
+.mat-divider {
+    display: block;
+    margin: 0;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.code-button {
+    min-width: 50px;
+}
+
+.remove-button {
+    min-width: 50px;
+    margin-top: -5px;
+}
+
+
+.remove-button:hover {
+    background-color: #efefef;
+}
+
+.code-button:hover {
+    background-color: #efefef;
+}
+
+.code-button.disabled:hover {
+    background-color: transparent;
+}
+
+.add-button-wrap {
+    text-align: left;
+}
+
+.remove-button-wrap, .code-button-wrap {
+    text-align: right;
+}
+
+.code-icon {
+    background: url(../../../../assets/icons/code-accent.svg);
+}
+
+.code-disabled-icon {
+    background: url(../../../../assets/icons/code-disabled.svg);
+}
+
+.remove-icon {
+    background: url(../../../../assets/icons/remove-accent.svg);
+}
+
+/* lg */
+@media (max-width: 1200px) {
+    .add-button-wrap, .remove-button-wrap, .code-button-wrap {
+        text-align: center;
+    }
+}
+

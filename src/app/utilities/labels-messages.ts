@@ -23,13 +23,9 @@ export class LabelsMessages {
                 'en': 'Select pages type',
                 'bg': 'Избери тип на страници'
             },
-            'selectDataSourceLabel': {
-                'en': 'Select data source',
-                'bg': 'Избери източник'
-            },
-            'setDataMappingsLabel': {
-                'en': 'Set data mapping',
-                'bg': 'Направи асоциация на данните'
+            'selectDataSourceMappingLabel': {
+                'en': 'Set data source and data mapping',
+                'bg': 'Избери източник на данни и направи асоциация'
             },
             'selectExportTypeLabel': {
                 'en': 'Select export type',
@@ -53,6 +49,14 @@ export class LabelsMessages {
             }
         },
         'datamapping': {
+            'dataMappingLabel': {
+                'en': 'Data Mapping',
+                'bg': 'Асоциация на данни'
+            },
+            'detailUrlLabel': {
+                'en': 'https://<enter detail page URL>',
+                'bg': 'https://<въведи URL на детайлна страница>'
+            },
             'nameLabel': {
                 'en': 'Name',
                 'bg': 'Име'
@@ -84,6 +88,56 @@ export class LabelsMessages {
             'manualLabel': {
                 'en': 'Manual',
                 'bg': 'Ръчно'
+            }
+        },
+        'manual-dialog': {
+            'markupPlaceholderLabel': {
+                'en': 'Check the syntax rules before entering the desired markup',
+                'bg': 'Погледнете синтактичните правила преди да въведете желания маркер'
+            },
+            'markupHeaderLabel': {
+                'en': 'Markup',
+                'bg': 'Маркер'
+            },
+            'syntaxRulesLabel': {
+                'en': 'Syntax rules',
+                'bg': 'Синтактични правила'
+            },
+            'ruleHeaderLabel': {
+                'en': 'Syntax',
+                'bg': 'Синтаксис'
+            },
+            'markup1Label': {
+                'en': '<div id="test">...</div>',
+                'bg': '<div id="test">...</div>'
+            },
+            'rule1Label': {
+                'en': 'div#test',
+                'bg': 'div#test'
+            },
+            'markup2Label': {
+                'en': '<div class="test">...</div>',
+                'bg': '<div class="test">...</div>'
+            },
+            'rule2Label': {
+                'en': 'div.test',
+                'bg': 'div.test'
+            },
+            'markup3Label': {
+                'en': '<div myattr="test">...</div>',
+                'bg': '<div myattr="test">...</div>'
+            },
+            'rule3Label': {
+                'en': 'div[myattr="test"]',
+                'bg': 'div[myattr="test"]'
+            },
+            'markup4Label': {
+                'en': '<div class="test"><span class="test2">...</span></div>',
+                'bg': '<div class="test"><span class="test2">...</span></div>'
+            },
+            'rule4Label': {
+                'en': 'div.test>span.test2',
+                'bg': 'div.test>span.test2'
             }
         }
     }
