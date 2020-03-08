@@ -16,6 +16,7 @@ import { SignupComponent } from './signup/signup.component';
 import { CommunicationService } from '../services/communication.service';
 
 import { ClientService } from '../services/client.service';
+import { DirectivesModule } from '../utilities/directives/directives.module';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import { ClientService } from '../services/client.service';
         MaterialModule,
         BhFieldsModule,
         BhDialogsModule,
-        PipesModule
+        PipesModule,
+        DirectivesModule
     ],
     declarations: [
         HomeComponent,

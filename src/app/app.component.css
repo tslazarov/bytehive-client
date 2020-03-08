@@ -89,14 +89,6 @@
     color: #ffffff;
 }
 
-.left-icon {
-    margin-right: 10px;
-}
-
-.right-icon {
-    margin-left: 15px;
-}
-
 .top-navbar .language-icon {
     background: url(../assets/icons/language-white.svg);
 }

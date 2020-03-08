@@ -1,5 +1,5 @@
 <div class="page-content">
-    <mat-horizontal-stepper linear #stepper [disableRipple]="true">
+    <mat-horizontal-stepper linear #stepper [disableRipple]="true" (selectionChange)="stepChanged($event, stepper)">
         <ng-template matStepperIcon="edit">
             <span class="small-icon edit-icon"></span>
         </ng-template>
@@ -29,7 +29,8 @@
                 </ng-template>
                 <div class="form-content row">
                     <div class="col-lg-5 col-md-12">
-                        test
+                        <bh-datasource [crawType]="crawTypeFormGroup.value.crawType" [parentForm]="dataSourceMappingFormGroup">
+                        </bh-datasource>
                     </div>
                     <div class="col-lg-1 vertical-divider">
                         <span class="divider"></span>

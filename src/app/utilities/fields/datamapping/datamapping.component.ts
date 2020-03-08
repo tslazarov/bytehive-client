@@ -35,6 +35,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     visualLabel: string;
     codeLabel: string;
     manualLabel: string;
+    validateLabel: string;
 
 
     constructor(private formBuilder: FormBuilder,
@@ -64,6 +65,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         this.visualLabel = this.translationService.localizeValue('visualLabel', 'datamapping', 'label');
         this.codeLabel = this.translationService.localizeValue('codeLabel', 'datamapping', 'label');
         this.manualLabel = this.translationService.localizeValue('manualLabel', 'datamapping', 'label');
+        this.validateLabel = this.translationService.localizeValue('validateLabel', 'datamapping', 'label');
     }
 
     addMapping(): void {

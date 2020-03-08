@@ -95,6 +95,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     overflow: hidden;
 }
 
+.detail-url-mode-menu.mat-menu-panel .mat-button-focus-overlay {
+    background-color: transparent !important;
+}
+
+.detail-url-mode-menu.mat-menu-panel .mat-menu-item {
+    padding: 0px !important;
+}
+
+.detail-url-mode-menu.mat-menu-panel {
+    min-width: 170px !important; 
+}
+
 /* Bootstrap customizations */
 
 button:focus {
@@ -135,12 +147,20 @@ button:focus {
 }
 
 .medium-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.small-icon {
     width: 20px;
     height: 20px;
 }
 
-.small-icon {
-    width: 16px;
-    height: 16px;
+.left-icon {
+    margin-right: 10px;
+}
+
+.right-icon {
+    margin-left: 15px;
 }
 

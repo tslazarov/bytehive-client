@@ -40,27 +40,33 @@
                     <span [matMenuTriggerFor]="markup" *ngIf="fieldMapping.formGroup.controls.fieldMarkup.value">{{fieldMapping.formGroup.controls.fieldMarkup.value}}</span>
                 </div>
                 <mat-menu class="markup-menu" #markup="matMenu">
-                    <div mat-menu-item>
-                        <button disableRipple mat-button (click)="automaticMapping(fieldMapping)">
-                            <span class="icon language-en-icon left-icon"></span>
-                            <span>{{automaticLabel | localize: 'automaticLabel':'datamapping':'label'}}</span>
+                    <div mat-menu-item [disabled]="parentForm.controls['detailUrl'].invalid" (click)="automaticMapping(fieldMapping)">
+                        <button disableRipple mat-button>
+                            <span *ngIf="!parentForm.controls['detailUrl'].invalid" class="icon automatic-icon small-icon left-icon"></span>
+                            <span *ngIf="parentForm.controls['detailUrl'].invalid" class="icon automatic-disabled-icon small-icon left-icon"></span>
+                            <span [ngClass]="parentForm.controls['detailUrl'].invalid ? 'markup-option disabled': 'markup-option'">{{automaticLabel
+                                | localize: 'automaticLabel':'datamapping':'label'}}</span>
                         </button>
                     </div>
-                    <div mat-menu-item>
-                        <button disableRipple mat-button (click)="visualMapping(fieldMapping)">
-                            <span class="icon language-bg-icon left-icon"></span>
-                            <span>{{visualLabel | localize: 'visualLabel':'datamapping':'label'}}</span>
+                    <div mat-menu-item [disabled]="parentForm.controls['detailUrl'].invalid" (click)="visualMapping(fieldMapping)">
+                        <button disableRipple mat-button>
+                            <span *ngIf="!parentForm.controls['detailUrl'].invalid" class="icon visual-icon small-icon left-icon"></span>
+                            <span *ngIf="parentForm.controls['detailUrl'].invalid" class="icon visual-disabled-icon small-icon left-icon"></span>
+                            <span [ngClass]="parentForm.controls['detailUrl'].invalid ? 'markup-option disabled': 'markup-option'">{{visualLabel
+                                | localize: 'visualLabel':'datamapping':'label'}}</span>
                         </button>
                     </div>
-                    <div mat-menu-item>
-                        <button disableRipple mat-button (click)="codeMapping(fieldMapping)">
-                            <span class="icon language-bg-icon left-icon"></span>
-                            <span>{{codeLabel | localize: 'codeLabel':'datamapping':'label'}}</span>
+                    <div mat-menu-item [disabled]="parentForm.controls['detailUrl'].invalid" (click)="codeMapping(fieldMapping)">
+                        <button disableRipple mat-button>
+                            <span *ngIf="!parentForm.controls['detailUrl'].invalid" class="icon code-icon small-icon left-icon"></span>
+                            <span *ngIf="parentForm.controls['detailUrl'].invalid" class="icon code-disabled-icon small-icon left-icon"></span>
+                            <span [ngClass]="parentForm.controls['detailUrl'].invalid ? 'markup-option disabled': 'markup-option'">{{codeLabel
+                                | localize: 'codeLabel':'datamapping':'label'}}</span>
                         </button>
                     </div>
-                    <div mat-menu-item>
-                        <button disableRipple mat-button (click)="manualMapping(fieldMapping)">
-                            <span class="icon language-bg-icon left-icon"></span>
+                    <div mat-menu-item (click)="manualMapping(fieldMapping)">
+                        <button disableRipple mat-button>
+                            <span class="icon manual-icon small-icon left-icon"></span>
                             <span>{{manualLabel | localize: 'manualLabel':'datamapping':'label'}}</span>
                         </button>
                     </div>
@@ -79,15 +85,15 @@
     <div class="row pt-3">
         <div class="col-12 add-button-wrap">
             <button disableRipple mat-flat-button class="add" (click)="addMapping()">
-                <mat-icon>addition</mat-icon>
+                <span class="icon add-icon medium-icon"></span>
             </button>
         </div>
     </div>
     <div class="row full-width pb-5 pt-3">
         <div class="col-12 center">
-            <button disableRipple mat-flat-button [ngClass]="parentForm.invalid ? 'validate disabled': 'validate'" (click)="validate()"
-                [disabled]="parentForm.invalid">
-                <span>VALIDATE</span>
+            <button disableRipple mat-flat-button [ngClass]="parentForm.controls['detailUrl'].invalid ? 'validate disabled': 'validate'"
+                (click)="validate()" [disabled]="parentForm.controls['detailUrl'].invalid">
+                <span>{{validateLabel | localize: 'validateLabel':'datamapping':'label' | uppercase}}</span>
             </button>
         </div>
     </div>

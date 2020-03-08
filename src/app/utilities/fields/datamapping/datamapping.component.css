@@ -16,6 +16,10 @@
     padding-bottom: 9px;
 }
 
+.markup-option.disabled {
+    color: #dfdfdf;
+}
+
 .add {
     background-color: #ffeb3b;
     color: #ffffff;
@@ -38,15 +42,16 @@
     color: #ffffff;
 }
 
+.validate:hover {
+    background-color: #212121;
+    color: #ffeb3b;
+}
+
 .validate.disabled:hover {
     background-color: #dfdfdf;
     color: #ffffff;
 }
 
-.validate:hover {
-    background-color: #212121;
-    color: #ffeb3b;
-}
 
 .mat-divider {
     display: block;
@@ -85,6 +90,10 @@
     text-align: right;
 }
 
+.remove-icon {
+    background: url(../../../../assets/icons/remove-accent.svg);
+}
+
 .code-icon {
     background: url(../../../../assets/icons/code-accent.svg);
 }
@@ -92,9 +101,36 @@
 .code-disabled-icon {
     background: url(../../../../assets/icons/code-disabled.svg);
 }
+.automatic-icon {
+    background: url(../../../../assets/icons/automatic-accent.svg);
+}
 
-.remove-icon {
-    background: url(../../../../assets/icons/remove-accent.svg);
+.automatic-disabled-icon {
+    background: url(../../../../assets/icons/automatic-disabled.svg);
+}
+
+.manual-icon {
+    background: url(../../../../assets/icons/manual-accent.svg);
+}
+
+.manual-disabled-icon {
+    background: url(../../../../assets/icons/manual-disabled.svg);
+}
+
+.visual-icon {
+    background: url(../../../../assets/icons/visual-accent.svg);
+}
+
+.visual-disabled-icon {
+    background: url(../../../../assets/icons/visual-disabled.svg);
+}
+
+.add .add-icon {
+    background: url(../../../../assets/icons/add-white.svg);
+}
+
+.add:hover .add-icon {
+    background: url(../../../../assets/icons/add-accent.svg);
 }
 
 /* lg */

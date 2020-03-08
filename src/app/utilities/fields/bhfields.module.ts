@@ -10,13 +10,19 @@ import { CrawpickerComponent } from './crawpicker/crawpicker.component';
 import { ExportpickerComponent } from './exportpicker/exportpicker.component';
 import { CommunicationService } from '../../services/communication.service';
 import { DatamappingComponent } from './datamapping/datamapping.component';
+import { SummaryComponent } from './summary/summary.component';
+import { DatasourceComponent } from './datasource/datasource.component';
+import { FileuploadComponent } from './fileupload/fileupload.component';
 
 
 @NgModule({
     declarations: [
         CrawpickerComponent,
         ExportpickerComponent,
-        DatamappingComponent
+        DatamappingComponent,
+        DatasourceComponent,
+        SummaryComponent,
+        FileuploadComponent
     ],
     imports: [
         MaterialModule,
@@ -29,7 +35,9 @@ import { DatamappingComponent } from './datamapping/datamapping.component';
     exports: [
         CrawpickerComponent,
         ExportpickerComponent,
-        DatamappingComponent
+        DatamappingComponent,
+        DatasourceComponent,
+        SummaryComponent
     ],
     providers: [
         TranslationService,

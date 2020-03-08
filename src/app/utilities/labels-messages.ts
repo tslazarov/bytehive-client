@@ -88,6 +88,10 @@ export class LabelsMessages {
             'manualLabel': {
                 'en': 'Manual',
                 'bg': 'Ръчно'
+            },
+            'validateLabel': {
+                'en': 'Validate',
+                'bg': 'Валидирай'
             }
         },
         'manual-dialog': {

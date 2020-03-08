@@ -12,6 +12,7 @@ import { PipesModule } from './utilities/pipes/pipes.module';
 import { CommunicationService } from './services/communication.service';
 
 import { AppComponent } from './app.component';
+
 @NgModule({
     declarations: [
         AppComponent

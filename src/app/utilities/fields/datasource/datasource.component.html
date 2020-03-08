@@ -1,0 +1,77 @@
+<h4 class="pt-3">{{dataMappingLabel | localize: 'dataMappingLabel':'datamapping':'label'}}</h4>
+<div [formGroup]="parentForm">
+    <div *ngIf="crawType==1">
+        <div class="row pt-5">
+            <div class="col-10 detail-url-wrapper pb-3">
+                <mat-form-field floatLabel="never">
+                    <mat-label>Enter list url</mat-label>
+                    <input matInput autocomplete="off" formControlName="listUrl">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <mat-form-field floatLabel="never">
+                    <mat-label>Enter list url</mat-label>
+                    <input matInput autocomplete="off" formControlName="listUrl">
+                </mat-form-field>
+            </div>
+            <div class="col-2">
+                <mat-form-field floatLabel="never">
+                    <mat-label>Enter list url</mat-label>
+                    <input matInput autocomplete="off" formControlName="listUrl">
+                </mat-form-field>
+            </div>
+            <div class="col-2">
+                <mat-form-field floatLabel="never">
+                    <mat-label>Enter list url</mat-label>
+                    <input matInput autocomplete="off" formControlName="listUrl">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="crawType==2" class="row pt-5">
+        <div class="col-12 center pb-5 pt-3">
+            <button disableRipple mat-flat-button [ngClass]="parentForm.controls['detailUrls'].invalid ? 'validate disabled': 'validate'"
+                (click)="validate()" [disabled]="parentForm.controls['detailUrls'].invalid">
+                <span>VALIDATE</span>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="crawType==3" class="row pt-5">
+        <div class="col-12">
+            <button disableRipple mat-flat-button class="detail-mode-picker" [matMenuTriggerFor]="detailUrlMode">
+                <span class="detail-mode-label">{{ detailUrlModeLabel }}</span>
+                <mat-icon class="right-icon">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu class="detail-url-mode-menu" #detailUrlMode="matMenu">
+                <div mat-menu-item (click)="changeDetailMode(detailUrlModes.List)">
+                    <button disableRipple mat-button>
+                        <span>List</span>
+                    </button>
+                </div>
+                <div mat-menu-item (click)="changeDetailMode(detailUrlModes.File)">
+                    <button disableRipple mat-button>
+                        <span>File</span>
+                    </button>
+                </div>
+            </mat-menu>
+        </div>
+        <div class="col-12 pt-5">
+            <div *ngIf="selectedDetailUrlMode == detailUrlModes.List">
+                <mat-form-field floatLabel="never" class="full-width pt-3">
+                    <textarea class="detail-urls-input" matInput autocomplete="off" rows="10" placeholder="Enter valid links separated by new lines"
+                        (focusout)="convertToArray($event)"></textarea>
+                </mat-form-field>
+            </div>
+            <div *ngIf="selectedDetailUrlMode == detailUrlModes.File">
+                <bh-fileupload [parentForm]="parentForm" fieldName="detailUrls" regex="URL_REGEX"></bh-fileupload>
+            </div>
+            <div class="right">
+                {{parentForm.value.detailUrls.length}} links detected
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+</div>

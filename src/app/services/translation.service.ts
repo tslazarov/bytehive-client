@@ -17,18 +17,18 @@ export class TranslationService {
             TranslationService.language = languageKey;
         }
         else {
-            TranslationService.language = "bg";
+            TranslationService.language = 'bg';
         }
     }
 
     localizeValue(fieldName: string, pageName: string, type: string): string {
         try {
             switch (type) {
-                case "label": {
-                    return TranslationService.language ? LabelsMessages.labels[pageName][fieldName][TranslationService.language] : LabelsMessages.labels[pageName][fieldName]["en"];
+                case 'label': {
+                    return TranslationService.language ? LabelsMessages.labels[pageName][fieldName][TranslationService.language] : LabelsMessages.labels[pageName][fieldName]['en'];
                 }
-                case "message": {
-                    return TranslationService.language ? LabelsMessages.messages[pageName][fieldName][TranslationService.language] : LabelsMessages.messages[pageName][fieldName]["en"];
+                case 'message': {
+                    return TranslationService.language ? LabelsMessages.messages[pageName][fieldName][TranslationService.language] : LabelsMessages.messages[pageName][fieldName]['en'];
                 }
             }
         }
@@ -44,7 +44,7 @@ export class TranslationService {
             TranslationService.language = languageKey;
         }
         else {
-            TranslationService.language = "bg";
+            TranslationService.language = 'bg';
         }
     }
 
