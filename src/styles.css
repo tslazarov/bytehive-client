@@ -7,18 +7,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: transparent !important;
 }
 
-.language-menu.mat-menu-panel .mat-button-focus-overlay {
-    background-color: transparent !important;
-}
-
-.language-menu.mat-menu-panel .mat-menu-item {
-    padding: 0px !important;
-}
-
-.language-menu.mat-menu-panel {
-    min-width: 170px !important; 
-}
-
 .page-content {
     padding: 100px;
 }
@@ -43,29 +31,143 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-step-header:hover{
     background-color: transparent !important;
 }
+
 .mat-step-header.cdk-program-focused {
       background-color: transparent;
   }
+
 .mat-step-header.cdk-mouse-focused{
     background-color: transparent;
 }
+
 .mat-step-header.cdk-focused{
     background-color: transparent;
 }
+
+.mat-form-field-infix {
+    border-top-width: 0px;
+}
+
+.dialog .mat-form-field {
+    min-width: 300px;
+}
+
+.detail-url-wrapper .mat-form-field {
+    width: 80%;
+}
+
+.automatic-wrapper .mat-form-field {
+    padding-top: 8px !important;
+}
+
+.code-dialog-header .mat-form-field {
+    padding-top: 6px !important;
+}
+
+/* Custom mat menus */
+
+.language-menu.mat-menu-panel .mat-button-focus-overlay {
+    background-color: transparent !important;
+}
+
+.language-menu.mat-menu-panel .mat-menu-item {
+    padding: 0px !important;
+}
+
+.language-menu.mat-menu-panel {
+    min-width: 170px !important; 
+}
+
+.markup-menu.mat-menu-panel .mat-button-focus-overlay {
+    background-color: transparent !important;
+}
+
+.markup-menu.mat-menu-panel .mat-menu-item {
+    padding: 0px !important;
+}
+
+.markup-menu.mat-menu-panel {
+    margin-top: 10px;
+    min-width: 170px !important; 
+}
+
+.manual-wrapper .mat-tab-body-content {
+    overflow: hidden;
+}
+
+.detail-url-mode-menu.mat-menu-panel .mat-button-focus-overlay {
+    background-color: transparent !important;
+}
+
+.detail-url-mode-menu.mat-menu-panel .mat-menu-item {
+    padding: 0px !important;
+}
+
+.detail-url-mode-menu.mat-menu-panel {
+    min-width: 170px !important; 
+}
+
+.mat-divider {
+    display: block;
+    margin: 0;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+/* Bootstrap customizations */
 
 button:focus {
     outline: 0px !important;
 }
 
+/* Common */
+
 .left {
-    text-align: left;
+    text-align: left !important;
 }
 
 .right {
-    text-align: right;
+    text-align: right !important;
 }
 
 .center {
-    text-align: center;
+    text-align: center !important;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: 500;
+}
+
+/* icons */
+.icon {
+    display: inline-block;
+    background-size: cover;
+}
+
+.large-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.medium-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.small-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.left-icon {
+    margin-right: 10px;
+}
+
+.right-icon {
+    margin-left: 15px;
 }
 

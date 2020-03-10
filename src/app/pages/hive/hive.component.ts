@@ -4,6 +4,10 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 import { TranslationService } from '../../services/translation.service';
 import { CommunicationService } from '../../services/communication.service';
+import { FieldMapping } from '../../models/fieldmapping.model';
+import { Constants } from '../../utilities/constants';
+import { CrawType } from '../../models/enums/crawtype.enum';
+import { BhValidators } from '../../utilities/validators/bhvalidators';
 
 @Component({
     selector: 'app-hive',
@@ -14,18 +18,22 @@ import { CommunicationService } from '../../services/communication.service';
     }]
 })
 export class HiveComponent implements OnInit, OnDestroy {
+
+    // data
     crawTypeFormGroup: FormGroup;
-    secondFormGroup: FormGroup;
-    thirdFormGroup: FormGroup;
+    dataSourceMappingFormGroup: FormGroup;
     exportTypeFormGroup: FormGroup;
+    fieldMappings: FieldMapping[];
+
+    // enums
+    crawTypes = CrawType;
 
     // subscriptions
     languageChangeSubscription: any;
 
     // labels
     selectPagesTypeLabel: string;
-    selectDataSourceLabel: string;
-    setDataMappingsLabel: string;
+    selectDataSourceMappingLabel: string;
     selectExportTypeLabel: string;
     confirmRequestLabel: string;
     previousLabel: string;
@@ -36,7 +44,9 @@ export class HiveComponent implements OnInit, OnDestroy {
         private translationService: TranslationService,
         private communicationService: CommunicationService) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
+        this.setLabelsMessages();
+
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
             this.setLabelsMessages();
         });
@@ -45,17 +55,25 @@ export class HiveComponent implements OnInit, OnDestroy {
             crawType: ['', Validators.required]
         });
 
-        this.secondFormGroup = this.formBuilder.group({
-            secondCtrl: ['', Validators.required]
-        });
 
-        this.thirdFormGroup = this.formBuilder.group({
-            secondCtrl: ['', Validators.required]
+        this.dataSourceMappingFormGroup = this.formBuilder.group({
+            listUrl: [''],
+            hasPaging: [false],
+            startPage: [],
+            endPage: [],
+            detailLink: [''],
+            detailUrls: [[]],
+            detailUrl: ['', [Validators.required, Validators.pattern(Constants.URL_REGEX)]]
         });
 
         this.exportTypeFormGroup = this.formBuilder.group({
             exportType: ['', Validators.required]
         });
+
+        this.fieldMappings = [];
+
+        this.subscribeCrawTypeFormDependency();
+        this.subscribeDataSourceMappingFormDependency();
     }
 
     ngOnDestroy(): void {
@@ -63,14 +81,91 @@ export class HiveComponent implements OnInit, OnDestroy {
     }
 
     setLabelsMessages(): void {
-        console.log('test');
-        this.selectPagesTypeLabel = this.translationService.localizeValue("selectPagesTypeLabel", "hive", "label");
-        this.selectDataSourceLabel = this.translationService.localizeValue("selectDataSourceLabel", "hive", "label");
-        this.setDataMappingsLabel = this.translationService.localizeValue("setDataMappingsLabel", "hive", "label");
-        this.selectExportTypeLabel = this.translationService.localizeValue("selectExportTypeLabel", "hive", "label");
-        this.confirmRequestLabel = this.translationService.localizeValue("confirmRequestLabel", "hive", "label");
-        this.previousLabel = this.translationService.localizeValue("previousLabel", "hive", "label");
-        this.nextLabel = this.translationService.localizeValue("nextLabel", "hive", "label");
-        this.confirmLabel = this.translationService.localizeValue("confirmLabel", "hive", "label");
+        this.selectPagesTypeLabel = this.translationService.localizeValue('selectPagesTypeLabel', 'hive', 'label');
+        this.selectDataSourceMappingLabel = this.translationService.localizeValue('selectDataSourceMappingLabel', 'hive', 'label');
+        this.selectExportTypeLabel = this.translationService.localizeValue('selectExportTypeLabel', 'hive', 'label');
+        this.confirmRequestLabel = this.translationService.localizeValue('confirmRequestLabel', 'hive', 'label');
+        this.previousLabel = this.translationService.localizeValue('previousLabel', 'hive', 'label');
+        this.nextLabel = this.translationService.localizeValue('nextLabel', 'hive', 'label');
+        this.confirmLabel = this.translationService.localizeValue('confirmLabel', 'hive', 'label');
+    }
+
+    subscribeCrawTypeFormDependency(): void {
+        this.crawTypeFormGroup.get('crawType').valueChanges.subscribe(crawType => {
+            let listUrlControl = this.dataSourceMappingFormGroup.controls['listUrl'];
+            let hasPagingControl = this.dataSourceMappingFormGroup.controls['hasPaging'];
+            let startPageControl = this.dataSourceMappingFormGroup.controls['startPage'];
+            let endPageControl = this.dataSourceMappingFormGroup.controls['endPage'];
+            let detailLinkControl = this.dataSourceMappingFormGroup.controls['detailLink'];
+            let detailUrlsControl = this.dataSourceMappingFormGroup.controls['detailUrls'];
+
+            listUrlControl.reset;
+            hasPagingControl.reset;
+            startPageControl.reset;
+            endPageControl.reset;
+            detailLinkControl.reset;
+            detailUrlsControl.reset;
+
+            switch (crawType) {
+                case this.crawTypes.ListDetail: {
+                    listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX)]);
+                    detailLinkControl.setValidators([Validators.required]);
+                    detailUrlsControl.setValidators(null);
+                    break;
+                }
+                case this.crawTypes.List: {
+                    listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX)]);
+                    detailLinkControl.setValidators(null);
+                    detailUrlsControl.setValidators(null);
+                    break;
+                }
+                case this.crawTypes.Detail: {
+                    listUrlControl.setValidators(null);
+                    detailLinkControl.setValidators(null);
+                    detailUrlsControl.setValidators([BhValidators.arrayLengthRequired]);
+                    break;
+                }
+            }
+
+            listUrlControl.updateValueAndValidity();
+            detailLinkControl.updateValueAndValidity();
+            detailUrlsControl.updateValueAndValidity();
+        });
+    }
+
+    subscribeDataSourceMappingFormDependency(): void {
+        this.dataSourceMappingFormGroup.get('hasPaging').valueChanges.subscribe(hasPaging => {
+            let listUrlControl = this.dataSourceMappingFormGroup.controls['listUrl'];
+            let startPageControl = this.dataSourceMappingFormGroup.controls['startPage'];
+            let endPageControl = this.dataSourceMappingFormGroup.controls['endPage'];
+
+            if (hasPaging) {
+                listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX_PAGING)]);
+                startPageControl.setValidators([Validators.required]);
+                endPageControl.setValidators([Validators.required]);
+
+                listUrlControl.updateValueAndValidity();
+                startPageControl.updateValueAndValidity();
+                endPageControl.updateValueAndValidity();
+            }
+            else {
+                listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX)]);
+                startPageControl.setValidators(null);
+                endPageControl.setValidators(null);
+
+                listUrlControl.updateValueAndValidity();
+                startPageControl.updateValueAndValidity();
+                endPageControl.updateValueAndValidity();
+            }
+        });
+    }
+
+    stepChanged(event, stepper): void {
+        if (event.previouslySelectedIndex > event.selectedIndex) {
+            stepper.selected.interacted = false;
+        }
+        else {
+            stepper.selected.interacted = true;
+        }
     }
 }

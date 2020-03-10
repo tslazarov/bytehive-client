@@ -1,0 +1,64 @@
+.detail-mode-picker {
+    min-width: 170px;
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.detail-mode-picker:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+
+.detail-mode-label {
+    display: inline-block;
+    min-width: 100px;
+}
+
+.validate {
+    min-width: 150px;
+    background-color: #212121;
+    color: #ffffff;
+}
+
+.validate.disabled {
+    min-width: 150px;
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.validate:hover {
+    background-color: #212121;
+    color: #ffeb3b;
+}
+
+.validate.disabled:hover {
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.detail-urls-input {
+    resize: none;
+}
+
+.number-input {
+    max-width: 160px !important;
+}
+
+.question-icon {
+    margin-bottom: -13px;
+    margin-left: 10px;
+}
+
+.question-icon {
+    background: url(../../../../assets/icons/question-accent.svg);
+}
+
+.question-icon:hover {
+    cursor: pointer;
+    background: url(../../../../assets/icons/question-active.svg);
+}

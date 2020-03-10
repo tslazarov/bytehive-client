@@ -1,0 +1,29 @@
+<div>
+    <div class="row pb-3 code-dialog-header">
+        <div class="col-2">
+            <button class="generate" disableRipple mat-flat-button (click)="generate()">
+                <span>{{generateLabel | localize: 'generateLabel':'code-dialog':'label' | uppercase}}</span>
+            </button>
+        </div>
+        <div class="col-7">
+            <mat-form-field floatLabel="never" class="full-width">
+                <input class="markup-input" matInput autocomplete="off" disabled [(ngModel)]="data.markup" />
+            </mat-form-field>
+        </div>
+        <div class="col-3 right">
+            <button class="close-button" mat-button (click)="close()">
+                <span class="icon close-icon large-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="code-editor-wrapper">
+        <ngx-monaco-editor class="code-editor" [options]="editorOptions" [(ngModel)]="data.code"></ngx-monaco-editor>
+    </div>
+    <div class="row pt-3">
+        <div class="col-12">
+            <button class="save" disableRipple mat-flat-button (click)="save()">
+                <span>{{saveLabel | localize: 'saveLabel':'code-dialog':'label' | uppercase}}</span>
+            </button>
+        </div>
+    </div>
+</div>

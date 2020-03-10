@@ -1,5 +1,5 @@
 <div class="page-content">
-    <mat-horizontal-stepper linear #stepper [disableRipple]="true">
+    <mat-horizontal-stepper linear #stepper [disableRipple]="true" (selectionChange)="stepChanged($event, stepper)">
         <ng-template matStepperIcon="edit">
             <span class="small-icon edit-icon"></span>
         </ng-template>
@@ -15,57 +15,38 @@
                     <div class="col-md-6 col-sm-12 left">
                     </div>
                     <div class="col-md-6 col-sm-12 right">
-                        <button disableRipple mat-flat-button class="next" matStepperNext>
+                        <button disableRipple mat-flat-button class="direction" matStepperNext>
                             {{nextLabel | localize: 'nextLabel':'hive':'label' | uppercase}}
                         </button>
                     </div>
                 </div>
             </form>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
+        <mat-step [stepControl]="dataSourceMappingFormGroup">
+            <form [formGroup]="dataSourceMappingFormGroup">
                 <ng-template matStepLabel>
-                    {{selectDataSourceLabel | localize: 'selectDataSourceLabel':'hive':'label'}}
+                    {{selectDataSourceMappingLabel | localize: 'selectDataSourceMappingLabel':'hive':'label'}}
                 </ng-template>
-                <div class="form-content">
-                    <mat-form-field>
-                        <mat-label>Address</mat-label>
-                        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-                    </mat-form-field>
+                <div class="form-content row">
+                    <div class="col-lg-5 col-md-12">
+                        <bh-datasource [crawType]="crawTypeFormGroup.value.crawType" [parentForm]="dataSourceMappingFormGroup">
+                        </bh-datasource>
+                    </div>
+                    <div class="col-lg-1 vertical-divider">
+                        <span class="divider"></span>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <bh-datamapping [fieldMappings]="fieldMappings" [parentForm]="dataSourceMappingFormGroup"></bh-datamapping>
+                    </div>
                 </div>
                 <div class="row p-2">
                     <div class="col-md-6 col-sm-12 left">
-                        <button disableRipple mat-flat-button class="back" matStepperPrevious>
+                        <button disableRipple mat-flat-button class="direction" matStepperPrevious>
                             {{previousLabel | localize: 'previousLabel':'hive':'label' | uppercase}}
                         </button>
                     </div>
                     <div class="col-md-6 col-sm-12 right">
-                        <button disableRipple mat-flat-button class="next" matStepperNext>
-                            {{nextLabel | localize: 'nextLabel':'hive':'label' | uppercase}}
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </mat-step>
-        <mat-step [stepControl]="thirdFormGroup">
-            <form [formGroup]="thirdFormGroup">
-                <ng-template matStepLabel>
-                    {{setDataMappingsLabel | localize: 'setDataMappingsLabel':'hive':'label'}}
-                </ng-template>
-                <div class="form-content">
-                    <mat-form-field>
-                        <mat-label>Address</mat-label>
-                        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-                    </mat-form-field>
-                </div>
-                <div class="row p-2">
-                    <div class="col-md-6 col-sm-12 left">
-                        <button disableRipple mat-flat-button class="back" matStepperPrevious>
-                            {{previousLabel | localize: 'previousLabel':'hive':'label' | uppercase}}
-                        </button>
-                    </div>
-                    <div class="col-md-6 col-sm-12 right">
-                        <button disableRipple mat-flat-button class="next" matStepperNext>
+                        <button disableRipple mat-flat-button class="direction" matStepperNext>
                             {{nextLabel | localize: 'nextLabel':'hive':'label' | uppercase}}
                         </button>
                     </div>
@@ -87,7 +68,7 @@
                         </button>
                     </div>
                     <div class="col-md-6 col-sm-12 right">
-                        <button disableRipple mat-flat-button class="next" matStepperNext>
+                        <button disableRipple mat-flat-button class="direction" matStepperNext>
                             {{nextLabel | localize: 'nextLabel':'hive':'label' | uppercase}}
                         </button>
                     </div>
@@ -108,7 +89,7 @@
                     </button>
                 </div>
                 <div class="col-md-6 col-sm-12 right">
-                    <button disableRipple mat-flat-button class="next" matStepperNext>
+                    <button disableRipple mat-flat-button class="direction" matStepperNext>
                         {{confirmLabel | localize: 'confirmLabel':'hive':'label' | uppercase}}
                     </button>
                 </div>

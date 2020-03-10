@@ -1,0 +1,80 @@
+<h4 class="pt-3">{{dataSourceLabel | localize: 'dataSourceLabel':'datasource':'label'}}</h4>
+<div [formGroup]="parentForm">
+    <div *ngIf="crawType != 3">
+        <div class="row pt-5">
+            <div class="col-10 detail-url-wrapper pb-3">
+                <mat-form-field floatLabel="never">
+                    <mat-label>{{listUrlLabel | localize: 'listUrlLabel':'datasource':'label'}}</mat-label>
+                    <input matInput autocomplete="off" formControlName="listUrl">
+                </mat-form-field>
+                <span *ngIf="parentForm.value.hasPaging" class="icon question-icon large-icon" (click)="pagingInformation()"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <mat-checkbox formControlName="hasPaging">{{pagingLabel | localize: 'pagingLabel':'datasource':'label'}}</mat-checkbox>
+            </div>
+        </div>
+        <div class="row" *ngIf="parentForm.value.hasPaging">
+            <div class="col-12 pb-4 pt-4">
+                <div class="mat-divider full-width"></div>
+            </div>
+            <div class="col-6">
+                <mat-form-field floatLabel="never" class="number-input">
+                    <mat-label>{{startPageLabel | localize: 'startPageLabel':'datasource':'label'}}</mat-label>
+                    <input matInput type="number" autocomplete="off" formControlName="startPage" class="center">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field floatLabel="never" class="number-input">
+                    <mat-label>{{endPageLabel | localize: 'endPageLabel':'datasource':'label'}}</mat-label>
+                    <input matInput type="number" autocomplete="off" formControlName="endPage" class="center">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="crawType==2" class="row pt-5">
+        <div class="col-12 center pb-5 pt-3">
+            <button disableRipple mat-flat-button [ngClass]="parentForm.controls['detailUrls'].invalid ? 'validate disabled': 'validate'"
+                (click)="validate()" [disabled]="parentForm.controls['detailUrls'].invalid">
+                <span>{{validateLabel | localize: 'validateLabel':'datasource':'label' | uppercase}}</span>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="crawType==3" class="row pt-5">
+        <div class="col-12">
+            <button disableRipple mat-flat-button class="detail-mode-picker" [matMenuTriggerFor]="detailUrlMode">
+                <span class="detail-mode-label">{{ detailUrlModeLabel }}</span>
+                <mat-icon class="right-icon">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu class="detail-url-mode-menu" #detailUrlMode="matMenu">
+                <div mat-menu-item (click)="changeDetailMode(detailUrlModes.List)">
+                    <button disableRipple mat-button>
+                        <span>{{listModeLabel | localize: 'listModeLabel':'datasource':'label'}}</span>
+                    </button>
+                </div>
+                <div mat-menu-item (click)="changeDetailMode(detailUrlModes.File)">
+                    <button disableRipple mat-button>
+                        <span>{{fileModeLabel | localize: 'fileModeLabel':'datasource':'label'}}</span>
+                    </button>
+                </div>
+            </mat-menu>
+        </div>
+        <div class="col-12 pt-5">
+            <div *ngIf="selectedDetailUrlMode == detailUrlModes.List">
+                <mat-form-field floatLabel="never" class="full-width pt-3">
+                    <textarea class="detail-urls-input" matInput autocomplete="off" rows="15" placeholder="{{listInputLabel | localize: 'listInputLabel':'datasource':'label'}}"
+                        (focusout)="convertToArray($event)"></textarea>
+                </mat-form-field>
+            </div>
+            <div *ngIf="selectedDetailUrlMode == detailUrlModes.File">
+                <bh-fileupload [parentForm]="parentForm" fieldName="detailUrls" regex="URL_REGEX"></bh-fileupload>
+            </div>
+            <div class="right">
+                {{parentForm.value.detailUrls.length}} {{linksDetectedLabel | localize: 'linksDetectedLabel':'datasource':'label'}}
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+</div>

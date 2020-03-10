@@ -1,5 +1,5 @@
-import { NgModule } from "@angular/core";
-import { LocalizationPipe } from "./localization.pipe";
+import { NgModule } from '@angular/core';
+import { LocalizationPipe } from './localization.pipe';
 
 @NgModule({
     declarations: [

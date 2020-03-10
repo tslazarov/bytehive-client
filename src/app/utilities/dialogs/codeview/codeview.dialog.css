@@ -1,0 +1,19 @@
+.close-icon {
+    background: url(../../../../assets/icons/close-accent.svg);
+}
+
+.close-button {
+    background-color: #ffffff;
+}
+
+.close-button:hover {
+    background-color: #efefef;
+}
+
+.code-editor {
+    height: 100%;
+}
+
+.code-editor-wrapper {
+    height: calc(90vh - 100px);
+}
