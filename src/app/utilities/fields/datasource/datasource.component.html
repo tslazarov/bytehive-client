@@ -1,31 +1,34 @@
-<h4 class="pt-3">{{dataMappingLabel | localize: 'dataMappingLabel':'datamapping':'label'}}</h4>
+<h4 class="pt-3">{{dataSourceLabel | localize: 'dataSourceLabel':'datasource':'label'}}</h4>
 <div [formGroup]="parentForm">
-    <div *ngIf="crawType==1">
+    <div *ngIf="crawType != 3">
         <div class="row pt-5">
             <div class="col-10 detail-url-wrapper pb-3">
                 <mat-form-field floatLabel="never">
-                    <mat-label>Enter list url</mat-label>
+                    <mat-label>{{listUrlLabel | localize: 'listUrlLabel':'datasource':'label'}}</mat-label>
                     <input matInput autocomplete="off" formControlName="listUrl">
                 </mat-form-field>
+                <span *ngIf="parentForm.value.hasPaging" class="icon question-icon large-icon" (click)="pagingInformation()"></span>
             </div>
         </div>
         <div class="row">
             <div class="col-3">
-                <mat-form-field floatLabel="never">
-                    <mat-label>Enter list url</mat-label>
-                    <input matInput autocomplete="off" formControlName="listUrl">
+                <mat-checkbox formControlName="hasPaging">{{pagingLabel | localize: 'pagingLabel':'datasource':'label'}}</mat-checkbox>
+            </div>
+        </div>
+        <div class="row" *ngIf="parentForm.value.hasPaging">
+            <div class="col-12 pb-4 pt-4">
+                <div class="mat-divider full-width"></div>
+            </div>
+            <div class="col-6">
+                <mat-form-field floatLabel="never" class="number-input">
+                    <mat-label>{{startPageLabel | localize: 'startPageLabel':'datasource':'label'}}</mat-label>
+                    <input matInput type="number" autocomplete="off" formControlName="startPage" class="center">
                 </mat-form-field>
             </div>
-            <div class="col-2">
-                <mat-form-field floatLabel="never">
-                    <mat-label>Enter list url</mat-label>
-                    <input matInput autocomplete="off" formControlName="listUrl">
-                </mat-form-field>
-            </div>
-            <div class="col-2">
-                <mat-form-field floatLabel="never">
-                    <mat-label>Enter list url</mat-label>
-                    <input matInput autocomplete="off" formControlName="listUrl">
+            <div class="col-6">
+                <mat-form-field floatLabel="never" class="number-input">
+                    <mat-label>{{endPageLabel | localize: 'endPageLabel':'datasource':'label'}}</mat-label>
+                    <input matInput type="number" autocomplete="off" formControlName="endPage" class="center">
                 </mat-form-field>
             </div>
         </div>
@@ -34,7 +37,7 @@
         <div class="col-12 center pb-5 pt-3">
             <button disableRipple mat-flat-button [ngClass]="parentForm.controls['detailUrls'].invalid ? 'validate disabled': 'validate'"
                 (click)="validate()" [disabled]="parentForm.controls['detailUrls'].invalid">
-                <span>VALIDATE</span>
+                <span>{{validateLabel | localize: 'validateLabel':'datasource':'label' | uppercase}}</span>
             </button>
         </div>
     </div>
@@ -47,12 +50,12 @@
             <mat-menu class="detail-url-mode-menu" #detailUrlMode="matMenu">
                 <div mat-menu-item (click)="changeDetailMode(detailUrlModes.List)">
                     <button disableRipple mat-button>
-                        <span>List</span>
+                        <span>{{listModeLabel | localize: 'listModeLabel':'datasource':'label'}}</span>
                     </button>
                 </div>
                 <div mat-menu-item (click)="changeDetailMode(detailUrlModes.File)">
                     <button disableRipple mat-button>
-                        <span>File</span>
+                        <span>{{fileModeLabel | localize: 'fileModeLabel':'datasource':'label'}}</span>
                     </button>
                 </div>
             </mat-menu>
@@ -60,7 +63,7 @@
         <div class="col-12 pt-5">
             <div *ngIf="selectedDetailUrlMode == detailUrlModes.List">
                 <mat-form-field floatLabel="never" class="full-width pt-3">
-                    <textarea class="detail-urls-input" matInput autocomplete="off" rows="10" placeholder="Enter valid links separated by new lines"
+                    <textarea class="detail-urls-input" matInput autocomplete="off" rows="15" placeholder="{{listInputLabel | localize: 'listInputLabel':'datasource':'label'}}"
                         (focusout)="convertToArray($event)"></textarea>
                 </mat-form-field>
             </div>
@@ -68,7 +71,7 @@
                 <bh-fileupload [parentForm]="parentForm" fieldName="detailUrls" regex="URL_REGEX"></bh-fileupload>
             </div>
             <div class="right">
-                {{parentForm.value.detailUrls.length}} links detected
+                {{parentForm.value.detailUrls.length}} {{linksDetectedLabel | localize: 'linksDetectedLabel':'datasource':'label'}}
             </div>
         </div>
     </div>

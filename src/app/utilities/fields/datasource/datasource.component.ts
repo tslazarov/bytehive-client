@@ -6,6 +6,8 @@ import { TranslationService } from '../../../services/translation.service';
 import { CrawType } from '../../../models/enums/crawtype.enum';
 import { DetailModeType } from '../../../models/enums/detailmode.enum';
 import { Constants } from '../../constants';
+import { PagingInformationDialog } from '../../dialogs/paginginformation/paginginformation.dialog';
+import { MatDialog } from '@angular/material';
 
 @Component({
     selector: 'bh-datasource',
@@ -25,18 +27,36 @@ export class DatasourceComponent implements OnInit, OnDestroy {
     selectedDetailUrlMode: DetailModeType;
 
     // labels
+    dataSourceLabel: string;
+    listUrlLabel: string;
+    pagingLabel: string;
+    startPageLabel: string;
+    endPageLabel: string;
     detailUrlModeLabel: string;
+    listModeLabel: string;
+    fileModeLabel: string;
+    listInputLabel: string;
+    dragDropLabel: string;
+    orLabel: string;
+    browseFileLabel: string;
+    fileInstructionsLabel: string;
+    linksDetectedLabel: string;
+    validateLabel: string;
 
     constructor(private clientService: ClientService,
+        private dialog: MatDialog,
         private communicationService: CommunicationService,
         private translationService: TranslationService) { }
 
     ngOnInit(): void {
+        this.setLabelsMessages();
+
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(e => {
             this.setLabelsMessages();
         });
 
         this.selectedDetailUrlMode = this.detailUrlModes.List;
+        this.detailUrlModeLabel = this.listModeLabel;
     }
 
     ngOnDestroy(): void {
@@ -44,6 +64,16 @@ export class DatasourceComponent implements OnInit, OnDestroy {
     }
 
     setLabelsMessages(): void {
+        this.dataSourceLabel = this.translationService.localizeValue('dataSourceLabel', 'datasource', 'label');
+        this.listUrlLabel = this.translationService.localizeValue('listUrlLabel', 'datasource', 'label');
+        this.pagingLabel = this.translationService.localizeValue('pagingLabel', 'datasource', 'label');
+        this.startPageLabel = this.translationService.localizeValue('startPageLabel', 'datasource', 'label');
+        this.endPageLabel = this.translationService.localizeValue('endPageLabel', 'datasource', 'label');
+        this.listModeLabel = this.translationService.localizeValue('listModeLabel', 'datasource', 'label');
+        this.fileModeLabel = this.translationService.localizeValue('fileModeLabel', 'datasource', 'label');
+        this.listInputLabel = this.translationService.localizeValue('listInputLabel', 'datasource', 'label');
+        this.validateLabel = this.translationService.localizeValue('validateLabel', 'datasource', 'label');
+        this.linksDetectedLabel = this.translationService.localizeValue('linksDetectedLabel', 'datasource', 'label');
     }
 
     changeDetailMode(mode: DetailModeType): void {
@@ -51,10 +81,10 @@ export class DatasourceComponent implements OnInit, OnDestroy {
         this.parentForm.controls.detailUrls.patchValue([]);
 
         if (this.selectedDetailUrlMode == this.detailUrlModes.List) {
-            this.detailUrlModeLabel = 'List';
+            this.detailUrlModeLabel = this.listModeLabel;
         }
         else {
-            this.detailUrlModeLabel = 'File';
+            this.detailUrlModeLabel = this.fileModeLabel;
         }
     }
 
@@ -64,5 +94,13 @@ export class DatasourceComponent implements OnInit, OnDestroy {
         lines = lines.filter(l => l.match(Constants.URL_REGEX));
 
         this.parentForm.controls.detailUrls.patchValue(lines);
+    }
+
+    pagingInformation(): void {
+        let dialogRef = this.dialog.open(PagingInformationDialog, { width: '50vw', height: '220px', autoFocus: false });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+        });
     }
 }

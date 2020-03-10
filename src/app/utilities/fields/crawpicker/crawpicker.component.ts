@@ -25,7 +25,9 @@ export class CrawpickerComponent implements OnInit {
     constructor(private translationService: TranslationService,
         private communicationService: CommunicationService) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
+        this.setLabelsMessages();
+
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(e => {
             this.setLabelsMessages();
         });
@@ -35,11 +37,11 @@ export class CrawpickerComponent implements OnInit {
         this.languageChangeSubscription.unsubscribe();
     }
 
-    setLabelsMessages() {
+    setLabelsMessages(): void {
 
     }
 
-    selectOption(option) {
+    selectOption(option): void {
         this.selectedOption = option;
 
         this.parentForm.patchValue({ crawType: this.selectedOption });

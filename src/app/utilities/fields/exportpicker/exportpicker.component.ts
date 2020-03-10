@@ -19,10 +19,10 @@ export class ExportpickerComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
-    selectOption(option) {
+    selectOption(option): void {
         this.selectedOption = option;
 
         this.parentForm.patchValue({ exportType: this.selectedOption });

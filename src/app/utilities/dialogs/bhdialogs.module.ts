@@ -10,6 +10,7 @@ import { CodeDialog } from './code/code.dialog';
 import { VisualDialog } from './visual/visual.dialog';
 import { ManualDialog } from './manual/manual.dialog';
 import { AutomaticDialog } from './automatic/automatic.dialog';
+import { PagingInformationDialog } from './paginginformation/paginginformation.dialog';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { AutomaticDialog } from './automatic/automatic.dialog';
         CodeDialog,
         VisualDialog,
         ManualDialog,
-        AutomaticDialog
+        AutomaticDialog,
+        PagingInformationDialog
     ],
     imports: [
         MaterialModule,
@@ -34,7 +36,8 @@ import { AutomaticDialog } from './automatic/automatic.dialog';
         CodeDialog,
         VisualDialog,
         ManualDialog,
-        AutomaticDialog
+        AutomaticDialog,
+        PagingInformationDialog
     ],
     providers: [
         TranslationService,

@@ -1,0 +1,17 @@
+<div>
+    <div class="row pb-3">
+        <div class="col-10">
+        </div>
+        <div class="col-2 right">
+            <button class="close-button" mat-button (click)="close()">
+                <span class="icon close-icon large-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="paginginformation-wrapper">
+        <div>{{pagePlaceholderLabel | localize: 'pagePlaceholderLabel':'pageinformation-dialog':'label'}}</div>
+        <div class="pt-3">{{examplesLabel | localize: 'examplesLabel':'pageinformation-dialog':'label'}}</div>
+        <div>{{example1Label | localize: 'example1Label':'pageinformation-dialog':'label'}}</div>
+        <div>{{example2Label | localize: 'example2Label':'pageinformation-dialog':'label'}}</div>
+    </div>
+</div>

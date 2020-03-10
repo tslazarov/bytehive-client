@@ -54,8 +54,8 @@ export class LabelsMessages {
                 'bg': 'Асоциация на данни'
             },
             'detailUrlLabel': {
-                'en': 'https://<enter detail page URL>',
-                'bg': 'https://<въведи URL на детайлна страница>'
+                'en': 'https://<enter detail page link>',
+                'bg': 'https://<въведи линк на детайлна страница>'
             },
             'nameLabel': {
                 'en': 'Name',
@@ -92,6 +92,66 @@ export class LabelsMessages {
             'validateLabel': {
                 'en': 'Validate',
                 'bg': 'Валидирай'
+            }
+        },
+        'datasource': {
+            'dataSourceLabel': {
+                'en': 'Data Source',
+                'bg': 'Източник на данни'
+            },
+            'listUrlLabel': {
+                'en': 'https://<enter list page link>',
+                'bg': 'https://<въведи линк на списъчна страница>'
+            },
+            'pagingLabel': {
+                'en': 'Pages',
+                'bg': 'Страници'
+            },
+            'startPageLabel': {
+                'en': 'Start page',
+                'bg': 'Начална страница'
+            },
+            'endPageLabel': {
+                'en': 'End page',
+                'bg': 'Крайна страница'
+            },
+            'listModeLabel': {
+                'en': 'List',
+                'bg': 'Списък'
+            },
+            'fileModeLabel': {
+                'en': 'File',
+                'bg': 'Файл'
+            },
+            'listInputLabel': {
+                'en': 'Enter valid links separated with new lines',
+                'bg': 'Въведи валидни линкове отделени с нов ред'
+            },
+            'linksDetectedLabel': {
+                'en': 'links detected',
+                'bg': 'разпознати линкове'
+            },
+            'validateLabel': {
+                'en': 'Validate',
+                'bg': 'Валидирай'
+            }
+        },
+        'fileupload': {
+            'dragDropLabel': {
+                'en': 'Drag and drop file here',
+                'bg': 'Дръпни и пусни файл тук'
+            },
+            'orLabel': {
+                'en': 'or',
+                'bg': 'или'
+            },
+            'browseFileLabel': {
+                'en': 'Browse file',
+                'bg': 'Избери файл'
+            },
+            'fileInstructionsLabel': {
+                'en': 'Upload .txt file with links separated with a new line',
+                'bg': 'Качете .txt файл с линкове отделени с нов ред'
             }
         },
         'manual-dialog': {
@@ -170,6 +230,24 @@ export class LabelsMessages {
             'saveLabel': {
                 'en': 'Save',
                 'bg': 'Запази'
+            }
+        },
+        'pageinformation-dialog': {
+            'pagePlaceholderLabel': {
+                'en': 'Use {{page}} placeholder to mark the paging segment in the link.',
+                'bg': 'Използвай {{page}} за маркиране на сегмента от линка използван за страници.'
+            },
+            'examplesLabel': {
+                'en': 'Examples:',
+                'bg': 'Примери:'
+            },
+            'example1Label': {
+                'en': 'https://www.bytehive.com/news/3 -> https://www.bytehive.com/news/{{page}}',
+                'bg': 'https://www.bytehive.com/news/3 -> https://www.bytehive.com/news/{{page}}'
+            },
+            'example2Label': {
+                'en': 'https://www.bytehive.com/news?page=3 -> https://www.bytehive.com/news?page={{page}}',
+                'bg': 'https://www.bytehive.com/news?page=3 -> https://www.bytehive.com/news?page={{page}}'
             }
         }
     }

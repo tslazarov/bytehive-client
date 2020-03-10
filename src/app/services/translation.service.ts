@@ -37,7 +37,7 @@ export class TranslationService {
         }
     }
 
-    updateLanguage() {
+    updateLanguage(): void {
         let languageKey = localStorage.getItem(Constants.LANGUAGE_KEY);
 
         if (languageKey) {
@@ -48,7 +48,7 @@ export class TranslationService {
         }
     }
 
-    getLanguage() {
+    getLanguage(): string {
         let languageKey = localStorage.getItem(Constants.LANGUAGE_KEY);
 
         return languageKey ? languageKey : 'bg';

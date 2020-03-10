@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    height: 250px;
+    height: 290px;
     padding: 2rem;
     text-align: center;
     border: dashed 1px #dfdfdf;
@@ -67,4 +67,9 @@
   
 .files-list .single-file .info {
     width: 100%
+}
+
+.upload-description {
+    font-size: 13px;
+    font-style: italic;
 }

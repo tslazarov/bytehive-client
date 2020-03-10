@@ -22,7 +22,7 @@ export class CodeDialog {
         this.setLabelsMessages();
     }
 
-    setLabelsMessages() {
+    setLabelsMessages(): void {
         this.generateLabel = this.translationService.localizeValue('generateLabel', 'code-dialog', 'label');
         this.saveLabel = this.translationService.localizeValue('saveLabel', 'code-dialog', 'label');
     }

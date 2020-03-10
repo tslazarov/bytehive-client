@@ -1,27 +1,56 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Constants } from '../../constants';
+import { CommunicationService } from '../../../services/communication.service';
+import { TranslationService } from '../../../services/translation.service';
 
 @Component({
     selector: 'bh-fileupload',
     templateUrl: './fileupload.component.html',
     styleUrls: ['./fileupload.component.css']
 })
-export class FileuploadComponent implements OnInit {
+export class FileuploadComponent implements OnInit, OnDestroy {
     @Input() parentForm: FormGroup;
     @Input() fieldName: string;
     @Input() regex: string;
 
+    // subscriptions
+    languageChangeSubscription: any;
+
+    // common
     files: any[];
 
-    constructor() { }
+    // labels
+    dragDropLabel: string;
+    orLabel: string;
+    browseFileLabel: string;
+    fileInstructionsLabel: string;
+
+    constructor(private communicationService: CommunicationService,
+        private translationService: TranslationService) { }
 
     ngOnInit() {
         this.files = [];
+
+        this.setLabelsMessages();
+
+        this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(e => {
+            this.setLabelsMessages();
+        });
+    }
+
+    ngOnDestroy() {
+        this.languageChangeSubscription.unsubscribe();
+    }
+
+    setLabelsMessages() {
+        this.dragDropLabel = this.translationService.localizeValue('dragDropLabel', 'fileupload', 'label');
+        this.orLabel = this.translationService.localizeValue('orLabel', 'fileupload', 'label');
+        this.browseFileLabel = this.translationService.localizeValue('browseFileLabel', 'fileupload', 'label');
+        this.fileInstructionsLabel = this.translationService.localizeValue('fileInstructionsLabel', 'fileupload', 'label');
     }
 
     onFileDropped($event) {
-        console.log('test');
         this.prepareFilesList($event);
     }
 

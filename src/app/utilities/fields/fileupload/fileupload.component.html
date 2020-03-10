@@ -1,9 +1,10 @@
 <div class="container" dragdrop (fileDropped)="onFileDropped($event)">
     <input type="file" #fileDropRef id="fileDropRef" single (change)="fileBrowseHandler($event.target.files)" accept=".txt" />
     <img src="../../../../assets/icons/upload-accent.svg" width="80px" class="p-1">
-    <h6 class="pt-2">Drag and drop file here</h6>
-    <h6 class="pb-2">or</h6>
-    <label for="fileDropRef">BROWSE FILE</label>
+    <h6 class="pt-2">{{dragDropLabel | localize: 'dragDropLabel':'fileupload':'label'}}</h6>
+    <h6 class="pb-2">{{orLabel | localize: 'orLabel':'fileupload':'label'}}</h6>
+    <label for="fileDropRef">{{browseFileLabel | localize: 'browseFileLabel':'fileupload':'label' | uppercase}}</label>
+    <div class="pt-2 upload-description">{{fileInstructionsLabel | localize: 'fileInstructionsLabel':'fileupload':'label'}}</div>
 </div>
 
 <div class="files-list">

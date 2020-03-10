@@ -9,7 +9,7 @@ export class CommunicationService {
 
     languageChangeEmitted = CommunicationService.emitLanguageChangeSource.asObservable();
 
-    emitLanguageChange() {
+    emitLanguageChange(): void {
         CommunicationService.emitLanguageChangeSource.next();
     }
 }

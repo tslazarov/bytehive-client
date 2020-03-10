@@ -44,7 +44,9 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         private communicationService: CommunicationService,
         private translationService: TranslationService) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
+        this.setLabelsMessages();
+
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(e => {
             this.setLabelsMessages();
         });
@@ -54,7 +56,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         this.languageChangeSubscription.unsubscribe();
     }
 
-    setLabelsMessages() {
+    setLabelsMessages(): void {
         this.detailUrlLabel = this.translationService.localizeValue('detailUrlLabel', 'datamapping', 'label');
         this.dataMappingLabel = this.translationService.localizeValue('dataMappingLabel', 'datamapping', 'label');
         this.nameLabel = this.translationService.localizeValue('nameLabel', 'datamapping', 'label');
@@ -81,7 +83,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         }
     }
 
-    automaticMapping(fieldMapping: FieldMapping) {
+    automaticMapping(fieldMapping: FieldMapping): void {
         let automaticData = new AutomaticData();
         automaticData.markup = fieldMapping.formGroup.value.fieldMarkup;
 
@@ -92,11 +94,11 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         });
     }
 
-    visualMapping(fieldMapping: FieldMapping) {
+    visualMapping(fieldMapping: FieldMapping): void {
 
     }
 
-    codeMapping(fieldMapping: FieldMapping) {
+    codeMapping(fieldMapping: FieldMapping): void {
         if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
             this.parentForm.controls['detailUrl'].markAsTouched();
             return;
@@ -121,12 +123,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
             });
     }
 
-    manualMapping(fieldMapping: FieldMapping) {
-        if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
-            this.parentForm.controls['detailUrl'].markAsTouched();
-            return;
-        }
-
+    manualMapping(fieldMapping: FieldMapping): void {
         let manualData = new ManualData();
         manualData.markup = fieldMapping.formGroup.value.fieldMarkup;
         manualData.detailUrl = this.parentForm.value.detailUrl;
@@ -140,7 +137,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         });
     }
 
-    codeView() {
+    codeView(): void {
         if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
             this.parentForm.controls['detailUrl'].markAsTouched();
             return;
@@ -159,7 +156,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
             });
     }
 
-    toggleEditMode(fieldMapping: FieldMapping, editable: boolean) {
+    toggleEditMode(fieldMapping: FieldMapping, editable: boolean): void {
         fieldMapping.editMode = editable;
     }
 }

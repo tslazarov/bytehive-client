@@ -30,7 +30,7 @@ export class ManualDialog {
         this.setLabelsMessages();
     }
 
-    setLabelsMessages() {
+    setLabelsMessages(): void {
         this.markupPlaceholderLabel = this.translationService.localizeValue('markupPlaceholderLabel', 'manual-dialog', 'label');
         this.markupHeaderLabel = this.translationService.localizeValue('markupHeaderLabel', 'manual-dialog', 'label');
         this.syntaxRulesLabel = this.translationService.localizeValue('syntaxRulesLabel', 'manual-dialog', 'label');

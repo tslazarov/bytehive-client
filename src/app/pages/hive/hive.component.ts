@@ -44,7 +44,9 @@ export class HiveComponent implements OnInit, OnDestroy {
         private translationService: TranslationService,
         private communicationService: CommunicationService) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
+        this.setLabelsMessages();
+
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
             this.setLabelsMessages();
         });
@@ -57,8 +59,8 @@ export class HiveComponent implements OnInit, OnDestroy {
         this.dataSourceMappingFormGroup = this.formBuilder.group({
             listUrl: [''],
             hasPaging: [false],
-            startPage: [1],
-            endPage: [100],
+            startPage: [],
+            endPage: [],
             detailLink: [''],
             detailUrls: [[]],
             detailUrl: ['', [Validators.required, Validators.pattern(Constants.URL_REGEX)]]
@@ -88,7 +90,7 @@ export class HiveComponent implements OnInit, OnDestroy {
         this.confirmLabel = this.translationService.localizeValue('confirmLabel', 'hive', 'label');
     }
 
-    subscribeCrawTypeFormDependency() {
+    subscribeCrawTypeFormDependency(): void {
         this.crawTypeFormGroup.get('crawType').valueChanges.subscribe(crawType => {
             let listUrlControl = this.dataSourceMappingFormGroup.controls['listUrl'];
             let hasPagingControl = this.dataSourceMappingFormGroup.controls['hasPaging'];
@@ -131,13 +133,34 @@ export class HiveComponent implements OnInit, OnDestroy {
         });
     }
 
-    subscribeDataSourceMappingFormDependency() {
-        this.dataSourceMappingFormGroup.get('detailUrls').valueChanges.subscribe(detailUrls => {
+    subscribeDataSourceMappingFormDependency(): void {
+        this.dataSourceMappingFormGroup.get('hasPaging').valueChanges.subscribe(hasPaging => {
+            let listUrlControl = this.dataSourceMappingFormGroup.controls['listUrl'];
+            let startPageControl = this.dataSourceMappingFormGroup.controls['startPage'];
+            let endPageControl = this.dataSourceMappingFormGroup.controls['endPage'];
 
+            if (hasPaging) {
+                listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX_PAGING)]);
+                startPageControl.setValidators([Validators.required]);
+                endPageControl.setValidators([Validators.required]);
+
+                listUrlControl.updateValueAndValidity();
+                startPageControl.updateValueAndValidity();
+                endPageControl.updateValueAndValidity();
+            }
+            else {
+                listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX)]);
+                startPageControl.setValidators(null);
+                endPageControl.setValidators(null);
+
+                listUrlControl.updateValueAndValidity();
+                startPageControl.updateValueAndValidity();
+                endPageControl.updateValueAndValidity();
+            }
         });
     }
 
-    stepChanged(event, stepper) {
+    stepChanged(event, stepper): void {
         if (event.previouslySelectedIndex > event.selectedIndex) {
             stepper.selected.interacted = false;
         }

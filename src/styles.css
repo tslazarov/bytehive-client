@@ -107,6 +107,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     min-width: 170px !important; 
 }
 
+.mat-divider {
+    display: block;
+    margin: 0;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
 /* Bootstrap customizations */
 
 button:focus {

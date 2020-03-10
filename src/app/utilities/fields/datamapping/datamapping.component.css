@@ -52,14 +52,6 @@
     color: #ffffff;
 }
 
-
-.mat-divider {
-    display: block;
-    margin: 0;
-    border-top-width: 1px;
-    border-top-style: solid;
-}
-
 .code-button {
     min-width: 50px;
 }

@@ -9,19 +9,19 @@ export class DragdropDirective {
 
     constructor() { }
 
-    @HostListener('dragover', ['$event']) onDragOver(evt) {
+    @HostListener('dragover', ['$event']) onDragOver(evt): void {
         evt.preventDefault();
         evt.stopPropagation();
         this.fileOver = true;
     }
 
-    @HostListener('dragleave', ['$event']) public onDragLeave(evt) {
+    @HostListener('dragleave', ['$event']) public onDragLeave(evt): void {
         evt.preventDefault();
         evt.stopPropagation();
         this.fileOver = false;
     }
 
-    @HostListener('drop', ['$event']) public ondrop(evt) {
+    @HostListener('drop', ['$event']) public ondrop(evt): void {
         evt.preventDefault();
         evt.stopPropagation();
         this.fileOver = false;

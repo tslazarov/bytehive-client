@@ -44,3 +44,21 @@
 .detail-urls-input {
     resize: none;
 }
+
+.number-input {
+    max-width: 160px !important;
+}
+
+.question-icon {
+    margin-bottom: -13px;
+    margin-left: 10px;
+}
+
+.question-icon {
+    background: url(../../../../assets/icons/question-accent.svg);
+}
+
+.question-icon:hover {
+    cursor: pointer;
+    background: url(../../../../assets/icons/question-active.svg);
+}

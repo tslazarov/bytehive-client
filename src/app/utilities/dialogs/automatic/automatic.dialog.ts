@@ -21,7 +21,7 @@ export class AutomaticDialog {
         this.setLabelsMessages();
     }
 
-    setLabelsMessages() {
+    setLabelsMessages(): void {
         this.expectedOutputLabel = this.translationService.localizeValue('expectedOutputLabel', 'automatic-dialog', 'label');
         this.generateLabel = this.translationService.localizeValue('generateLabel', 'automatic-dialog', 'label');
         this.saveLabel = this.translationService.localizeValue('saveLabel', 'automatic-dialog', 'label');
