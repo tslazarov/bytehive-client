@@ -127,6 +127,26 @@ export class LabelsMessages {
                 'en': 'Enter valid links separated with new lines',
                 'bg': 'Въведи валидни линкове отделени с нов ред'
             },
+            'automaticLabel': {
+                'en': 'Automatic',
+                'bg': 'Автоматично'
+            },
+            'visualLabel': {
+                'en': 'Visual',
+                'bg': 'Визуално'
+            },
+            'codeLabel': {
+                'en': 'Code',
+                'bg': 'През код'
+            },
+            'manualLabel': {
+                'en': 'Manual',
+                'bg': 'Ръчно'
+            },
+            'insertAnchorMarkupLabel': {
+                'en': '<insert detail link markup>',
+                'bg': '<въведи маркер за линк към детайл>'
+            },
             'linksDetectedLabel': {
                 'en': 'links detected',
                 'bg': 'разпознати линкове'

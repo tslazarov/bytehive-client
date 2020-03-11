@@ -61,7 +61,7 @@ export class HiveComponent implements OnInit, OnDestroy {
             hasPaging: [false],
             startPage: [],
             endPage: [],
-            detailLink: [''],
+            detailMarkup: [''],
             detailUrls: [[]],
             detailUrl: ['', [Validators.required, Validators.pattern(Constants.URL_REGEX)]]
         });
@@ -96,39 +96,39 @@ export class HiveComponent implements OnInit, OnDestroy {
             let hasPagingControl = this.dataSourceMappingFormGroup.controls['hasPaging'];
             let startPageControl = this.dataSourceMappingFormGroup.controls['startPage'];
             let endPageControl = this.dataSourceMappingFormGroup.controls['endPage'];
-            let detailLinkControl = this.dataSourceMappingFormGroup.controls['detailLink'];
+            let detailMarkupControl = this.dataSourceMappingFormGroup.controls['detailMarkup'];
             let detailUrlsControl = this.dataSourceMappingFormGroup.controls['detailUrls'];
 
             listUrlControl.reset;
             hasPagingControl.reset;
             startPageControl.reset;
             endPageControl.reset;
-            detailLinkControl.reset;
+            detailMarkupControl.reset;
             detailUrlsControl.reset;
 
             switch (crawType) {
                 case this.crawTypes.ListDetail: {
                     listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX)]);
-                    detailLinkControl.setValidators([Validators.required]);
+                    detailMarkupControl.setValidators([Validators.required]);
                     detailUrlsControl.setValidators(null);
                     break;
                 }
                 case this.crawTypes.List: {
                     listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX)]);
-                    detailLinkControl.setValidators(null);
+                    detailMarkupControl.setValidators(null);
                     detailUrlsControl.setValidators(null);
                     break;
                 }
                 case this.crawTypes.Detail: {
                     listUrlControl.setValidators(null);
-                    detailLinkControl.setValidators(null);
+                    detailMarkupControl.setValidators(null);
                     detailUrlsControl.setValidators([BhValidators.arrayLengthRequired]);
                     break;
                 }
             }
 
             listUrlControl.updateValueAndValidity();
-            detailLinkControl.updateValueAndValidity();
+            detailMarkupControl.updateValueAndValidity();
             detailUrlsControl.updateValueAndValidity();
         });
     }

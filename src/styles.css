@@ -91,6 +91,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     min-width: 170px !important; 
 }
 
+.detail-link-menu.mat-menu-panel .mat-button-focus-overlay {
+    background-color: transparent !important;
+}
+
+.detail-link-menu.mat-menu-panel .mat-menu-item {
+    padding: 0px !important;
+}
+
+.detail-link-menu.mat-menu-panel {
+    margin-top: -10px;
+    min-width: 170px !important; 
+}
+
 .manual-wrapper .mat-tab-body-content {
     overflow: hidden;
 }

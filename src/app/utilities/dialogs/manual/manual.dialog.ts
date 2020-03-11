@@ -57,5 +57,4 @@ export class ManualDialog {
 
 export class ManualData {
     markup: string;
-    detailUrl: string;
 }

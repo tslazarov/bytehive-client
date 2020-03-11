@@ -8,6 +8,11 @@ import { DetailModeType } from '../../../models/enums/detailmode.enum';
 import { Constants } from '../../constants';
 import { PagingInformationDialog } from '../../dialogs/paginginformation/paginginformation.dialog';
 import { MatDialog } from '@angular/material';
+import { FieldMapping } from '../../../models/fieldmapping.model';
+import { CodeData, CodeDialog } from '../../dialogs/code/code.dialog';
+import { first } from 'rxjs/operators';
+import { AutomaticData, AutomaticDialog } from '../../dialogs/automatic/automatic.dialog';
+import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
 
 @Component({
     selector: 'bh-datasource',
@@ -36,11 +41,12 @@ export class DatasourceComponent implements OnInit, OnDestroy {
     listModeLabel: string;
     fileModeLabel: string;
     listInputLabel: string;
-    dragDropLabel: string;
-    orLabel: string;
-    browseFileLabel: string;
-    fileInstructionsLabel: string;
     linksDetectedLabel: string;
+    insertAnchorMarkupLabel: string;
+    automaticLabel: string;
+    codeLabel: string;
+    manualLabel: string;
+    visualLabel: string;
     validateLabel: string;
 
     constructor(private clientService: ClientService,
@@ -72,8 +78,13 @@ export class DatasourceComponent implements OnInit, OnDestroy {
         this.listModeLabel = this.translationService.localizeValue('listModeLabel', 'datasource', 'label');
         this.fileModeLabel = this.translationService.localizeValue('fileModeLabel', 'datasource', 'label');
         this.listInputLabel = this.translationService.localizeValue('listInputLabel', 'datasource', 'label');
-        this.validateLabel = this.translationService.localizeValue('validateLabel', 'datasource', 'label');
         this.linksDetectedLabel = this.translationService.localizeValue('linksDetectedLabel', 'datasource', 'label');
+        this.insertAnchorMarkupLabel = this.translationService.localizeValue('insertAnchorMarkupLabel', 'datasource', 'label');
+        this.automaticLabel = this.translationService.localizeValue('automaticLabel', 'datasource', 'label');
+        this.codeLabel = this.translationService.localizeValue('codeLabel', 'datasource', 'label');
+        this.manualLabel = this.translationService.localizeValue('manualLabel', 'datasource', 'label');
+        this.visualLabel = this.translationService.localizeValue('visualLabel', 'datasource', 'label');
+        this.validateLabel = this.translationService.localizeValue('validateLabel', 'datasource', 'label');
     }
 
     changeDetailMode(mode: DetailModeType): void {
@@ -102,5 +113,64 @@ export class DatasourceComponent implements OnInit, OnDestroy {
         dialogRef.afterClosed().subscribe(result => {
             console.log(result);
         });
+    }
+
+    automaticMapping(): void {
+        let automaticData = new AutomaticData();
+        automaticData.markup = this.parentForm.value.detailMarkup;
+
+        let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', height: '380px', autoFocus: false, data: automaticData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+        });
+    }
+
+    visualMapping(): void {
+
+    }
+
+    codeMapping(): void {
+        if (!this.parentForm.value.listUrl || this.parentForm.controls['listUrl'].invalid) {
+            this.parentForm.controls['listUrl'].markAsTouched();
+            return;
+        }
+
+        // TODO: send request to proxy
+        // TODO: Handle paging url
+
+        this.clientService.getPageMarkup(this.parentForm.value.listUrl)
+            .pipe(first())
+            .subscribe((markup) => {
+                let codeData = new CodeData();
+                codeData.code = markup;
+                codeData.markup = this.parentForm.value.detailMarkup;
+
+                let dialogRef = this.dialog.open(CodeDialog, { width: '90vw', height: '90vh', autoFocus: false, data: codeData });
+
+                dialogRef.afterClosed().subscribe(result => {
+                    if (result && result.markup) {
+                        this.parentForm.patchValue({ detailMarkup: result.markup });
+                    }
+                });
+            });
+    }
+
+    manualMapping(): void {
+        let manualData = new ManualData();
+        manualData.markup = this.parentForm.value.detailMarkup;
+
+        let dialogRef = this.dialog.open(ManualDialog, { width: '60vw', height: '380px', autoFocus: false, data: manualData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.markup) {
+                this.parentForm.patchValue({ detailMarkup: result.markup });
+            }
+        });
+    }
+
+    stopPropagation(event) {
+        console.log('her');
+        event.stopPropagation();
     }
 }

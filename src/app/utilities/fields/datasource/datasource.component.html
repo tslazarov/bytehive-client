@@ -33,10 +33,54 @@
             </div>
         </div>
     </div>
-    <div *ngIf="crawType==2" class="row pt-5">
-        <div class="col-12 center pb-5 pt-3">
-            <button disableRipple mat-flat-button [ngClass]="parentForm.controls['detailUrls'].invalid ? 'validate disabled': 'validate'"
-                (click)="validate()" [disabled]="parentForm.controls['detailUrls'].invalid">
+    <div *ngIf="crawType==1" class="row">
+        <div class="col-12 pb-4 pt-4">
+            <div class="mat-divider full-width"></div>
+        </div>
+        <div class="col-9 detail-url-wrapper ">
+            <div class="field-mapping">
+                <span [matMenuTriggerFor]="markup" class="input-overlay"></span>
+                <mat-form-field floatLabel="never">
+                    <mat-label>{{insertAnchorMarkupLabel | localize: 'insertAnchorMarkupLabel':'datasource':'label'}}</mat-label>
+                    <input matInput autocomplete="off" formControlName="detailMarkup" readonly>
+                </mat-form-field>
+            </div>
+            <mat-menu class="detail-link-menu" #markup="matMenu">
+                <div mat-menu-item [disabled]="parentForm.controls['listUrl'].invalid" (click)="automaticMapping()">
+                    <button disableRipple mat-button>
+                        <span *ngIf="!parentForm.controls['listUrl'].invalid" class="icon automatic-icon small-icon left-icon"></span>
+                        <span *ngIf="parentForm.controls['listUrl'].invalid" class="icon automatic-disabled-icon small-icon left-icon"></span>
+                        <span [ngClass]="parentForm.controls['listUrl'].invalid ? 'markup-option disabled': 'markup-option'">{{automaticLabel
+                            | localize: 'automaticLabel':'datamapping':'label'}}</span>
+                    </button>
+                </div>
+                <div mat-menu-item [disabled]="parentForm.controls['listUrl'].invalid" (click)="visualMapping()">
+                    <button disableRipple mat-button>
+                        <span *ngIf="!parentForm.controls['listUrl'].invalid" class="icon visual-icon small-icon left-icon"></span>
+                        <span *ngIf="parentForm.controls['listUrl'].invalid" class="icon visual-disabled-icon small-icon left-icon"></span>
+                        <span [ngClass]="parentForm.controls['listUrl'].invalid ? 'markup-option disabled': 'markup-option'">{{visualLabel
+                            | localize: 'visualLabel':'datamapping':'label'}}</span>
+                    </button>
+                </div>
+                <div mat-menu-item [disabled]="parentForm.controls['listUrl'].invalid" (click)="codeMapping()">
+                    <button disableRipple mat-button>
+                        <span *ngIf="!parentForm.controls['listUrl'].invalid" class="icon code-icon small-icon left-icon"></span>
+                        <span *ngIf="parentForm.controls['listUrl'].invalid" class="icon code-disabled-icon small-icon left-icon"></span>
+                        <span [ngClass]="parentForm.controls['listUrl'].invalid ? 'markup-option disabled': 'markup-option'">{{codeLabel
+                            | localize: 'codeLabel':'datamapping':'label'}}</span>
+                    </button>
+                </div>
+                <div mat-menu-item (click)="manualMapping()">
+                    <button disableRipple mat-button>
+                        <span class="icon manual-icon small-icon left-icon"></span>
+                        <span>{{manualLabel | localize: 'manualLabel':'datamapping':'label'}}</span>
+                    </button>
+                </div>
+            </mat-menu>
+        </div>
+        <div class="col-12 center pb-5 pt-5">
+            <button disableRipple mat-flat-button [ngClass]="parentForm.controls['detailMarkup'].invalid ? 'validate disabled': 'validate'"
+                (click)="validate()" [disabled]="parentForm.controls['detailMarkup'].invalid">
                 <span>{{validateLabel | localize: 'validateLabel':'datasource':'label' | uppercase}}</span>
             </button>
         </div>
