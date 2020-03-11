@@ -74,6 +74,7 @@ export class HiveComponent implements OnInit, OnDestroy {
 
         this.subscribeCrawTypeFormDependency();
         this.subscribeDataSourceMappingFormDependency();
+        this.subscribeExportTypeFormDependency();
     }
 
     ngOnDestroy(): void {
@@ -130,6 +131,8 @@ export class HiveComponent implements OnInit, OnDestroy {
             listUrlControl.updateValueAndValidity();
             detailMarkupControl.updateValueAndValidity();
             detailUrlsControl.updateValueAndValidity();
+
+            this.communicationService.emitCrawTypeChange(crawType);
         });
     }
 
@@ -157,6 +160,12 @@ export class HiveComponent implements OnInit, OnDestroy {
                 startPageControl.updateValueAndValidity();
                 endPageControl.updateValueAndValidity();
             }
+        });
+    }
+
+    subscribeExportTypeFormDependency(): void {
+        this.exportTypeFormGroup.get('exportType').valueChanges.subscribe(exportType => {
+            this.communicationService.emitExportTypeChange(exportType);
         });
     }
 

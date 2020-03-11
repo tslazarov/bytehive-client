@@ -80,6 +80,8 @@
                 {{confirmRequestLabel | localize: 'confirmRequestLabel':'hive':'label'}}
             </ng-template>
             <div class="form-content">
+                <bh-summary [crawTypeForm]="crawTypeFormGroup" [dataSourceMappingForm]="dataSourceMappingFormGroup" [exportTypeForm]="exportTypeFormGroup"
+                    [fieldMappings]="fieldMappings"></bh-summary>
             </div>
             <div class="row p-2">
                 <div class="col-md-6 col-sm-12 left">

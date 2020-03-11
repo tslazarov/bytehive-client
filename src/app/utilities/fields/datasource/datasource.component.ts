@@ -168,9 +168,4 @@ export class DatasourceComponent implements OnInit, OnDestroy {
             }
         });
     }
-
-    stopPropagation(event) {
-        console.log('her');
-        event.stopPropagation();
-    }
 }

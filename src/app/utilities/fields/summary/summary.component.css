@@ -1,0 +1,81 @@
+.tile {
+    padding: 30px 25px;
+}
+
+.craw-type {
+    min-width: 300px;
+    text-align: center;
+}
+
+.craw-type:hover {
+    cursor: pointer;
+}
+
+.craw-type-image {
+    padding: 20px;
+}
+
+.export-type {
+    min-width: 300px;
+    text-align: center;
+}
+
+.export-type:hover {
+    cursor: pointer;
+}
+
+.export-type-image {
+    padding: 20px;
+}
+
+.content {
+    background-color: #f8f8f8;
+    text-align: left;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.image {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    margin: 20px;
+}
+
+.craw-type .listdetail-image {
+    background: url(../../../../assets/icons/list-detail-accent.svg);
+}
+
+.craw-type .list-image {
+    background: url(../../../../assets/icons/list-accent.svg);
+}
+
+.craw-type .detail-image {
+    background: url(../../../../assets/icons/detail-accent.svg);
+}
+
+.craw-type .craw-type-image {
+    background-color: #ffeb3b;
+}
+
+.export-type .json-image {
+    background: url(../../../../assets/icons/json-accent.svg);
+}
+
+.export-type .xml-image {
+    background: url(../../../../assets/icons/xml-accent.svg);
+}
+
+.export-type .csv-image {
+    background: url(../../../../assets/icons/csv-accent.svg);
+}
+
+.export-type .txt-image {
+    background: url(../../../../assets/icons/txt-accent.svg);
+}
+
+.export-type .export-type-image {
+    background-color: #ffeb3b;
+}
+
