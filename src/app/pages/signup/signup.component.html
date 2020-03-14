@@ -1,1 +1,71 @@
-<p>signup works!</p>
+<div class="page-content">
+    <div class="row form-container">
+        <div class="col-lg-1 col-md-12">
+
+        </div>
+        <div class="col-lg-5 col-md-12 center signup-side">
+            <div [formGroup]="signupFormGroup">
+                <mat-form-field floatLabel="never" class="pb-4 signup-field">
+                    <mat-label>Email</mat-label>
+                    <input matInput autocomplete="off" formControlName="email">
+                    <span matSuffix class="required">*</span>
+                    <mat-error *ngIf="signupFormGroup.hasError('required', 'email')">
+                        Please enter email
+                    </mat-error>
+                    <mat-error *ngIf="signupFormGroup.hasError('email', 'email')">
+                        Please enter email
+                    </mat-error>
+                </mat-form-field>
+                <div formGroupName="password">
+                    <div>
+                        <mat-form-field floatLabel="never" class="pb-4 signup-field">
+                            <mat-label>Password</mat-label>
+                            <input matInput autocomplete="off" formControlName="password" [type]="showPassword ? 'text' : 'password'">
+                            <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'visibility_off' : 'visibility'}}">test</span>
+                            <mat-error *ngIf="signupFormGroup.get('password').hasError('required', 'password')">
+                                Please enter your password
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field floatLabel="never" class="pb-4 signup-field">
+                            <mat-label>Confirm password</mat-label>
+                            <input matInput autocomplete="off" formControlName="confirmPassword" [type]="showPassword ? 'text' : 'password'" type="password"
+                                [errorStateMatcher]="confirmPasswordMatcher">
+                            <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'visibility_off' : 'visibility'}}">test</span>
+                            <mat-error *ngIf="signupFormGroup.get('password').errors">
+                                Password do not match
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field floatLabel="never" class="pb-4 signup-field">
+                        <mat-label>First name</mat-label>
+                        <input matInput autocomplete="off" formControlName="firstName">
+                        <span matSuffix class="required">*</span>
+                        <mat-error *ngIf="signupFormGroup.hasError('required', 'firstName')">
+                            Please enter email
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field floatLabel="never" class="pb-4 signup-field">
+                        <mat-label>Last name</mat-label>
+                        <input matInput autocomplete="off" formControlName="lastName">
+                        <span matSuffix class="required">*</span>
+                        <mat-error *ngIf="signupFormGroup.hasError('required', 'lastName')">
+                            Please enter email
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <button disableRipple mat-flat-button class="signup mt-2" (click)="signup()">
+                SIGN UP
+            </button>
+        </div>
+        <div class="col-lg-5 col-md-12 center image-side">
+            <!-- <img src="../../../assets/images/signup.png" class="image" /> -->
+        </div>
+    </div>
+</div>
