@@ -17,6 +17,7 @@ import { CommunicationService } from '../services/communication.service';
 
 import { ClientService } from '../services/client.service';
 import { DirectivesModule } from '../utilities/directives/directives.module';
+import { AccountService } from '../services/account.service';
 
 @NgModule({
     imports: [
@@ -40,7 +41,8 @@ import { DirectivesModule } from '../utilities/directives/directives.module';
     entryComponents: [],
     providers: [
         CommunicationService,
-        ClientService
+        ClientService,
+        AccountService
     ]
 })
 export class PagesModule { }

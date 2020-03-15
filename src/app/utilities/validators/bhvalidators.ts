@@ -14,7 +14,6 @@ export class BhValidators {
     static identicalFields(group: FormGroup) {
         let password = group.get('password').value;
         let confirmPassword = group.get('confirmPassword').value;
-        console.log(password === confirmPassword);
 
         return password === confirmPassword ? null : { valid: false };
     }

@@ -1,1 +1,33 @@
-<p>signin works!</p>
+<div class="page-content">
+    <div class="row form-container">
+        <div class="col-lg-1 col-md-12">
+
+        </div>
+        <div class="col-lg-5 col-md-12 center signin-side">
+            <div [formGroup]="signinFormGroup">
+                <mat-form-field floatLabel="never" class="pb-4 signin-field">
+                    <mat-label>Email</mat-label>
+                    <input matInput autocomplete="off" formControlName="email">
+                    <span matSuffix class="required">*</span>
+                    <mat-error *ngIf="signinFormGroup.hasError('required', 'email')">
+                        Please enter email
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field floatLabel="never" class="pb-4 signin-field">
+                    <mat-label>Password</mat-label>
+                    <input matInput autocomplete="off" formControlName="password" [type]="showPassword ? 'text' : 'password'">
+                    <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'visibility_off' : 'visibility'}}">test</span>
+                    <mat-error *ngIf="signinFormGroup.get('password').hasError('required', 'password')">
+                        Please enter your password
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <button disableRipple mat-flat-button class="signin mt-2" (click)="signin()">
+                SIGN IN
+            </button>
+        </div>
+        <div class="col-lg-5 col-md-12 center image-side">
+            <!-- <img src="../../../assets/images/signin.png" class="image" /> -->
+        </div>
+    </div>
+</div>
