@@ -18,6 +18,64 @@ export class LabelsMessages {
                 'bg': 'Влез'
             }
         },
+        'signup': {
+            'emailLabel': {
+                'en': 'Email',
+                'bg': 'Имейл'
+            },
+            'emailRequiredErrorLabel': {
+                'en': 'Please enter an email',
+                'bg': 'Моля въведете имейл'
+            },
+            'emailPatternErrorLabel': {
+                'en': 'Please enter a valid email',
+                'bg': 'Моля въведете валиден имейл'
+            },
+            'passwordLabel': {
+                'en': 'Password',
+                'bg': 'Парола'
+            },
+            'passwordRequiredErrorLabel': {
+                'en': 'Please enter a password',
+                'bg': 'Моля въведете парола'
+            },
+            'passwordLengthErrorLabel': {
+                'en': 'Password should be at least 6 characters',
+                'bg': 'Паролата трябва да бъде поне 6 символа'
+            },
+            'confirmPasswordLabel': {
+                'en': 'Confirm password',
+                'bg': 'Паролата за потвърждение'
+            },
+            'confirmPasswordMatchErrorLabel': {
+                'en': 'Confirm password does not match',
+                'bg': 'Паролата за потвърждение не съвпада'
+            },
+            'firstNameLabel': {
+                'en': 'First name',
+                'bg': 'Име'
+            },
+            'firstNameRequiredErrorLabel': {
+                'en': 'Please enter a first name',
+                'bg': 'Моля въведете име'
+            },
+            'lastNameLabel': {
+                'en': 'Last name',
+                'bg': 'Фамилия'
+            },
+            'lastNameRequiredErrorLabel': {
+                'en': 'Please enter a last name',
+                'bg': 'Моля въведете фамилия'
+            },
+            'occupationLabel': {
+                'en': 'Occupation',
+                'bg': 'Професия'
+            },
+            'signupLabel': {
+                'en': 'Sign up',
+                'bg': 'Регистрирай се'
+            }
+        },
         'hive': {
             'selectPagesTypeLabel': {
                 'en': 'Select pages type',

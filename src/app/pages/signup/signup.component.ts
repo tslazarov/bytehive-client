@@ -20,8 +20,25 @@ export class SignupComponent implements OnInit {
 
     // common
     occupations: Occupation[];
-
     confirmPasswordMatcher: BhConfirmPasswordMatcher;
+
+    // subscriptions
+    languageChangeSubscription: any;
+
+    // labels
+    emailLabel: string;
+    emailRequiredErrorLabel: string;
+    emailPatternErrorLabel: string;
+    passwordLabel: string;
+    passwordRequiredErrorLabel: string;
+    passwordLengthErrorLabel: string;
+    confirmPasswordMatchErrorLabel: string;
+    firstNameLabel: string;
+    firstNameRequiredErrorLabel: string;
+    lastNameLabel: string;
+    lastNameRequiredErrorLabel: string;
+    occupationLabel: string;
+    signupLabel: string;
 
     constructor(private formBuilder: FormBuilder,
         private translationService: TranslationService,
@@ -35,7 +52,7 @@ export class SignupComponent implements OnInit {
         this.signupFormGroup = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             password: this.formBuilder.group({
-                password: ['', [Validators.required]],
+                password: ['', [Validators.required, Validators.minLength(6)]],
                 confirmPassword: ['', [Validators.required]]
             }, { validator: BhValidators.identicalFields }),
             firstName: ['', [Validators.required]],
@@ -43,7 +60,33 @@ export class SignupComponent implements OnInit {
             occupation: [''],
         });
 
+        this.setLabelsMessages();
         this.buildOccupationOptions();
+
+        this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(e => {
+            this.setLabelsMessages();
+            this.buildOccupationOptions();
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.languageChangeSubscription.unsubscribe();
+    }
+
+    setLabelsMessages(): void {
+        this.emailLabel = this.translationService.localizeValue('emailLabel', 'signup', 'label');
+        this.emailRequiredErrorLabel = this.translationService.localizeValue('emailRequiredErrorLabel', 'signup', 'label');
+        this.emailPatternErrorLabel = this.translationService.localizeValue('emailPatternErrorLabel', 'signup', 'label');
+        this.passwordLabel = this.translationService.localizeValue('passwordLabel', 'signup', 'label');
+        this.passwordRequiredErrorLabel = this.translationService.localizeValue('passwordRequiredErrorLabel', 'signup', 'label');
+        this.passwordLengthErrorLabel = this.translationService.localizeValue('passwordLengthErrorLabel', 'signup', 'label');
+        this.confirmPasswordMatchErrorLabel = this.translationService.localizeValue('confirmPasswordMatchErrorLabel', 'signup', 'label');
+        this.firstNameLabel = this.translationService.localizeValue('firstNameLabel', 'signup', 'label');
+        this.firstNameRequiredErrorLabel = this.translationService.localizeValue('firstNameRequiredErrorLabel', 'signup', 'label');
+        this.lastNameLabel = this.translationService.localizeValue('lastNameLabel', 'signup', 'label');
+        this.lastNameRequiredErrorLabel = this.translationService.localizeValue('lastNameRequiredErrorLabel', 'signup', 'label');
+        this.occupationLabel = this.translationService.localizeValue('occupationLabel', 'signup', 'label');
+        this.signupLabel = this.translationService.localizeValue('signupLabel', 'signup', 'label');
     }
 
     buildOccupationOptions(): void {
