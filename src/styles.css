@@ -12,6 +12,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 /* Material customizations */
+
+.mat-selected .mat-active {
+    color: #000000 !important;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #000000 !important;
+}
+
 .mat-button-base {
     border-radius: 2px !important;
 }
@@ -88,6 +97,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .markup-menu.mat-menu-panel {
     margin-top: 10px;
+    min-width: 170px !important; 
+}
+
+.detail-link-menu.mat-menu-panel .mat-button-focus-overlay {
+    background-color: transparent !important;
+}
+
+.detail-link-menu.mat-menu-panel .mat-menu-item {
+    padding: 0px !important;
+}
+
+.detail-link-menu.mat-menu-panel {
+    margin-top: -10px;
     min-width: 170px !important; 
 }
 

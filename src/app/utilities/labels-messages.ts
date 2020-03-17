@@ -18,6 +18,64 @@ export class LabelsMessages {
                 'bg': 'Влез'
             }
         },
+        'signup': {
+            'emailLabel': {
+                'en': 'Email',
+                'bg': 'Имейл'
+            },
+            'emailRequiredErrorLabel': {
+                'en': 'Please enter an email',
+                'bg': 'Моля въведете имейл'
+            },
+            'emailPatternErrorLabel': {
+                'en': 'Please enter a valid email',
+                'bg': 'Моля въведете валиден имейл'
+            },
+            'passwordLabel': {
+                'en': 'Password',
+                'bg': 'Парола'
+            },
+            'passwordRequiredErrorLabel': {
+                'en': 'Please enter a password',
+                'bg': 'Моля въведете парола'
+            },
+            'passwordLengthErrorLabel': {
+                'en': 'Password should be at least 6 characters',
+                'bg': 'Паролата трябва да бъде поне 6 символа'
+            },
+            'confirmPasswordLabel': {
+                'en': 'Confirm password',
+                'bg': 'Паролата за потвърждение'
+            },
+            'confirmPasswordMatchErrorLabel': {
+                'en': 'Confirm password does not match',
+                'bg': 'Паролата за потвърждение не съвпада'
+            },
+            'firstNameLabel': {
+                'en': 'First name',
+                'bg': 'Име'
+            },
+            'firstNameRequiredErrorLabel': {
+                'en': 'Please enter a first name',
+                'bg': 'Моля въведете име'
+            },
+            'lastNameLabel': {
+                'en': 'Last name',
+                'bg': 'Фамилия'
+            },
+            'lastNameRequiredErrorLabel': {
+                'en': 'Please enter a last name',
+                'bg': 'Моля въведете фамилия'
+            },
+            'occupationLabel': {
+                'en': 'Occupation',
+                'bg': 'Професия'
+            },
+            'signupLabel': {
+                'en': 'Sign up',
+                'bg': 'Регистрирай се'
+            }
+        },
         'hive': {
             'selectPagesTypeLabel': {
                 'en': 'Select pages type',
@@ -126,6 +184,26 @@ export class LabelsMessages {
             'listInputLabel': {
                 'en': 'Enter valid links separated with new lines',
                 'bg': 'Въведи валидни линкове отделени с нов ред'
+            },
+            'automaticLabel': {
+                'en': 'Automatic',
+                'bg': 'Автоматично'
+            },
+            'visualLabel': {
+                'en': 'Visual',
+                'bg': 'Визуално'
+            },
+            'codeLabel': {
+                'en': 'Code',
+                'bg': 'През код'
+            },
+            'manualLabel': {
+                'en': 'Manual',
+                'bg': 'Ръчно'
+            },
+            'insertAnchorMarkupLabel': {
+                'en': '<insert detail link markup>',
+                'bg': '<въведи маркер за линк към детайл>'
             },
             'linksDetectedLabel': {
                 'en': 'links detected',
@@ -248,6 +326,20 @@ export class LabelsMessages {
             'example2Label': {
                 'en': 'https://www.bytehive.com/news?page=3 -> https://www.bytehive.com/news?page={{page}}',
                 'bg': 'https://www.bytehive.com/news?page=3 -> https://www.bytehive.com/news?page={{page}}'
+            }
+        },
+        'occupation': {
+            'studentLabel': {
+                'en': 'Student',
+                'bg': 'Студент'
+            },
+            'softwareengineerLabel': {
+                'en': 'Software engineer',
+                'bg': 'Софтуерен инженер'
+            },
+            'otherLabel': {
+                'en': 'Other',
+                'bg': 'Друго'
             }
         }
     }

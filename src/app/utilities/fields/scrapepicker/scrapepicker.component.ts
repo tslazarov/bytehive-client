@@ -1,15 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { CrawType } from '../../../models/enums/crawtype.enum';
+import { ScrapeType } from '../../../models/enums/scrapetype.enum';
 import { TranslationService } from '../../../services/translation.service';
 import { CommunicationService } from '../../../services/communication.service';
 
 @Component({
-    selector: 'bh-crawpicker',
-    templateUrl: './crawpicker.component.html',
-    styleUrls: ['./crawpicker.component.css']
+    selector: 'bh-scrapepicker',
+    templateUrl: './scrapepicker.component.html',
+    styleUrls: ['./scrapepicker.component.css']
 })
-export class CrawpickerComponent implements OnInit {
+export class ScrapepickerComponent implements OnInit {
 
     @Input() parentForm: FormGroup;
 
@@ -20,7 +20,7 @@ export class CrawpickerComponent implements OnInit {
     languageChangeSubscription: any;
 
     // enums
-    crawTypes = CrawType;
+    scrapeTypes = ScrapeType;
 
     constructor(private translationService: TranslationService,
         private communicationService: CommunicationService) { }
@@ -44,7 +44,7 @@ export class CrawpickerComponent implements OnInit {
     selectOption(option): void {
         this.selectedOption = option;
 
-        this.parentForm.patchValue({ crawType: this.selectedOption });
+        this.parentForm.patchValue({ scrapeType: this.selectedOption });
     }
 
     isOptionActive(option: number): boolean {

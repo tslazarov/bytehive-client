@@ -126,7 +126,6 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     manualMapping(fieldMapping: FieldMapping): void {
         let manualData = new ManualData();
         manualData.markup = fieldMapping.formGroup.value.fieldMarkup;
-        manualData.detailUrl = this.parentForm.value.detailUrl;
 
         let dialogRef = this.dialog.open(ManualDialog, { width: '60vw', height: '380px', autoFocus: false, data: manualData });
 

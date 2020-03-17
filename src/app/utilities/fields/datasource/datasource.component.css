@@ -62,3 +62,46 @@
     cursor: pointer;
     background: url(../../../../assets/icons/question-active.svg);
 }
+
+
+.code-icon {
+    background: url(../../../../assets/icons/code-accent.svg);
+}
+
+.code-disabled-icon {
+    background: url(../../../../assets/icons/code-disabled.svg);
+}
+.automatic-icon {
+    background: url(../../../../assets/icons/automatic-accent.svg);
+}
+
+.automatic-disabled-icon {
+    background: url(../../../../assets/icons/automatic-disabled.svg);
+}
+
+.manual-icon {
+    background: url(../../../../assets/icons/manual-accent.svg);
+}
+
+.manual-disabled-icon {
+    background: url(../../../../assets/icons/manual-disabled.svg);
+}
+
+.visual-icon {
+    background: url(../../../../assets/icons/visual-accent.svg);
+}
+
+.visual-disabled-icon {
+    background: url(../../../../assets/icons/visual-disabled.svg);
+}
+
+.field-mapping:hover {
+    cursor: pointer;
+}
+
+.input-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+}

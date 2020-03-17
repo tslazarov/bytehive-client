@@ -6,7 +6,7 @@ import { TranslationService } from '../../services/translation.service';
 import { CommunicationService } from '../../services/communication.service';
 import { FieldMapping } from '../../models/fieldmapping.model';
 import { Constants } from '../../utilities/constants';
-import { CrawType } from '../../models/enums/crawtype.enum';
+import { ScrapeType } from '../../models/enums/scrapetype.enum';
 import { BhValidators } from '../../utilities/validators/bhvalidators';
 
 @Component({
@@ -20,13 +20,13 @@ import { BhValidators } from '../../utilities/validators/bhvalidators';
 export class HiveComponent implements OnInit, OnDestroy {
 
     // data
-    crawTypeFormGroup: FormGroup;
+    scrapeTypeFormGroup: FormGroup;
     dataSourceMappingFormGroup: FormGroup;
     exportTypeFormGroup: FormGroup;
     fieldMappings: FieldMapping[];
 
     // enums
-    crawTypes = CrawType;
+    scrapeTypes = ScrapeType;
 
     // subscriptions
     languageChangeSubscription: any;
@@ -51,8 +51,8 @@ export class HiveComponent implements OnInit, OnDestroy {
             this.setLabelsMessages();
         });
 
-        this.crawTypeFormGroup = this.formBuilder.group({
-            crawType: ['', Validators.required]
+        this.scrapeTypeFormGroup = this.formBuilder.group({
+            scrapeType: ['', Validators.required]
         });
 
 
@@ -61,7 +61,7 @@ export class HiveComponent implements OnInit, OnDestroy {
             hasPaging: [false],
             startPage: [],
             endPage: [],
-            detailLink: [''],
+            detailMarkup: [''],
             detailUrls: [[]],
             detailUrl: ['', [Validators.required, Validators.pattern(Constants.URL_REGEX)]]
         });
@@ -72,8 +72,9 @@ export class HiveComponent implements OnInit, OnDestroy {
 
         this.fieldMappings = [];
 
-        this.subscribeCrawTypeFormDependency();
+        this.subscribeScrapeTypeFormDependency();
         this.subscribeDataSourceMappingFormDependency();
+        this.subscribeExportTypeFormDependency();
     }
 
     ngOnDestroy(): void {
@@ -90,46 +91,48 @@ export class HiveComponent implements OnInit, OnDestroy {
         this.confirmLabel = this.translationService.localizeValue('confirmLabel', 'hive', 'label');
     }
 
-    subscribeCrawTypeFormDependency(): void {
-        this.crawTypeFormGroup.get('crawType').valueChanges.subscribe(crawType => {
+    subscribeScrapeTypeFormDependency(): void {
+        this.scrapeTypeFormGroup.get('scrapeType').valueChanges.subscribe(scrapeType => {
             let listUrlControl = this.dataSourceMappingFormGroup.controls['listUrl'];
             let hasPagingControl = this.dataSourceMappingFormGroup.controls['hasPaging'];
             let startPageControl = this.dataSourceMappingFormGroup.controls['startPage'];
             let endPageControl = this.dataSourceMappingFormGroup.controls['endPage'];
-            let detailLinkControl = this.dataSourceMappingFormGroup.controls['detailLink'];
+            let detailMarkupControl = this.dataSourceMappingFormGroup.controls['detailMarkup'];
             let detailUrlsControl = this.dataSourceMappingFormGroup.controls['detailUrls'];
 
             listUrlControl.reset;
             hasPagingControl.reset;
             startPageControl.reset;
             endPageControl.reset;
-            detailLinkControl.reset;
+            detailMarkupControl.reset;
             detailUrlsControl.reset;
 
-            switch (crawType) {
-                case this.crawTypes.ListDetail: {
+            switch (scrapeType) {
+                case this.scrapeTypes.ListDetail: {
                     listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX)]);
-                    detailLinkControl.setValidators([Validators.required]);
+                    detailMarkupControl.setValidators([Validators.required]);
                     detailUrlsControl.setValidators(null);
                     break;
                 }
-                case this.crawTypes.List: {
+                case this.scrapeTypes.List: {
                     listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX)]);
-                    detailLinkControl.setValidators(null);
+                    detailMarkupControl.setValidators(null);
                     detailUrlsControl.setValidators(null);
                     break;
                 }
-                case this.crawTypes.Detail: {
+                case this.scrapeTypes.Detail: {
                     listUrlControl.setValidators(null);
-                    detailLinkControl.setValidators(null);
+                    detailMarkupControl.setValidators(null);
                     detailUrlsControl.setValidators([BhValidators.arrayLengthRequired]);
                     break;
                 }
             }
 
             listUrlControl.updateValueAndValidity();
-            detailLinkControl.updateValueAndValidity();
+            detailMarkupControl.updateValueAndValidity();
             detailUrlsControl.updateValueAndValidity();
+
+            this.communicationService.emitScrapeTypeChange(scrapeType);
         });
     }
 
@@ -157,6 +160,12 @@ export class HiveComponent implements OnInit, OnDestroy {
                 startPageControl.updateValueAndValidity();
                 endPageControl.updateValueAndValidity();
             }
+        });
+    }
+
+    subscribeExportTypeFormDependency(): void {
+        this.exportTypeFormGroup.get('exportType').valueChanges.subscribe(exportType => {
+            this.communicationService.emitExportTypeChange(exportType);
         });
     }
 

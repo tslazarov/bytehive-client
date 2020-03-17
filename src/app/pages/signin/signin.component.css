@@ -1,0 +1,33 @@
+.signin-side {
+    border-right: 1px solid #dfdfdf;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+}
+
+.image-side {
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+}
+
+.signin-field {
+    min-width: 250px;
+}
+
+.signin {
+    min-width: 250px;
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.signin:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.image {
+    max-width: 300px;
+}
+
+.required {
+    color: #ffeb3b;
+}

@@ -3,13 +3,13 @@
         <ng-template matStepperIcon="edit">
             <span class="small-icon edit-icon"></span>
         </ng-template>
-        <mat-step [stepControl]="crawTypeFormGroup">
-            <form [formGroup]="crawTypeFormGroup">
+        <mat-step [stepControl]="scrapeTypeFormGroup">
+            <form [formGroup]="scrapeTypeFormGroup">
                 <ng-template matStepLabel>
                     {{selectPagesTypeLabel | localize: 'selectPagesTypeLabel':'hive':'label'}}
                 </ng-template>
                 <div class="form-content">
-                    <bh-crawpicker [parentForm]="crawTypeFormGroup"></bh-crawpicker>
+                    <bh-scrapepicker [parentForm]="scrapeTypeFormGroup"></bh-scrapepicker>
                 </div>
                 <div class="row p-2">
                     <div class="col-md-6 col-sm-12 left">
@@ -29,7 +29,7 @@
                 </ng-template>
                 <div class="form-content row">
                     <div class="col-lg-5 col-md-12">
-                        <bh-datasource [crawType]="crawTypeFormGroup.value.crawType" [parentForm]="dataSourceMappingFormGroup">
+                        <bh-datasource [scrapeType]="scrapeTypeFormGroup.value.scrapeType" [parentForm]="dataSourceMappingFormGroup">
                         </bh-datasource>
                     </div>
                     <div class="col-lg-1 vertical-divider">
@@ -63,7 +63,7 @@
                 </div>
                 <div class="row p-2">
                     <div class="col-md-6 col-sm-12 left">
-                        <button disableRipple mat-flat-button class="back" matStepperPrevious>
+                        <button disableRipple mat-flat-button class="direction" matStepperPrevious>
                             {{previousLabel | localize: 'previousLabel':'hive':'label' | uppercase}}
                         </button>
                     </div>
@@ -80,11 +80,12 @@
                 {{confirmRequestLabel | localize: 'confirmRequestLabel':'hive':'label'}}
             </ng-template>
             <div class="form-content">
-                Confirm
+                <bh-summary [scrapeTypeForm]="scrapeTypeFormGroup" [dataSourceMappingForm]="dataSourceMappingFormGroup" [exportTypeForm]="exportTypeFormGroup"
+                    [fieldMappings]="fieldMappings"></bh-summary>
             </div>
             <div class="row p-2">
                 <div class="col-md-6 col-sm-12 left">
-                    <button disableRipple mat-flat-button class="back" matStepperPrevious>
+                    <button disableRipple mat-flat-button class="direction" matStepperPrevious>
                         {{previousLabel | localize: 'previousLabel':'hive':'label' | uppercase}}
                     </button>
                 </div>
