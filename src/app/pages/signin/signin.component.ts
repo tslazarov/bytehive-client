@@ -42,4 +42,10 @@ export class SigninComponent implements OnInit {
             });
     }
 
+    test() {
+        this.accountService.test()
+            .subscribe(result => {
+
+            });
+    }
 }

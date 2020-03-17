@@ -1,6 +1,6 @@
 <h4 class="pt-3">{{dataSourceLabel | localize: 'dataSourceLabel':'datasource':'label'}}</h4>
 <div [formGroup]="parentForm">
-    <div *ngIf="crawType != 3">
+    <div *ngIf="scrapeType != 3">
         <div class="row pt-5">
             <div class="col-10 detail-url-wrapper pb-3">
                 <mat-form-field floatLabel="never">
@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-    <div *ngIf="crawType==1" class="row">
+    <div *ngIf="scrapeType==1" class="row">
         <div class="col-12 pb-4 pt-4">
             <div class="mat-divider full-width"></div>
         </div>
@@ -85,7 +85,7 @@
             </button>
         </div>
     </div>
-    <div *ngIf="crawType==3" class="row pt-5">
+    <div *ngIf="scrapeType==3" class="row pt-5">
         <div class="col-12">
             <button disableRipple mat-flat-button class="detail-mode-picker" [matMenuTriggerFor]="detailUrlMode">
                 <span class="detail-mode-label">{{ detailUrlModeLabel }}</span>

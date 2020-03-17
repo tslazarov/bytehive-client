@@ -2,16 +2,16 @@
     padding: 30px 25px;
 }
 
-.craw-type {
+.scrape-type {
     min-width: 300px;
     text-align: center;
 }
 
-.craw-type:hover {
+.scrape-type:hover {
     cursor: pointer;
 }
 
-.craw-type-image {
+.scrape-type-image {
     padding: 20px;
 }
 
@@ -43,19 +43,19 @@
     margin: 20px;
 }
 
-.craw-type .listdetail-image {
+.scrape-type .listdetail-image {
     background: url(../../../../assets/icons/list-detail-accent.svg);
 }
 
-.craw-type .list-image {
+.scrape-type .list-image {
     background: url(../../../../assets/icons/list-accent.svg);
 }
 
-.craw-type .detail-image {
+.scrape-type .detail-image {
     background: url(../../../../assets/icons/detail-accent.svg);
 }
 
-.craw-type .craw-type-image {
+.scrape-type .scrape-type-image {
     background-color: #ffeb3b;
 }
 

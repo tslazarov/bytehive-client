@@ -4,7 +4,7 @@
 
         </div>
         <div class="col-lg-5 col-md-12 center signup-side">
-            <div [formGroup]="signupFormGroup">
+            <div [formGroup]="signupFormGroup" class="mb-2">
                 <mat-form-field floatLabel="never" class="pb-4 signup-field">
                     <mat-label>Email</mat-label>
                     <input matInput autocomplete="off" formControlName="email">
@@ -59,8 +59,19 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
+                <div>
+                    <mat-form-field class="pb-4 signup-field">
+                        <mat-label>Occupation</mat-label>
+                        <mat-select formControlName="occupation">
+                            <mat-option *ngFor="let occupation of occupations" [value]="occupation.value">
+                                {{occupation.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-            <button disableRipple mat-flat-button class="signup mt-2" (click)="signup()">
+            <button disableRipple mat-flat-button [ngClass]="signupFormGroup.invalid ? 'signup disabled': 'signup'" (click)="signup()"
+                [disabled]="signupFormGroup.invalid">
                 SIGN UP
             </button>
         </div>

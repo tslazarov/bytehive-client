@@ -6,6 +6,7 @@ import { BhValidators, BhConfirmPasswordMatcher } from '../../utilities/validato
 import { AccountService } from '../../services/account.service';
 import { SignupUser } from '../../models/signupuser.model';
 import { OccupationType } from '../../models/enums/occupationtype.enum';
+import { Occupation } from '../../models/occupation.model';
 
 @Component({
     selector: 'app-signup',
@@ -14,7 +15,11 @@ import { OccupationType } from '../../models/enums/occupationtype.enum';
 })
 export class SignupComponent implements OnInit {
 
+    // forms
     signupFormGroup: FormGroup;
+
+    // common
+    occupations: Occupation[];
 
     confirmPasswordMatcher: BhConfirmPasswordMatcher;
 
@@ -35,17 +40,36 @@ export class SignupComponent implements OnInit {
             }, { validator: BhValidators.identicalFields }),
             firstName: ['', [Validators.required]],
             lastName: ['', [Validators.required]],
+            occupation: [''],
         });
+
+        this.buildOccupationOptions();
     }
 
-    signup() {
+    buildOccupationOptions(): void {
+
+        this.occupations = [];
+
+        for (let occupationType in OccupationType) {
+            if (isNaN(Number(occupationType))) {
+                let labelName = occupationType.toLowerCase() + "Label";
+                let occupation = new Occupation();
+                occupation.value = OccupationType[occupationType];
+                occupation.label = this.translationService.localizeValue(labelName, 'occupation', 'label');
+
+                this.occupations.push(occupation);
+            }
+        }
+    }
+
+    signup(): void {
         let user = new SignupUser();
         user.email = this.signupFormGroup.value.email;
         user.password = this.signupFormGroup.controls['password'].value.password;
         user.confirmPassword = this.signupFormGroup.controls['password'].value.confirmPassword;
         user.firstName = this.signupFormGroup.value.firstName;
         user.lastName = this.signupFormGroup.value.lastName;
-        user.occupation = OccupationType.Student;
+        user.occupation = this.signupFormGroup.value.occupation ? this.signupFormGroup.value.occupation : OccupationType.Other;
         user.defaultLanguage = this.translationService.getLanguage() == 'en' ? 0 : 1;
 
         this.accountService.signup(user)

@@ -1,25 +1,25 @@
-.craw-tile {
+.scrape-tile {
     padding: 30px 25px;
 }
 
-.craw-option {
+.scrape-option {
     min-width: 300px;
     text-align: center;
 }
 
-.craw-option:hover {
+.scrape-option:hover {
     cursor: pointer;
 }
 
-.craw-option:hover .craw-option-image{
+.scrape-option:hover .scrape-option-image{
     background-color:#e5e5e5;
 }
 
-.craw-option-image {
+.scrape-option-image {
     padding: 20px;
 }
 
-.craw-option-content {
+.scrape-option-content {
     background-color: #f8f8f8;
     text-align: left;
     padding: 15px;
@@ -34,22 +34,22 @@
     margin: 20px;
 }
 
-.craw-option .listdetail-image {
+.scrape-option .listdetail-image {
     background: url(../../../../assets/icons/list-detail-accent.svg);
 }
 
-.craw-option .list-image {
+.scrape-option .list-image {
     background: url(../../../../assets/icons/list-accent.svg);
 }
 
-.craw-option .detail-image {
+.scrape-option .detail-image {
     background: url(../../../../assets/icons/detail-accent.svg);
 }
 
-.craw-option .craw-option-image {
+.scrape-option .scrape-option-image {
     background-color: #efefef;
 }
 
-.craw-option.active .craw-option-image {
+.scrape-option.active .scrape-option-image {
     background-color: #ffeb3b;
 }

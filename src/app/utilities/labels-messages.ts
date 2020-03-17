@@ -269,6 +269,20 @@ export class LabelsMessages {
                 'en': 'https://www.bytehive.com/news?page=3 -> https://www.bytehive.com/news?page={{page}}',
                 'bg': 'https://www.bytehive.com/news?page=3 -> https://www.bytehive.com/news?page={{page}}'
             }
+        },
+        'occupation': {
+            'studentLabel': {
+                'en': 'Student',
+                'bg': 'Студент'
+            },
+            'softwareengineerLabel': {
+                'en': 'Software engineer',
+                'bg': 'Софтуерен инженер'
+            },
+            'otherLabel': {
+                'en': 'Other',
+                'bg': 'Друго'
+            }
         }
     }
     static readonly messages = {

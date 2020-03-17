@@ -3,7 +3,7 @@ import { FormGroup, ValidationErrors } from '@angular/forms';
 import { ClientService } from '../../../services/client.service';
 import { CommunicationService } from '../../../services/communication.service';
 import { TranslationService } from '../../../services/translation.service';
-import { CrawType } from '../../../models/enums/crawtype.enum';
+import { ScrapeType } from '../../../models/enums/scrapetype.enum';
 import { DetailModeType } from '../../../models/enums/detailmode.enum';
 import { Constants } from '../../constants';
 import { PagingInformationDialog } from '../../dialogs/paginginformation/paginginformation.dialog';
@@ -22,7 +22,7 @@ import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
 export class DatasourceComponent implements OnInit, OnDestroy {
 
     @Input() parentForm: FormGroup;
-    @Input() crawType: CrawType;
+    @Input() scrapeType: ScrapeType;
 
     // subscriptions
     languageChangeSubscription: any;

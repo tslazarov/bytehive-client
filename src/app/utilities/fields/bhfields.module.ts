@@ -6,7 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 
-import { CrawpickerComponent } from './crawpicker/crawpicker.component';
+import { ScrapepickerComponent } from './scrapepicker/scrapepicker.component';
 import { ExportpickerComponent } from './exportpicker/exportpicker.component';
 import { CommunicationService } from '../../services/communication.service';
 import { DatamappingComponent } from './datamapping/datamapping.component';
@@ -17,7 +17,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 
 @NgModule({
     declarations: [
-        CrawpickerComponent,
+        ScrapepickerComponent,
         ExportpickerComponent,
         DatamappingComponent,
         DatasourceComponent,
@@ -33,7 +33,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
         MonacoEditorModule
     ],
     exports: [
-        CrawpickerComponent,
+        ScrapepickerComponent,
         ExportpickerComponent,
         DatamappingComponent,
         DatasourceComponent,

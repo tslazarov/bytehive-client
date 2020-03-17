@@ -12,6 +12,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 /* Material customizations */
+
+.mat-selected .mat-active {
+    color: #000000 !important;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #000000 !important;
+}
+
 .mat-button-base {
     border-radius: 2px !important;
 }

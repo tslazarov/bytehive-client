@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrawpickerComponent } from './crawpicker.component';
+import { ScrapepickerComponent } from './scrapepicker.component';
 
-describe('CrawpickerComponent', () => {
-    let component: CrawpickerComponent;
-    let fixture: ComponentFixture<CrawpickerComponent>;
+describe('ScrapepickerComponent', () => {
+    let component: ScrapepickerComponent;
+    let fixture: ComponentFixture<ScrapepickerComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [CrawpickerComponent]
+            declarations: [ScrapepickerComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(CrawpickerComponent);
+        fixture = TestBed.createComponent(ScrapepickerComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

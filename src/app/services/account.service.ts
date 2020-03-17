@@ -31,6 +31,11 @@ export class AccountService {
         return this.http.post(this.signinEndpoint, siginpUser, { headers, responseType: 'json' });
     }
 
+    test() {
+        let headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0QG1haWwuY29tIiwianRpIjoiN2YxN2FlZmItOTFhOC00YjYwLWJhM2QtNzJiYzQ3YTk2NTQ1IiwiaWF0IjoxNTg0MzkwOTc4LCJyb2wiOiJhcGlfYWNjZXNzIiwiaWQiOiJhODhhN2VhNS0yOWQ1LTQwNmUtODMxNi0xNWNlZWRlYmIzNDgiLCJuYmYiOjE1ODQzOTA5NzcsImV4cCI6MTU4NDM5ODE3NywiaXNzIjoiYnl0ZWhpdmUiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQ0MzI2LyJ9.bYH8dmPslZQkKqJOd6cDCApRnWPZNbUvB4kKF_eUu_A');
+        return this.http.get(environment.apiBaseUrl + "api/users", { headers, });
+    }
+
     setContentTypeHeader(type: string): HttpHeaders {
         let contentType;
 

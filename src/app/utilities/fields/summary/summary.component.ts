@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FieldMapping } from '../../../models/fieldmapping.model';
-import { CrawType } from '../../../models/enums/crawtype.enum';
+import { ScrapeType } from '../../../models/enums/scrapetype.enum';
 import { ExportType } from '../../../models/enums/exporttype.enum';
 import { TranslationService } from '../../../services/translation.service';
 import { CommunicationService } from '../../../services/communication.service';
@@ -13,19 +13,19 @@ import { CommunicationService } from '../../../services/communication.service';
 })
 export class SummaryComponent implements OnInit {
 
-    @Input() crawTypeForm: FormGroup;
+    @Input() scrapeTypeForm: FormGroup;
     @Input() dataSourceMappingForm: FormGroup;
     @Input() exportTypeForm: FormGroup;
     @Input() fieldMappings: FieldMapping[];
 
     // subscriptions
-    crawTypeChangeSubscription: any;
+    scrapeTypeChangeSubscription: any;
     exportTypeChangeSubscription: any;
 
     // common
-    crawTypeIcon: string;
-    crawTypeTitleLabel: string;
-    crawTypeDescriptionLabel: string;
+    scrapeTypeIcon: string;
+    scrapeTypeTitleLabel: string;
+    scrapeTypeDescriptionLabel: string;
     exportTypeIcon: string;
     exportTypeTitleLabel: string;
     exportTypeDescriptionLabel: string;
@@ -34,8 +34,8 @@ export class SummaryComponent implements OnInit {
         private translationService: TranslationService) { }
 
     ngOnInit(): void {
-        this.crawTypeChangeSubscription = this.communicationService.exportTypeChangeEmitted.subscribe(e => {
-            this.setCrawTypeTile(e);
+        this.scrapeTypeChangeSubscription = this.communicationService.exportTypeChangeEmitted.subscribe(e => {
+            this.setScrapeTypeTile(e);
         });
 
         this.exportTypeChangeSubscription = this.communicationService.exportTypeChangeEmitted.subscribe(e => {
@@ -44,28 +44,28 @@ export class SummaryComponent implements OnInit {
     }
 
     ngOnDestroy(): void {
-        this.crawTypeChangeSubscription.unsubscribe();
+        this.scrapeTypeChangeSubscription.unsubscribe();
         this.exportTypeChangeSubscription.unsubscribe();
     }
 
-    setCrawTypeTile(crawType: CrawType): void {
-        switch (crawType) {
-            case (CrawType.ListDetail): {
-                this.crawTypeIcon = "image listdetail-image";
-                this.crawTypeTitleLabel = "List & Detail";
-                this.crawTypeDescriptionLabel = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+    setScrapeTypeTile(scrapeType: ScrapeType): void {
+        switch (scrapeType) {
+            case (ScrapeType.ListDetail): {
+                this.scrapeTypeIcon = "image listdetail-image";
+                this.scrapeTypeTitleLabel = "List & Detail";
+                this.scrapeTypeDescriptionLabel = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
                 break;
             }
-            case (CrawType.List): {
-                this.crawTypeIcon = "image list-image";
-                this.crawTypeTitleLabel = "List";
-                this.crawTypeDescriptionLabel = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+            case (ScrapeType.List): {
+                this.scrapeTypeIcon = "image list-image";
+                this.scrapeTypeTitleLabel = "List";
+                this.scrapeTypeDescriptionLabel = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
                 break;
             }
-            case (CrawType.Detail): {
-                this.crawTypeIcon = "image detail-image";
-                this.crawTypeTitleLabel = "Detail";
-                this.crawTypeDescriptionLabel = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+            case (ScrapeType.Detail): {
+                this.scrapeTypeIcon = "image detail-image";
+                this.scrapeTypeTitleLabel = "Detail";
+                this.scrapeTypeDescriptionLabel = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
                 break;
             }
         }
