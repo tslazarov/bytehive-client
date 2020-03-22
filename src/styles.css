@@ -87,6 +87,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     min-width: 170px !important; 
 }
 
+.profile-menu.mat-menu-panel .mat-button-focus-overlay {
+    background-color: transparent !important;
+}
+
+.profile-menu.mat-menu-panel .mat-menu-item {
+    padding: 0px !important;
+}
+
+.profile-menu.mat-menu-panel {
+    min-width: 170px !important; 
+}
+
 .markup-menu.mat-menu-panel .mat-button-focus-overlay {
     background-color: transparent !important;
 }

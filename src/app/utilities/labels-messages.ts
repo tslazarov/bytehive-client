@@ -16,6 +16,14 @@ export class LabelsMessages {
             'signinLabel': {
                 'en': 'Sign in',
                 'bg': 'Влез'
+            },
+            'settingsLabel': {
+                'en': 'Settings',
+                'bg': 'Настройки'
+            },
+            'signoutLabel': {
+                'en': 'Sign out',
+                'bg': 'Излез'
             }
         },
         'signup': {

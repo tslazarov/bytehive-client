@@ -12,6 +12,7 @@ import { PipesModule } from './utilities/pipes/pipes.module';
 import { CommunicationService } from './services/communication.service';
 
 import { AppComponent } from './app.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { AppComponent } from './app.component';
     ],
     providers: [
         TranslationService,
-        CommunicationService
+        CommunicationService,
+        AuthService
     ],
     bootstrap: [AppComponent]
 })

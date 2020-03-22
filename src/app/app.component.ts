@@ -1,33 +1,52 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslationService } from './services/translation.service';
 import { Constants } from './utilities/constants';
 import { Subject } from 'rxjs';
 import { CommunicationService } from './services/communication.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
     // common
+    authenticated: boolean;
     currentLanguage: string;
+    email: string;
+
+    // subscriptions
+    authenticationChangeSubscription: any;
 
     // labels
     homeLabel: string;
     hiveLabel: string;
     faqLabel: string;
     signinLabel: string;
+    settingsLabel: string;
+    signoutLabel: string;
     currentLanguageLabel: string;
 
     constructor(private router: Router,
         private translationService: TranslationService,
-        private communicationService: CommunicationService) { }
+        private communicationService: CommunicationService,
+        private authService: AuthService) { }
 
     ngOnInit(): void {
+
+        this.authenticationChangeSubscription = this.communicationService.authenticationChangeEmitted.subscribe(() => {
+            this.setCurrentUser();
+        });
+
+        this.setCurrentUser();
         this.setLanguage();
         this.setLabelsMessages();
+    }
+
+    ngOnDestroy(): void {
+        this.authenticationChangeSubscription.unsubscribe();
     }
 
     setLanguage(): void {
@@ -41,6 +60,21 @@ export class AppComponent implements OnInit {
         this.hiveLabel = this.translationService.localizeValue('hiveLabel', 'navigation', 'label');
         this.faqLabel = this.translationService.localizeValue('faqLabel', 'navigation', 'label');
         this.signinLabel = this.translationService.localizeValue('signinLabel', 'navigation', 'label');
+        this.settingsLabel = this.translationService.localizeValue('settingsLabel', 'navigation', 'label');
+        this.signoutLabel = this.translationService.localizeValue('signoutLabel', 'navigation', 'label');
+    }
+
+    setCurrentUser(): void {
+        let email = this.authService.getEmail();
+
+        if (email) {
+            this.email = email;
+            this.authenticated = true;
+        }
+        else {
+            this.email = '';
+            this.authenticated = false;
+        }
     }
 
     @HostListener('window:scroll', ['$event'])
@@ -57,7 +91,6 @@ export class AppComponent implements OnInit {
         this.router.navigate([route]);
     }
 
-
     changeLanguage(language: string): void {
         let languageKey = localStorage.setItem(Constants.LANGUAGE_KEY, language);
 
@@ -70,5 +103,12 @@ export class AppComponent implements OnInit {
         // update dropdown
         this.currentLanguage = language;
         this.currentLanguageLabel = language == 'en' ? 'English' : 'Български';
+    }
+
+    signout() {
+        this.authService.signout();
+        this.communicationService.emitAuthenticationChange();
+
+        this.router.navigate(['/']);
     }
 }

@@ -18,6 +18,8 @@ import { CommunicationService } from '../services/communication.service';
 import { ClientService } from '../services/client.service';
 import { DirectivesModule } from '../utilities/directives/directives.module';
 import { AccountService } from '../services/account.service';
+import { AuthGuardService } from '../services/auth-guard.service';
+import { AuthService } from '../services/auth.service';
 
 @NgModule({
     imports: [
@@ -42,7 +44,9 @@ import { AccountService } from '../services/account.service';
     providers: [
         CommunicationService,
         ClientService,
-        AccountService
+        AccountService,
+        AuthService,
+        AuthGuardService
     ]
 })
 export class PagesModule { }

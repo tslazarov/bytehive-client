@@ -42,3 +42,21 @@
 .required {
     color: #ffeb3b;
 }
+
+.password-enabled-icon {
+    background: url(../../../assets/icons/password-enabled.svg);
+    background-position-y: 30px;
+}
+
+.password-disabled-icon {
+    background: url(../../../assets/icons/password-disabled.svg);
+    background-position-y: 30px;
+}
+
+.password-enabled-icon:hover {
+    cursor: pointer;
+}
+
+.password-disabled-icon:hover {
+    cursor: pointer;
+}
