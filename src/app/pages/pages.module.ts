@@ -20,6 +20,7 @@ import { DirectivesModule } from '../utilities/directives/directives.module';
 import { AccountService } from '../services/account.service';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { AuthService } from '../services/auth.service';
+import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 
 @NgModule({
     imports: [
@@ -46,7 +47,8 @@ import { AuthService } from '../services/auth.service';
         ClientService,
         AccountService,
         AuthService,
-        AuthGuardService
+        AuthGuardService,
+        HttpHeaderHelper
     ]
 })
 export class PagesModule { }

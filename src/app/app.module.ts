@@ -13,6 +13,8 @@ import { CommunicationService } from './services/communication.service';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
+import { AccountService } from './services/account.service';
+import { HttpHeaderHelper } from './utilities/helpers/httpheader-helper';
 
 @NgModule({
     declarations: [
@@ -30,7 +32,9 @@ import { AuthService } from './services/auth.service';
     providers: [
         TranslationService,
         CommunicationService,
-        AuthService
+        AuthService,
+        AccountService,
+        HttpHeaderHelper
     ],
     bootstrap: [AppComponent]
 })

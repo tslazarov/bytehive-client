@@ -5,6 +5,7 @@ import { Constants } from './utilities/constants';
 import { Subject } from 'rxjs';
 import { CommunicationService } from './services/communication.service';
 import { AuthService } from './services/auth.service';
+import { AccountService } from './services/account.service';
 
 @Component({
     selector: 'app-root',
@@ -32,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
     constructor(private router: Router,
         private translationService: TranslationService,
         private communicationService: CommunicationService,
+        private accountService: AccountService,
         private authService: AuthService) { }
 
     ngOnInit(): void {
@@ -106,9 +108,17 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     signout() {
+        this.accountService.signout()
+            .subscribe(result => {
+                this.signoutClient();
+            }, err => {
+                this.signoutClient();
+            });
+    }
+
+    signoutClient() {
         this.authService.signout();
         this.communicationService.emitAuthenticationChange();
-
         this.router.navigate(['/']);
     }
 }
