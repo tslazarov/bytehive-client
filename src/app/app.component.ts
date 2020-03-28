@@ -7,6 +7,7 @@ import { CommunicationService } from './services/communication.service';
 import { AuthLocalService } from './services/auth.service';
 import { AccountService } from './services/account.service';
 import { AuthService } from 'angularx-social-login';
+import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-root',
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // subscriptions
     authenticationChangeSubscription: Subscription;
+    languageChangeSubscription: Subscription;
 
     // labels
     homeLabel: string;
@@ -49,6 +51,11 @@ export class AppComponent implements OnInit, OnDestroy {
             this.setCurrentUser();
         });
 
+        this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
+            this.setLanguage();
+            this.setLabelsMessages();
+        });
+
         this.setCurrentUser();
         this.setLanguage();
         this.setLabelsMessages();
@@ -56,11 +63,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.authenticationChangeSubscription.unsubscribe();
+        this.languageChangeSubscription.unsubscribe();
     }
 
     setLanguage(): void {
         let languageKey = localStorage.getItem(Constants.LANGUAGE_KEY);
-
+        this.currentLanguage = languageKey;
         this.currentLanguageLabel = languageKey == 'en' ? 'English' : 'Български';
     }
 
@@ -78,8 +86,8 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     setCurrentUser(): void {
-        let email = this.authLocalService.getEmail();
-        let role = this.authLocalService.getRole();
+        let email = this.authLocalService.getClaim('email');
+        let role = this.authLocalService.getClaim('role');
 
         this.setEmail(email);
         this.setNavigation(role);
@@ -120,16 +128,11 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     changeLanguage(language: string): void {
-        let languageKey = localStorage.setItem(Constants.LANGUAGE_KEY, language);
+        localStorage.setItem(Constants.LANGUAGE_KEY, language);
 
         // update labels
         this.translationService.updateLanguage();
-        this.setLabelsMessages();
         this.communicationService.emitLanguageChange();
-
-        // update dropdown
-        this.currentLanguage = language;
-        this.currentLanguageLabel = language == 'en' ? 'English' : 'Български';
     }
 
     signout() {
@@ -142,8 +145,11 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     signoutClient() {
-        // TODO: Check provider
-        this.authService.signOut();
+        var provider = this.authLocalService.getClaim('provider');
+
+        if (provider && provider != 'Default') {
+            this.authService.signOut();
+        }
 
         this.authLocalService.signout();
         this.communicationService.emitAuthenticationChange();

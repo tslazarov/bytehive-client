@@ -37,29 +37,17 @@ export class AuthLocalService {
     }
 
     refreshToken() {
+        // TODO: Request refresh token
         console.log('send refresh token');
     }
 
-    getEmail(): string {
+    getClaim(claimName: string): string {
         let token = localStorage.getItem('bh_auth_token');
 
         if (token) {
             let decodedToken = jwt_decode(token);
 
-            return decodedToken.email;
-        }
-
-        return "";
-    }
-
-
-    getRole(): string {
-        let token = localStorage.getItem('bh_auth_token');
-
-        if (token) {
-            let decodedToken = jwt_decode(token);
-
-            return decodedToken.role;
+            return decodedToken[claimName];
         }
 
         return "";

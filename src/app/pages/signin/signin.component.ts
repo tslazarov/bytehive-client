@@ -6,8 +6,12 @@ import { AccountService } from '../../services/account.service';
 import { SigninUser } from '../../models/signinuser.model.';
 import { Router } from '@angular/router';
 import { AuthLocalService } from '../../services/auth.service';
-import { AuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { AuthService, GoogleLoginProvider, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
 import { Observable, Subscription } from 'rxjs';
+import { SigninExternalUser } from '../../models/signinexternaluser.model';
+import { StringHelper } from '../../utilities/helpers/String';
+import { OccupationType } from '../../models/enums/occupationtype.enum';
+import { Constants } from '../../utilities/constants';
 
 @Component({
     selector: 'app-signin',
@@ -20,6 +24,7 @@ export class SigninComponent implements OnInit, OnDestroy {
 
     // subscriptions
     socialSigninSubscription: Subscription;
+    languageChangeSubscription: Subscription;
 
     signinFormGroup: FormGroup;
 
@@ -34,7 +39,15 @@ export class SigninComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
 
         this.socialSigninSubscription = this.authService.authState.subscribe((user) => {
+            console.log('SOCIAL USER CHANGE');
             console.log(user);
+            if (user) {
+                this.signinExternal(user);
+            }
+        });
+
+        this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
+            this.setLabelsMessages();
         });
 
         this.signinFormGroup = this.formBuilder.group({
@@ -45,6 +58,11 @@ export class SigninComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.socialSigninSubscription.unsubscribe();
+        this.languageChangeSubscription.unsubscribe();
+    }
+
+    setLabelsMessages() {
+        console.log('SET lbl');
     }
 
     signin(): void {
@@ -84,6 +102,51 @@ export class SigninComponent implements OnInit, OnDestroy {
 
     signinFacebook() {
         this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    }
+
+    signinExternal(user: SocialUser): void {
+        var signinExternalUser = new SigninExternalUser();
+        signinExternalUser.email = user.email;
+        signinExternalUser.firstName = user.firstName;
+        signinExternalUser.lastName = user.lastName;
+        signinExternalUser.provider = StringHelper.capitalize(user.provider);
+        signinExternalUser.token = user.authToken;
+        signinExternalUser.defaultLanguage = this.translationService.getLanguage() == 'en' ? 0 : 1;
+        signinExternalUser.occupation = OccupationType.Other;
+        signinExternalUser.remoteIpAddress = '';
+        //TODO: Send ip address
+
+        this.accountService.signinExternal(signinExternalUser)
+            .subscribe(result => {
+                if (result) {
+                    this.authLocalService.signin(result);
+                    let callback = localStorage.getItem('bh_callback');
+
+                    let defaultLanguage = this.authLocalService.getClaim('language');
+                    if (defaultLanguage) {
+                        let language = defaultLanguage == 'English' ? 'en' : 'bg';
+                        localStorage.setItem(Constants.LANGUAGE_KEY, language);
+                        this.translationService.updateLanguage();
+
+                        this.communicationService.emitLanguageChange();
+                    }
+
+                    this.communicationService.emitAuthenticationChange();
+
+                    if (callback) {
+                        this.router.navigate([callback]);
+                        localStorage.removeItem('bh_callback');
+                    }
+                    else {
+                        this.router.navigate(['/']);
+                    }
+                }
+                console.log(result);
+            }, err => {
+                if (err.status == 500) {
+                    console.log('error');
+                }
+            });
     }
 
     navigate(route: string): void {
