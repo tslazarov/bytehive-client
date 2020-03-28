@@ -127,7 +127,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.setLabelsMessages();
         this.communicationService.emitLanguageChange();
 
-
         // update dropdown
         this.currentLanguage = language;
         this.currentLanguageLabel = language == 'en' ? 'English' : 'Български';
@@ -143,8 +142,10 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     signoutClient() {
-        this.authLocalService.signout();
+        // TODO: Check provider
         this.authService.signOut();
+
+        this.authLocalService.signout();
         this.communicationService.emitAuthenticationChange();
         this.router.navigate(['/']);
     }

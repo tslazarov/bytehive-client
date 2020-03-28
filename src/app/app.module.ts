@@ -19,15 +19,16 @@ import { HttpHeaderHelper } from './utilities/helpers/httpheader-helper';
 import { AppComponent } from './app.component';
 import { NotfoundComponent } from './common-pages/notfound/notfound.component';
 import { ForbiddenComponent } from './common-pages/forbidden/forbidden.component';
+import { environment } from '../environments/environment';
 
 let config = new AuthServiceConfig([
     {
         id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider("225852297743-0m0vn0eojlu1jg6pqj0s0itmqocalf45.apps.googleusercontent.com")
+        provider: new GoogleLoginProvider(environment.googleClietId)
     },
     {
         id: FacebookLoginProvider.PROVIDER_ID,
-        provider: new FacebookLoginProvider("Facebook-App-Id")
+        provider: new FacebookLoginProvider(environment.facebookAppId)
     }
 ]);
 

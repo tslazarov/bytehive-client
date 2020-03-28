@@ -6,7 +6,7 @@ import { AccountService } from '../../services/account.service';
 import { SigninUser } from '../../models/signinuser.model.';
 import { Router } from '@angular/router';
 import { AuthLocalService } from '../../services/auth.service';
-import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
+import { AuthService, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -51,12 +51,14 @@ export class SigninComponent implements OnInit, OnDestroy {
         let user = new SigninUser();
         user.email = this.signinFormGroup.value.email;
         user.password = this.signinFormGroup.value.password;
+        //TODO: Send ip address
 
         this.accountService.signin(user)
             .subscribe(result => {
                 if (result) {
                     this.authLocalService.signin(result);
                     let callback = localStorage.getItem('bh_callback');
+                    // TODO: Set preferred language
 
                     this.communicationService.emitAuthenticationChange();
 
@@ -81,7 +83,7 @@ export class SigninComponent implements OnInit, OnDestroy {
     }
 
     signinFacebook() {
-
+        this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     }
 
     navigate(route: string): void {

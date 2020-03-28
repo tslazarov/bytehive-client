@@ -141,6 +141,18 @@
     background: url(../assets/icons/signout-accent.svg);
 }
 
+.dashboard-icon {
+    background: url(../assets/icons/dashboard-accent.svg);
+}
+
+.users-icon {
+    background: url(../assets/icons/users-accent.svg);
+}
+
+.requests-icon {
+    background: url(../assets/icons/requests-accent.svg);
+}
+
 .language-label {
     display: inline-block;
     min-width: 72px;

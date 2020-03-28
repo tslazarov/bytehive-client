@@ -11,19 +11,19 @@
         <mat-menu class="administration-menu" #administration="matMenu">
             <div mat-menu-item (click)="navigate('/administration/dashboard')">
                 <button disableRipple mat-button>
-                    <span class="icon settings-icon left-icon small-icon"></span>
+                    <span class="icon dashboard-icon left-icon small-icon"></span>
                     <span>{{dashboardLabel | localize: 'dashboardLabel':'navigation':'label'}}</span>
                 </button>
             </div>
             <div mat-menu-item (click)="navigate('/administration/users')">
                 <button disableRipple mat-button>
-                    <span class="icon signout-icon left-icon small-icon"></span>
+                    <span class="icon users-icon left-icon small-icon"></span>
                     <span>{{usersLabel | localize: 'usersLabel':'navigation':'label'}}</span>
                 </button>
             </div>
             <div mat-menu-item (click)="navigate('/administration/requests')">
                 <button disableRipple mat-button>
-                    <span class="icon signout-icon left-icon small-icon"></span>
+                    <span class="icon requests-icon left-icon small-icon"></span>
                     <span>{{requestsLabel | localize: 'requestsLabel':'navigation':'label'}}</span>
                 </button>
             </div>
