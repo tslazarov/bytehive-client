@@ -75,70 +75,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Custom mat menus */
 
-.language-menu.mat-menu-panel .mat-button-focus-overlay {
+.language-menu.mat-menu-panel .mat-button-focus-overlay, .profile-menu.mat-menu-panel .mat-button-focus-overlay, .administration-menu.mat-menu-panel .mat-button-focus-overlay, .markup-menu.mat-menu-panel .mat-button-focus-overlay, .detail-link-menu.mat-menu-panel .mat-button-focus-overlay, .detail-url-mode-menu.mat-menu-panel .mat-button-focus-overlay  {
     background-color: transparent !important;
 }
 
-.language-menu.mat-menu-panel .mat-menu-item {
-    padding: 0px !important;
-}
-
-.language-menu.mat-menu-panel {
+.language-menu.mat-menu-panel, .profile-menu.mat-menu-panel, .markup-menu.mat-menu-panel, .detail-link-menu.mat-menu-panel, .detail-url-mode-menu.mat-menu-panel {
     min-width: 170px !important; 
-}
-
-.profile-menu.mat-menu-panel .mat-button-focus-overlay {
-    background-color: transparent !important;
-}
-
-.profile-menu.mat-menu-panel .mat-menu-item {
-    padding: 0px !important;
 }
 
 .profile-menu.mat-menu-panel {
     min-width: 170px !important; 
 }
 
-.markup-menu.mat-menu-panel .mat-button-focus-overlay {
-    background-color: transparent !important;
-}
-
-.markup-menu.mat-menu-panel .mat-menu-item {
-    padding: 0px !important;
+.administration-menu.mat-menu-panel {
+    min-width: 170px !important; 
 }
 
 .markup-menu.mat-menu-panel {
     margin-top: 10px;
-    min-width: 170px !important; 
-}
-
-.detail-link-menu.mat-menu-panel .mat-button-focus-overlay {
-    background-color: transparent !important;
-}
-
-.detail-link-menu.mat-menu-panel .mat-menu-item {
-    padding: 0px !important;
 }
 
 .detail-link-menu.mat-menu-panel {
     margin-top: -10px;
-    min-width: 170px !important; 
 }
 
 .manual-wrapper .mat-tab-body-content {
     overflow: hidden;
-}
-
-.detail-url-mode-menu.mat-menu-panel .mat-button-focus-overlay {
-    background-color: transparent !important;
-}
-
-.detail-url-mode-menu.mat-menu-panel .mat-menu-item {
-    padding: 0px !important;
-}
-
-.detail-url-mode-menu.mat-menu-panel {
-    min-width: 170px !important; 
 }
 
 .mat-divider {

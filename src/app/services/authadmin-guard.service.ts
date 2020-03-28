@@ -6,33 +6,22 @@ import { Observable } from 'rxjs';
 import { map, concatMap } from 'rxjs/operators';
 
 @Injectable()
-export class AuthGuardService implements CanActivate {
+export class AuthAdminGuardService implements CanActivate {
 
     constructor(private authLocalService: AuthLocalService,
         private router: Router) {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-        return this.authLocalService.isAuthenticated()
+        return this.authLocalService.isAdministrator()
             .pipe(map((authenticated) => {
-                console.log(authenticated);
                 if (authenticated) {
                     return true;
                 }
                 else {
-                    let url = this.getUrl(route);
-                    localStorage.setItem('bh_callback', url);
-
-                    this.router.navigate(['/signin']);
+                    this.router.navigate(['/forbidden']);
                     return false;
                 }
             }));
-    }
-
-    getUrl(route: ActivatedRouteSnapshot): string {
-        return route.pathFromRoot
-            .filter(v => v.routeConfig)
-            .map(v => v.routeConfig!.path)
-            .join('/');
     }
 }

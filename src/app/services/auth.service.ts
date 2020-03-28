@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class AuthService {
+export class AuthLocalService {
 
     constructor(private router: Router) { }
 
@@ -52,11 +52,41 @@ export class AuthService {
         return "";
     }
 
+
+    getRole(): string {
+        let token = localStorage.getItem('bh_auth_token');
+
+        if (token) {
+            let decodedToken = jwt_decode(token);
+
+            return decodedToken.role;
+        }
+
+        return "";
+    }
+
     isAuthenticated(): Observable<boolean> {
         return new Observable<boolean>(observer => {
             let token = this.getToken();
 
             return token ? observer.next(true) : observer.next(false);
+        });
+    }
+
+    isAdministrator(): Observable<boolean> {
+        return new Observable<boolean>(observer => {
+            let token = this.getToken();
+
+            if (token) {
+                let decodedToken = jwt_decode(token);
+
+                if (decodedToken.role && decodedToken.role.includes('Administrator')) {
+                    return observer.next(true);
+                }
+
+            }
+
+            return observer.next(false);
         });
     }
 }

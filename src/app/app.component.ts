@@ -2,10 +2,11 @@ import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslationService } from './services/translation.service';
 import { Constants } from './utilities/constants';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { CommunicationService } from './services/communication.service';
-import { AuthService } from './services/auth.service';
+import { AuthLocalService } from './services/auth.service';
 import { AccountService } from './services/account.service';
+import { AuthService } from 'angularx-social-login';
 
 @Component({
     selector: 'app-root',
@@ -17,9 +18,10 @@ export class AppComponent implements OnInit, OnDestroy {
     authenticated: boolean;
     currentLanguage: string;
     email: string;
+    navigationAdministrationSegment: boolean;
 
     // subscriptions
-    authenticationChangeSubscription: any;
+    authenticationChangeSubscription: Subscription;
 
     // labels
     homeLabel: string;
@@ -29,11 +31,16 @@ export class AppComponent implements OnInit, OnDestroy {
     settingsLabel: string;
     signoutLabel: string;
     currentLanguageLabel: string;
+    administrationLabel: string;
+    dashboardLabel: string;
+    usersLabel: string;
+    requestsLabel: string;
 
     constructor(private router: Router,
         private translationService: TranslationService,
         private communicationService: CommunicationService,
         private accountService: AccountService,
+        private authLocalService: AuthLocalService,
         private authService: AuthService) { }
 
     ngOnInit(): void {
@@ -64,11 +71,21 @@ export class AppComponent implements OnInit, OnDestroy {
         this.signinLabel = this.translationService.localizeValue('signinLabel', 'navigation', 'label');
         this.settingsLabel = this.translationService.localizeValue('settingsLabel', 'navigation', 'label');
         this.signoutLabel = this.translationService.localizeValue('signoutLabel', 'navigation', 'label');
+        this.administrationLabel = this.translationService.localizeValue('administrationLabel', 'navigation', 'label');
+        this.dashboardLabel = this.translationService.localizeValue('dashboardLabel', 'navigation', 'label');
+        this.usersLabel = this.translationService.localizeValue('usersLabel', 'navigation', 'label');
+        this.requestsLabel = this.translationService.localizeValue('requestsLabel', 'navigation', 'label');
     }
 
     setCurrentUser(): void {
-        let email = this.authService.getEmail();
+        let email = this.authLocalService.getEmail();
+        let role = this.authLocalService.getRole();
 
+        this.setEmail(email);
+        this.setNavigation(role);
+    }
+
+    setEmail(email) {
         if (email) {
             this.email = email;
             this.authenticated = true;
@@ -76,6 +93,15 @@ export class AppComponent implements OnInit, OnDestroy {
         else {
             this.email = '';
             this.authenticated = false;
+        }
+    }
+
+    setNavigation(role) {
+        if (role == 'Administrator') {
+            this.navigationAdministrationSegment = true;
+        }
+        else {
+            this.navigationAdministrationSegment = false;
         }
     }
 
@@ -117,7 +143,8 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     signoutClient() {
-        this.authService.signout();
+        this.authLocalService.signout();
+        this.authService.signOut();
         this.communicationService.emitAuthenticationChange();
         this.router.navigate(['/']);
     }

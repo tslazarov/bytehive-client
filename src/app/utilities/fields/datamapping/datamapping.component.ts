@@ -10,6 +10,7 @@ import { CodeViewDialog, CodeViewData } from '../../dialogs/codeview/codeview.di
 import { CodeData, CodeDialog } from '../../dialogs/code/code.dialog';
 import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
 import { AutomaticData, AutomaticDialog } from '../../dialogs/automatic/automatic.dialog';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'bh-datamapping',
@@ -17,12 +18,11 @@ import { AutomaticData, AutomaticDialog } from '../../dialogs/automatic/automati
     styleUrls: ['./datamapping.component.css']
 })
 export class DatamappingComponent implements OnInit, OnDestroy {
-
     @Input() parentForm: FormGroup;
     @Input() fieldMappings: FieldMapping[];
 
     // subscriptions
-    languageChangeSubscription: any;
+    languageChangeSubscription: Subscription;
 
     // labels
     dataMappingLabel: string;
@@ -157,5 +157,9 @@ export class DatamappingComponent implements OnInit, OnDestroy {
 
     toggleEditMode(fieldMapping: FieldMapping, editable: boolean): void {
         fieldMapping.editMode = editable;
+    }
+
+    validate() {
+
     }
 }

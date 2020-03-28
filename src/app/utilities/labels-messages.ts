@@ -24,6 +24,22 @@ export class LabelsMessages {
             'signoutLabel': {
                 'en': 'Sign out',
                 'bg': 'Излез'
+            },
+            'administrationLabel': {
+                'en': 'Administration',
+                'bg': 'Администрация'
+            },
+            'dashboardLabel': {
+                'en': 'Dashboard',
+                'bg': 'Дашборд'
+            },
+            'usersLabel': {
+                'en': 'Users',
+                'bg': 'Потребители'
+            },
+            'requestsLabel': {
+                'en': 'Requests',
+                'bg': 'Заявки'
             }
         },
         'signup': {

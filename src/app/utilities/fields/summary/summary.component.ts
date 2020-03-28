@@ -5,6 +5,7 @@ import { ScrapeType } from '../../../models/enums/scrapetype.enum';
 import { ExportType } from '../../../models/enums/exporttype.enum';
 import { TranslationService } from '../../../services/translation.service';
 import { CommunicationService } from '../../../services/communication.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'bh-summary',
@@ -19,8 +20,8 @@ export class SummaryComponent implements OnInit {
     @Input() fieldMappings: FieldMapping[];
 
     // subscriptions
-    scrapeTypeChangeSubscription: any;
-    exportTypeChangeSubscription: any;
+    scrapeTypeChangeSubscription: Subscription;
+    exportTypeChangeSubscription: Subscription;
 
     // common
     scrapeTypeIcon: string;

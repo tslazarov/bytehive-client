@@ -1,18 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TranslationService } from '../../services/translation.service';
 import { CommunicationService } from '../../services/communication.service';
 import { AccountService } from '../../services/account.service';
 import { SigninUser } from '../../models/signinuser.model.';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthLocalService } from '../../services/auth.service';
+import { AuthService, GoogleLoginProvider } from 'angularx-social-login';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-signin',
     templateUrl: './signin.component.html',
     styleUrls: ['./signin.component.css']
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit, OnDestroy {
+    // common
+    showPassword: boolean;
+
+    // subscriptions
+    socialSigninSubscription: Subscription;
 
     signinFormGroup: FormGroup;
 
@@ -21,17 +28,26 @@ export class SigninComponent implements OnInit {
         private translationService: TranslationService,
         private communicationService: CommunicationService,
         private accountService: AccountService,
+        private authLocalService: AuthLocalService,
         private authService: AuthService) { }
 
     ngOnInit(): void {
 
+        this.socialSigninSubscription = this.authService.authState.subscribe((user) => {
+            console.log(user);
+        });
+
         this.signinFormGroup = this.formBuilder.group({
             email: ['', [Validators.required]],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            password: ['', [Validators.required]]
         });
     }
 
-    signin() {
+    ngOnDestroy(): void {
+        this.socialSigninSubscription.unsubscribe();
+    }
+
+    signin(): void {
         let user = new SigninUser();
         user.email = this.signinFormGroup.value.email;
         user.password = this.signinFormGroup.value.password;
@@ -39,7 +55,7 @@ export class SigninComponent implements OnInit {
         this.accountService.signin(user)
             .subscribe(result => {
                 if (result) {
-                    this.authService.signin(result);
+                    this.authLocalService.signin(result);
                     let callback = localStorage.getItem('bh_callback');
 
                     this.communicationService.emitAuthenticationChange();
@@ -58,6 +74,14 @@ export class SigninComponent implements OnInit {
                     console.log('error');
                 }
             });
+    }
+
+    signinGoogle() {
+        this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    }
+
+    signinFacebook() {
+
     }
 
     navigate(route: string): void {

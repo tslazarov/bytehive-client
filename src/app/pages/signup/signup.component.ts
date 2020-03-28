@@ -7,6 +7,7 @@ import { AccountService } from '../../services/account.service';
 import { SignupUser } from '../../models/signupuser.model';
 import { OccupationType } from '../../models/enums/occupationtype.enum';
 import { Occupation } from '../../models/occupation.model';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-signup',
@@ -21,9 +22,11 @@ export class SignupComponent implements OnInit {
     // common
     occupations: Occupation[];
     confirmPasswordMatcher: BhConfirmPasswordMatcher;
+    showPassword: boolean;
+    showConfirmPassword: boolean;
 
     // subscriptions
-    languageChangeSubscription: any;
+    languageChangeSubscription: Subscription;
 
     // labels
     emailLabel: string;
@@ -32,6 +35,7 @@ export class SignupComponent implements OnInit {
     passwordLabel: string;
     passwordRequiredErrorLabel: string;
     passwordLengthErrorLabel: string;
+    confirmPasswordLabel: string;
     confirmPasswordMatchErrorLabel: string;
     firstNameLabel: string;
     firstNameRequiredErrorLabel: string;
@@ -80,6 +84,7 @@ export class SignupComponent implements OnInit {
         this.passwordLabel = this.translationService.localizeValue('passwordLabel', 'signup', 'label');
         this.passwordRequiredErrorLabel = this.translationService.localizeValue('passwordRequiredErrorLabel', 'signup', 'label');
         this.passwordLengthErrorLabel = this.translationService.localizeValue('passwordLengthErrorLabel', 'signup', 'label');
+        this.confirmPasswordLabel = this.translationService.localizeValue('confirmPasswordLabel', 'signup', 'label');
         this.confirmPasswordMatchErrorLabel = this.translationService.localizeValue('confirmPasswordMatchErrorLabel', 'signup', 'label');
         this.firstNameLabel = this.translationService.localizeValue('firstNameLabel', 'signup', 'label');
         this.firstNameRequiredErrorLabel = this.translationService.localizeValue('firstNameRequiredErrorLabel', 'signup', 'label');

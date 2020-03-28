@@ -89,6 +89,10 @@
     color: #ffffff;
 }
 
+.administration-picker {
+    min-width: 170px;
+}
+
 .top-navbar .language-icon {
     background: url(../assets/icons/language-white.svg);
 }
