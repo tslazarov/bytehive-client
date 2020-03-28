@@ -4,6 +4,13 @@
     margin-bottom: 5vh;
 }
 
+.divider {
+    width: 250px;
+    height: 1px;
+    background-color: #dfdfdf;
+    margin: 40px auto;
+}
+
 .image-side {
     margin-top: 10vh;
     margin-bottom: 5vh;
@@ -24,10 +31,63 @@
     color: #212121;
 }
 
+.signin-facebook {
+    min-width: 250px;
+    border: 1px solid #3b5998;
+    color: #3b5998;
+}
+
+.signin-facebook:hover {
+    background-color: #3b5998;
+    color: #ffffff;
+}
+
+.signin-google {
+    min-width: 250px;
+    border: 1px solid #ea4335;
+    color: #ea4335;
+}
+
+.signin-google:hover {
+    background-color: #ea4335;
+    color: #ffffff;
+}
+
+.signup-button {
+    font-size: 14px;
+    color: #a7a7a7;
+}
+
+.signup-button:hover {
+    cursor: pointer;
+}
+
 .image {
     max-width: 300px;
 }
 
 .required {
     color: #ffeb3b;
+}
+
+.password-enabled-icon {
+    background: url(../../../assets/icons/password-enabled.svg);
+    background-position-y: 30px;
+}
+
+.password-disabled-icon {
+    background: url(../../../assets/icons/password-disabled.svg);
+    background-position-y: 30px;
+}
+
+.password-enabled-icon:hover {
+    cursor: pointer;
+}
+
+.password-disabled-icon:hover {
+    cursor: pointer;
+}
+
+.mid-width {
+    width: 50%;
 }

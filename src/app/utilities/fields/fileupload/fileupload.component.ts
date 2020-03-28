@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Constants } from '../../constants';
 import { CommunicationService } from '../../../services/communication.service';
 import { TranslationService } from '../../../services/translation.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'bh-fileupload',
@@ -15,7 +16,7 @@ export class FileuploadComponent implements OnInit, OnDestroy {
     @Input() regex: string;
 
     // subscriptions
-    languageChangeSubscription: any;
+    languageChangeSubscription: Subscription;
 
     // common
     files: any[];

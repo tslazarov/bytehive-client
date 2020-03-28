@@ -5,10 +5,11 @@ import { HiveComponent } from './hive/hive.component';
 import { FaqComponent } from './faq/faq.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', component: HomeComponent },
-    { path: 'hive', pathMatch: 'full', component: HiveComponent },
+    { path: 'hive', pathMatch: 'full', component: HiveComponent, canActivate: [AuthGuardService] },
     { path: 'faq', pathMatch: 'full', component: FaqComponent },
     { path: 'signin', pathMatch: 'full', component: SigninComponent },
     { path: 'signup', pathMatch: 'full', component: SignupComponent }

@@ -21,7 +21,7 @@
                         <mat-form-field floatLabel="never" class="pb-4 signup-field">
                             <mat-label>{{passwordLabel | localize: 'passwordLabel':'signup':'label'}}</mat-label>
                             <input matInput autocomplete="off" formControlName="password" [type]="showPassword ? 'text' : 'password'">
-                            <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'visibility_off' : 'visibility'}}">test</span>
+                            <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
                             <mat-error *ngIf="signupFormGroup.get('password').hasError('required', 'password')">
                                 {{passwordRequiredErrorLabel | localize: 'passwordRequiredErrorLabel':'signup':'label'}}
                             </mat-error>
@@ -33,9 +33,9 @@
                     <div>
                         <mat-form-field floatLabel="never" class="pb-4 signup-field">
                             <mat-label>{{confirmPasswordLabel | localize: 'confirmPasswordLabel':'signup':'label'}}</mat-label>
-                            <input matInput autocomplete="off" formControlName="confirmPassword" [type]="showPassword ? 'text' : 'password'" type="password"
+                            <input matInput autocomplete="off" formControlName="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'" type="password"
                                 [errorStateMatcher]="confirmPasswordMatcher">
-                            <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'visibility_off' : 'visibility'}}">test</span>
+                            <span matSuffix (click)="showConfirmPassword = !showConfirmPassword" class="{{showConfirmPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
                             <mat-error *ngIf="signupFormGroup.get('password').errors">
                                 {{confirmPasswordMatchErrorLabel | localize: 'confirmPasswordMatchErrorLabel':'signup':'label'}}
                             </mat-error>

@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ScrapeType } from '../../../models/enums/scrapetype.enum';
 import { TranslationService } from '../../../services/translation.service';
 import { CommunicationService } from '../../../services/communication.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'bh-scrapepicker',
@@ -17,7 +18,7 @@ export class ScrapepickerComponent implements OnInit {
     selectedOption: number;
 
     // subscriptions
-    languageChangeSubscription: any;
+    languageChangeSubscription: Subscription;
 
     // enums
     scrapeTypes = ScrapeType;

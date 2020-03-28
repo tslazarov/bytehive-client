@@ -8,6 +8,7 @@ import { FieldMapping } from '../../models/fieldmapping.model';
 import { Constants } from '../../utilities/constants';
 import { ScrapeType } from '../../models/enums/scrapetype.enum';
 import { BhValidators } from '../../utilities/validators/bhvalidators';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-hive',
@@ -29,7 +30,7 @@ export class HiveComponent implements OnInit, OnDestroy {
     scrapeTypes = ScrapeType;
 
     // subscriptions
-    languageChangeSubscription: any;
+    languageChangeSubscription: Subscription;
 
     // labels
     selectPagesTypeLabel: string;

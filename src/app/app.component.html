@@ -5,7 +5,31 @@
         <button disableRipple mat-button (click)="navigate('/')">{{homeLabel | localize: 'homeLabel':'navigation':'label'}}</button>
         <button disableRipple mat-button (click)="navigate('/hive')">{{hiveLabel | localize: 'hiveLabel':'navigation':'label'}}</button>
         <button disableRipple mat-button (click)="navigate('/faq')">{{faqLabel | localize: 'faqLabel':'navigation':'label'}}</button>
-        <button disableRipple mat-flat-button class="language-picker" [matMenuTriggerFor]="language" aria-label="Select language">
+        <button *ngIf="navigationAdministrationSegment" disableRipple mat-button class="administration-picker" [matMenuTriggerFor]="administration">
+            {{administrationLabel | localize: 'administrationLabel':'navigation':'label'}}
+        </button>
+        <mat-menu class="administration-menu" #administration="matMenu">
+            <div mat-menu-item (click)="navigate('/administration/dashboard')">
+                <button disableRipple mat-button>
+                    <span class="icon dashboard-icon left-icon small-icon"></span>
+                    <span>{{dashboardLabel | localize: 'dashboardLabel':'navigation':'label'}}</span>
+                </button>
+            </div>
+            <div mat-menu-item (click)="navigate('/administration/users')">
+                <button disableRipple mat-button>
+                    <span class="icon users-icon left-icon small-icon"></span>
+                    <span>{{usersLabel | localize: 'usersLabel':'navigation':'label'}}</span>
+                </button>
+            </div>
+            <div mat-menu-item (click)="navigate('/administration/requests')">
+                <button disableRipple mat-button>
+                    <span class="icon requests-icon left-icon small-icon"></span>
+                    <span>{{requestsLabel | localize: 'requestsLabel':'navigation':'label'}}</span>
+                </button>
+            </div>
+        </mat-menu>
+
+        <button disableRipple mat-flat-button class="language-picker" [matMenuTriggerFor]="language">
             <span class="icon language-icon left-icon small-icon"></span>
             <span class="language-label">{{currentLanguageLabel}}</span>
             <mat-icon class="right-icon">keyboard_arrow_down</mat-icon>
@@ -24,8 +48,26 @@
                 </button>
             </div>
         </mat-menu>
-        <button [disableRipple]="true" mat-flat-button class="signin" (click)="navigate('/signin')">{{signinLabel | localize:
-            'signinLabel':'navigation':'label' | uppercase }}</button>
+        <button *ngIf="!authenticated" [disableRipple]="true" mat-flat-button class="signin" (click)="navigate('/signin')">{{signinLabel
+            | localize: 'signinLabel':'navigation':'label' | uppercase }}</button>
+        <button *ngIf="authenticated" disableRipple mat-button class="profile-picker" [matMenuTriggerFor]="profile">
+            <span class="icon profile-icon left-icon small-icon"></span>
+            <span class="profile-label">{{email}}</span>
+        </button>
+        <mat-menu class="profile-menu" #profile="matMenu">
+            <div mat-menu-item (click)="navigate('/profile')">
+                <button disableRipple mat-button>
+                    <span class="icon settings-icon left-icon small-icon"></span>
+                    <span>{{settingsLabel | localize: 'settingsLabel':'navigation':'label'}}</span>
+                </button>
+            </div>
+            <div mat-menu-item (click)="signout()">
+                <button disableRipple mat-button>
+                    <span class="icon signout-icon left-icon small-icon"></span>
+                    <span>{{signoutLabel | localize: 'signoutLabel':'navigation':'label'}}</span>
+                </button>
+            </div>
+        </mat-menu>
         <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon> -->
         <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon> -->
     </mat-toolbar-row>

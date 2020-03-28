@@ -18,6 +18,9 @@ import { CommunicationService } from '../services/communication.service';
 import { ClientService } from '../services/client.service';
 import { DirectivesModule } from '../utilities/directives/directives.module';
 import { AccountService } from '../services/account.service';
+import { AuthGuardService } from '../services/auth-guard.service';
+import { AuthLocalService } from '../services/auth.service';
+import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 
 @NgModule({
     imports: [
@@ -42,7 +45,10 @@ import { AccountService } from '../services/account.service';
     providers: [
         CommunicationService,
         ClientService,
-        AccountService
+        AccountService,
+        AuthLocalService,
+        AuthGuardService,
+        HttpHeaderHelper
     ]
 })
 export class PagesModule { }

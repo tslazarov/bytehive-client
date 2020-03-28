@@ -89,6 +89,10 @@
     color: #ffffff;
 }
 
+.administration-picker {
+    min-width: 170px;
+}
+
 .top-navbar .language-icon {
     background: url(../assets/icons/language-white.svg);
 }
@@ -105,12 +109,48 @@
     background: url(../assets/icons/language-white.svg);
 }
 
+.top-navbar .profile-icon {
+    background: url(../assets/icons/profile-accent.svg);
+}
+
+.top-navbar-inverse .profile-icon {
+    background: url(../assets/icons/profile-accent.svg);
+}
+
+.top-navbar .profile-picker:hover .profile-icon {
+    background: url(../assets/icons/profile-primary.svg);
+}
+
+.top-navbar-inverse .profile-picker:hover .profile-icon {
+    background: url(../assets/icons/profile-white.svg);
+}
+
 .language-en-icon {
     background: url(../assets/icons/language-en-accent.svg);
 }
 
 .language-bg-icon {
     background: url(../assets/icons/language-bg-accent.svg);
+}
+
+.settings-icon {
+    background: url(../assets/icons/settings-accent.svg);
+}
+
+.signout-icon {
+    background: url(../assets/icons/signout-accent.svg);
+}
+
+.dashboard-icon {
+    background: url(../assets/icons/dashboard-accent.svg);
+}
+
+.users-icon {
+    background: url(../assets/icons/users-accent.svg);
+}
+
+.requests-icon {
+    background: url(../assets/icons/requests-accent.svg);
 }
 
 .language-label {

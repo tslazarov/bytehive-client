@@ -8,12 +8,14 @@ export class CommunicationService {
     static emitLanguageChangeSource = new Subject<any>();
     static emitScrapeTypeChangeSource = new Subject<any>();
     static emitExportTypeChangeSource = new Subject<any>();
+    static emitAuthenticationChangeSource = new Subject<any>();
 
     constructor() { }
 
     languageChangeEmitted = CommunicationService.emitLanguageChangeSource.asObservable();
     scrapeTypeChangeEmitted = CommunicationService.emitScrapeTypeChangeSource.asObservable();
     exportTypeChangeEmitted = CommunicationService.emitExportTypeChangeSource.asObservable();
+    authenticationChangeEmitted = CommunicationService.emitAuthenticationChangeSource.asObservable();
 
     emitLanguageChange(): void {
         CommunicationService.emitLanguageChangeSource.next();
@@ -25,5 +27,9 @@ export class CommunicationService {
 
     emitExportTypeChange(type: ExportType): void {
         CommunicationService.emitExportTypeChangeSource.next(type);
+    }
+
+    emitAuthenticationChange(): void {
+        CommunicationService.emitAuthenticationChangeSource.next();
     }
 }

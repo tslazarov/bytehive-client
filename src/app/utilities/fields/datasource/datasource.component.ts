@@ -13,6 +13,7 @@ import { CodeData, CodeDialog } from '../../dialogs/code/code.dialog';
 import { first } from 'rxjs/operators';
 import { AutomaticData, AutomaticDialog } from '../../dialogs/automatic/automatic.dialog';
 import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'bh-datasource',
@@ -25,7 +26,7 @@ export class DatasourceComponent implements OnInit, OnDestroy {
     @Input() scrapeType: ScrapeType;
 
     // subscriptions
-    languageChangeSubscription: any;
+    languageChangeSubscription: Subscription;
 
     // common
     detailUrlModes = DetailModeType;
