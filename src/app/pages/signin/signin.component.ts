@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { TranslationService } from '../../services/translation.service';
-import { CommunicationService } from '../../services/communication.service';
+import { TranslationService } from '../../services/utilities/translation.service';
+import { CommunicationService } from '../../services/utilities/communication.service';
 import { AccountService } from '../../services/account.service';
 import { SigninUser } from '../../models/signinuser.model.';
 import { Router } from '@angular/router';
-import { AuthLocalService } from '../../services/auth.service';
+import { AuthLocalService } from '../../services/utilities/auth.service';
 import { AuthService, GoogleLoginProvider, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
 import { Observable, Subscription } from 'rxjs';
 import { SigninExternalUser } from '../../models/signinexternaluser.model';
@@ -70,7 +70,6 @@ export class SigninComponent implements OnInit, OnDestroy {
         let user = new SigninUser();
         user.email = this.signinFormGroup.value.email;
         user.password = this.signinFormGroup.value.password;
-        //TODO: Send ip address
 
         this.accountService.signin(user)
             .subscribe(result => {
@@ -115,7 +114,6 @@ export class SigninComponent implements OnInit, OnDestroy {
         signinExternalUser.token = user.authToken;
         signinExternalUser.defaultLanguage = this.translationService.getLanguage() == 'en' ? 0 : 1;
         signinExternalUser.occupation = OccupationType.Other;
-        //TODO: Send ip address
 
         this.accountService.signinExternal(signinExternalUser)
             .subscribe(result => {

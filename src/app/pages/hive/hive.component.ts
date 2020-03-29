@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
-import { TranslationService } from '../../services/translation.service';
-import { CommunicationService } from '../../services/communication.service';
+import { TranslationService } from '../../services/utilities/translation.service';
+import { CommunicationService } from '../../services/utilities/communication.service';
 import { FieldMapping } from '../../models/fieldmapping.model';
 import { Constants } from '../../utilities/constants';
 import { ScrapeType } from '../../models/enums/scrapetype.enum';

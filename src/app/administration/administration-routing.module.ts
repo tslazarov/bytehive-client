@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthAdminGuardService } from '../services/authadmin-guard.service';
+import { AuthAdminGuardService } from '../services/guards/authadmin-guard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { ScrapeRequestsComponent } from './scraperequests/scraperequests.component';

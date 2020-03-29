@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Constants } from '../../constants';
-import { CommunicationService } from '../../../services/communication.service';
-import { TranslationService } from '../../../services/translation.service';
+import { CommunicationService } from '../../../services/utilities/communication.service';
+import { TranslationService } from '../../../services/utilities/translation.service';
 import { Subscription } from 'rxjs';
 
 @Component({

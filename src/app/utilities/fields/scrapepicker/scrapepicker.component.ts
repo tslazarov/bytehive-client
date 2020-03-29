@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ScrapeType } from '../../../models/enums/scrapetype.enum';
-import { TranslationService } from '../../../services/translation.service';
-import { CommunicationService } from '../../../services/communication.service';
+import { TranslationService } from '../../../services/utilities/translation.service';
+import { CommunicationService } from '../../../services/utilities/communication.service';
 import { Subscription } from 'rxjs';
 
 @Component({

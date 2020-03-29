@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ValidationErrors } from '@angular/forms';
-import { TranslationService } from '../../services/translation.service';
-import { CommunicationService } from '../../services/communication.service';
+import { TranslationService } from '../../services/utilities/translation.service';
+import { CommunicationService } from '../../services/utilities/communication.service';
 import { BhValidators, BhConfirmPasswordMatcher } from '../../utilities/validators/bhvalidators';
 import { AccountService } from '../../services/account.service';
 import { SignupUser } from '../../models/signupuser.model';
 import { OccupationType } from '../../models/enums/occupationtype.enum';
 import { Occupation } from '../../models/occupation.model';
 import { Subscription } from 'rxjs';
-import { AuthLocalService } from '../../services/auth.service';
+import { AuthLocalService } from '../../services/utilities/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

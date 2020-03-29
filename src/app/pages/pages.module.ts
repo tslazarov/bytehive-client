@@ -15,13 +15,13 @@ import { FaqComponent } from './faq/faq.component';
 import { SignupComponent } from './signup/signup.component';
 import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 
-import { CommunicationService } from '../services/communication.service';
+import { CommunicationService } from '../services/utilities/communication.service';
 import { ClientService } from '../services/client.service';
 import { DirectivesModule } from '../utilities/directives/directives.module';
 import { AccountService } from '../services/account.service';
-import { AuthGuardService } from '../services/auth-guard.service';
-import { AuthLocalService } from '../services/auth.service';
-import { SignGuardService } from '../services/sign-guard.service';
+import { AuthGuardService } from '../services/guards/auth-guard.service';
+import { AuthLocalService } from '../services/utilities/auth.service';
+import { SignGuardService } from '../services/guards/sign-guard.service';
 
 @NgModule({
     imports: [

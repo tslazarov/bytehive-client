@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ExportType } from '../models/enums/exporttype.enum';
-import { ScrapeType } from '../models/enums/scrapetype.enum';
+import { ExportType } from '../../models/enums/exporttype.enum';
+import { ScrapeType } from '../../models/enums/scrapetype.enum';
 
 @Injectable()
 export class CommunicationService {

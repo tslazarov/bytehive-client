@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TranslationService } from '../../../services/translation.service';
+import { TranslationService } from '../../../services/utilities/translation.service';
 
 @Component({
     selector: 'paginginformation-dialog',

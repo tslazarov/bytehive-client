@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Constants } from '../utilities/constants';
-import { LabelsMessages } from '../utilities/labels-messages';
+import { Constants } from '../../utilities/constants';
+import { LabelsMessages } from '../../utilities/labels-messages';
 import { Subject } from 'rxjs';
 
 @Injectable({
