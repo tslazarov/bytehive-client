@@ -13,14 +13,15 @@ import { HiveComponent } from './hive/hive.component';
 import { SigninComponent } from './signin/signin.component';
 import { FaqComponent } from './faq/faq.component';
 import { SignupComponent } from './signup/signup.component';
-import { CommunicationService } from '../services/communication.service';
+import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 
+import { CommunicationService } from '../services/communication.service';
 import { ClientService } from '../services/client.service';
 import { DirectivesModule } from '../utilities/directives/directives.module';
 import { AccountService } from '../services/account.service';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { AuthLocalService } from '../services/auth.service';
-import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
+import { SignGuardService } from '../services/sign-guard.service';
 
 @NgModule({
     imports: [
@@ -48,6 +49,7 @@ import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
         AccountService,
         AuthLocalService,
         AuthGuardService,
+        SignGuardService,
         HttpHeaderHelper
     ]
 })

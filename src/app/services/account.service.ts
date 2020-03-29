@@ -35,12 +35,12 @@ export class AccountService {
 
         return this.http.post(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_SIGNIN_EXTERNAL_ENDPOINT}`, signinExternalUser, { headers, responseType: 'json' });
     }
+
     signout() {
-        debugger;
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
-        console.log(headers);
+
         return this.http.get(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_SIGNOUT_ENDPOINT}`, { headers, responseType: 'json' });
     }
 }

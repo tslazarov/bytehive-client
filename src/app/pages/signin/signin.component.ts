@@ -39,9 +39,10 @@ export class SigninComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
 
         this.socialSigninSubscription = this.authService.authState.subscribe((user) => {
-            console.log('SOCIAL USER CHANGE');
-            console.log(user);
-            if (user) {
+            let isExternalCallback = localStorage.getItem('bh_external_callback');
+
+            if (user && isExternalCallback) {
+                localStorage.removeItem('bh_external_callback');
                 this.signinExternal(user);
             }
         });
@@ -88,7 +89,6 @@ export class SigninComponent implements OnInit, OnDestroy {
                         this.router.navigate(['/']);
                     }
                 }
-                console.log(result);
             }, err => {
                 if (err.status == 500) {
                     console.log('error');
@@ -97,10 +97,12 @@ export class SigninComponent implements OnInit, OnDestroy {
     }
 
     signinGoogle() {
+        localStorage.setItem('bh_external_callback', 'true');
         this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     }
 
     signinFacebook() {
+        localStorage.setItem('bh_external_callback', 'true');
         this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     }
 
@@ -113,7 +115,6 @@ export class SigninComponent implements OnInit, OnDestroy {
         signinExternalUser.token = user.authToken;
         signinExternalUser.defaultLanguage = this.translationService.getLanguage() == 'en' ? 0 : 1;
         signinExternalUser.occupation = OccupationType.Other;
-        signinExternalUser.remoteIpAddress = '';
         //TODO: Send ip address
 
         this.accountService.signinExternal(signinExternalUser)

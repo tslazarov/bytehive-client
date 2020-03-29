@@ -1,9 +1,8 @@
 import { HttpHeaders } from '@angular/common/http';
-import { AuthLocalService } from '../../services/auth.service';
 
 export class HttpHeaderHelper {
 
-    constructor(private authLocalService: AuthLocalService) {
+    constructor() {
     }
 
     setContentTypeHeader(headers: HttpHeaders, type: string): HttpHeaders {
@@ -25,7 +24,7 @@ export class HttpHeaderHelper {
     }
 
     setAuthorizationHeader(headers: HttpHeaders): HttpHeaders {
-        let token = this.authLocalService.getToken();
+        let token = localStorage.getItem('bh_auth_token');
 
         return headers.append('Authorization', `Bearer ${token}`);
     }

@@ -1,5 +1,5 @@
 export class Constants {
-    static readonly LANGUAGE_KEY = 'BYTEHIVE_LANGUAGE';
+    static readonly LANGUAGE_KEY = 'bh_language';
 
     // regular expressions
     static readonly URL_REGEX = '(https?://)([\\da-z.-]+)\\.([a-z.]{2,6})[\?\\da-z.-\=\&]*';
@@ -10,4 +10,5 @@ export class Constants {
     static readonly ACCOUNT_SERVICE_SIGNIN_ENDPOINT = 'api/account/signin';
     static readonly ACCOUNT_SERVICE_SIGNIN_EXTERNAL_ENDPOINT = 'api/account/signinExternal';
     static readonly ACCOUNT_SERVICE_SIGNOUT_ENDPOINT = 'api/account/signout';
+    static readonly ACCOUNT_SERVICE_REFRESH_TOKEN_ENDPOINT = 'api/account/refreshtoken';
 }
