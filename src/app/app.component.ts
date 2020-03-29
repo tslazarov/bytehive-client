@@ -152,7 +152,6 @@ export class AppComponent implements OnInit, OnDestroy {
         }
 
         this.authLocalService.signout();
-        this.communicationService.emitAuthenticationChange();
         this.router.navigate(['/']);
     }
 }
