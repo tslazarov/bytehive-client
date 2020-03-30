@@ -365,6 +365,32 @@ export class LabelsMessages {
                 'en': 'Other',
                 'bg': 'Друго'
             }
+        },
+        'pagination': {
+            'itemsPerPageLabel': {
+                'en': 'Ítems per page',
+                'bg': 'Брой на страница'
+            },
+            'firstPageLabel': {
+                'en': 'First page',
+                'bg': 'Първа страница'
+            },
+            'nextPageLabel': {
+                'en': 'Next page',
+                'bg': 'Следваща страница'
+            },
+            'previousPageLabel': {
+                'en': 'Previous page',
+                'bg': 'Предишна страница'
+            },
+            'lastPageLabel': {
+                'en': 'Last page',
+                'bg': 'Последна страница'
+            },
+            'ofLabel': {
+                'en': 'of',
+                'bg': 'от'
+            }
         }
     }
     static readonly messages = {

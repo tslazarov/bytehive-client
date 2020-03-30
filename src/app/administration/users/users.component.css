@@ -1,0 +1,10 @@
+table {
+    width: 100%;
+}
+
+.table-head {
+    background-color: #ffeb3b;
+    color: #212121;
+    border-bottom: 2px solid #ffeb3b;
+    padding-bottom: 1px;
+}

@@ -20,6 +20,8 @@ import { AppComponent } from './app.component';
 import { NotfoundComponent } from './common-pages/notfound/notfound.component';
 import { ForbiddenComponent } from './common-pages/forbidden/forbidden.component';
 import { environment } from '../environments/environment';
+import { MatPaginatorIntl } from '@angular/material';
+import { getLocalizablePaginatorIntl } from './utilities/extensions/localizable-paginator';
 
 let config = new AuthServiceConfig([
     {
@@ -61,6 +63,10 @@ export function provideConfig() {
         {
             provide: AuthServiceConfig,
             useFactory: provideConfig
+        },
+        {
+            provide: MatPaginatorIntl,
+            useValue: getLocalizablePaginatorIntl()
         }
     ],
     bootstrap: [AppComponent]

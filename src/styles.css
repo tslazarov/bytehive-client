@@ -73,6 +73,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-top: 6px !important;
 }
 
+.mat-header-cell {
+    color: #212121 !important;
+    font-size: 14px;
+}
+
+.mat-sort-header-arrow {
+    color: #313131 !important;
+}
+
 /* Custom mat menus */
 
 .language-menu.mat-menu-panel .mat-button-focus-overlay, .profile-menu.mat-menu-panel .mat-button-focus-overlay, .administration-menu.mat-menu-panel .mat-button-focus-overlay, .markup-menu.mat-menu-panel .mat-button-focus-overlay, .detail-link-menu.mat-menu-panel .mat-button-focus-overlay, .detail-url-mode-menu.mat-menu-panel .mat-button-focus-overlay  {

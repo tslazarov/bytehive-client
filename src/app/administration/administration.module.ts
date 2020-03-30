@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { ScrapeRequestsComponent } from './scraperequests/scraperequests.component';
 import { AuthAdminGuardService } from '../services/guards/authadmin-guard.service';
+import { UsersService } from '../services/users.service';
 
 @NgModule({
     imports: [
@@ -36,6 +37,7 @@ import { AuthAdminGuardService } from '../services/guards/authadmin-guard.servic
         CommunicationService,
         ClientService,
         AccountService,
+        UsersService,
         AuthLocalService,
         AuthAdminGuardService,
         HttpHeaderHelper
