@@ -5,7 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { MaterialModule } from '../utilities/libraries/material.module';
 import { PipesModule } from '../utilities/pipes/pipes.module';
-
+import { registerLocaleData } from "@angular/common";
+import localeBg from '@angular/common/locales/bg';
 import { CommunicationService } from '../services/utilities/communication.service';
 import { ClientService } from '../services/client.service';
 import { DirectivesModule } from '../utilities/directives/directives.module';
@@ -17,6 +18,9 @@ import { UsersComponent } from './users/users.component';
 import { ScrapeRequestsComponent } from './scraperequests/scraperequests.component';
 import { AuthAdminGuardService } from '../services/guards/authadmin-guard.service';
 import { UsersService } from '../services/users.service';
+import { UsersDetailComponent } from './usersdetail/usersdetail.component';
+
+registerLocaleData(localeBg, 'bg');
 
 @NgModule({
     imports: [
@@ -31,7 +35,8 @@ import { UsersService } from '../services/users.service';
     declarations: [
         DashboardComponent,
         UsersComponent,
-        ScrapeRequestsComponent],
+        ScrapeRequestsComponent,
+        UsersDetailComponent],
     entryComponents: [],
     providers: [
         CommunicationService,

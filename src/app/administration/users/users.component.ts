@@ -1,8 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { UsersService } from '../../services/users.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { ListUser } from '../../models/listuser.model';
+import { Router } from '@angular/router';
+import { TranslationService } from '../../services/utilities/translation.service';
+import { CommunicationService } from '../../services/utilities/communication.service';
 
 export const CONDITIONS_FUNCTIONS = {
     "contains": function (value, filteredValue) {
@@ -19,12 +22,12 @@ export const CONDITIONS_FUNCTIONS = {
     templateUrl: './users.component.html',
     styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
 
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-    displayedColumns: string[] = ['email', 'firstName', 'registrationDate', 'requests'];
+    displayedColumns: string[] = ['email', 'firstName', 'registrationDate', 'requests', 'action'];
 
     dataSource: MatTableDataSource<any>;
     providers: any[];
@@ -34,15 +37,40 @@ export class UsersComponent implements OnInit {
     searchCondition: any = {};
     filterMethods = CONDITIONS_FUNCTIONS;
 
-    constructor(private usersService: UsersService) { }
+    // subscriptions
+    languageChangeSubscription: Subscription;
+
+    // labels
+    providersLabel: string;
+    searchLabel: string;
+    emailLabel: string;
+    nameLabel: string;
+    registrationDateLabel: string;
+    requestsLabel: string;
+    detailsLabel: string;
+    deleteLabel: string;
+
+    constructor(private router: Router,
+        private usersService: UsersService,
+        private translationService: TranslationService,
+        private communicationService: CommunicationService) { }
 
     ngOnInit() {
+        this.setLabelsMessages();
+
+        this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
+            this.setLabelsMessages();
+        });
+
         this.fetchUsers();
+    }
+
+    ngOnDestroy() {
+        this.languageChangeSubscription.unsubscribe();
     }
 
     fetchUsers() {
         this.users = [];
-
         this.usersService.getAll()
             .subscribe(result => {
                 console.log(result);
@@ -52,16 +80,41 @@ export class UsersComponent implements OnInit {
                     this.users.push(listUser);
                 });
 
-                console.log(this.users);
+                this.fetchProviders();
 
                 this.bindDataSource(this.users);
             });
+    }
+
+    fetchProviders() {
+        this.providers = ["All"];
+
+        this.providers = this.providers.concat(this.users.map(u => u.provider).filter((value, index, self) => {
+            return self.indexOf(value) === index;
+        }));
     }
 
     bindDataSource(data: any) {
         this.dataSource = new MatTableDataSource<ListUser>(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+    }
+
+    setLabelsMessages() {
+        this.providersLabel = this.translationService.localizeValue('providersLabel', 'users', 'label');
+        this.searchLabel = this.translationService.localizeValue('searchLabel', 'users', 'label');
+        this.emailLabel = this.translationService.localizeValue('emailLabel', 'users', 'label');
+        this.nameLabel = this.translationService.localizeValue('nameLabel', 'users', 'label');
+        this.registrationDateLabel = this.translationService.localizeValue('registrationDateLabel', 'users', 'label');
+        this.requestsLabel = this.translationService.localizeValue('requestsLabel', 'users', 'label');
+        this.detailsLabel = this.translationService.localizeValue('detailsLabel', 'users', 'label');
+        this.deleteLabel = this.translationService.localizeValue('deleteLabel', 'users', 'label');
+    }
+
+    providerChange(provider: any) {
+        let filteredUsers = provider.value == "All" ? this.users : this.users.filter(user => { return user.provider == provider.value });
+
+        this.bindDataSource(filteredUsers);
     }
 
     setOrPredicate() {
@@ -101,4 +154,11 @@ export class UsersComponent implements OnInit {
         this.dataSource.filter = searchFilter;
     }
 
+    delete(id: string): void {
+        console.log(id);
+    }
+
+    navigate(route: string): void {
+        this.router.navigate([route]);
+    }
 }

@@ -8,3 +8,35 @@ table {
     border-bottom: 2px solid #ffeb3b;
     padding-bottom: 1px;
 }
+
+tr.mat-row:hover {
+    background-color: #efefef;
+}
+
+.user-action-picker {
+    visibility: hidden;
+}
+
+.user-action-picker[aria-expanded="true"] {
+    visibility:visible;
+}
+
+tr.mat-row:hover .user-action-picker {
+    visibility:visible;
+}
+
+.action-icon {
+    background: url(../../../assets/icons/action-unfocused.svg);
+}
+
+.action-icon:hover {
+    background: url(../../../assets/icons/action-accent.svg);
+}
+
+.delete {
+    color: #e20405;
+}
+
+.filter-wrapper .mat-form-field {
+    width: 100%;
+}

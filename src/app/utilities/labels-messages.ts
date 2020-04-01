@@ -238,6 +238,40 @@ export class LabelsMessages {
                 'bg': 'Валидирай'
             }
         },
+        'users': {
+            'providersLabel': {
+                'en': 'Providers',
+                'bg': 'Източници'
+            },
+            'searchLabel': {
+                'en': 'Search',
+                'bg': 'Търси'
+            },
+            'emailLabel': {
+                'en': 'Email',
+                'bg': 'Имейл'
+            },
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'registrationDateLabel': {
+                'en': 'Registration date',
+                'bg': 'Дата на регистрация'
+            },
+            'requestsLabel': {
+                'en': 'Requests',
+                'bg': 'Заявки'
+            },
+            'detailsLabel': {
+                'en': 'Details',
+                'bg': 'Детайли'
+            },
+            'deleteLabel': {
+                'en': 'Delete',
+                'bg': 'Изтрий'
+            }
+        },
         'fileupload': {
             'dragDropLabel': {
                 'en': 'Drag and drop file here',
