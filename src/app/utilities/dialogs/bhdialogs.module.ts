@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MaterialModule } from 'src/app/utilities/libraries/material.module';
 import { PipesModule } from 'src/app/utilities/pipes/pipes.module';
-import { TranslationService } from '../../services/translation.service';
+import { TranslationService } from '../../services/utilities/translation.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
@@ -11,6 +11,7 @@ import { VisualDialog } from './visual/visual.dialog';
 import { ManualDialog } from './manual/manual.dialog';
 import { AutomaticDialog } from './automatic/automatic.dialog';
 import { PagingInformationDialog } from './paginginformation/paginginformation.dialog';
+import { ConfirmationDialog } from './confirmation/confirmation.dialog';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { PagingInformationDialog } from './paginginformation/paginginformation.d
         VisualDialog,
         ManualDialog,
         AutomaticDialog,
-        PagingInformationDialog
+        PagingInformationDialog,
+        ConfirmationDialog
     ],
     imports: [
         MaterialModule,
@@ -37,7 +39,8 @@ import { PagingInformationDialog } from './paginginformation/paginginformation.d
         VisualDialog,
         ManualDialog,
         AutomaticDialog,
-        PagingInformationDialog
+        PagingInformationDialog,
+        ConfirmationDialog
     ],
     providers: [
         TranslationService,

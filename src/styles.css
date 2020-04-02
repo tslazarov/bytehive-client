@@ -3,12 +3,12 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.top-navbar .mat-button-focus-overlay {
+.mat-button-focus-overlay {
     background-color: transparent !important;
 }
 
 .page-content {
-    padding: 100px;
+    padding: 100px 50px;
 }
 
 /* Material customizations */
@@ -73,22 +73,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-top: 6px !important;
 }
 
+.mat-header-cell {
+    color: #212121 !important;
+    font-size: 14px;
+}
+
+.mat-sort-header-arrow {
+    color: #313131 !important;
+}
+
 /* Custom mat menus */
 
-.language-menu.mat-menu-panel .mat-button-focus-overlay, .profile-menu.mat-menu-panel .mat-button-focus-overlay, .administration-menu.mat-menu-panel .mat-button-focus-overlay, .markup-menu.mat-menu-panel .mat-button-focus-overlay, .detail-link-menu.mat-menu-panel .mat-button-focus-overlay, .detail-url-mode-menu.mat-menu-panel .mat-button-focus-overlay  {
+.mat-menu-panel .mat-button-focus-overlay  {
     background-color: transparent !important;
 }
 
-.language-menu.mat-menu-panel, .profile-menu.mat-menu-panel, .markup-menu.mat-menu-panel, .detail-link-menu.mat-menu-panel, .detail-url-mode-menu.mat-menu-panel {
+.language-menu.mat-menu-panel, .profile-menu.mat-menu-panel, .markup-menu.mat-menu-panel, .detail-link-menu.mat-menu-panel, .detail-url-mode-menu.mat-menu-panel, .administration-menu.mat-menu-panel {
     min-width: 170px !important; 
 }
 
-.profile-menu.mat-menu-panel {
-    min-width: 170px !important; 
-}
-
-.administration-menu.mat-menu-panel {
-    min-width: 170px !important; 
+.action-menu.mat-menu-panel {
+    min-width: 140px !important; 
 }
 
 .markup-menu.mat-menu-panel {

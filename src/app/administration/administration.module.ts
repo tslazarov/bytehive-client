@@ -5,17 +5,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { MaterialModule } from '../utilities/libraries/material.module';
 import { PipesModule } from '../utilities/pipes/pipes.module';
-
-import { CommunicationService } from '../services/communication.service';
+import { registerLocaleData } from "@angular/common";
+import localeBg from '@angular/common/locales/bg';
+import { CommunicationService } from '../services/utilities/communication.service';
 import { ClientService } from '../services/client.service';
 import { DirectivesModule } from '../utilities/directives/directives.module';
 import { AccountService } from '../services/account.service';
-import { AuthLocalService } from '../services/auth.service';
+import { AuthLocalService } from '../services/utilities/auth.service';
 import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { ScrapeRequestsComponent } from './scraperequests/scraperequests.component';
-import { AuthAdminGuardService } from '../services/authadmin-guard.service';
+import { AuthAdminGuardService } from '../services/guards/authadmin-guard.service';
+import { UsersService } from '../services/users.service';
+import { UsersDetailComponent } from './usersdetail/usersdetail.component';
+import { BhDialogsModule } from '../utilities/dialogs/bhdialogs.module';
+
+registerLocaleData(localeBg, 'bg');
 
 @NgModule({
     imports: [
@@ -25,17 +31,20 @@ import { AuthAdminGuardService } from '../services/authadmin-guard.service';
         ReactiveFormsModule,
         MaterialModule,
         PipesModule,
-        DirectivesModule
+        DirectivesModule,
+        BhDialogsModule
     ],
     declarations: [
         DashboardComponent,
         UsersComponent,
-        ScrapeRequestsComponent],
+        ScrapeRequestsComponent,
+        UsersDetailComponent],
     entryComponents: [],
     providers: [
         CommunicationService,
         ClientService,
         AccountService,
+        UsersService,
         AuthLocalService,
         AuthAdminGuardService,
         HttpHeaderHelper

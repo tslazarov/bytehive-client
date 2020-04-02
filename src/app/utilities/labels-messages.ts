@@ -238,6 +238,44 @@ export class LabelsMessages {
                 'bg': 'Валидирай'
             }
         },
+        'users': {
+            'providersLabel': {
+                'en': 'Providers',
+                'bg': 'Източници'
+            },
+            'searchLabel': {
+                'en': 'Search',
+                'bg': 'Търси'
+            },
+            'emailLabel': {
+                'en': 'Email',
+                'bg': 'Имейл'
+            },
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'registrationDateLabel': {
+                'en': 'Registration date',
+                'bg': 'Дата на регистрация'
+            },
+            'requestsLabel': {
+                'en': 'Requests',
+                'bg': 'Заявки'
+            },
+            'detailsLabel': {
+                'en': 'Details',
+                'bg': 'Детайли'
+            },
+            'deleteLabel': {
+                'en': 'Delete',
+                'bg': 'Изтрий'
+            },
+            'confirmDeleteUserLabel': {
+                'en': 'Are you sure you want to delete this user?',
+                'bg': 'Сигурни ли сте, че искате да изтриете този потребител?'
+            }
+        },
         'fileupload': {
             'dragDropLabel': {
                 'en': 'Drag and drop file here',
@@ -352,6 +390,16 @@ export class LabelsMessages {
                 'bg': 'https://www.bytehive.com/news?page=3 -> https://www.bytehive.com/news?page={{page}}'
             }
         },
+        'confirmation-dialog': {
+            'cancelLabel': {
+                'en': 'Cancel',
+                'bg': 'Откажи'
+            },
+            'confirmLabel': {
+                'en': 'Confirm',
+                'bg': 'Потвърди'
+            }
+        },
         'occupation': {
             'studentLabel': {
                 'en': 'Student',
@@ -364,6 +412,32 @@ export class LabelsMessages {
             'otherLabel': {
                 'en': 'Other',
                 'bg': 'Друго'
+            }
+        },
+        'pagination': {
+            'itemsPerPageLabel': {
+                'en': 'Ítems per page',
+                'bg': 'Брой на страница'
+            },
+            'firstPageLabel': {
+                'en': 'First page',
+                'bg': 'Първа страница'
+            },
+            'nextPageLabel': {
+                'en': 'Next page',
+                'bg': 'Следваща страница'
+            },
+            'previousPageLabel': {
+                'en': 'Previous page',
+                'bg': 'Предишна страница'
+            },
+            'lastPageLabel': {
+                'en': 'Last page',
+                'bg': 'Последна страница'
+            },
+            'ofLabel': {
+                'en': 'of',
+                'bg': 'от'
             }
         }
     }

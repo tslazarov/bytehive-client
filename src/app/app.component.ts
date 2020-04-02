@@ -1,10 +1,10 @@
 import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslationService } from './services/translation.service';
+import { TranslationService } from './services/utilities/translation.service';
 import { Constants } from './utilities/constants';
 import { Subject, Subscription } from 'rxjs';
-import { CommunicationService } from './services/communication.service';
-import { AuthLocalService } from './services/auth.service';
+import { CommunicationService } from './services/utilities/communication.service';
+import { AuthLocalService } from './services/utilities/auth.service';
 import { AccountService } from './services/account.service';
 import { AuthService } from 'angularx-social-login';
 import { map } from 'rxjs/operators';

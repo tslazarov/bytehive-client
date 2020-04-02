@@ -3,11 +3,11 @@ import * as jwt_decode from "jwt-decode";
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
-import { environment } from '../../environments/environment';
-import { Constants } from '../utilities/constants';
+import { HttpHeaderHelper } from '../../utilities/helpers/httpheader-helper';
+import { environment } from '../../../environments/environment';
+import { Constants } from '../../utilities/constants';
 import { first } from 'rxjs/operators';
-import { RefreshToken } from '../models/refreshtoken.model';
+import { RefreshToken } from '../../models/refreshtoken.model';
 import { CommunicationService } from './communication.service';
 
 @Injectable()

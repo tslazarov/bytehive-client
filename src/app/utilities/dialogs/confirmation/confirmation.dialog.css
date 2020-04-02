@@ -1,0 +1,33 @@
+.close-icon {
+    background: url(../../../../assets/icons/close-accent.svg);
+}
+
+.close-button {
+    background-color: #ffffff;
+}
+
+.close-button:hover {
+    background-color: #efefef;
+}
+
+.confirm {
+    min-width: 150px;
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.confirm:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.cancel {
+    min-width: 150px;
+    background-color: #efefef;
+    color: #666666;
+}
+
+.cancel:hover {
+    background-color: #efefef;
+    color: #212121;
+}

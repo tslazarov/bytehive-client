@@ -5,8 +5,8 @@ import { HiveComponent } from './hive/hive.component';
 import { FaqComponent } from './faq/faq.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
-import { AuthGuardService } from '../services/auth-guard.service';
-import { SignGuardService } from '../services/sign-guard.service';
+import { AuthGuardService } from '../services/guards/auth-guard.service';
+import { SignGuardService } from '../services/guards/sign-guard.service';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', component: HomeComponent },

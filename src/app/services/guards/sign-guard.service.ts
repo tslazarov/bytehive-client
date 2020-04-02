@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
-import { AuthLocalService } from './auth.service';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { AuthLocalService } from '../utilities/auth.service';
 import { Router } from "@angular/router"
 import { Observable } from 'rxjs';
-import { map, concatMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable()
-export class AuthGuardService implements CanActivate {
+export class SignGuardService implements CanActivate {
 
     constructor(private authLocalService: AuthLocalService,
         private router: Router) {
@@ -16,14 +16,11 @@ export class AuthGuardService implements CanActivate {
         return this.authLocalService.isAuthenticated()
             .pipe(map((authenticated) => {
                 if (authenticated) {
-                    return true;
+                    this.router.navigate(['/']);
+                    return false;
                 }
                 else {
-                    let url = this.getUrl(route);
-                    localStorage.setItem('bh_callback', url);
-
-                    this.router.navigate(['/signin']);
-                    return false;
+                    return true;
                 }
             }));
     }
