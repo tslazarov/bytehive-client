@@ -12,6 +12,9 @@ import { SigninExternalUser } from '../../models/signinexternaluser.model';
 import { StringHelper } from '../../utilities/helpers/String';
 import { OccupationType } from '../../models/enums/occupationtype.enum';
 import { Constants } from '../../utilities/constants';
+import { MatDialog } from '@angular/material';
+import { ResetPasswordData, ResetPasswordDialog } from '../../utilities/dialogs/resetpassword/resetpassword.dialog';
+import { ResetCodeVerification } from '../../models/resetcodeverification.model';
 
 @Component({
     selector: 'app-signin',
@@ -30,6 +33,7 @@ export class SigninComponent implements OnInit, OnDestroy {
 
     constructor(private router: Router,
         private formBuilder: FormBuilder,
+        private dialog: MatDialog,
         private translationService: TranslationService,
         private communicationService: CommunicationService,
         private accountService: AccountService,
@@ -146,6 +150,15 @@ export class SigninComponent implements OnInit, OnDestroy {
                     console.log('error');
                 }
             });
+    }
+
+    resetpassword() {
+        let resetCodeVerification = new ResetPasswordData();
+        let dialogRef = this.dialog.open(ResetPasswordDialog, { width: '30vw', height: '200px', autoFocus: false, data: { resetCodeVerification } });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+        });
     }
 
     navigate(route: string): void {

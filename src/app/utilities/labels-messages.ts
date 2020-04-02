@@ -400,6 +400,20 @@ export class LabelsMessages {
                 'bg': 'Потвърди'
             }
         },
+        'resetpassword-dialog': {
+            'emailLabel': {
+                'en': 'Email',
+                'bg': 'Имейл'
+            },
+            'sendCodeLabel': {
+                'en': 'Send verification code',
+                'bg': 'Изпрати код за верификация'
+            },
+            'savePasswordLabel': {
+                'en': 'Save password',
+                'bg': 'Запази парола'
+            }
+        },
         'occupation': {
             'studentLabel': {
                 'en': 'Student',

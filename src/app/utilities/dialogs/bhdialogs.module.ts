@@ -12,6 +12,7 @@ import { ManualDialog } from './manual/manual.dialog';
 import { AutomaticDialog } from './automatic/automatic.dialog';
 import { PagingInformationDialog } from './paginginformation/paginginformation.dialog';
 import { ConfirmationDialog } from './confirmation/confirmation.dialog';
+import { ResetPasswordDialog } from './resetpassword/resetpassword.dialog';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { ConfirmationDialog } from './confirmation/confirmation.dialog';
         ManualDialog,
         AutomaticDialog,
         PagingInformationDialog,
-        ConfirmationDialog
+        ConfirmationDialog,
+        ResetPasswordDialog
     ],
     imports: [
         MaterialModule,
@@ -40,7 +42,8 @@ import { ConfirmationDialog } from './confirmation/confirmation.dialog';
         ManualDialog,
         AutomaticDialog,
         PagingInformationDialog,
-        ConfirmationDialog
+        ConfirmationDialog,
+        ResetPasswordDialog
     ],
     providers: [
         TranslationService,
