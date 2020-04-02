@@ -11,6 +11,7 @@ import { VisualDialog } from './visual/visual.dialog';
 import { ManualDialog } from './manual/manual.dialog';
 import { AutomaticDialog } from './automatic/automatic.dialog';
 import { PagingInformationDialog } from './paginginformation/paginginformation.dialog';
+import { ConfirmationDialog } from './confirmation/confirmation.dialog';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { PagingInformationDialog } from './paginginformation/paginginformation.d
         VisualDialog,
         ManualDialog,
         AutomaticDialog,
-        PagingInformationDialog
+        PagingInformationDialog,
+        ConfirmationDialog
     ],
     imports: [
         MaterialModule,
@@ -37,7 +39,8 @@ import { PagingInformationDialog } from './paginginformation/paginginformation.d
         VisualDialog,
         ManualDialog,
         AutomaticDialog,
-        PagingInformationDialog
+        PagingInformationDialog,
+        ConfirmationDialog
     ],
     providers: [
         TranslationService,

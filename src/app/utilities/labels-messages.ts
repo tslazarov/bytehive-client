@@ -270,6 +270,10 @@ export class LabelsMessages {
             'deleteLabel': {
                 'en': 'Delete',
                 'bg': 'Изтрий'
+            },
+            'confirmDeleteUserLabel': {
+                'en': 'Are you sure you want to delete this user?',
+                'bg': 'Сигурни ли сте, че искате да изтриете този потребител?'
             }
         },
         'fileupload': {
@@ -384,6 +388,16 @@ export class LabelsMessages {
             'example2Label': {
                 'en': 'https://www.bytehive.com/news?page=3 -> https://www.bytehive.com/news?page={{page}}',
                 'bg': 'https://www.bytehive.com/news?page=3 -> https://www.bytehive.com/news?page={{page}}'
+            }
+        },
+        'confirmation-dialog': {
+            'cancelLabel': {
+                'en': 'Cancel',
+                'bg': 'Откажи'
+            },
+            'confirmLabel': {
+                'en': 'Confirm',
+                'bg': 'Потвърди'
             }
         },
         'occupation': {

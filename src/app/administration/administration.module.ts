@@ -19,6 +19,7 @@ import { ScrapeRequestsComponent } from './scraperequests/scraperequests.compone
 import { AuthAdminGuardService } from '../services/guards/authadmin-guard.service';
 import { UsersService } from '../services/users.service';
 import { UsersDetailComponent } from './usersdetail/usersdetail.component';
+import { BhDialogsModule } from '../utilities/dialogs/bhdialogs.module';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -30,7 +31,8 @@ registerLocaleData(localeBg, 'bg');
         ReactiveFormsModule,
         MaterialModule,
         PipesModule,
-        DirectivesModule
+        DirectivesModule,
+        BhDialogsModule
     ],
     declarations: [
         DashboardComponent,

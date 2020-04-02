@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { Observable, Subscription } from 'rxjs';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { ListUser } from '../../models/listuser.model';
 import { Router } from '@angular/router';
 import { TranslationService } from '../../services/utilities/translation.service';
 import { CommunicationService } from '../../services/utilities/communication.service';
+import { ConfirmationDialog, ConfirmationData } from '../../utilities/dialogs/confirmation/confirmation.dialog';
 
 export const CONDITIONS_FUNCTIONS = {
     "contains": function (value, filteredValue) {
@@ -51,6 +52,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     deleteLabel: string;
 
     constructor(private router: Router,
+        private dialog: MatDialog,
         private usersService: UsersService,
         private translationService: TranslationService,
         private communicationService: CommunicationService) { }
@@ -155,7 +157,28 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
 
     delete(id: string): void {
-        console.log(id);
+
+        let confirmationData = new ConfirmationData();
+        confirmationData.message = this.translationService.localizeValue('confirmDeleteUserLabel', 'users', 'label');
+
+        let dialogRef = this.dialog.open(ConfirmationDialog, { width: '40vw', height: '200px', autoFocus: false, data: confirmationData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.usersService.deleteUser(id)
+                    .subscribe((result) => {
+                        if (result) {
+                            let deletedUserIndex = this.users.map(i => i.id).indexOf(id);
+
+                            this.users.splice(deletedUserIndex, 1);
+                            this.bindDataSource(this.users);
+                        }
+                    }, (error) => {
+                        //TODO: Show error message;
+                    });
+            }
+            console.log(result);
+        });
     }
 
     navigate(route: string): void {

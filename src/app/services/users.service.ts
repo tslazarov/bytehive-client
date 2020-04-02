@@ -20,12 +20,19 @@ export class UsersService {
         return this.http.get(`${environment.apiBaseUrl}${Constants.USER_SERVICE_ALL_ENDPOINT}`, { headers, responseType: 'json' });
     }
 
-
     getUser(id: string): Observable<any> {
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
-        return this.http.get(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_SIGNOUT_ENDPOINT}?id=${id}`, { headers, responseType: 'json' });
+        return this.http.get(`${environment.apiBaseUrl}${Constants.USER_SERVICE_DETAIL_ENDPOINT}?id=${id}`, { headers, responseType: 'json' });
+    }
+
+    deleteUser(id: string): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.delete(`${environment.apiBaseUrl}${Constants.USER_SERVICE_DELETE_ENDPOINT}?id=${id}`, { headers, responseType: 'json' });
     }
 }

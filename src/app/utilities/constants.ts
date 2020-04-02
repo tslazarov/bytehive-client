@@ -15,4 +15,5 @@ export class Constants {
     static readonly USER_SERVICE_BASE_ENDPOINT = 'api/users/';
     static readonly USER_SERVICE_ALL_ENDPOINT = 'api/users/all';
     static readonly USER_SERVICE_DETAIL_ENDPOINT = 'api/users/detail';
+    static readonly USER_SERVICE_DELETE_ENDPOINT = 'api/users/delete';
 }
