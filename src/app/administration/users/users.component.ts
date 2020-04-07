@@ -161,7 +161,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         let confirmationData = new ConfirmationData();
         confirmationData.message = this.translationService.localizeValue('confirmDeleteUserLabel', 'users', 'label');
 
-        let dialogRef = this.dialog.open(ConfirmationDialog, { width: '40vw', height: '200px', autoFocus: false, data: confirmationData });
+        let dialogRef = this.dialog.open(ConfirmationDialog, { width: '40vw', minHeight: '200px', autoFocus: false, data: confirmationData });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {

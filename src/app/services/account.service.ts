@@ -7,6 +7,8 @@ import { Constants } from '../utilities/constants';
 import { SigninUser } from '../models/signinuser.model.';
 import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 import { SigninExternalUser } from '../models/signinexternaluser.model';
+import { ResetCodeVerification } from '../models/resetcodeverification.model';
+import { ResetPasswordVerification } from '../models/resetpasswordverification.model';
 
 @Injectable()
 export class AccountService {
@@ -42,5 +44,19 @@ export class AccountService {
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
         return this.http.get(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_SIGNOUT_ENDPOINT}`, { headers, responseType: 'json' });
+    }
+
+    resetcode(resetCodeVerification: ResetCodeVerification): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+
+        return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_RESET_CODE_ENDPOINT}`, resetCodeVerification, { headers, responseType: 'json' });
+    }
+
+    resetpassword(resetPasswordVerification: ResetPasswordVerification): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+
+        return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_RESET_PASSWORD_ENDPOINT}`, resetPasswordVerification, { headers, responseType: 'json' });
     }
 }

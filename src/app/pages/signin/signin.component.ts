@@ -12,6 +12,9 @@ import { SigninExternalUser } from '../../models/signinexternaluser.model';
 import { StringHelper } from '../../utilities/helpers/String';
 import { OccupationType } from '../../models/enums/occupationtype.enum';
 import { Constants } from '../../utilities/constants';
+import { MatDialog } from '@angular/material';
+import { ResetPasswordData, ResetPasswordDialog } from '../../utilities/dialogs/resetpassword/resetpassword.dialog';
+import { ResetCodeVerification } from '../../models/resetcodeverification.model';
 
 @Component({
     selector: 'app-signin',
@@ -21,6 +24,7 @@ import { Constants } from '../../utilities/constants';
 export class SigninComponent implements OnInit, OnDestroy {
     // common
     showPassword: boolean;
+    showLoading: boolean;
 
     // subscriptions
     socialSigninSubscription: Subscription;
@@ -30,6 +34,7 @@ export class SigninComponent implements OnInit, OnDestroy {
 
     constructor(private router: Router,
         private formBuilder: FormBuilder,
+        private dialog: MatDialog,
         private translationService: TranslationService,
         private communicationService: CommunicationService,
         private accountService: AccountService,
@@ -71,8 +76,11 @@ export class SigninComponent implements OnInit, OnDestroy {
         user.email = this.signinFormGroup.value.email;
         user.password = this.signinFormGroup.value.password;
 
+        this.showLoading = true;
+
         this.accountService.signin(user)
             .subscribe(result => {
+                this.showLoading = false;
                 if (result) {
                     this.authLocalService.signin(result);
                     let callback = localStorage.getItem('bh_callback');
@@ -89,6 +97,7 @@ export class SigninComponent implements OnInit, OnDestroy {
                     }
                 }
             }, err => {
+                this.showLoading = false;
                 if (err.status == 500) {
                     console.log('error');
                 }
@@ -115,8 +124,11 @@ export class SigninComponent implements OnInit, OnDestroy {
         signinExternalUser.defaultLanguage = this.translationService.getLanguage() == 'en' ? 0 : 1;
         signinExternalUser.occupation = OccupationType.Other;
 
+        this.showLoading = true;
+
         this.accountService.signinExternal(signinExternalUser)
             .subscribe(result => {
+                this.showLoading = false;
                 if (result) {
                     this.authLocalService.signin(result);
                     let callback = localStorage.getItem('bh_callback');
@@ -142,10 +154,20 @@ export class SigninComponent implements OnInit, OnDestroy {
                 }
                 console.log(result);
             }, err => {
+                this.showLoading = false;
                 if (err.status == 500) {
                     console.log('error');
                 }
             });
+    }
+
+    resetpassword() {
+        let resetCodeVerification = new ResetPasswordData();
+        let dialogRef = this.dialog.open(ResetPasswordDialog, { width: '450px', minHeight: '100px', autoFocus: false, data: { resetCodeVerification } });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(result);
+        });
     }
 
     navigate(route: string): void {

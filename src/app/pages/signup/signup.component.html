@@ -4,79 +4,84 @@
 
         </div>
         <div class="col-lg-5 col-md-12 center signup-side">
-            <div [formGroup]="signupFormGroup" class="mb-2">
-                <mat-form-field floatLabel="never" class="pb-4 signup-field">
-                    <mat-label>{{emailLabel | localize: 'emailLabel':'signup':'label'}}</mat-label>
-                    <input matInput autocomplete="off" formControlName="email">
-                    <span matSuffix class="required">*</span>
-                    <mat-error *ngIf="signupFormGroup.hasError('required', 'email')">
-                        {{emailRequiredErrorLabel | localize: 'emailRequiredErrorLabel':'signup':'label'}}
-                    </mat-error>
-                    <mat-error *ngIf="signupFormGroup.hasError('email', 'email')">
-                        {{emailPatternErrorLabel | localize: 'emailPatternErrorLabel':'signup':'label'}}
-                    </mat-error>
-                </mat-form-field>
-                <div formGroupName="password">
-                    <div>
-                        <mat-form-field floatLabel="never" class="pb-4 signup-field">
-                            <mat-label>{{passwordLabel | localize: 'passwordLabel':'signup':'label'}}</mat-label>
-                            <input matInput autocomplete="off" formControlName="password" [type]="showPassword ? 'text' : 'password'">
-                            <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
-                            <mat-error *ngIf="signupFormGroup.get('password').hasError('required', 'password')">
-                                {{passwordRequiredErrorLabel | localize: 'passwordRequiredErrorLabel':'signup':'label'}}
-                            </mat-error>
-                            <mat-error *ngIf="signupFormGroup.get('password').hasError('minlength', 'password')">
-                                {{passwordLengthErrorLabel | localize: 'passwordLengthErrorLabel':'signup':'label'}}
-                            </mat-error>
-                        </mat-form-field>
-                    </div>
-                    <div>
-                        <mat-form-field floatLabel="never" class="pb-4 signup-field">
-                            <mat-label>{{confirmPasswordLabel | localize: 'confirmPasswordLabel':'signup':'label'}}</mat-label>
-                            <input matInput autocomplete="off" formControlName="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'" type="password"
-                                [errorStateMatcher]="confirmPasswordMatcher">
-                            <span matSuffix (click)="showConfirmPassword = !showConfirmPassword" class="{{showConfirmPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
-                            <mat-error *ngIf="signupFormGroup.get('password').errors">
-                                {{confirmPasswordMatchErrorLabel | localize: 'confirmPasswordMatchErrorLabel':'signup':'label'}}
-                            </mat-error>
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div>
-                    <mat-form-field floatLabel="never" class="pb-4 signup-field">
-                        <mat-label>{{firstNameLabel | localize: 'firstNameLabel':'signup':'label'}}</mat-label>
-                        <input matInput autocomplete="off" formControlName="firstName">
-                        <span matSuffix class="required">*</span>
-                        <mat-error *ngIf="signupFormGroup.hasError('required', 'firstName')">
-                            {{firstNameRequiredErrorLabel | localize: 'firstNameRequiredErrorLabel':'signup':'label'}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field floatLabel="never" class="pb-4 signup-field">
-                        <mat-label>{{lastNameLabel | localize: 'lastNameLabel':'signup':'label'}}</mat-label>
-                        <input matInput autocomplete="off" formControlName="lastName">
-                        <span matSuffix class="required">*</span>
-                        <mat-error *ngIf="signupFormGroup.hasError('required', 'lastName')">
-                            {{lastNameRequiredErrorLabel | localize: 'lastNameRequiredErrorLabel':'signup':'label'}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field class="pb-4 signup-field">
-                        <mat-label>{{occupationLabel | localize: 'occupationLabel':'signup':'label'}}</mat-label>
-                        <mat-select formControlName="occupation">
-                            <mat-option *ngFor="let occupation of occupations" [value]="occupation.value">
-                                {{occupation.label}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
+            <div *ngIf="showLoading" class="loading-wrapper">
+                <mat-spinner></mat-spinner>
             </div>
-            <button disableRipple mat-flat-button [ngClass]="signupFormGroup.invalid ? 'signup disabled': 'signup'" (click)="signup()"
-                [disabled]="signupFormGroup.invalid">
-                {{signupLabel | localize: 'signupLabel':'signup':'label' | uppercase}}
-            </button>
+            <div *ngIf="!showLoading">
+                <div [formGroup]="signupFormGroup" class="mb-2">
+                    <mat-form-field floatLabel="never" class="pb-4 signup-field">
+                        <mat-label>{{emailLabel | localize: 'emailLabel':'signup':'label'}}</mat-label>
+                        <input matInput autocomplete="off" formControlName="email">
+                        <span matSuffix class="required">*</span>
+                        <mat-error *ngIf="signupFormGroup.hasError('required', 'email')">
+                            {{emailRequiredErrorLabel | localize: 'emailRequiredErrorLabel':'signup':'label'}}
+                        </mat-error>
+                        <mat-error *ngIf="signupFormGroup.hasError('email', 'email')">
+                            {{emailPatternErrorLabel | localize: 'emailPatternErrorLabel':'signup':'label'}}
+                        </mat-error>
+                    </mat-form-field>
+                    <div formGroupName="password">
+                        <div>
+                            <mat-form-field floatLabel="never" class="pb-4 signup-field">
+                                <mat-label>{{passwordLabel | localize: 'passwordLabel':'signup':'label'}}</mat-label>
+                                <input matInput autocomplete="off" formControlName="password" [type]="showPassword ? 'text' : 'password'">
+                                <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
+                                <mat-error *ngIf="signupFormGroup.get('password').hasError('required', 'password')">
+                                    {{passwordRequiredErrorLabel | localize: 'passwordRequiredErrorLabel':'signup':'label'}}
+                                </mat-error>
+                                <mat-error *ngIf="signupFormGroup.get('password').hasError('minlength', 'password')">
+                                    {{passwordLengthErrorLabel | localize: 'passwordLengthErrorLabel':'signup':'label'}}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field floatLabel="never" class="pb-4 signup-field">
+                                <mat-label>{{confirmPasswordLabel | localize: 'confirmPasswordLabel':'signup':'label'}}</mat-label>
+                                <input matInput autocomplete="off" formControlName="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'" type="password"
+                                    [errorStateMatcher]="confirmPasswordMatcher">
+                                <span matSuffix (click)="showConfirmPassword = !showConfirmPassword" class="{{showConfirmPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
+                                <mat-error *ngIf="signupFormGroup.get('password').errors">
+                                    {{confirmPasswordMatchErrorLabel | localize: 'confirmPasswordMatchErrorLabel':'signup':'label'}}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div>
+                        <mat-form-field floatLabel="never" class="pb-4 signup-field">
+                            <mat-label>{{firstNameLabel | localize: 'firstNameLabel':'signup':'label'}}</mat-label>
+                            <input matInput autocomplete="off" formControlName="firstName">
+                            <span matSuffix class="required">*</span>
+                            <mat-error *ngIf="signupFormGroup.hasError('required', 'firstName')">
+                                {{firstNameRequiredErrorLabel | localize: 'firstNameRequiredErrorLabel':'signup':'label'}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field floatLabel="never" class="pb-4 signup-field">
+                            <mat-label>{{lastNameLabel | localize: 'lastNameLabel':'signup':'label'}}</mat-label>
+                            <input matInput autocomplete="off" formControlName="lastName">
+                            <span matSuffix class="required">*</span>
+                            <mat-error *ngIf="signupFormGroup.hasError('required', 'lastName')">
+                                {{lastNameRequiredErrorLabel | localize: 'lastNameRequiredErrorLabel':'signup':'label'}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="pb-4 signup-field">
+                            <mat-label>{{occupationLabel | localize: 'occupationLabel':'signup':'label'}}</mat-label>
+                            <mat-select formControlName="occupation">
+                                <mat-option *ngFor="let occupation of occupations" [value]="occupation.value">
+                                    {{occupation.label}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button disableRipple mat-flat-button [ngClass]="signupFormGroup.invalid ? 'signup disabled': 'signup'" (click)="signup()"
+                    [disabled]="signupFormGroup.invalid">
+                    {{signupLabel | localize: 'signupLabel':'signup':'label' | uppercase}}
+                </button>
+            </div>
         </div>
         <div class="col-lg-5 col-md-12 center image-side">
             <!-- <img src="../../../assets/images/signup.png" class="image" /> -->

@@ -10,6 +10,7 @@ import { Occupation } from '../../models/occupation.model';
 import { Subscription } from 'rxjs';
 import { AuthLocalService } from '../../services/utilities/auth.service';
 import { Router } from '@angular/router';
+import { NotifierService } from "angular-notifier";
 
 @Component({
     selector: 'app-signup',
@@ -23,9 +24,11 @@ export class SignupComponent implements OnInit {
 
     // common
     occupations: Occupation[];
+    notifier: NotifierService;
     confirmPasswordMatcher: BhConfirmPasswordMatcher;
     showPassword: boolean;
     showConfirmPassword: boolean;
+    showLoading: boolean;
 
     // subscriptions
     languageChangeSubscription: Subscription;
@@ -51,7 +54,10 @@ export class SignupComponent implements OnInit {
         private communicationService: CommunicationService,
         private accountService: AccountService,
         private authLocalService: AuthLocalService,
-        private router: Router) { }
+        notifier: NotifierService,
+        private router: Router) {
+        this.notifier = notifier;
+    }
 
     ngOnInit(): void {
 
@@ -75,6 +81,8 @@ export class SignupComponent implements OnInit {
             this.setLabelsMessages();
             this.buildOccupationOptions();
         });
+
+        this.notifier.notify("success", "You are awesome! I mean it!");
     }
 
     ngOnDestroy(): void {
@@ -124,8 +132,11 @@ export class SignupComponent implements OnInit {
         user.occupation = this.signupFormGroup.value.occupation ? this.signupFormGroup.value.occupation : OccupationType.Other;
         user.defaultLanguage = this.translationService.getLanguage() == 'en' ? 0 : 1;
 
+        this.showLoading = true;
+
         this.accountService.signup(user)
             .subscribe(result => {
+                this.showLoading = false;
                 if (result) {
                     this.authLocalService.signin(result);
                     let callback = localStorage.getItem('bh_callback');
@@ -142,6 +153,7 @@ export class SignupComponent implements OnInit {
                     }
                 }
             }, err => {
+                this.showLoading = false;
                 if (err.status == 400) {
                     console.log('show duplicate email');
                 } else if (err.status == 500) {
