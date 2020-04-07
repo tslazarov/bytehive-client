@@ -4,54 +4,59 @@
 
         </div>
         <div class="col-lg-5 col-md-12 center signin-side">
-            <div [formGroup]="signinFormGroup">
-                <div>
-                    <mat-form-field floatLabel="never" class="pb-4 signin-field">
-                        <mat-label>Email</mat-label>
-                        <input matInput autocomplete="off" formControlName="email">
-                        <span matSuffix class="required">*</span>
-                        <mat-error *ngIf="signinFormGroup.hasError('required', 'email')">
-                            Please enter email
-                        </mat-error>
-                    </mat-form-field>
+            <div *ngIf="showLoading" class="loading-wrapper">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div *ngIf="!showLoading">
+                <div [formGroup]="signinFormGroup">
+                    <div>
+                        <mat-form-field floatLabel="never" class="pb-4 signin-field">
+                            <mat-label>Email</mat-label>
+                            <input matInput autocomplete="off" formControlName="email">
+                            <span matSuffix class="required">*</span>
+                            <mat-error *ngIf="signinFormGroup.hasError('required', 'email')">
+                                Please enter email
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field floatLabel="never" class="pb-4 signin-field">
+                            <mat-label>Password</mat-label>
+                            <input matInput autocomplete="off" formControlName="password" [type]="showPassword ? 'text' : 'password'">
+                            <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
+                            <mat-error *ngIf="signinFormGroup.get('password').hasError('required', 'password')">
+                                Please enter your password
+                            </mat-error>
+                            <mat-error *ngIf="signinFormGroup.hasError('minlength', 'password')">
+                                Please length your password
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
                 <div>
-                    <mat-form-field floatLabel="never" class="pb-4 signin-field">
-                        <mat-label>Password</mat-label>
-                        <input matInput autocomplete="off" formControlName="password" [type]="showPassword ? 'text' : 'password'">
-                        <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
-                        <mat-error *ngIf="signinFormGroup.get('password').hasError('required', 'password')">
-                            Please enter your password
-                        </mat-error>
-                        <mat-error *ngIf="signinFormGroup.hasError('minlength', 'password')">
-                            Please length your password
-                        </mat-error>
-                    </mat-form-field>
+                    <button disableRipple mat-flat-button class="signin mt-2" (click)="signin()">
+                        SIGN IN
+                    </button>
                 </div>
-            </div>
-            <div>
-                <button disableRipple mat-flat-button class="signin mt-2" (click)="signin()">
-                    SIGN IN
-                </button>
-            </div>
-            <div class="center pt-2 signup-button">
-                <span (click)="resetpassword()">Forgot your password?</span>
-            </div>
-            <div class="divider center">
+                <div class="center pt-2 signup-button">
+                    <span (click)="resetpassword()">Forgot your password?</span>
+                </div>
+                <div class="divider center">
 
-            </div>
-            <div>
-                <button disableRipple mat-flat-button class="signin-facebook" (click)="signinFacebook()">
-                    SIGN IN WITH FACEBOOK
-                </button>
-            </div>
-            <div>
-                <button disableRipple mat-flat-button class="signin-google mt-2" (click)="signinGoogle()">
-                    SIGN IN WITH GOOGLE
-                </button>
-            </div>
-            <div class="center pt-2 signup-button">
-                <span (click)="navigate('/signup')">Don't have an account? Sign up here.</span>
+                </div>
+                <div>
+                    <button disableRipple mat-flat-button class="signin-facebook" (click)="signinFacebook()">
+                        SIGN IN WITH FACEBOOK
+                    </button>
+                </div>
+                <div>
+                    <button disableRipple mat-flat-button class="signin-google mt-2" (click)="signinGoogle()">
+                        SIGN IN WITH GOOGLE
+                    </button>
+                </div>
+                <div class="center pt-2 signup-button">
+                    <span (click)="navigate('/signup')">Don't have an account? Sign up here.</span>
+                </div>
             </div>
         </div>
         <div class="col-lg-5 col-md-12 center image-side">

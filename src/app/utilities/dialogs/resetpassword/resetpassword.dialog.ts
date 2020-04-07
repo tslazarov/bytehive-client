@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BhValidators } from '../../validators/bhvalidators';
 import { AccountService } from '../../../services/account.service';
 import { ResetCodeVerification } from '../../../models/resetcodeverification.model';
+import { ResetPasswordVerification } from '../../../models/resetpasswordverification.model';
 
 @Component({
     selector: 'resetpassword-dialog',
@@ -13,14 +14,26 @@ import { ResetCodeVerification } from '../../../models/resetcodeverification.mod
 })
 export class ResetPasswordDialog {
 
-    // labels
-    emailLabel: string;
-    sendCodeLabel: string;
-    savePasswordLabel: string;
+    codeSent: boolean;
+    showLoading: boolean;
 
     resetCodeFormGroup: FormGroup;
     resetPasswordFormGroup: FormGroup;
 
+    // labels
+    emailLabel: string;
+    emailRequiredErrorLabel: string;
+    emailPatternErrorLabel: string;
+    verificationCodeLabel: string;
+    verificationCodeRequiredErrorLabel: string;
+    passwordLabel: string;
+    passwordRequiredErrorLabel: string;
+    passwordLengthErrorLabel: string;
+    confirmPasswordLabel: string;
+    confirmPasswordMatchErrorLabel: string;
+    resetPasswordLabel: string;
+    sendCodeLabel: string;
+    savePasswordLabel: string;
 
     constructor(public dialogRef: MatDialogRef<ResetPasswordDialog>,
         private translationService: TranslationService,
@@ -29,8 +42,11 @@ export class ResetPasswordDialog {
         @Inject(MAT_DIALOG_DATA) public data: any) {
         this.setLabelsMessages();
 
+        this.codeSent = false;
+        this.showLoading = false;
+
         this.resetCodeFormGroup = this.formBuilder.group({
-            email: ['', [Validators.required]]
+            email: ['', [Validators.required, Validators.email]]
         });
 
         this.resetPasswordFormGroup = this.formBuilder.group({
@@ -44,19 +60,53 @@ export class ResetPasswordDialog {
 
     setLabelsMessages(): void {
         this.emailLabel = this.translationService.localizeValue('emailLabel', 'resetpassword-dialog', 'label');
+        this.emailRequiredErrorLabel = this.translationService.localizeValue('emailRequiredErrorLabel', 'resetpassword-dialog', 'label');
+        this.emailPatternErrorLabel = this.translationService.localizeValue('emailPatternErrorLabel', 'resetpassword-dialog', 'label');
+        this.verificationCodeLabel = this.translationService.localizeValue('verificationCodeLabel', 'resetpassword-dialog', 'label');
+        this.verificationCodeRequiredErrorLabel = this.translationService.localizeValue('verificationCodeRequiredErrorLabel', 'resetpassword-dialog', 'label');
+        this.passwordLabel = this.translationService.localizeValue('passwordLabel', 'resetpassword-dialog', 'label');
+        this.passwordRequiredErrorLabel = this.translationService.localizeValue('passwordRequiredErrorLabel', 'resetpassword-dialog', 'label');
+        this.passwordLengthErrorLabel = this.translationService.localizeValue('passwordLengthErrorLabel', 'resetpassword-dialog', 'label');
+        this.confirmPasswordLabel = this.translationService.localizeValue('confirmPasswordLabel', 'resetpassword-dialog', 'label');
+        this.confirmPasswordMatchErrorLabel = this.translationService.localizeValue('confirmPasswordMatchErrorLabel', 'resetpassword-dialog', 'label');
         this.sendCodeLabel = this.translationService.localizeValue('sendCodeLabel', 'resetpassword-dialog', 'label');
         this.savePasswordLabel = this.translationService.localizeValue('savePasswordLabel', 'resetpassword-dialog', 'label');
+    }
+
+    close(): void {
+        this.dialogRef.close();
     }
 
     sendCode(): void {
         let resetCodeVerification = new ResetCodeVerification();
         resetCodeVerification.email = this.resetCodeFormGroup.value.email;
 
+        this.showLoading = true;
+
         this.accountService.resetcode(resetCodeVerification)
             .subscribe((result) => {
-                console.log(result);
-                // TODO: change view
+                this.codeSent = true;
+                this.showLoading = false;
             }, (error) => {
+                this.showLoading = false;
+            });
+    }
+
+    resetPassword(): void {
+        let resetPasswordVerification = new ResetPasswordVerification();
+        resetPasswordVerification.email = this.resetCodeFormGroup.value.email;
+        resetPasswordVerification.code = this.resetPasswordFormGroup.value.code;
+        resetPasswordVerification.password = this.resetPasswordFormGroup.controls['password'].value.password;
+        resetPasswordVerification.confirmPassword = this.resetPasswordFormGroup.controls['password'].value.confirmPassword;
+
+        this.showLoading = true;
+
+        this.accountService.resetpassword(resetPasswordVerification)
+            .subscribe((result) => {
+                console.log(result);
+                this.showLoading = false;
+            }, (error) => {
+                this.showLoading = false;
             });
     }
 }

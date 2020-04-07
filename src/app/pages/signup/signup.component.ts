@@ -26,6 +26,7 @@ export class SignupComponent implements OnInit {
     confirmPasswordMatcher: BhConfirmPasswordMatcher;
     showPassword: boolean;
     showConfirmPassword: boolean;
+    showLoading: boolean;
 
     // subscriptions
     languageChangeSubscription: Subscription;
@@ -124,8 +125,11 @@ export class SignupComponent implements OnInit {
         user.occupation = this.signupFormGroup.value.occupation ? this.signupFormGroup.value.occupation : OccupationType.Other;
         user.defaultLanguage = this.translationService.getLanguage() == 'en' ? 0 : 1;
 
+        this.showLoading = true;
+
         this.accountService.signup(user)
             .subscribe(result => {
+                this.showLoading = false;
                 if (result) {
                     this.authLocalService.signin(result);
                     let callback = localStorage.getItem('bh_callback');
@@ -142,6 +146,7 @@ export class SignupComponent implements OnInit {
                     }
                 }
             }, err => {
+                this.showLoading = false;
                 if (err.status == 400) {
                     console.log('show duplicate email');
                 } else if (err.status == 500) {

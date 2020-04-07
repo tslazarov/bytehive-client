@@ -11,6 +11,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 100px 50px;
 }
 
+.loading-wrapper {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    height: calc(100% - 20px);
+}
+
 /* Material customizations */
 
 .mat-selected .mat-active {

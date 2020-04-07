@@ -87,7 +87,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         let automaticData = new AutomaticData();
         automaticData.markup = fieldMapping.formGroup.value.fieldMarkup;
 
-        let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', height: '380px', autoFocus: false, data: automaticData });
+        let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', minHeight: '380px', autoFocus: false, data: automaticData });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(result);
@@ -127,7 +127,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         let manualData = new ManualData();
         manualData.markup = fieldMapping.formGroup.value.fieldMarkup;
 
-        let dialogRef = this.dialog.open(ManualDialog, { width: '60vw', height: '380px', autoFocus: false, data: manualData });
+        let dialogRef = this.dialog.open(ManualDialog, { width: '60vw', minHeight: '380px', autoFocus: false, data: manualData });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.markup) {

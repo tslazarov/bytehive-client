@@ -109,7 +109,7 @@ export class DatasourceComponent implements OnInit, OnDestroy {
     }
 
     pagingInformation(): void {
-        let dialogRef = this.dialog.open(PagingInformationDialog, { width: '50vw', height: '220px', autoFocus: false });
+        let dialogRef = this.dialog.open(PagingInformationDialog, { width: '50vw', minHeight: '220px', autoFocus: false });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(result);
@@ -120,7 +120,7 @@ export class DatasourceComponent implements OnInit, OnDestroy {
         let automaticData = new AutomaticData();
         automaticData.markup = this.parentForm.value.detailMarkup;
 
-        let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', height: '380px', autoFocus: false, data: automaticData });
+        let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', minHeight: '380px', autoFocus: false, data: automaticData });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(result);
@@ -161,7 +161,7 @@ export class DatasourceComponent implements OnInit, OnDestroy {
         let manualData = new ManualData();
         manualData.markup = this.parentForm.value.detailMarkup;
 
-        let dialogRef = this.dialog.open(ManualDialog, { width: '60vw', height: '380px', autoFocus: false, data: manualData });
+        let dialogRef = this.dialog.open(ManualDialog, { width: '60vw', minHeight: '380px', autoFocus: false, data: manualData });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.markup) {

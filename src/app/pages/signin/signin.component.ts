@@ -24,6 +24,7 @@ import { ResetCodeVerification } from '../../models/resetcodeverification.model'
 export class SigninComponent implements OnInit, OnDestroy {
     // common
     showPassword: boolean;
+    showLoading: boolean;
 
     // subscriptions
     socialSigninSubscription: Subscription;
@@ -75,8 +76,11 @@ export class SigninComponent implements OnInit, OnDestroy {
         user.email = this.signinFormGroup.value.email;
         user.password = this.signinFormGroup.value.password;
 
+        this.showLoading = true;
+
         this.accountService.signin(user)
             .subscribe(result => {
+                this.showLoading = false;
                 if (result) {
                     this.authLocalService.signin(result);
                     let callback = localStorage.getItem('bh_callback');
@@ -93,6 +97,7 @@ export class SigninComponent implements OnInit, OnDestroy {
                     }
                 }
             }, err => {
+                this.showLoading = false;
                 if (err.status == 500) {
                     console.log('error');
                 }
@@ -119,8 +124,11 @@ export class SigninComponent implements OnInit, OnDestroy {
         signinExternalUser.defaultLanguage = this.translationService.getLanguage() == 'en' ? 0 : 1;
         signinExternalUser.occupation = OccupationType.Other;
 
+        this.showLoading = true;
+
         this.accountService.signinExternal(signinExternalUser)
             .subscribe(result => {
+                this.showLoading = false;
                 if (result) {
                     this.authLocalService.signin(result);
                     let callback = localStorage.getItem('bh_callback');
@@ -146,6 +154,7 @@ export class SigninComponent implements OnInit, OnDestroy {
                 }
                 console.log(result);
             }, err => {
+                this.showLoading = false;
                 if (err.status == 500) {
                     console.log('error');
                 }
@@ -154,7 +163,7 @@ export class SigninComponent implements OnInit, OnDestroy {
 
     resetpassword() {
         let resetCodeVerification = new ResetPasswordData();
-        let dialogRef = this.dialog.open(ResetPasswordDialog, { width: '30vw', height: '200px', autoFocus: false, data: { resetCodeVerification } });
+        let dialogRef = this.dialog.open(ResetPasswordDialog, { width: '450px', minHeight: '100px', autoFocus: false, data: { resetCodeVerification } });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(result);
