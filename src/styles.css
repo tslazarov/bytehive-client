@@ -8,7 +8,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .page-content {
-    padding: 100px 50px;
+    padding: 70px 50px 0px 50px;
 }
 
 .loading-wrapper {
@@ -19,6 +19,38 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 /* Material customizations */
+.notifier__notification--material {
+    border-radius: 2px !important;
+}
+
+.notifier__notification-button-icon {
+    fill: #FFF;
+}
+
+.notifier__notification--default {
+    background-color: #444;
+    color: #FFF;
+}
+
+.notifier__notification--error {
+    background-color: #D32F2F;
+    color: #FFF;
+}
+
+.notifier__notification--info {
+    background-color: #5BC0DE;
+    color: #FFF;
+}
+
+.notifier__notification--warning {
+    background-color: #F0AD4E;
+    color: #FFF;
+}
+
+.notifier__notification--success {
+    background-color: #4CAF50;
+    color: #FFF;
+}
 
 .mat-selected .mat-active {
     color: #000000 !important;

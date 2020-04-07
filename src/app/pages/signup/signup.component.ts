@@ -10,6 +10,7 @@ import { Occupation } from '../../models/occupation.model';
 import { Subscription } from 'rxjs';
 import { AuthLocalService } from '../../services/utilities/auth.service';
 import { Router } from '@angular/router';
+import { NotifierService } from "angular-notifier";
 
 @Component({
     selector: 'app-signup',
@@ -23,6 +24,7 @@ export class SignupComponent implements OnInit {
 
     // common
     occupations: Occupation[];
+    notifier: NotifierService;
     confirmPasswordMatcher: BhConfirmPasswordMatcher;
     showPassword: boolean;
     showConfirmPassword: boolean;
@@ -52,7 +54,10 @@ export class SignupComponent implements OnInit {
         private communicationService: CommunicationService,
         private accountService: AccountService,
         private authLocalService: AuthLocalService,
-        private router: Router) { }
+        notifier: NotifierService,
+        private router: Router) {
+        this.notifier = notifier;
+    }
 
     ngOnInit(): void {
 
@@ -76,6 +81,8 @@ export class SignupComponent implements OnInit {
             this.setLabelsMessages();
             this.buildOccupationOptions();
         });
+
+        this.notifier.notify("success", "You are awesome! I mean it!");
     }
 
     ngOnDestroy(): void {
