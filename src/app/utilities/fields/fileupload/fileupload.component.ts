@@ -30,7 +30,7 @@ export class FileuploadComponent implements OnInit, OnDestroy {
     constructor(private communicationService: CommunicationService,
         private translationService: TranslationService) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.files = [];
 
         this.setLabelsMessages();
@@ -40,32 +40,32 @@ export class FileuploadComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.languageChangeSubscription.unsubscribe();
     }
 
-    setLabelsMessages() {
+    setLabelsMessages(): void {
         this.dragDropLabel = this.translationService.localizeValue('dragDropLabel', 'fileupload', 'label');
         this.orLabel = this.translationService.localizeValue('orLabel', 'fileupload', 'label');
         this.browseFileLabel = this.translationService.localizeValue('browseFileLabel', 'fileupload', 'label');
         this.fileInstructionsLabel = this.translationService.localizeValue('fileInstructionsLabel', 'fileupload', 'label');
     }
 
-    onFileDropped($event) {
+    onFileDropped($event): void {
         this.prepareFilesList($event);
     }
 
-    fileBrowseHandler(files) {
+    fileBrowseHandler(files): void {
         if (files.length > 0 && files[0].type == 'text/plain') {
             this.prepareFilesList(files);
         }
     }
 
-    deleteFile(index: number) {
+    deleteFile(index: number): void {
         this.files.splice(index, 1);
     }
 
-    uploadFilesSimulator(index: number) {
+    uploadFilesSimulator(index: number): void {
         const progressInterval = setInterval(() => {
             if (this.files[index].progress === 100) {
                 clearInterval(progressInterval);
@@ -76,7 +76,7 @@ export class FileuploadComponent implements OnInit, OnDestroy {
         }, 1);
     }
 
-    prepareFilesList(files: Array<any>) {
+    prepareFilesList(files: Array<any>): void {
         this.deleteFile(0);
 
         for (const item of files) {
@@ -86,7 +86,7 @@ export class FileuploadComponent implements OnInit, OnDestroy {
         this.uploadFilesSimulator(0);
     }
 
-    parseFileContent() {
+    parseFileContent(): void {
         let fileReader = new FileReader();
         fileReader.onload = (e) => {
             let lines = fileReader.result.toString().split(/[\r\n]+/);
@@ -100,7 +100,7 @@ export class FileuploadComponent implements OnInit, OnDestroy {
         fileReader.readAsText(this.files[0]);
     }
 
-    formatBytes(bytes, decimals) {
+    formatBytes(bytes, decimals): string {
         if (bytes === 0) {
             return '0 Bytes';
         }

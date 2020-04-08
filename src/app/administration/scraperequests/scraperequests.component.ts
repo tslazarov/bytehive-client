@@ -9,7 +9,7 @@ export class ScrapeRequestsComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() {
+    ngOnInit(): void {
     }
 
 }

@@ -17,9 +17,9 @@ export class LabelsMessages {
                 'en': 'Sign in',
                 'bg': 'Влез'
             },
-            'settingsLabel': {
-                'en': 'Settings',
-                'bg': 'Настройки'
+            'profileLabel': {
+                'en': 'Profile',
+                'bg': 'Профил'
             },
             'signoutLabel': {
                 'en': 'Sign out',
@@ -98,6 +98,36 @@ export class LabelsMessages {
             'signupLabel': {
                 'en': 'Sign up',
                 'bg': 'Регистрирай се'
+            }
+        },
+        'profile': {
+            'myRequestsLabel': {
+                'en': 'My requests',
+                'bg': 'Моите заявки'
+            },
+            'myOrdersLabel': {
+                'en': 'My orders',
+                'bg': 'Моите поръчки'
+            },
+            'personalInformationLabel': {
+                'en': 'Personal information',
+                'bg': 'Лична информация'
+            },
+            'securityLabel': {
+                'en': 'Security',
+                'bg': 'Сигурност'
+            },
+            'rewardsLabel': {
+                'en': 'Rewards',
+                'bg': 'Награди'
+            },
+            'preferencesLabel': {
+                'en': 'Preferences',
+                'bg': 'Настройки'
+            },
+            'signoutLabel': {
+                'en': 'Sign out',
+                'bg': 'Излез'
             }
         },
         'hive': {

@@ -1,0 +1,52 @@
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-6 col-lg-3 tile-wrapper">
+            <div class="mat-elevation-z3 p-3">
+                <div class="profile-wrapper">
+                    <div class="avatar-container">
+                        <div class="avatar">
+                            <img src="https://mir-s3-cdn-cf.behance.net/user/115/3003747.53ade5be70bb8.jpg">
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Tsvetoslav Lazarov</h4>
+                        <div>50 tokens</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mat-elevation-z3 mt-3">
+                <div class="menu-item" (click)="open($event, 'request')">
+                    <span class="icon requests-icon left-icon large-icon menu-icon"></span>
+                    <span class="menu-title">{{myRequestsLabel | localize: 'myRequestsLabel':'profile':'label'}}</span>
+                </div>
+                <div class="menu-item" (click)="open($event, 'order')">
+                    <span class="icon orders-icon left-icon large-icon menu-icon"></span>
+                    <span class="menu-title">{{myOrdersLabel | localize: 'myOrdersLabel':'profile':'label'}}</span>
+                </div>
+                <div class="menu-item" (click)="open($event, 'personalInformation')">
+                    <span class="icon information-icon left-icon large-icon menu-icon"></span>
+                    <span class="menu-title">{{personalInformationLabel | localize: 'personalInformationLabel':'profile':'label'}}</span>
+                </div>
+                <div class="menu-item" (click)="open($event, 'security')">
+                    <span class="icon security-icon left-icon large-icon menu-icon"></span>
+                    <span class="menu-title">{{securityLabel | localize: 'securityLabel':'profile':'label'}}</span>
+                </div>
+                <div class="menu-item" (click)="open($event, 'rewards')">
+                    <span class="icon rewards-icon left-icon large-icon menu-icon"></span>
+                    <span class="menu-title">{{rewardsLabel | localize: 'rewardsLabel':'profile':'label'}}</span>
+                </div>
+                <div class="menu-item" (click)="open($event, 'preferences')">
+                    <span class="icon preferences-icon left-icon large-icon menu-icon"></span>
+                    <span class="menu-title">{{preferencesLabel | localize: 'preferencesLabel':'profile':'label'}}</span>
+                </div>
+                <div class="menu-item" (click)="signout()">
+                    <span class="icon signout-icon left-icon large-icon menu-icon"></span>
+                    <span class="menu-title">{{signoutLabel | localize: 'signoutLabel':'profile':'label'}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-9 mat-elevation-z3 tile-wrapper">
+            Test
+        </div>
+    </div>
+</div>

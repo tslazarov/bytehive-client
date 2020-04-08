@@ -22,6 +22,7 @@ import { AccountService } from '../services/account.service';
 import { AuthGuardService } from '../services/guards/auth-guard.service';
 import { AuthLocalService } from '../services/utilities/auth.service';
 import { SignGuardService } from '../services/guards/sign-guard.service';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
     imports: [
@@ -40,7 +41,8 @@ import { SignGuardService } from '../services/guards/sign-guard.service';
         HiveComponent,
         SigninComponent,
         FaqComponent,
-        SignupComponent
+        SignupComponent,
+        ProfileComponent
     ],
     entryComponents: [],
     providers: [

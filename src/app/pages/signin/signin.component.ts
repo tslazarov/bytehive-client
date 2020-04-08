@@ -67,7 +67,7 @@ export class SigninComponent implements OnInit, OnDestroy {
         this.languageChangeSubscription.unsubscribe();
     }
 
-    setLabelsMessages() {
+    setLabelsMessages(): void {
         console.log('SET lbl');
     }
 
@@ -161,7 +161,7 @@ export class SigninComponent implements OnInit, OnDestroy {
             });
     }
 
-    resetpassword() {
+    resetpassword(): void {
         let resetCodeVerification = new ResetPasswordData();
         let dialogRef = this.dialog.open(ResetPasswordDialog, { width: '450px', minHeight: '100px', autoFocus: false, data: { resetCodeVerification } });
 

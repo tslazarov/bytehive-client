@@ -57,7 +57,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         private translationService: TranslationService,
         private communicationService: CommunicationService) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setLabelsMessages();
 
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
@@ -67,11 +67,11 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.fetchUsers();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.languageChangeSubscription.unsubscribe();
     }
 
-    fetchUsers() {
+    fetchUsers(): void {
         this.users = [];
         this.usersService.getAll()
             .subscribe(result => {
@@ -88,7 +88,7 @@ export class UsersComponent implements OnInit, OnDestroy {
             });
     }
 
-    fetchProviders() {
+    fetchProviders(): void {
         this.providers = ["All"];
 
         this.providers = this.providers.concat(this.users.map(u => u.provider).filter((value, index, self) => {
@@ -96,13 +96,13 @@ export class UsersComponent implements OnInit, OnDestroy {
         }));
     }
 
-    bindDataSource(data: any) {
+    bindDataSource(data: any): void {
         this.dataSource = new MatTableDataSource<ListUser>(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
     }
 
-    setLabelsMessages() {
+    setLabelsMessages(): void {
         this.providersLabel = this.translationService.localizeValue('providersLabel', 'users', 'label');
         this.searchLabel = this.translationService.localizeValue('searchLabel', 'users', 'label');
         this.emailLabel = this.translationService.localizeValue('emailLabel', 'users', 'label');
@@ -113,13 +113,13 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.deleteLabel = this.translationService.localizeValue('deleteLabel', 'users', 'label');
     }
 
-    providerChange(provider: any) {
+    providerChange(provider: any): void {
         let filteredUsers = provider.value == "All" ? this.users : this.users.filter(user => { return user.provider == provider.value });
 
         this.bindDataSource(filteredUsers);
     }
 
-    setOrPredicate() {
+    setOrPredicate(): void {
         this.dataSource.filterPredicate = (c: ListUser, filter: any) => {
             let result = false;
             let keys = Object.keys(c);
@@ -138,7 +138,7 @@ export class UsersComponent implements OnInit, OnDestroy {
         };
     }
 
-    applyGlobalFilter(filterValue: string) {
+    applyGlobalFilter(filterValue: string): void {
         this.searchValue = {};
         this.searchCondition = {};
 

@@ -57,8 +57,8 @@
         <mat-menu class="profile-menu" #profile="matMenu">
             <div mat-menu-item (click)="navigate('/profile')">
                 <button disableRipple mat-button>
-                    <span class="icon settings-icon left-icon small-icon"></span>
-                    <span>{{settingsLabel | localize: 'settingsLabel':'navigation':'label'}}</span>
+                    <span class="icon profileuser-icon left-icon small-icon"></span>
+                    <span>{{profileLabel | localize: 'profileLabel':'navigation':'label'}}</span>
                 </button>
             </div>
             <div mat-menu-item (click)="signout()">
