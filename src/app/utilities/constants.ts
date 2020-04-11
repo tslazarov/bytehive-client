@@ -18,4 +18,8 @@ export class Constants {
     static readonly USER_SERVICE_ALL_ENDPOINT = 'api/users/all';
     static readonly USER_SERVICE_DETAIL_ENDPOINT = 'api/users/detail';
     static readonly USER_SERVICE_DELETE_ENDPOINT = 'api/users/delete';
+
+    static readonly SCRAPPER_SERVICE_BASE_ENDPOINT = 'api/scrapper';
+    static readonly SCRAPPER_SERVICE_MARKUP_ENDPOINT = 'api/scrapper/markup';
+    static readonly SCRAPPER_SERVICE_CODE_ENDPOINT = 'api/scrapper/code';
 }

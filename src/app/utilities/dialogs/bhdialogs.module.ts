@@ -13,6 +13,7 @@ import { AutomaticDialog } from './automatic/automatic.dialog';
 import { PagingInformationDialog } from './paginginformation/paginginformation.dialog';
 import { ConfirmationDialog } from './confirmation/confirmation.dialog';
 import { ResetPasswordDialog } from './resetpassword/resetpassword.dialog';
+import { ScrapperService } from '../../services/scrapper.service';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { ResetPasswordDialog } from './resetpassword/resetpassword.dialog';
     ],
     providers: [
         TranslationService,
+        ScrapperService
     ]
 })
 export class BhDialogsModule { }

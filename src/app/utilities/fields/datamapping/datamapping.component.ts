@@ -105,11 +105,12 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         }
 
         // TODO: send request to proxy
-
-        this.clientService.getPageMarkup(this.parentForm.value.detailUrl)
+        let url = this.parentForm.value.detailUrl;
+        this.clientService.getPageMarkup(url)
             .pipe(first())
             .subscribe((markup) => {
                 let codeData = new CodeData();
+                codeData.url = url;
                 codeData.code = markup;
                 codeData.markup = fieldMapping.formGroup.value.fieldMarkup;
 
