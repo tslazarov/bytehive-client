@@ -84,8 +84,16 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     }
 
     automaticMapping(fieldMapping: FieldMapping): void {
+        if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
+            this.parentForm.controls['detailUrl'].markAsTouched();
+            return;
+        }
+
+        let url = this.parentForm.value.detailUrl;
+
         let automaticData = new AutomaticData();
         automaticData.markup = fieldMapping.formGroup.value.fieldMarkup;
+        automaticData.url = url;
 
         let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', minHeight: '380px', autoFocus: false, data: automaticData });
 
@@ -105,6 +113,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         }
 
         let url = this.parentForm.value.detailUrl;
+
         this.clientService.getPageMarkup(url)
             .pipe(first())
             .subscribe((markup) => {
