@@ -30,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy {
     hiveLabel: string;
     faqLabel: string;
     signinLabel: string;
-    settingsLabel: string;
+    profileLabel: string;
     signoutLabel: string;
     currentLanguageLabel: string;
     administrationLabel: string;
@@ -77,7 +77,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.hiveLabel = this.translationService.localizeValue('hiveLabel', 'navigation', 'label');
         this.faqLabel = this.translationService.localizeValue('faqLabel', 'navigation', 'label');
         this.signinLabel = this.translationService.localizeValue('signinLabel', 'navigation', 'label');
-        this.settingsLabel = this.translationService.localizeValue('settingsLabel', 'navigation', 'label');
+        this.profileLabel = this.translationService.localizeValue('profileLabel', 'navigation', 'label');
         this.signoutLabel = this.translationService.localizeValue('signoutLabel', 'navigation', 'label');
         this.administrationLabel = this.translationService.localizeValue('administrationLabel', 'navigation', 'label');
         this.dashboardLabel = this.translationService.localizeValue('dashboardLabel', 'navigation', 'label');
@@ -93,7 +93,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.setNavigation(role);
     }
 
-    setEmail(email) {
+    setEmail(email): void {
         if (email) {
             this.email = email;
             this.authenticated = true;
@@ -104,7 +104,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
     }
 
-    setNavigation(role) {
+    setNavigation(role): void {
         if (role == 'Administrator') {
             this.navigationAdministrationSegment = true;
         }
@@ -118,8 +118,10 @@ export class AppComponent implements OnInit, OnDestroy {
         let element = document.querySelector('.top-navbar');
         if (window.pageYOffset > 0) {
             element.classList.add('top-navbar-inverse');
+            element.classList.add('mat-elevation-z3');
         } else {
             element.classList.remove('top-navbar-inverse');
+            element.classList.remove('mat-elevation-z3');
         }
     }
 
@@ -135,7 +137,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.communicationService.emitLanguageChange();
     }
 
-    signout() {
+    signout(): void {
         this.accountService.signout()
             .subscribe(result => {
                 this.signoutClient();
@@ -144,7 +146,7 @@ export class AppComponent implements OnInit, OnDestroy {
             });
     }
 
-    signoutClient() {
+    signoutClient(): void {
         var provider = this.authLocalService.getClaim('provider');
 
         if (provider && provider != 'Default') {

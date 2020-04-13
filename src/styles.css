@@ -1,14 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* html, body {  } */
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
 
 .mat-button-focus-overlay {
     background-color: transparent !important;
 }
 
 .page-content {
-    padding: 70px 50px 0px 50px;
+    margin: 100px 50px 50px 50px;
+    padding: 20px 0px;
 }
 
 .loading-wrapper {
@@ -19,6 +23,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 /* Material customizations */
+.mat-elevation-z3 {
+    box-shadow: 10px 13px 13px -12px rgba(0, 0, 0, 0.04), 0px 3px 4px 0px rgba(0, 0, 0, 0.04), 0px 1px 8px 0px rgba(0, 0, 0, 0.04);
+}
+
 .notifier__notification--material {
     border-radius: 2px !important;
 }

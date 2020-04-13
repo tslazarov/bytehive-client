@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslationService } from '../../../services/utilities/translation.service';
+import { AutomaticMarkup } from '../../../models/automaticmarkup.model';
+import { ScraperService } from '../../../services/scraper.service';
 
 @Component({
     selector: 'automatic-dialog',
@@ -17,6 +19,7 @@ export class AutomaticDialog {
 
     constructor(public dialogRef: MatDialogRef<AutomaticDialog>,
         private translationService: TranslationService,
+        private scraperService: ScraperService,
         @Inject(MAT_DIALOG_DATA) public data: any) {
         this.setLabelsMessages();
     }
@@ -36,10 +39,33 @@ export class AutomaticDialog {
     }
 
     generate(): void {
+        let text = this.output;
 
+        if (text == "") {
+            console.log('show error');
+            return;
+        }
+
+        let automaticMarkup = new AutomaticMarkup();
+        automaticMarkup.url = this.data.url;
+        automaticMarkup.text = text;
+
+        this.scraperService.getAutomaticMarkup(automaticMarkup)
+            .subscribe((result) => {
+                if (result == "non-defined") {
+                    console.log('show error');
+                }
+                else {
+                    this.data.markup = decodeURIComponent(result);
+                }
+            }, (error) => {
+                console.log(error);
+                console.log('show error');
+            });
     }
 }
 
 export class AutomaticData {
     markup: string;
+    url: string;
 }

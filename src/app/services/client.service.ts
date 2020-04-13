@@ -1,33 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Constants } from '../utilities/constants';
+import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 
 @Injectable()
 export class ClientService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,
+        private httpHeaderHelper: HttpHeaderHelper) { }
 
     getPageMarkup(url: string): Observable<any> {
-        let headers = this.setContentTypeHeader('text');
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'text');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
-        return this.http.get(url, { headers, responseType: 'text' });
-    }
-
-    setContentTypeHeader(type: string): HttpHeaders {
-        let contentType;
-
-        switch (type) {
-            case 'text':
-                contentType = 'text/plain; charset=utf-8';
-                break;
-            case 'json':
-                contentType = 'application/json';
-                break;
-            default:
-                contentType = 'application/json';
-
-        }
-
-        return new HttpHeaders().set('Content-Type', contentType);
+        // return this.http.get(url, { headers, responseType: 'text' });
+        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPER_SERVICE_MARKUP_ENDPOINT}?url=${url}`, { headers, responseType: 'text' });
     }
 }

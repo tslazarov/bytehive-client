@@ -1,0 +1,91 @@
+.tile-wrapper {
+    min-height: 550px;
+}
+
+.profile-wrapper {
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.avatar-container {
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 2px;
+    position: relative;
+    -webkit-transition: margin-top 0.65s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: margin-top 0.65s cubic-bezier(0.19, 1, 0.22, 1);
+    height: 20vh;
+    width: 5vw;
+}
+
+.avatar {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar-image {
+    border-radius: inherit;
+    display: inline-block;
+    width: 100%;
+}
+
+.menu-item {
+    padding: 15px 30px 15px 30px;
+    height: 60px;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+    background-color: #fafafa;
+}
+
+.menu-item.selected {
+    border-left: 5px solid #ffeb3b;
+    background-color: #fafafa;
+    padding: 15px 30px 15px 25px;
+}
+
+.menu-item .menu-icon {
+    vertical-align: middle;
+}
+
+.menu-item .menu-title {
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+/* icons */
+
+.requests-icon {
+    background: url(../../../assets/icons/requests-accent.svg);
+}
+
+.orders-icon {
+    background: url(../../../assets/icons/orders-accent.svg);
+}
+
+.information-icon {
+    background: url(../../../assets/icons/information-accent.svg);
+}
+
+.rewards-icon {
+    background: url(../../../assets/icons/rewards-accent.svg);
+}
+
+.security-icon {
+    background: url(../../../assets/icons/security-accent.svg);
+}
+
+.preferences-icon {
+    background: url(../../../assets/icons/settings-accent.svg);
+}
+    
+.signout-icon {
+    background: url(../../../assets/icons/signout-accent.svg);
+}

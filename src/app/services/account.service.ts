@@ -38,7 +38,7 @@ export class AccountService {
         return this.http.post(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_SIGNIN_EXTERNAL_ENDPOINT}`, signinExternalUser, { headers, responseType: 'json' });
     }
 
-    signout() {
+    signout(): Observable<any> {
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
