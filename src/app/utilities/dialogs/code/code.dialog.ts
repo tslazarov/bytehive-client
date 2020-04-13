@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslationService } from '../../../services/utilities/translation.service';
 import { CodeMarkup } from '../../../models/codemarkup.model';
-import { ScrapperService } from '../../../services/scrapper.service';
+import { ScraperService } from '../../../services/scraper.service';
 
 @Component({
     selector: 'code-dialog',
@@ -20,7 +20,7 @@ export class CodeDialog {
 
     constructor(public dialogRef: MatDialogRef<CodeDialog>,
         private translationService: TranslationService,
-        private scrapperService: ScrapperService,
+        private scraperService: ScraperService,
         @Inject(MAT_DIALOG_DATA) public data: any) {
         this.editorOptions = { theme: 'vs-light', language: 'html' };
         this.setLabelsMessages();
@@ -44,16 +44,33 @@ export class CodeDialog {
     }
 
     generate(): void {
+        let line = this.editor.getSelection().startLineNumber;
+        let text = this.editor.getModel().getValueInRange(this.editor.getSelection());
+
+        if (text == "") {
+            console.log('show error');
+            return;
+        }
+
         let codeMarkup = new CodeMarkup();
         codeMarkup.url = this.data.url;
         codeMarkup.line = this.editor.getSelection().startLineNumber;
         codeMarkup.text = this.editor.getModel().getValueInRange(this.editor.getSelection());
 
-        this.scrapperService.getCodeMarkup(codeMarkup)
+        this.scraperService.getCodeMarkup(codeMarkup)
             .subscribe((result) => {
-                console.log(result);
+                if (result == "non-defined") {
+                    console.log('show error');
+                }
+                else if (result == "non-unique") {
+                    console.log('show error');
+                }
+                else {
+                    this.data.markup = decodeURIComponent(result);
+                }
             }, (error) => {
                 console.log(error);
+                console.log('show error');
             });
     }
 }

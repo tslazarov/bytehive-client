@@ -104,7 +104,6 @@ export class DatamappingComponent implements OnInit, OnDestroy {
             return;
         }
 
-        // TODO: send request to proxy
         let url = this.parentForm.value.detailUrl;
         this.clientService.getPageMarkup(url)
             .pipe(first())

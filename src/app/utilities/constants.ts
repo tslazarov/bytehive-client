@@ -2,8 +2,8 @@ export class Constants {
     static readonly LANGUAGE_KEY = 'bh_language';
 
     // regular expressions
-    static readonly URL_REGEX = '(https?://)([\\da-z.-]+)\\.([a-z.]{2,6})[\?\\da-z.-\=\&]*';
-    static readonly URL_REGEX_PAGING = '(https?://)([\\da-z.-]+)\\.([a-z.]{2,6})[\?\\da-z.-\=\&]*(\{\{page\}\}{1})[\?\\da-z.-\=\&]*';
+    static readonly URL_REGEX = '(https?://)([\\da-z.-]+)\\.([a-z.]{2,6})[\?\\da-z.-\=\-\&]*';
+    static readonly URL_REGEX_PAGING = '(https?://)([\\da-z.-]+)\\.([a-z.]{2,6})[\?\\da-z.-\=\-\&]*(\{\{page\}\}{1})[\?\\da-z.-\=\-\&]*';
 
     static readonly ACCOUNT_SERVICE_BASE_ENDPOINT = 'api/account/';
     static readonly ACCOUNT_SERVICE_SIGNUP_ENDPOINT = 'api/account/signup';
@@ -19,7 +19,7 @@ export class Constants {
     static readonly USER_SERVICE_DETAIL_ENDPOINT = 'api/users/detail';
     static readonly USER_SERVICE_DELETE_ENDPOINT = 'api/users/delete';
 
-    static readonly SCRAPPER_SERVICE_BASE_ENDPOINT = 'api/scrapper';
-    static readonly SCRAPPER_SERVICE_MARKUP_ENDPOINT = 'api/scrapper/markup';
-    static readonly SCRAPPER_SERVICE_CODE_ENDPOINT = 'api/scrapper/code';
+    static readonly SCRAPER_SERVICE_BASE_ENDPOINT = 'api/scraper';
+    static readonly SCRAPER_SERVICE_MARKUP_ENDPOINT = 'api/scraper/markup';
+    static readonly SCRAPER_SERVICE_CODE_ENDPOINT = 'api/scraper/code';
 }

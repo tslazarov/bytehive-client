@@ -381,7 +381,7 @@ export class LabelsMessages {
         'automatic-dialog': {
             'expectedOutputLabel': {
                 'en': 'Enter expected output',
-                'bg': 'Въведи очаквам резултат'
+                'bg': 'Въведи очакван резултат'
             },
             'generateLabel': {
                 'en': 'Generate',

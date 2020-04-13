@@ -7,7 +7,7 @@ import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 import { CodeMarkup } from '../models/codemarkup.model';
 
 @Injectable()
-export class ScrapperService {
+export class ScraperService {
 
     constructor(private http: HttpClient,
         private httpHeaderHelper: HttpHeaderHelper) {
@@ -18,6 +18,6 @@ export class ScrapperService {
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
-        return this.http.put(`${environment.apiBaseUrl}${Constants.SCRAPPER_SERVICE_CODE_ENDPOINT}`, codeMarkup, { headers, responseType: 'json' });
+        return this.http.put(`${environment.apiBaseUrl}${Constants.SCRAPER_SERVICE_CODE_ENDPOINT}`, codeMarkup, { headers, responseType: 'json' });
     }
 }
