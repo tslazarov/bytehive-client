@@ -10,18 +10,22 @@ import { CommunicationService } from '../../../services/utilities/communication.
 })
 export class VisualDialog {
     // common
-    selectedContent: string;
+    selectedContent: any;
 
     constructor(public dialogRef: MatDialogRef<VisualDialog>,
         private chgRef: ChangeDetectorRef,
         @Inject(MAT_DIALOG_DATA) public data: any) {
     }
 
+    save() {
+
+    }
+
     close(): void {
         this.dialogRef.close();
     }
 
-    selectionChange(content: string) {
+    selectionChange(content: any) {
         console.log('aaaa');
         console.log(content);
         this.selectedContent = content;

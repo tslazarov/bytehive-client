@@ -1,3 +1,51 @@
 .loading {
     padding-top: 200px;
 }
+
+.indicator {
+    background-color: rgba(255, 215, 0, 0.1);
+    position: absolute;
+    z-index: 9999;
+}
+
+.indicator__cta {
+    top: -20px;
+    left: 50%;
+    position: absolute;
+}
+
+.indicator__cta-link {
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: #212121;
+    border-radius: 3px;
+    bottom: 0px;
+    color: #FFFFFF;
+    cursor: pointer;
+    left: 0px;
+    padding: 11px 22px 10px 22px;
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 9999;
+    font-weight: 500;
+}
+
+.indicator__cta-link:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.indicator__cta-link:hover:after {
+    color: #ffeb3b;
+}
+
+.indicator__cta-link:after {
+    bottom: -11px;
+    font-size: 15px;
+    left: 50%;
+    line-height: 15px;
+    content: "▼";
+    color: #212121;
+    position: absolute;
+    transform: translateX(-50%);
+}

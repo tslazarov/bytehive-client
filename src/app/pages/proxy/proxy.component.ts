@@ -1,8 +1,10 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ClientService } from '../../services/client.service';
 import { CommunicationService } from '../../services/utilities/communication.service';
+import { TextSelectEvent, SelectionRectangle } from '../../utilities/directives/textselect/textselect.directive';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-proxy',
@@ -15,6 +17,12 @@ export class ProxyComponent implements OnInit, OnDestroy {
     showLoading: boolean;
     url: string;
     content: string;
+    selectedText: string;
+    selectedElement: string;
+    hostRectangle: SelectionRectangle | null;
+
+    @ViewChild('indicator', { static: false }) indicator: ElementRef;
+
 
     // Subscriptions
     urlSubscription: Subscription;
@@ -37,30 +45,46 @@ export class ProxyComponent implements OnInit, OnDestroy {
                         setTimeout(() => {
                             this.chgRef.detach();
                             this.showLoading = false;
-                        }, 3000);
+                            window.parent.postMessage({}, environment.origin);
+                        }, 1000);
                     }, (error) => {
                         // TODO: Page cannot be loaded
                         console.log('');
                     })
             }
         });
+    }
 
+    ngAfterViewInit() {
+        this.indicator.nativeElement.style = 'display:none';
     }
 
     ngOnDestroy(): void {
         this.urlSubscription.unsubscribe();
     }
 
-    getSelection() {
-        this.chgRef.detach();
+    public renderAction(event: TextSelectEvent): void {
+        if (event.hostRectangle) {
 
-        var text = "";
-        if (window.getSelection) {
-            text = window.getSelection().toString();
+            this.hostRectangle = event.hostRectangle;
+            this.selectedText = event.text;
+            this.selectedElement = event.element;
+            this.indicator.nativeElement.style = `width: ${this.hostRectangle.width}; top: ${this.hostRectangle.top + 70}px; left: ${this.hostRectangle.left}px`;
+
+        } else {
+            this.hostRectangle = null;
+            this.selectedText = "";
+            this.selectedElement = null;
+            this.indicator.nativeElement.style = 'display:none';
         }
 
-        window.parent.postMessage(text, '*');
+    }
 
-        console.log(text);
+    public shareSelection(): void {
+        window.parent.postMessage({ 'text': this.selectedText, 'element': this.selectedElement }, environment.origin);
+
+        document.getSelection().removeAllRanges();
+        this.hostRectangle = null;
+        this.selectedText = "";
     }
 }

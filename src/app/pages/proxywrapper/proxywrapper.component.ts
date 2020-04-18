@@ -6,23 +6,21 @@ import { environment } from '../../../environments/environment.prod';
     templateUrl: './proxywrapper.component.html',
     styleUrls: ['./proxywrapper.component.css']
 })
-export class ProxyWrapperComponent implements OnInit {
+export class ProxyWrapperComponent {
 
     @Input() url: string;
-    @Output() selectionChange = new EventEmitter<string>();
+    @Output() selectionChange = new EventEmitter<any>();
 
     constructor(private chgRef: ChangeDetectorRef) { }
 
-    ngOnInit() {
-    }
-
     @HostListener('window:message', ['$event'])
     onMessage(evt) {
-        this.chgRef.detach();
         evt.preventDefault();
-
+        this.chgRef.detach();
         if (evt.origin == environment.origin) {
-            this.selectionChange.emit(evt.data);
+            if (evt.data['text']) {
+                this.selectionChange.emit(evt.data);
+            };
         }
     }
 }

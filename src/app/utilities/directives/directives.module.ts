@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { DragdropDirective } from './dragdrop/dragdrop.directive';
+import { TextSelectDirective } from './textselect/textselect.directive';
 
 @NgModule({
     declarations: [
-        DragdropDirective
+        DragdropDirective,
+        TextSelectDirective
     ],
     exports: [
-        DragdropDirective
+        DragdropDirective,
+        TextSelectDirective
     ]
 })
 export class DirectivesModule {

@@ -75,8 +75,6 @@ export class UsersComponent implements OnInit, OnDestroy {
         this.users = [];
         this.usersService.getAll()
             .subscribe(result => {
-                console.log(result);
-
                 result.forEach(user => {
                     var listUser = user as ListUser;
                     this.users.push(listUser);
@@ -177,7 +175,6 @@ export class UsersComponent implements OnInit, OnDestroy {
                         //TODO: Show error message;
                     });
             }
-            console.log(result);
         });
     }
 

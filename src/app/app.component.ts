@@ -60,7 +60,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
         this.router.events.subscribe((event) => {
             if (event instanceof ResolveEnd) {
-                console.log(event.url);
                 if (event.url.startsWith('/proxy')) {
                     this.showNavigation = false;
                 }
