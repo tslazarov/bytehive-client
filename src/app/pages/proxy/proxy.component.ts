@@ -38,7 +38,7 @@ export class ProxyComponent implements OnInit, OnDestroy {
 
             if (this.url != "") {
                 this.showLoading = true;
-                this.clientService.getPageMarkup(this.url)
+                this.clientService.getPageMarkup(this.url, true)
                     .subscribe((result) => {
                         this.content = result;
                         this.showLoading = false;
@@ -69,7 +69,7 @@ export class ProxyComponent implements OnInit, OnDestroy {
             this.hostRectangle = event.hostRectangle;
             this.selectedText = event.text;
             this.selectedElement = event.element;
-            this.indicator.nativeElement.style = `width: ${this.hostRectangle.width}; top: ${this.hostRectangle.top + 70}px; left: ${this.hostRectangle.left}px`;
+            this.indicator.nativeElement.style = `width: ${this.hostRectangle.width}; top: ${this.hostRectangle.top}px; left: ${this.hostRectangle.left}px`;
 
         } else {
             this.hostRectangle = null;

@@ -111,11 +111,12 @@ export class DatamappingComponent implements OnInit, OnDestroy {
 
         let url = this.parentForm.value.detailUrl;
 
-        let manualData = new VisualData();
-        manualData.markup = fieldMapping.formGroup.value.fieldMarkup;
-        manualData.url = '/proxy?url=' + url;
+        let visualData = new VisualData();
+        visualData.markup = fieldMapping.formGroup.value.fieldMarkup;
+        visualData.proxyUrl = '/proxy?url=' + url;
+        visualData.url = url;
 
-        let dialogRef = this.dialog.open(VisualDialog, { width: '90vw', minHeight: '380px', autoFocus: false, data: manualData });
+        let dialogRef = this.dialog.open(VisualDialog, { width: '90vw', minHeight: '380px', autoFocus: false, data: visualData });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.markup) {
@@ -132,7 +133,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
 
         let url = this.parentForm.value.detailUrl;
 
-        this.clientService.getPageMarkup(url)
+        this.clientService.getPageMarkup(url, false)
             .pipe(first())
             .subscribe((markup) => {
                 let codeData = new CodeData();
@@ -168,9 +169,8 @@ export class DatamappingComponent implements OnInit, OnDestroy {
             this.parentForm.controls['detailUrl'].markAsTouched();
             return;
         }
-        // TODO: send request to proxy
 
-        this.clientService.getPageMarkup(this.parentForm.value.detailUrl)
+        this.clientService.getPageMarkup(this.parentForm.value.detailUrl, false)
             .pipe(first())
             .subscribe((markup) => {
                 let codeViewData = new CodeViewData();

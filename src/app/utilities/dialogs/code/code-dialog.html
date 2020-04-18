@@ -1,5 +1,5 @@
 <div>
-    <div class="row pb-3 code-dialog-header">
+    <div class="row code-dialog-header">
         <div class="col-2">
             <button class="generate" disableRipple mat-flat-button (click)="generate()">
                 <span>{{generateLabel | localize: 'generateLabel':'code-dialog':'label' | uppercase}}</span>
@@ -16,7 +16,8 @@
             </button>
         </div>
     </div>
-    <div class="code-editor-wrapper">
+    <mat-progress-bar *ngIf="loadingMarkup" mode="indeterminate"></mat-progress-bar>
+    <div class="code-editor-wrapper pt-3">
         <ngx-monaco-editor class="code-editor" [options]="editorOptions" [(ngModel)]="data.code" (onInit)="onInit($event)"></ngx-monaco-editor>
     </div>
     <div class="row pt-3">

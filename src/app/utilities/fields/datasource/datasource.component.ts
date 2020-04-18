@@ -137,10 +137,9 @@ export class DatasourceComponent implements OnInit, OnDestroy {
             return;
         }
 
-        // TODO: send request to proxy
         // TODO: Handle paging url
 
-        this.clientService.getPageMarkup(this.parentForm.value.listUrl)
+        this.clientService.getPageMarkup(this.parentForm.value.listUrl, false)
             .pipe(first())
             .subscribe((markup) => {
                 let codeData = new CodeData();

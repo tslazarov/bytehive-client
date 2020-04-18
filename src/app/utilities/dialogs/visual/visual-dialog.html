@@ -1,5 +1,5 @@
 <div>
-    <div class="row pb-3 visual-dialog-header">
+    <div class="row visual-dialog-header">
         <div class="col-9">
             <mat-form-field floatLabel="never" class="full-width">
                 <input class="markup-input" matInput autocomplete="off" disabled [(ngModel)]="data.markup" />
@@ -11,8 +11,9 @@
             </button>
         </div>
     </div>
-    <div class="visual-wrapper">
-        <bh-proxywrapper width="100%" height="100%" [url]="data.url" (selectionChange)="selectionChange($event)"></bh-proxywrapper>
+    <mat-progress-bar *ngIf="loadingMarkup" mode="indeterminate"></mat-progress-bar>
+    <div class="visual-wrapper pt-3">
+        <bh-proxywrapper width="100%" height="100%" [url]="data.proxyUrl" (selectionChange)="selectionChange($event)"></bh-proxywrapper>
     </div>
     <div class="row pt-3">
         <div class="col-12">

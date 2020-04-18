@@ -10,7 +10,9 @@ import { ScraperService } from '../../../services/scraper.service';
     styleUrls: ['./automatic.dialog.css']
 })
 export class AutomaticDialog {
+
     output: string;
+    loadingMarkup: boolean;
 
     // labels
     expectedOutputLabel: string;
@@ -50,6 +52,8 @@ export class AutomaticDialog {
         automaticMarkup.url = this.data.url;
         automaticMarkup.text = text;
 
+        this.loadingMarkup = true;
+
         this.scraperService.getAutomaticMarkup(automaticMarkup)
             .subscribe((result) => {
                 if (result == "non-defined") {
@@ -58,9 +62,12 @@ export class AutomaticDialog {
                 else {
                     this.data.markup = decodeURIComponent(result);
                 }
+
+                this.loadingMarkup = false;
             }, (error) => {
                 console.log(error);
                 console.log('show error');
+                this.loadingMarkup = false;
             });
     }
 }
