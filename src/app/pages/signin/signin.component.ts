@@ -152,7 +152,6 @@ export class SigninComponent implements OnInit, OnDestroy {
                         this.router.navigate(['/']);
                     }
                 }
-                console.log(result);
             }, err => {
                 this.showLoading = false;
                 if (err.status == 500) {

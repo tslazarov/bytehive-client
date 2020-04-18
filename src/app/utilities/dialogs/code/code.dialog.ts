@@ -13,6 +13,7 @@ export class CodeDialog {
 
     editor: any;
     editorOptions: any;
+    loadingMarkup: boolean;
 
     // labels
     generateLabel: string;
@@ -56,6 +57,7 @@ export class CodeDialog {
         codeMarkup.url = this.data.url;
         codeMarkup.line = this.editor.getSelection().startLineNumber;
         codeMarkup.text = this.editor.getModel().getValueInRange(this.editor.getSelection());
+        this.loadingMarkup = true;
 
         this.scraperService.getCodeMarkup(codeMarkup)
             .subscribe((result) => {
@@ -68,9 +70,13 @@ export class CodeDialog {
                 else {
                     this.data.markup = decodeURIComponent(result);
                 }
+
+                this.loadingMarkup = false;
             }, (error) => {
                 console.log(error);
                 console.log('show error');
+
+                this.loadingMarkup = false;
             });
     }
 }

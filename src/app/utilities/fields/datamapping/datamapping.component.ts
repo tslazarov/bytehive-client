@@ -11,6 +11,7 @@ import { CodeData, CodeDialog } from '../../dialogs/code/code.dialog';
 import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
 import { AutomaticData, AutomaticDialog } from '../../dialogs/automatic/automatic.dialog';
 import { Subscription } from 'rxjs';
+import { VisualDialog, VisualData } from '../../dialogs/visual/visual.dialog';
 
 @Component({
     selector: 'bh-datamapping',
@@ -103,7 +104,25 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     }
 
     visualMapping(fieldMapping: FieldMapping): void {
+        if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
+            this.parentForm.controls['detailUrl'].markAsTouched();
+            return;
+        }
 
+        let url = this.parentForm.value.detailUrl;
+
+        let visualData = new VisualData();
+        visualData.markup = fieldMapping.formGroup.value.fieldMarkup;
+        visualData.proxyUrl = '/proxy?url=' + url;
+        visualData.url = url;
+
+        let dialogRef = this.dialog.open(VisualDialog, { width: '90vw', minHeight: '380px', autoFocus: false, data: visualData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.markup) {
+                fieldMapping.formGroup.patchValue({ fieldMarkup: result.markup });
+            }
+        });
     }
 
     codeMapping(fieldMapping: FieldMapping): void {
@@ -114,7 +133,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
 
         let url = this.parentForm.value.detailUrl;
 
-        this.clientService.getPageMarkup(url)
+        this.clientService.getPageMarkup(url, false)
             .pipe(first())
             .subscribe((markup) => {
                 let codeData = new CodeData();
@@ -150,9 +169,8 @@ export class DatamappingComponent implements OnInit, OnDestroy {
             this.parentForm.controls['detailUrl'].markAsTouched();
             return;
         }
-        // TODO: send request to proxy
 
-        this.clientService.getPageMarkup(this.parentForm.value.detailUrl)
+        this.clientService.getPageMarkup(this.parentForm.value.detailUrl, false)
             .pipe(first())
             .subscribe((markup) => {
                 let codeViewData = new CodeViewData();

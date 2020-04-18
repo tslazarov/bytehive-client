@@ -11,12 +11,12 @@ export class ClientService {
     constructor(private http: HttpClient,
         private httpHeaderHelper: HttpHeaderHelper) { }
 
-    getPageMarkup(url: string): Observable<any> {
+    getPageMarkup(url: string, sanitize): Observable<any> {
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'text');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
         // return this.http.get(url, { headers, responseType: 'text' });
-        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPER_SERVICE_MARKUP_ENDPOINT}?url=${url}`, { headers, responseType: 'text' });
+        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPER_SERVICE_MARKUP_ENDPOINT}?sanitize=${sanitize}&url=${url}`, { headers, responseType: 'text' });
     }
 }

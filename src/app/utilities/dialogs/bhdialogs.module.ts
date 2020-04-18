@@ -14,6 +14,7 @@ import { PagingInformationDialog } from './paginginformation/paginginformation.d
 import { ConfirmationDialog } from './confirmation/confirmation.dialog';
 import { ResetPasswordDialog } from './resetpassword/resetpassword.dialog';
 import { ScraperService } from '../../services/scraper.service';
+import { ProxyWrapperComponent } from '../../pages/proxywrapper/proxywrapper.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { ScraperService } from '../../services/scraper.service';
         AutomaticDialog,
         PagingInformationDialog,
         ConfirmationDialog,
-        ResetPasswordDialog
+        ResetPasswordDialog,
+        ProxyWrapperComponent
     ],
     imports: [
         MaterialModule,
@@ -32,7 +34,7 @@ import { ScraperService } from '../../services/scraper.service';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        MonacoEditorModule
+        MonacoEditorModule,
     ],
     exports: [
     ],

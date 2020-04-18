@@ -13,3 +13,18 @@
 .visual-wrapper {
     height: calc(90vh - 100px);
 }
+
+.save {
+    min-width: 150px;
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.save:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.full-width {
+    width: 100%;
+}

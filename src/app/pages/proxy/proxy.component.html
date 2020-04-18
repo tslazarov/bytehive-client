@@ -1,0 +1,11 @@
+<div *ngIf="showLoading" class="loading-wrapper loading">
+    <mat-spinner></mat-spinner>
+</div>
+<div class="indicator" #indicator>
+    <div class="indicator__cta">
+        <a (mousedown)="$event.preventDefault()" (mouseup)="$event.stopPropagation(); shareSelection()" class="indicator__cta-link">
+            SELECT
+        </a>
+    </div>
+</div>
+<div (textSelect)="renderAction($event)" *ngIf="!showLoading" [innerHTML]="content | safehtml"></div>

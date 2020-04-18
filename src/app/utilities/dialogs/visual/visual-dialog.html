@@ -1,14 +1,25 @@
 <div>
-    <div class="row pb-3">
-        <div class="col-10">
+    <div class="row visual-dialog-header">
+        <div class="col-9">
+            <mat-form-field floatLabel="never" class="full-width">
+                <input class="markup-input" matInput autocomplete="off" disabled [(ngModel)]="data.markup" />
+            </mat-form-field>
         </div>
-        <div class="col-2 right">
+        <div class="col-3 right">
             <button class="close-button" mat-button (click)="close()">
                 <span class="icon close-icon large-icon"></span>
             </button>
         </div>
     </div>
-    <div class="visual-wrapper">
-        <h1>Visual here</h1>
+    <mat-progress-bar *ngIf="loadingMarkup" mode="indeterminate"></mat-progress-bar>
+    <div class="visual-wrapper pt-3">
+        <bh-proxywrapper width="100%" height="100%" [url]="data.proxyUrl" (selectionChange)="selectionChange($event)"></bh-proxywrapper>
+    </div>
+    <div class="row pt-3">
+        <div class="col-12">
+            <button class="save" disableRipple mat-flat-button (click)="save()">
+                <span>{{saveLabel | localize: 'saveLabel':'code-dialog':'label' | uppercase}}</span>
+            </button>
+        </div>
     </div>
 </div>
