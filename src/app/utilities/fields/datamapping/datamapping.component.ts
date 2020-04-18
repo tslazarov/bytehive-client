@@ -11,6 +11,7 @@ import { CodeData, CodeDialog } from '../../dialogs/code/code.dialog';
 import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
 import { AutomaticData, AutomaticDialog } from '../../dialogs/automatic/automatic.dialog';
 import { Subscription } from 'rxjs';
+import { VisualDialog, VisualData } from '../../dialogs/visual/visual.dialog';
 
 @Component({
     selector: 'bh-datamapping',
@@ -103,7 +104,24 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     }
 
     visualMapping(fieldMapping: FieldMapping): void {
+        if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
+            this.parentForm.controls['detailUrl'].markAsTouched();
+            return;
+        }
 
+        let url = this.parentForm.value.detailUrl;
+
+        let manualData = new VisualData();
+        manualData.markup = fieldMapping.formGroup.value.fieldMarkup;
+        manualData.url = '/proxy?url=' + url;
+
+        let dialogRef = this.dialog.open(VisualDialog, { width: '90vw', minHeight: '380px', autoFocus: false, data: manualData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.markup) {
+                fieldMapping.formGroup.patchValue({ fieldMarkup: result.markup });
+            }
+        });
     }
 
     codeMapping(fieldMapping: FieldMapping): void {

@@ -13,3 +13,40 @@
 .visual-wrapper {
     height: calc(90vh - 100px);
 }
+
+.save {
+    min-width: 150px;
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.save:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.generate {
+    min-width: 150px;
+    background-color: #212121;
+    color: #ffffff;
+}
+
+.generate:hover {
+    background-color: #212121;
+    color: #ffeb3b;
+}
+
+.generate.disabled {
+    min-width: 150px;
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.generate.disabled:hover {
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.full-width {
+    width: 100%;
+}

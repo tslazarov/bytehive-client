@@ -1,4 +1,4 @@
-<mat-toolbar class="top-navbar sticky" (scroll)="onWindowScroll($event)">
+<mat-toolbar *ngIf="showNavigation" class="top-navbar sticky" (scroll)="onWindowScroll($event)">
     <mat-toolbar-row>
         <img src="../assets/logo.svg" alt="logo" class="logo" (click)="navigate('/')" />
         <span class="spacer"></span>

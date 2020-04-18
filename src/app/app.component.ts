@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ResolveEnd } from '@angular/router';
 import { TranslationService } from './services/utilities/translation.service';
 import { Constants } from './utilities/constants';
 import { Subject, Subscription } from 'rxjs';
@@ -17,9 +17,11 @@ import { map } from 'rxjs/operators';
 export class AppComponent implements OnInit, OnDestroy {
     // common
     authenticated: boolean;
+    showNavigation: boolean;
+    navigationAdministrationSegment: boolean;
     currentLanguage: string;
     email: string;
-    navigationAdministrationSegment: boolean;
+    currentUrl: string;
 
     // subscriptions
     authenticationChangeSubscription: Subscription;
@@ -54,6 +56,18 @@ export class AppComponent implements OnInit, OnDestroy {
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
             this.setLanguage();
             this.setLabelsMessages();
+        });
+
+        this.router.events.subscribe((event) => {
+            if (event instanceof ResolveEnd) {
+                console.log(event.url);
+                if (event.url.startsWith('/proxy')) {
+                    this.showNavigation = false;
+                }
+                else {
+                    this.showNavigation = true;
+                }
+            }
         });
 
         this.setCurrentUser();
@@ -116,10 +130,10 @@ export class AppComponent implements OnInit, OnDestroy {
     @HostListener('window:scroll', ['$event'])
     onWindowScroll(e: any): void {
         let element = document.querySelector('.top-navbar');
-        if (window.pageYOffset > 0) {
+        if (element && window.pageYOffset > 0) {
             element.classList.add('top-navbar-inverse');
             element.classList.add('mat-elevation-z3');
-        } else {
+        } else if (element) {
             element.classList.remove('top-navbar-inverse');
             element.classList.remove('mat-elevation-z3');
         }

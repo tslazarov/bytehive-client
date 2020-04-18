@@ -23,6 +23,7 @@ import { AuthGuardService } from '../services/guards/auth-guard.service';
 import { AuthLocalService } from '../services/utilities/auth.service';
 import { SignGuardService } from '../services/guards/sign-guard.service';
 import { ProfileComponent } from './profile/profile.component';
+import { ProxyComponent } from './proxy/proxy.component';
 
 @NgModule({
     imports: [
@@ -42,7 +43,8 @@ import { ProfileComponent } from './profile/profile.component';
         SigninComponent,
         FaqComponent,
         SignupComponent,
-        ProfileComponent
+        ProfileComponent,
+        ProxyComponent
     ],
     entryComponents: [],
     providers: [

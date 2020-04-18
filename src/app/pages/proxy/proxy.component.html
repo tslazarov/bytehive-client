@@ -1,0 +1,4 @@
+<div *ngIf="showLoading" class="loading-wrapper loading">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!showLoading" (mouseup)="getSelection()" [innerHTML]="content | safehtml"></div>
