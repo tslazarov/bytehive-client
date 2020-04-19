@@ -10,15 +10,18 @@
                 <span class="icon close-icon large-icon"></span>
             </button>
         </div>
+        <div class="col-12">
+            <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="100%"></bh-errormessage>
+        </div>
     </div>
-    <mat-progress-bar *ngIf="loadingMarkup" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar *ngIf="showLoading" mode="indeterminate"></mat-progress-bar>
     <div class="visual-wrapper pt-3">
         <bh-proxywrapper width="100%" height="100%" [url]="data.proxyUrl" (selectionChange)="selectionChange($event)"></bh-proxywrapper>
     </div>
     <div class="row pt-3">
         <div class="col-12">
             <button class="save" disableRipple mat-flat-button (click)="save()">
-                <span>SAVE</span>
+                <span>{{saveLabel | localize: 'saveLabel':'visual-dialog':'label' | uppercase}}</span>
             </button>
         </div>
     </div>

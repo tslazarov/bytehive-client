@@ -12,12 +12,14 @@ import { ScraperService } from '../../../services/scraper.service';
 export class AutomaticDialog {
 
     output: string;
-    loadingMarkup: boolean;
+    showLoading: boolean;
+    showErrorMessage: boolean;
 
     // labels
     expectedOutputLabel: string;
     generateLabel: string;
     saveLabel: string;
+    errorMessageLabel: string;
 
     constructor(public dialogRef: MatDialogRef<AutomaticDialog>,
         private translationService: TranslationService,
@@ -53,22 +55,34 @@ export class AutomaticDialog {
         automaticMarkup.text = text;
         automaticMarkup.scrapeLink = this.data.scrapeLink;
 
-        this.loadingMarkup = true;
+        this.showLoading = true;
 
         this.scraperService.getAutomaticMarkup(automaticMarkup)
             .subscribe((result) => {
-                if (result == "non-defined") {
-                    console.log('show error');
+                this.showLoading = false;
+
+                if (result == 'non-determined') {
+                    this.errorMessageLabel = this.translationService.localizeValue('nonDefinedLabel', 'automatic-dialog', 'label');
+                    this.data.markup = '';
+                    this.showErrorMessage = true;
+                    setTimeout(() => this.showErrorMessage = false, 3000);
+                }
+                else if (result == 'non-unique') {
+                    this.errorMessageLabel = this.translationService.localizeValue('nonUniqueLabel', 'automatic-dialog', 'label');
+                    this.data.markup = '';
+                    this.showErrorMessage = true;
+                    setTimeout(() => this.showErrorMessage = false, 3000);
                 }
                 else {
                     this.data.markup = decodeURIComponent(result);
                 }
-
-                this.loadingMarkup = false;
             }, (error) => {
-                console.log(error);
-                console.log('show error');
-                this.loadingMarkup = false;
+                this.showLoading = false;
+                this.showErrorMessage = true;
+
+                this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'automatic-dialog', 'label');
+
+                setTimeout(() => this.showErrorMessage = false, 3000);
             });
     }
 }

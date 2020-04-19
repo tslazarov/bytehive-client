@@ -13,11 +13,13 @@ export class CodeDialog {
 
     editor: any;
     editorOptions: any;
-    loadingMarkup: boolean;
+    showLoading: boolean;
+    showErrorMessage: boolean;
 
     // labels
     generateLabel: string;
     saveLabel: string;
+    errorMessageLabel: string;
 
     constructor(public dialogRef: MatDialogRef<CodeDialog>,
         private translationService: TranslationService,
@@ -59,26 +61,35 @@ export class CodeDialog {
         codeMarkup.text = this.editor.getModel().getValueInRange(this.editor.getSelection());
         codeMarkup.scrapeLink = this.data.scrapeLink;
 
-        this.loadingMarkup = true;
+        this.showLoading = true;
 
         this.scraperService.getCodeMarkup(codeMarkup)
             .subscribe((result) => {
-                if (result == "non-defined") {
-                    console.log('show error');
+                this.showLoading = false;
+
+                if (result == 'non-determined') {
+                    this.errorMessageLabel = this.translationService.localizeValue('nonDefinedLabel', 'code-dialog', 'label');
+                    this.data.markup = '';
+                    this.showErrorMessage = true;
+                    setTimeout(() => this.showErrorMessage = false, 3000);
                 }
-                else if (result == "non-unique") {
-                    console.log('show error');
+                else if (result == 'non-unique') {
+                    this.errorMessageLabel = this.translationService.localizeValue('nonUniqueLabel', 'code-dialog', 'label');
+                    this.data.markup = '';
+                    this.showErrorMessage = true;
+                    setTimeout(() => this.showErrorMessage = false, 3000);
                 }
                 else {
                     this.data.markup = decodeURIComponent(result);
                 }
 
-                this.loadingMarkup = false;
             }, (error) => {
-                console.log(error);
-                console.log('show error');
+                this.showLoading = false;
+                this.showErrorMessage = true;
 
-                this.loadingMarkup = false;
+                this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'code-dialog', 'label');
+
+                setTimeout(() => this.showErrorMessage = false, 3000);
             });
     }
 }

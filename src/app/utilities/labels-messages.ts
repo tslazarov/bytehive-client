@@ -520,6 +520,36 @@ export class LabelsMessages {
             'saveLabel': {
                 'en': 'Save',
                 'bg': 'Запази'
+            },
+            'nonDefinedLabel': {
+                'en': 'An appropriate selector was not found',
+                'bg': 'Подходящ селектор не беше намерен'
+            },
+            'nonUniqueLabel': {
+                'en': 'A unique selector was not found',
+                'bg': 'Уникален селектор не беше намерен'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+            }
+        },
+        'visual-dialog': {
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            },
+            'nonDefinedLabel': {
+                'en': 'An appropriate selector was not found',
+                'bg': 'Подходящ селектор не беше намерен'
+            },
+            'nonUniqueLabel': {
+                'en': 'A unique selector was not found',
+                'bg': 'Уникален селектор не беше намерен'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
             }
         },
         'code-dialog': {
@@ -530,6 +560,18 @@ export class LabelsMessages {
             'saveLabel': {
                 'en': 'Save',
                 'bg': 'Запази'
+            },
+            'nonDefinedLabel': {
+                'en': 'An appropriate selector was not found',
+                'bg': 'Подходящ селектор не беше намерен'
+            },
+            'nonUniqueLabel': {
+                'en': 'A unique selector was not found',
+                'bg': 'Уникален селектор не беше намерен'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
             }
         },
         'pageinformation-dialog': {
@@ -616,6 +658,12 @@ export class LabelsMessages {
             'invalidInformationLabel': {
                 'en': 'The password was not saved. Please check the provided verification code and email',
                 'bg': 'Паролата не беше запазена. Моля проверете предоставените код за верификация и имейл'
+            }
+        },
+        'proxy': {
+            'selectLabel': {
+                'en': 'Select',
+                'bg': 'Избери'
             }
         },
         'occupation': {

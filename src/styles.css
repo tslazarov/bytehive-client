@@ -34,12 +34,17 @@ body {
     vertical-align: middle;
     margin: auto 0px;
     padding: 6px 0px 0px 6px;
+    width: 50px;
+    display: inline-block;
 }
 
 .error-message .error-content-wrap {
     vertical-align: middle;
     margin: auto 0px;
     padding: 0px;
+    display: inline-block;
+    word-wrap: break-word;
+    width: calc(100% - 50px);
 }
 
 .form-header {

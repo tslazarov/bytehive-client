@@ -5,6 +5,7 @@ import { ClientService } from '../../services/client.service';
 import { CommunicationService } from '../../services/utilities/communication.service';
 import { TextSelectEvent, SelectionRectangle } from '../../utilities/directives/textselect/textselect.directive';
 import { environment } from '../../../environments/environment';
+import { TranslationService } from '../../services/utilities/translation.service';
 
 @Component({
     selector: 'app-proxy',
@@ -13,7 +14,7 @@ import { environment } from '../../../environments/environment';
 })
 export class ProxyComponent implements OnInit, OnDestroy {
 
-    // Common
+    // common
     showLoading: boolean;
     url: string;
     content: string;
@@ -23,12 +24,15 @@ export class ProxyComponent implements OnInit, OnDestroy {
 
     @ViewChild('indicator', { static: false }) indicator: ElementRef;
 
-
     // Subscriptions
     urlSubscription: Subscription;
 
+    // labels
+    selectLabel: string;
+
     constructor(private route: ActivatedRoute,
         private clientService: ClientService,
+        private translationService: TranslationService,
         private chgRef: ChangeDetectorRef) {
     }
 
@@ -53,6 +57,12 @@ export class ProxyComponent implements OnInit, OnDestroy {
                     })
             }
         });
+
+        this.setLabelsMessage();
+    }
+
+    setLabelsMessage() {
+        this.selectLabel = this.translationService.localizeValue('selectLabel', 'proxy', 'label');
     }
 
     ngAfterViewInit() {
