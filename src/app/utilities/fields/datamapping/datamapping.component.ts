@@ -95,11 +95,14 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         let automaticData = new AutomaticData();
         automaticData.markup = fieldMapping.formGroup.value.fieldMarkup;
         automaticData.url = url;
+        automaticData.scrapeLink = false;
 
         let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', minHeight: '380px', autoFocus: false, data: automaticData });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
+            if (result && result.markup) {
+                fieldMapping.formGroup.patchValue({ fieldMarkup: result.markup });
+            }
         });
     }
 
@@ -115,6 +118,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         visualData.markup = fieldMapping.formGroup.value.fieldMarkup;
         visualData.proxyUrl = '/proxy?url=' + url;
         visualData.url = url;
+        visualData.scrapeLink = false;
 
         let dialogRef = this.dialog.open(VisualDialog, { width: '90vw', minHeight: '380px', autoFocus: false, data: visualData });
 
@@ -140,6 +144,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
                 codeData.url = url;
                 codeData.code = markup;
                 codeData.markup = fieldMapping.formGroup.value.fieldMarkup;
+                codeData.scrapeLink = false;
 
                 let dialogRef = this.dialog.open(CodeDialog, { width: '90vw', height: '90vh', autoFocus: false, data: codeData });
 

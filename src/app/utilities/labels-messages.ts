@@ -42,6 +42,60 @@ export class LabelsMessages {
                 'bg': 'Заявки'
             }
         },
+        'signin': {
+            'accountLabel': {
+                'en': 'Account',
+                'bg': 'Акаунт'
+            },
+            'signinLabel': {
+                'en': 'Sign in',
+                'bg': 'Влез'
+            },
+            'emailLabel': {
+                'en': 'Email',
+                'bg': 'Имейл'
+            },
+            'emailRequiredErrorLabel': {
+                'en': 'Please enter an email',
+                'bg': 'Моля въведете имейл'
+            },
+            'passwordLabel': {
+                'en': 'Password',
+                'bg': 'Парола'
+            },
+            'passwordRequiredErrorLabel': {
+                'en': 'Please enter a password',
+                'bg': 'Моля въведете парола'
+            },
+            'forgotPasswordLabel': {
+                'en': 'Forgot your password?',
+                'bg': 'Забравена парола?'
+            },
+            'signinFacebookLabel': {
+                'en': 'Sign in with Facebook',
+                'bg': 'Влез с Facebook'
+            },
+            'signinGoogleLabel': {
+                'en': 'Sign in with Google',
+                'bg': 'Влез с Google'
+            },
+            'noAccountLabel': {
+                'en': `Don't have an account? Sign up here`,
+                'bg': 'Нямате акаунт? Регистрирайте се'
+            },
+            'invalidCredentialsLabel': {
+                'en': 'Incorrect email or password',
+                'bg': 'Невалидни парола или имейл'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+            },
+            'resetPasswordSuccessLabel': {
+                'en': 'The password was changed successfully',
+                'bg': 'Паролата беше променена успешно'
+            }
+        },
         'signup': {
             'emailLabel': {
                 'en': 'Email',
@@ -98,6 +152,22 @@ export class LabelsMessages {
             'signupLabel': {
                 'en': 'Sign up',
                 'bg': 'Регистрирай се'
+            },
+            'signupHeaderLabel': {
+                'en': 'Create account',
+                'bg': 'Създай акаунт'
+            },
+            'duplicateEmailErrorLabel': {
+                'en': 'A user with the same email already exists',
+                'bg': 'Потребител със същия имейл вече съществува'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+            },
+            'createAccountSuccessLabel': {
+                'en': 'Your account was created successfully',
+                'bg': 'Твоят акаунт беше създаден успешно'
             }
         },
         'profile': {
@@ -158,6 +228,66 @@ export class LabelsMessages {
             'confirmLabel': {
                 'en': 'Confirm',
                 'bg': 'Потвърди'
+            }
+        },
+        'scrapepicker': {
+            'listDetailPagesLabel': {
+                'en': 'List & Detail pages',
+                'bg': 'Страници със списък и детайли'
+            },
+            'listPagesLabel': {
+                'en': 'List pages',
+                'bg': 'Страници със списък'
+            },
+            'detailPagesLabel': {
+                'en': 'Detail pages',
+                'bg': 'Страници с детайли'
+            },
+            'listDetailDescriptionLabel': {
+                'en': 'List pages containing links to detail pages from which data will be scraped.',
+                'bg': 'Списъчни страници съдържащи линкове водещи към детайли страници, от които ще бъдат извлечени данни.'
+            },
+            'listDescriptionLabel': {
+                'en': 'List pages containing data that will be scraped.',
+                'bg': 'Списъчни страници съдържащи данни, които ще бъдат извлечени.'
+            },
+            'detailDescriptionLabel': {
+                'en': 'Detail pages containing data that will be scraped.',
+                'bg': 'Детайлни страници съдържащи данни, които ще бъдат извлечени.'
+            },
+        },
+        'exportpicker': {
+            'jsonFormatLabel': {
+                'en': 'JSON Format',
+                'bg': 'JSON Формат'
+            },
+            'xmlFormatLabel': {
+                'en': 'XML Format',
+                'bg': 'XML Формат'
+            },
+            'csvFormatLabel': {
+                'en': 'CSV Format',
+                'bg': 'CSV Формат'
+            },
+            'txtFormatLabel': {
+                'en': 'TXT Format',
+                'bg': 'TXT Формат'
+            },
+            'jsonDescriptionLabel': {
+                'en': 'Scraped data will be received in a JSON file.',
+                'bg': 'Събраните данни ще бъдат получени в JSON файл.'
+            },
+            'xmlDescriptionLabel': {
+                'en': 'Scraped data will be received in a XML file.',
+                'bg': 'Събраните данни ще бъдат получени в XML файл.'
+            },
+            'csvDescriptionLabel': {
+                'en': 'Scraped data will be received in a CSV file.',
+                'bg': 'Събраните данни ще бъдат получени в CSV файл.'
+            },
+            'txtDescriptionLabel': {
+                'en': 'Scraped data will be received in a TXT file.',
+                'bg': 'Събраните данни ще бъдат получени в TXT файл.'
             }
         },
         'datamapping': {
@@ -390,6 +520,36 @@ export class LabelsMessages {
             'saveLabel': {
                 'en': 'Save',
                 'bg': 'Запази'
+            },
+            'nonDefinedLabel': {
+                'en': 'An appropriate selector was not found',
+                'bg': 'Подходящ селектор не беше намерен'
+            },
+            'nonUniqueLabel': {
+                'en': 'A unique selector was not found',
+                'bg': 'Уникален селектор не беше намерен'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+            }
+        },
+        'visual-dialog': {
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            },
+            'nonDefinedLabel': {
+                'en': 'An appropriate selector was not found',
+                'bg': 'Подходящ селектор не беше намерен'
+            },
+            'nonUniqueLabel': {
+                'en': 'A unique selector was not found',
+                'bg': 'Уникален селектор не беше намерен'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
             }
         },
         'code-dialog': {
@@ -400,6 +560,18 @@ export class LabelsMessages {
             'saveLabel': {
                 'en': 'Save',
                 'bg': 'Запази'
+            },
+            'nonDefinedLabel': {
+                'en': 'An appropriate selector was not found',
+                'bg': 'Подходящ селектор не беше намерен'
+            },
+            'nonUniqueLabel': {
+                'en': 'A unique selector was not found',
+                'bg': 'Уникален селектор не беше намерен'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
             }
         },
         'pageinformation-dialog': {
@@ -478,6 +650,20 @@ export class LabelsMessages {
             'savePasswordLabel': {
                 'en': 'Save password',
                 'bg': 'Запази парола'
+            },
+            'serverErrorLabel': {
+                'en': 'Verification code was not sent. Please try again later',
+                'bg': 'Кодът за верификация не беше изпратен. Моля опитайте малко по-късно'
+            },
+            'invalidInformationLabel': {
+                'en': 'The password was not saved. Please check the provided verification code and email',
+                'bg': 'Паролата не беше запазена. Моля проверете предоставените код за верификация и имейл'
+            }
+        },
+        'proxy': {
+            'selectLabel': {
+                'en': 'Select',
+                'bg': 'Избери'
             }
         },
         'occupation': {

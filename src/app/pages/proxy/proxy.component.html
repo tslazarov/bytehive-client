@@ -4,7 +4,7 @@
 <div class="indicator" #indicator>
     <div class="indicator__cta">
         <a (mousedown)="$event.preventDefault()" (mouseup)="$event.stopPropagation(); shareSelection()" class="indicator__cta-link">
-            SELECT
+            {{selectLabel | localize: 'selectLabel':'proxy':'label' | uppercase}}
         </a>
     </div>
 </div>

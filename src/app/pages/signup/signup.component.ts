@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 import { AuthLocalService } from '../../services/utilities/auth.service';
 import { Router } from '@angular/router';
 import { NotifierService } from "angular-notifier";
+import { Constants } from '../../utilities/constants';
 
 @Component({
     selector: 'app-signup',
@@ -29,6 +30,7 @@ export class SignupComponent implements OnInit {
     showPassword: boolean;
     showConfirmPassword: boolean;
     showLoading: boolean;
+    showErrorMessage: boolean;
 
     // subscriptions
     languageChangeSubscription: Subscription;
@@ -48,15 +50,17 @@ export class SignupComponent implements OnInit {
     lastNameRequiredErrorLabel: string;
     occupationLabel: string;
     signupLabel: string;
+    signupHeaderLabel: string;
+    errorMessageLabel: string;
 
     constructor(private formBuilder: FormBuilder,
         private translationService: TranslationService,
         private communicationService: CommunicationService,
         private accountService: AccountService,
         private authLocalService: AuthLocalService,
-        notifier: NotifierService,
+        private notifierService: NotifierService,
         private router: Router) {
-        this.notifier = notifier;
+        this.notifier = notifierService;
     }
 
     ngOnInit(): void {
@@ -81,8 +85,6 @@ export class SignupComponent implements OnInit {
             this.setLabelsMessages();
             this.buildOccupationOptions();
         });
-
-        this.notifier.notify("success", "You are awesome! I mean it!");
     }
 
     ngOnDestroy(): void {
@@ -104,10 +106,10 @@ export class SignupComponent implements OnInit {
         this.lastNameRequiredErrorLabel = this.translationService.localizeValue('lastNameRequiredErrorLabel', 'signup', 'label');
         this.occupationLabel = this.translationService.localizeValue('occupationLabel', 'signup', 'label');
         this.signupLabel = this.translationService.localizeValue('signupLabel', 'signup', 'label');
+        this.signupHeaderLabel = this.translationService.localizeValue('signupHeaderLabel', 'signup', 'label');
     }
 
     buildOccupationOptions(): void {
-
         this.occupations = [];
 
         for (let occupationType in OccupationType) {
@@ -140,9 +142,10 @@ export class SignupComponent implements OnInit {
                 if (result) {
                     this.authLocalService.signin(result);
                     let callback = localStorage.getItem('bh_callback');
-                    // TODO: Set preferred language
 
                     this.communicationService.emitAuthenticationChange();
+
+                    this.notifier.notify("success", this.translationService.localizeValue('createAccountSuccessLabel', 'signup', 'label'));
 
                     if (callback) {
                         this.router.navigate([callback]);
@@ -152,13 +155,17 @@ export class SignupComponent implements OnInit {
                         this.router.navigate(['/']);
                     }
                 }
-            }, err => {
+            }, (error) => {
+                this.showErrorMessage = true;
                 this.showLoading = false;
-                if (err.status == 400) {
-                    console.log('show duplicate email');
-                } else if (err.status == 500) {
-                    console.log('error');
+
+                if (error.status == 400) {
+                    this.errorMessageLabel = this.translationService.localizeValue('duplicateEmailErrorLabel', 'signup', 'label');
+                } else {
+                    this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'signup', 'label');
                 }
+
+                setTimeout(() => this.showErrorMessage = false, 3000);
             });
     }
 }

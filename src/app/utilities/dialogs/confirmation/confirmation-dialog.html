@@ -13,7 +13,7 @@
     </div>
     <div class="row pt-3">
         <div class="col-12 right">
-            <button class="cancel mr-3" disableRipple mat-flat-button (click)="cancel()">
+            <button class="cancel mr-3" disableRipple mat-flat-button (click)="close()">
                 <span>{{cancelLabel | localize: 'cancelLabel':'confirmation-dialog':'label' | uppercase}}</span>
             </button>
             <button class="confirm" disableRipple mat-flat-button (click)="confirm()">

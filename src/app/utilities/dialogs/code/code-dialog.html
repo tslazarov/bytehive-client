@@ -15,8 +15,11 @@
                 <span class="icon close-icon large-icon"></span>
             </button>
         </div>
+        <div class="col-12">
+            <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="100%"></bh-errormessage>
+        </div>
     </div>
-    <mat-progress-bar *ngIf="loadingMarkup" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar *ngIf="showLoading" mode="indeterminate"></mat-progress-bar>
     <div class="code-editor-wrapper pt-3">
         <ngx-monaco-editor class="code-editor" [options]="editorOptions" [(ngModel)]="data.code" (onInit)="onInit($event)"></ngx-monaco-editor>
     </div>

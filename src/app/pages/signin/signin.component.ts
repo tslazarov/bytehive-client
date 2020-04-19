@@ -7,14 +7,14 @@ import { SigninUser } from '../../models/signinuser.model.';
 import { Router } from '@angular/router';
 import { AuthLocalService } from '../../services/utilities/auth.service';
 import { AuthService, GoogleLoginProvider, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { SigninExternalUser } from '../../models/signinexternaluser.model';
 import { StringHelper } from '../../utilities/helpers/String';
 import { OccupationType } from '../../models/enums/occupationtype.enum';
 import { Constants } from '../../utilities/constants';
 import { MatDialog } from '@angular/material';
 import { ResetPasswordData, ResetPasswordDialog } from '../../utilities/dialogs/resetpassword/resetpassword.dialog';
-import { ResetCodeVerification } from '../../models/resetcodeverification.model';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
     selector: 'app-signin',
@@ -23,14 +23,29 @@ import { ResetCodeVerification } from '../../models/resetcodeverification.model'
 })
 export class SigninComponent implements OnInit, OnDestroy {
     // common
+    notifier: NotifierService;
     showPassword: boolean;
     showLoading: boolean;
+    showErrorMessage: boolean;
 
     // subscriptions
     socialSigninSubscription: Subscription;
     languageChangeSubscription: Subscription;
 
     signinFormGroup: FormGroup;
+
+    // labels:
+    accountLabel: string;
+    signinLabel: string;
+    emailLabel: string;
+    emailRequiredErrorLabel: string;
+    passwordLabel: string;
+    passwordRequiredErrorLabel: string;
+    forgotPasswordLabel: string;
+    signinFacebookLabel: string;
+    signinGoogleLabel: string;
+    noAccountLabel: string;
+    errorMessageLabel: string;
 
     constructor(private router: Router,
         private formBuilder: FormBuilder,
@@ -39,7 +54,10 @@ export class SigninComponent implements OnInit, OnDestroy {
         private communicationService: CommunicationService,
         private accountService: AccountService,
         private authLocalService: AuthLocalService,
-        private authService: AuthService) { }
+        private authService: AuthService,
+        private notifierService: NotifierService) {
+        this.notifier = notifierService;
+    }
 
     ngOnInit(): void {
 
@@ -68,7 +86,27 @@ export class SigninComponent implements OnInit, OnDestroy {
     }
 
     setLabelsMessages(): void {
-        console.log('SET lbl');
+        this.accountLabel = this.translationService.localizeValue('accountLabel', 'signin', 'label');
+        this.signinLabel = this.translationService.localizeValue('signinLabel', 'signin', 'label');
+        this.emailLabel = this.translationService.localizeValue('emailLabel', 'signin', 'label');
+        this.emailRequiredErrorLabel = this.translationService.localizeValue('emailRequiredErrorLabel', 'signin', 'label');
+        this.passwordLabel = this.translationService.localizeValue('passwordLabel', 'signin', 'label');
+        this.passwordRequiredErrorLabel = this.translationService.localizeValue('passwordRequiredErrorLabel', 'signin', 'label');
+        this.forgotPasswordLabel = this.translationService.localizeValue('forgotPasswordLabel', 'signin', 'label');
+        this.signinFacebookLabel = this.translationService.localizeValue('signinFacebookLabel', 'signin', 'label');
+        this.signinGoogleLabel = this.translationService.localizeValue('signinGoogleLabel', 'signin', 'label');
+        this.noAccountLabel = this.translationService.localizeValue('noAccountLabel', 'signin', 'label');
+    }
+
+    setLanguage() {
+        let defaultLanguage = this.authLocalService.getClaim('language');
+        if (defaultLanguage) {
+            let language = defaultLanguage == 'English' ? 'en' : 'bg';
+            localStorage.setItem(Constants.LANGUAGE_KEY, language);
+            this.translationService.updateLanguage();
+
+            this.communicationService.emitLanguageChange();
+        }
     }
 
     signin(): void {
@@ -83,10 +121,11 @@ export class SigninComponent implements OnInit, OnDestroy {
                 this.showLoading = false;
                 if (result) {
                     this.authLocalService.signin(result);
-                    let callback = localStorage.getItem('bh_callback');
-                    // TODO: Set preferred language
-
                     this.communicationService.emitAuthenticationChange();
+
+                    this.setLanguage();
+
+                    let callback = localStorage.getItem('bh_callback');
 
                     if (callback) {
                         this.router.navigate([callback]);
@@ -96,11 +135,17 @@ export class SigninComponent implements OnInit, OnDestroy {
                         this.router.navigate(['/']);
                     }
                 }
-            }, err => {
+            }, (error) => {
+                this.showErrorMessage = true;
                 this.showLoading = false;
-                if (err.status == 500) {
-                    console.log('error');
+
+                if (error.status == 400) {
+                    this.errorMessageLabel = this.translationService.localizeValue('invalidCredentialsLabel', 'signin', 'label');
+                } else {
+                    this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'signin', 'label');
                 }
+
+                setTimeout(() => this.showErrorMessage = false, 3000);
             });
     }
 
@@ -131,18 +176,11 @@ export class SigninComponent implements OnInit, OnDestroy {
                 this.showLoading = false;
                 if (result) {
                     this.authLocalService.signin(result);
-                    let callback = localStorage.getItem('bh_callback');
-
-                    let defaultLanguage = this.authLocalService.getClaim('language');
-                    if (defaultLanguage) {
-                        let language = defaultLanguage == 'English' ? 'en' : 'bg';
-                        localStorage.setItem(Constants.LANGUAGE_KEY, language);
-                        this.translationService.updateLanguage();
-
-                        this.communicationService.emitLanguageChange();
-                    }
-
                     this.communicationService.emitAuthenticationChange();
+
+                    this.setLanguage();
+
+                    let callback = localStorage.getItem('bh_callback');
 
                     if (callback) {
                         this.router.navigate([callback]);
@@ -152,11 +190,12 @@ export class SigninComponent implements OnInit, OnDestroy {
                         this.router.navigate(['/']);
                     }
                 }
-            }, err => {
+            }, (error) => {
                 this.showLoading = false;
-                if (err.status == 500) {
-                    console.log('error');
-                }
+                this.showErrorMessage = true;
+                this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'signin', 'label');
+
+                setTimeout(() => this.showErrorMessage = false, 3000);
             });
     }
 
@@ -165,7 +204,9 @@ export class SigninComponent implements OnInit, OnDestroy {
         let dialogRef = this.dialog.open(ResetPasswordDialog, { width: '450px', minHeight: '100px', autoFocus: false, data: { resetCodeVerification } });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
+            if (result) {
+                this.notifier.notify("success", this.translationService.localizeValue('resetPasswordSuccessLabel', 'signin', 'label'));
+            }
         });
     }
 

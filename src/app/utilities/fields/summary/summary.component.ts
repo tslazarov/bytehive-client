@@ -35,7 +35,7 @@ export class SummaryComponent implements OnInit {
         private translationService: TranslationService) { }
 
     ngOnInit(): void {
-        this.scrapeTypeChangeSubscription = this.communicationService.exportTypeChangeEmitted.subscribe(e => {
+        this.scrapeTypeChangeSubscription = this.communicationService.scrapeTypeChangeEmitted.subscribe(e => {
             this.setScrapeTypeTile(e);
         });
 
@@ -50,6 +50,7 @@ export class SummaryComponent implements OnInit {
     }
 
     setScrapeTypeTile(scrapeType: ScrapeType): void {
+        console.log(scrapeType);
         switch (scrapeType) {
             case (ScrapeType.ListDetail): {
                 this.scrapeTypeIcon = "image listdetail-image";

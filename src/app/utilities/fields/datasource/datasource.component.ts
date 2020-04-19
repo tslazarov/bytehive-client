@@ -14,6 +14,7 @@ import { first } from 'rxjs/operators';
 import { AutomaticData, AutomaticDialog } from '../../dialogs/automatic/automatic.dialog';
 import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
 import { Subscription } from 'rxjs';
+import { VisualData, VisualDialog } from '../../dialogs/visual/visual.dialog';
 
 @Component({
     selector: 'bh-datasource',
@@ -117,18 +118,50 @@ export class DatasourceComponent implements OnInit, OnDestroy {
     }
 
     automaticMapping(): void {
+        if (!this.parentForm.value.listUrl || this.parentForm.controls['listUrl'].invalid) {
+            this.parentForm.controls['listUrl'].markAsTouched();
+            return;
+        }
+
+        let page = this.parentForm.controls['startPage'].value ? this.parentForm.controls['startPage'].value : 0;
+        let url = this.parentForm.value.listUrl.replace(Constants.PAGING_REGEX, page);
+
         let automaticData = new AutomaticData();
         automaticData.markup = this.parentForm.value.detailMarkup;
+        automaticData.url = url;
+        automaticData.scrapeLink = true;
 
         let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', minHeight: '380px', autoFocus: false, data: automaticData });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
+            if (result && result.markup) {
+                this.parentForm.patchValue({ detailMarkup: result.markup });
+            }
         });
     }
 
     visualMapping(): void {
+        if (!this.parentForm.value.listUrl || this.parentForm.controls['listUrl'].invalid) {
+            this.parentForm.controls['listUrl'].markAsTouched();
+            return;
+        }
 
+        let page = this.parentForm.controls['startPage'].value ? this.parentForm.controls['startPage'].value : 0;
+        let url = this.parentForm.value.listUrl.replace(Constants.PAGING_REGEX, page);
+
+        let visualData = new VisualData();
+        visualData.markup = this.parentForm.value.detailMarkup;
+        visualData.proxyUrl = '/proxy?url=' + url;
+        visualData.url = url;
+        visualData.scrapeLink = true;
+
+        let dialogRef = this.dialog.open(VisualDialog, { width: '90vw', minHeight: '380px', autoFocus: false, data: visualData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result && result.markup) {
+                this.parentForm.patchValue({ detailMarkup: result.markup });
+            }
+        });
     }
 
     codeMapping(): void {
@@ -137,14 +170,17 @@ export class DatasourceComponent implements OnInit, OnDestroy {
             return;
         }
 
-        // TODO: Handle paging url
+        let page = this.parentForm.controls['startPage'].value ? this.parentForm.controls['startPage'].value : 0;
+        let url = this.parentForm.value.listUrl.replace(Constants.PAGING_REGEX, page);
 
-        this.clientService.getPageMarkup(this.parentForm.value.listUrl, false)
+        this.clientService.getPageMarkup(url, false)
             .pipe(first())
             .subscribe((markup) => {
                 let codeData = new CodeData();
                 codeData.code = markup;
                 codeData.markup = this.parentForm.value.detailMarkup;
+                codeData.url = url;
+                codeData.scrapeLink = true;
 
                 let dialogRef = this.dialog.open(CodeDialog, { width: '90vw', height: '90vh', autoFocus: false, data: codeData });
 

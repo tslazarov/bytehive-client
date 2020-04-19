@@ -13,17 +13,19 @@ export class CodeDialog {
 
     editor: any;
     editorOptions: any;
-    loadingMarkup: boolean;
+    showLoading: boolean;
+    showErrorMessage: boolean;
 
     // labels
     generateLabel: string;
     saveLabel: string;
+    errorMessageLabel: string;
 
     constructor(public dialogRef: MatDialogRef<CodeDialog>,
         private translationService: TranslationService,
         private scraperService: ScraperService,
         @Inject(MAT_DIALOG_DATA) public data: any) {
-        this.editorOptions = { theme: 'vs-light', language: 'html' };
+        this.editorOptions = { theme: 'vs-light', language: 'html', readOnly: true };
         this.setLabelsMessages();
     }
 
@@ -57,26 +59,37 @@ export class CodeDialog {
         codeMarkup.url = this.data.url;
         codeMarkup.line = this.editor.getSelection().startLineNumber;
         codeMarkup.text = this.editor.getModel().getValueInRange(this.editor.getSelection());
-        this.loadingMarkup = true;
+        codeMarkup.scrapeLink = this.data.scrapeLink;
+
+        this.showLoading = true;
 
         this.scraperService.getCodeMarkup(codeMarkup)
             .subscribe((result) => {
-                if (result == "non-defined") {
-                    console.log('show error');
+                this.showLoading = false;
+
+                if (result == 'non-determined') {
+                    this.errorMessageLabel = this.translationService.localizeValue('nonDefinedLabel', 'code-dialog', 'label');
+                    this.data.markup = '';
+                    this.showErrorMessage = true;
+                    setTimeout(() => this.showErrorMessage = false, 3000);
                 }
-                else if (result == "non-unique") {
-                    console.log('show error');
+                else if (result == 'non-unique') {
+                    this.errorMessageLabel = this.translationService.localizeValue('nonUniqueLabel', 'code-dialog', 'label');
+                    this.data.markup = '';
+                    this.showErrorMessage = true;
+                    setTimeout(() => this.showErrorMessage = false, 3000);
                 }
                 else {
                     this.data.markup = decodeURIComponent(result);
                 }
 
-                this.loadingMarkup = false;
             }, (error) => {
-                console.log(error);
-                console.log('show error');
+                this.showLoading = false;
+                this.showErrorMessage = true;
 
-                this.loadingMarkup = false;
+                this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'code-dialog', 'label');
+
+                setTimeout(() => this.showErrorMessage = false, 3000);
             });
     }
 }
@@ -85,4 +98,5 @@ export class CodeData {
     url: string;
     code: string;
     markup: string;
+    scrapeLink: boolean;
 }

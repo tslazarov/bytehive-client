@@ -15,6 +15,7 @@ import { ConfirmationDialog } from './confirmation/confirmation.dialog';
 import { ResetPasswordDialog } from './resetpassword/resetpassword.dialog';
 import { ScraperService } from '../../services/scraper.service';
 import { ProxyWrapperComponent } from '../../pages/proxywrapper/proxywrapper.component';
+import { BhFieldsModule } from '../fields/bhfields.module';
 
 @NgModule({
     declarations: [
@@ -35,6 +36,7 @@ import { ProxyWrapperComponent } from '../../pages/proxywrapper/proxywrapper.com
         FormsModule,
         ReactiveFormsModule,
         MonacoEditorModule,
+        BhFieldsModule
     ],
     exports: [
     ],

@@ -113,18 +113,30 @@ export class HiveComponent implements OnInit, OnDestroy {
                     listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX)]);
                     detailMarkupControl.setValidators([Validators.required]);
                     detailUrlsControl.setValidators(null);
+
+                    listUrlControl.reset();
+                    detailMarkupControl.reset();
+                    detailUrlsControl.reset([]);
                     break;
                 }
                 case this.scrapeTypes.List: {
                     listUrlControl.setValidators([Validators.required, Validators.pattern(Constants.URL_REGEX)]);
                     detailMarkupControl.setValidators(null);
                     detailUrlsControl.setValidators(null);
+
+                    listUrlControl.reset();
+                    detailMarkupControl.reset();
+                    detailUrlsControl.reset([]);
                     break;
                 }
                 case this.scrapeTypes.Detail: {
                     listUrlControl.setValidators(null);
                     detailMarkupControl.setValidators(null);
                     detailUrlsControl.setValidators([BhValidators.arrayLengthRequired]);
+
+                    listUrlControl.reset();
+                    detailMarkupControl.reset();
+                    detailUrlsControl.reset([]);
                     break;
                 }
             }
