@@ -230,6 +230,32 @@ export class LabelsMessages {
                 'bg': 'Потвърди'
             }
         },
+        'scrapepicker': {
+            'listDetailPagesLabel': {
+                'en': 'List & Detail pages',
+                'bg': 'Страници със списък и детайли'
+            },
+            'listPagesLabel': {
+                'en': 'List pages',
+                'bg': 'Страници със списък'
+            },
+            'detailPagesLabel': {
+                'en': 'Detail pages',
+                'bg': 'Страници с детайли'
+            },
+            'listDetailDescriptionLabel': {
+                'en': 'List pages containing links to detail pages from which information will be scraped.',
+                'bg': 'Списъчни страници съдържащи линкове водещи към детайли страници, от които ще бъде извлечена информация.'
+            },
+            'listDescriptionLabel': {
+                'en': 'List pages containing information that will be scraped.',
+                'bg': 'Списъчни страници съдържащи информация, която ще бъде извлечена.'
+            },
+            'detailDescriptionLabel': {
+                'en': 'Detail pages containing information that will be scraped.',
+                'bg': 'Детайлни страници съдържащи информация, която ще бъде извлечена.'
+            },
+        },
         'datamapping': {
             'dataMappingLabel': {
                 'en': 'Data Mapping',

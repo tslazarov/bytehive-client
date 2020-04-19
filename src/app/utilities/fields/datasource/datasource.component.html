@@ -88,7 +88,7 @@
     <div *ngIf="scrapeType==3" class="row pt-5">
         <div class="col-12">
             <button disableRipple mat-flat-button class="detail-mode-picker" [matMenuTriggerFor]="detailUrlMode">
-                <span class="detail-mode-label">{{ detailUrlModeLabel }}</span>
+                <span class="detail-mode-label">{{ detailUrlModeLabel | uppercase }}</span>
                 <mat-icon class="right-icon">keyboard_arrow_down</mat-icon>
             </button>
             <mat-menu class="detail-url-mode-menu" #detailUrlMode="matMenu">

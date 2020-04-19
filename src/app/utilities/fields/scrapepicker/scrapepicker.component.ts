@@ -23,6 +23,14 @@ export class ScrapepickerComponent implements OnInit {
     // enums
     scrapeTypes = ScrapeType;
 
+    // labels
+    listDetailPagesLabel: string;
+    listPagesLabel: string;
+    detailPagesLabel: string;
+    listDetailDescriptionLabel: string;
+    listDescriptionLabel: string;
+    detailDescriptionLabel: string;
+
     constructor(private translationService: TranslationService,
         private communicationService: CommunicationService) { }
 
@@ -39,7 +47,12 @@ export class ScrapepickerComponent implements OnInit {
     }
 
     setLabelsMessages(): void {
-
+        this.listDetailPagesLabel = this.translationService.localizeValue('listDetailPagesLabel', 'scrapepicker', 'label');
+        this.listPagesLabel = this.translationService.localizeValue('listPagesLabel', 'scrapepicker', 'label');
+        this.detailPagesLabel = this.translationService.localizeValue('detailPagesLabel', 'scrapepicker', 'label');
+        this.listDetailDescriptionLabel = this.translationService.localizeValue('listDetailDescriptionLabel', 'scrapepicker', 'label');
+        this.listDescriptionLabel = this.translationService.localizeValue('listDescriptionLabel', 'scrapepicker', 'label');
+        this.detailDescriptionLabel = this.translationService.localizeValue('detailDescriptionLabel', 'scrapepicker', 'label');
     }
 
     selectOption(option): void {
