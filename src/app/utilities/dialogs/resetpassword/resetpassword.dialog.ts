@@ -16,6 +16,7 @@ export class ResetPasswordDialog {
 
     codeSent: boolean;
     showLoading: boolean;
+    showErrorMessage: boolean;
 
     resetCodeFormGroup: FormGroup;
     resetPasswordFormGroup: FormGroup;
@@ -34,6 +35,7 @@ export class ResetPasswordDialog {
     resetPasswordLabel: string;
     sendCodeLabel: string;
     savePasswordLabel: string;
+    errorMessageLabel: string;
 
     constructor(public dialogRef: MatDialogRef<ResetPasswordDialog>,
         private translationService: TranslationService,
@@ -89,6 +91,10 @@ export class ResetPasswordDialog {
                 this.showLoading = false;
             }, (error) => {
                 this.showLoading = false;
+                this.showErrorMessage = true;
+                this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'resetpassword-dialog', 'label');
+
+                setTimeout(() => this.showErrorMessage = false, 3000);
             });
     }
 
@@ -103,10 +109,14 @@ export class ResetPasswordDialog {
 
         this.accountService.resetpassword(resetPasswordVerification)
             .subscribe((result) => {
-                console.log(result);
                 this.showLoading = false;
+                this.dialogRef.close(true);
             }, (error) => {
                 this.showLoading = false;
+                this.showErrorMessage = true;
+                this.errorMessageLabel = this.translationService.localizeValue('invalidInformationLabel', 'resetpassword-dialog', 'label');
+
+                setTimeout(() => this.showErrorMessage = false, 10000);
             });
     }
 }

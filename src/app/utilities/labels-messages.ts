@@ -76,16 +76,20 @@ export class LabelsMessages {
                 'bg': 'Влез с Google'
             },
             'noAccountLabel': {
-                'en': `Don't have an account? Sign up here.`,
-                'bg': 'Нямате акаунт? Регистрирайте се.'
+                'en': `Don't have an account? Sign up here`,
+                'bg': 'Нямате акаунт? Регистрирайте се'
             },
             'invalidCredentialsLabel': {
                 'en': 'Incorrect email or password',
                 'bg': 'Невалидни парола или имейл'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later.',
-                'bg': 'Възникна грешка. Моля опитайте по-късно.'
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте по-късно'
+            },
+            'resetPasswordSuccessLabel': {
+                'en': 'The password was changed successfully',
+                'bg': 'Паролата беше променена успешно'
             }
         },
         'signup': {
@@ -524,6 +528,14 @@ export class LabelsMessages {
             'savePasswordLabel': {
                 'en': 'Save password',
                 'bg': 'Запази парола'
+            },
+            'serverErrorLabel': {
+                'en': 'Verification code was not sent. Please try again later',
+                'bg': 'Кодът за верификация не беше изпратен. Моля опитайте по-късно'
+            },
+            'invalidInformationLabel': {
+                'en': 'The password was not saved. Please check the provided verification code and email',
+                'bg': 'Паролата не беше запазена. Моля проверете предоставените код за верификация и имейл'
             }
         },
         'occupation': {

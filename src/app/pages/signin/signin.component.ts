@@ -14,6 +14,7 @@ import { OccupationType } from '../../models/enums/occupationtype.enum';
 import { Constants } from '../../utilities/constants';
 import { MatDialog } from '@angular/material';
 import { ResetPasswordData, ResetPasswordDialog } from '../../utilities/dialogs/resetpassword/resetpassword.dialog';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
     selector: 'app-signin',
@@ -22,6 +23,7 @@ import { ResetPasswordData, ResetPasswordDialog } from '../../utilities/dialogs/
 })
 export class SigninComponent implements OnInit, OnDestroy {
     // common
+    notifier: NotifierService;
     showPassword: boolean;
     showLoading: boolean;
     showErrorMessage: boolean;
@@ -51,7 +53,10 @@ export class SigninComponent implements OnInit, OnDestroy {
         private communicationService: CommunicationService,
         private accountService: AccountService,
         private authLocalService: AuthLocalService,
-        private authService: AuthService) { }
+        private authService: AuthService,
+        private notifierService: NotifierService) {
+        this.notifier = notifierService;
+    }
 
     ngOnInit(): void {
 
@@ -197,7 +202,9 @@ export class SigninComponent implements OnInit, OnDestroy {
         let dialogRef = this.dialog.open(ResetPasswordDialog, { width: '450px', minHeight: '100px', autoFocus: false, data: { resetCodeVerification } });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
+            if (result) {
+                this.notifier.notify("success", this.translationService.localizeValue('resetPasswordSuccessLabel', 'signin', 'label'));
+            }
         });
     }
 

@@ -54,9 +54,9 @@ export class SignupComponent implements OnInit {
         private communicationService: CommunicationService,
         private accountService: AccountService,
         private authLocalService: AuthLocalService,
-        notifier: NotifierService,
+        private notifierService: NotifierService,
         private router: Router) {
-        this.notifier = notifier;
+        this.notifier = notifierService;
     }
 
     ngOnInit(): void {
