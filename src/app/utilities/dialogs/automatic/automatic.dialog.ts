@@ -51,6 +51,7 @@ export class AutomaticDialog {
         let automaticMarkup = new AutomaticMarkup();
         automaticMarkup.url = this.data.url;
         automaticMarkup.text = text;
+        automaticMarkup.scrapeLink = this.data.scrapeLink;
 
         this.loadingMarkup = true;
 
@@ -75,4 +76,5 @@ export class AutomaticDialog {
 export class AutomaticData {
     markup: string;
     url: string;
+    scrapeLink: boolean;
 }

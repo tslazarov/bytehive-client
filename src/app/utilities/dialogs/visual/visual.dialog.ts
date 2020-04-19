@@ -36,6 +36,7 @@ export class VisualDialog {
             visualMarkup.url = this.data.url;
             visualMarkup.text = selection.text;
             visualMarkup.element = selection.element;
+            visualMarkup.scrapeLink = this.data.scrapeLink;
             this.loadingMarkup = true;
 
             this.scraperService.getVisualMarkup(visualMarkup)
@@ -63,4 +64,5 @@ export class VisualData {
     url: string;
     proxyUrl: string;
     markup: string;
+    scrapeLink: boolean;
 }

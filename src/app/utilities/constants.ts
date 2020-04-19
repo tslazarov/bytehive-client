@@ -4,6 +4,7 @@ export class Constants {
     // regular expressions
     static readonly URL_REGEX = '(https?://)([\\da-z.-]+)\\.([a-z.]{2,6})[\?\\da-zA-Z.-\=\-\&\_]*';
     static readonly URL_REGEX_PAGING = '(https?://)([\\da-z.-]+)\\.([a-z.]{2,6})[\?\\da-zA-Z.-\=\-\&\_]*(\{\{page\}\}{1})[\?\\da-zA-Z.-\=\-\&\_]*';
+    static readonly PAGING_REGEX = '{{page}}';
 
     static readonly ACCOUNT_SERVICE_BASE_ENDPOINT = 'api/account/';
     static readonly ACCOUNT_SERVICE_SIGNUP_ENDPOINT = 'api/account/signup';

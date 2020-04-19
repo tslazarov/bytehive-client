@@ -23,7 +23,7 @@ export class CodeDialog {
         private translationService: TranslationService,
         private scraperService: ScraperService,
         @Inject(MAT_DIALOG_DATA) public data: any) {
-        this.editorOptions = { theme: 'vs-light', language: 'html' };
+        this.editorOptions = { theme: 'vs-light', language: 'html', readOnly: true };
         this.setLabelsMessages();
     }
 
@@ -57,6 +57,8 @@ export class CodeDialog {
         codeMarkup.url = this.data.url;
         codeMarkup.line = this.editor.getSelection().startLineNumber;
         codeMarkup.text = this.editor.getModel().getValueInRange(this.editor.getSelection());
+        codeMarkup.scrapeLink = this.data.scrapeLink;
+
         this.loadingMarkup = true;
 
         this.scraperService.getCodeMarkup(codeMarkup)
@@ -85,4 +87,5 @@ export class CodeData {
     url: string;
     code: string;
     markup: string;
+    scrapeLink: boolean;
 }
