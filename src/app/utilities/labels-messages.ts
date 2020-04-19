@@ -42,6 +42,52 @@ export class LabelsMessages {
                 'bg': 'Заявки'
             }
         },
+        'signin': {
+            'signinLabel': {
+                'en': 'Sign in',
+                'bg': 'Влез'
+            },
+            'emailLabel': {
+                'en': 'Email',
+                'bg': 'Имейл'
+            },
+            'emailRequiredErrorLabel': {
+                'en': 'Please enter an email',
+                'bg': 'Моля въведете имейл'
+            },
+            'passwordLabel': {
+                'en': 'Password',
+                'bg': 'Парола'
+            },
+            'passwordRequiredErrorLabel': {
+                'en': 'Please enter a password',
+                'bg': 'Моля въведете парола'
+            },
+            'forgotPasswordLabel': {
+                'en': 'Forgot your password?',
+                'bg': 'Забравена парола?'
+            },
+            'signinFacebookLabel': {
+                'en': 'Sign in with Facebook',
+                'bg': 'Влез с Facebook'
+            },
+            'signinGoogleLabel': {
+                'en': 'Sign in with Google',
+                'bg': 'Влез с Google'
+            },
+            'noAccountLabel': {
+                'en': `Don't have an account? Sign up here.`,
+                'bg': 'Нямате акаунт? Регистрирайте се.'
+            },
+            'invalidCredentialsLabel': {
+                'en': 'Incorrect email or password',
+                'bg': 'Невалидни парола или имейл'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте по-късно.'
+            }
+        },
         'signup': {
             'emailLabel': {
                 'en': 'Email',

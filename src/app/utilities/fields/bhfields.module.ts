@@ -13,6 +13,7 @@ import { DatamappingComponent } from './datamapping/datamapping.component';
 import { SummaryComponent } from './summary/summary.component';
 import { DatasourceComponent } from './datasource/datasource.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
+import { ErrorMessageComponent } from './errormessage/errormessage.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
         DatamappingComponent,
         DatasourceComponent,
         SummaryComponent,
-        FileuploadComponent
+        FileuploadComponent,
+        ErrorMessageComponent
     ],
     imports: [
         MaterialModule,
@@ -37,7 +39,9 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
         ExportpickerComponent,
         DatamappingComponent,
         DatasourceComponent,
-        SummaryComponent
+        SummaryComponent,
+        FileuploadComponent,
+        ErrorMessageComponent
     ],
     providers: [
         TranslationService,

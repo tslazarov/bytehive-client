@@ -9,53 +9,54 @@
             </div>
             <div *ngIf="!showLoading">
                 <div [formGroup]="signinFormGroup">
+                    <div class="center form-header pb-4">
+                        {{signinLabel | localize: 'signinLabel':'signin':'label' | uppercase}}
+                    </div>
+                    <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="250px"></bh-errormessage>
                     <div>
                         <mat-form-field floatLabel="never" class="pb-4 signin-field">
-                            <mat-label>Email</mat-label>
+                            <mat-label>{{emailLabel | localize: 'emailLabel':'signin':'label'}}</mat-label>
                             <input matInput autocomplete="off" formControlName="email">
                             <span matSuffix class="required">*</span>
                             <mat-error *ngIf="signinFormGroup.hasError('required', 'email')">
-                                Please enter email
+                                {{emailRequiredErrorLabel | localize: 'emailRequiredErrorLabel':'signin':'label'}}
                             </mat-error>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field floatLabel="never" class="pb-4 signin-field">
-                            <mat-label>Password</mat-label>
+                            <mat-label>{{passwordLabel | localize: 'passwordLabel':'signin':'label'}}</mat-label>
                             <input matInput autocomplete="off" formControlName="password" [type]="showPassword ? 'text' : 'password'">
                             <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
-                            <mat-error *ngIf="signinFormGroup.get('password').hasError('required', 'password')">
-                                Please enter your password
-                            </mat-error>
-                            <mat-error *ngIf="signinFormGroup.hasError('minlength', 'password')">
-                                Please length your password
+                            <mat-error *ngIf="signinFormGroup.hasError('required', 'password')">
+                                {{passwordRequiredErrorLabel | localize: 'passwordRequiredErrorLabel':'signin':'label'}}
                             </mat-error>
                         </mat-form-field>
                     </div>
                 </div>
                 <div>
                     <button disableRipple mat-flat-button class="signin mt-2" (click)="signin()">
-                        SIGN IN
+                        {{signinLabel | localize: 'signinLabel':'signin':'label' | uppercase}}
                     </button>
                 </div>
                 <div class="center pt-2 signup-button">
-                    <span (click)="resetpassword()">Forgot your password?</span>
+                    <span (click)="resetpassword()">{{forgotPasswordLabel | localize: 'forgotPasswordLabel':'signin':'label'}}</span>
                 </div>
                 <div class="divider center">
 
                 </div>
                 <div>
                     <button disableRipple mat-flat-button class="signin-facebook" (click)="signinFacebook()">
-                        SIGN IN WITH FACEBOOK
+                        {{signinFacebookLabel | localize: 'signinFacebookLabel':'signin':'label' | uppercase}}
                     </button>
                 </div>
                 <div>
                     <button disableRipple mat-flat-button class="signin-google mt-2" (click)="signinGoogle()">
-                        SIGN IN WITH GOOGLE
+                        {{signinGoogleLabel | localize: 'signinGoogleLabel':'signin':'label' | uppercase}}
                     </button>
                 </div>
                 <div class="center pt-2 signup-button">
-                    <span (click)="navigate('/signup')">Don't have an account? Sign up here.</span>
+                    <span (click)="navigate('/signup')">{{noAccountLabel | localize: 'noAccountLabel':'signin':'label'}}</span>
                 </div>
             </div>
         </div>
