@@ -14,6 +14,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { DatasourceComponent } from './datasource/datasource.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import { ErrorMessageComponent } from './errormessage/errormessage.component';
+import { DirectivesModule } from '../directives/directives.module';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ErrorMessageComponent } from './errormessage/errormessage.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        MonacoEditorModule
+        MonacoEditorModule,
+        DirectivesModule
     ],
     exports: [
         ScrapepickerComponent,

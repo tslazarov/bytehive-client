@@ -22,13 +22,14 @@
             <div class="col-6">
                 <mat-form-field floatLabel="never" class="number-input">
                     <mat-label>{{startPageLabel | localize: 'startPageLabel':'datasource':'label'}}</mat-label>
-                    <input matInput type="number" autocomplete="off" formControlName="startPage" class="center">
+                    <input matInput type="number" autocomplete="off" formControlName="startPage" min="0" class="center">
                 </mat-form-field>
             </div>
             <div class="col-6">
                 <mat-form-field floatLabel="never" class="number-input">
                     <mat-label>{{endPageLabel | localize: 'endPageLabel':'datasource':'label'}}</mat-label>
-                    <input matInput type="number" autocomplete="off" formControlName="endPage" class="center">
+                    <input #endPage matInput type="number" autocomplete="off" formControlName="endPage" min="{{parentForm.controls['startPage'].value}}"
+                        class="center">
                 </mat-form-field>
             </div>
         </div>
@@ -37,7 +38,7 @@
         <div class="col-12 pb-4 pt-4">
             <div class="mat-divider full-width"></div>
         </div>
-        <div class="col-9 detail-url-wrapper ">
+        <div class="col-10 detail-url-wrapper ">
             <div class="field-mapping">
                 <span [matMenuTriggerFor]="markup" class="input-overlay"></span>
                 <mat-form-field floatLabel="never">
