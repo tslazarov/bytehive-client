@@ -9,6 +9,10 @@
             </div>
             <div *ngIf="!showLoading">
                 <div [formGroup]="signupFormGroup" class="mb-2">
+                    <div class="center form-header pb-4">
+                        {{signupHeaderLabel | localize: 'signupHeaderLabel':'signup':'label'}}
+                    </div>
+                    <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="300px"></bh-errormessage>
                     <mat-form-field floatLabel="never" class="pb-4 signup-field">
                         <mat-label>{{emailLabel | localize: 'emailLabel':'signup':'label'}}</mat-label>
                         <input matInput autocomplete="off" formControlName="email">

@@ -10,9 +10,9 @@
             <div *ngIf="!showLoading">
                 <div [formGroup]="signinFormGroup">
                     <div class="center form-header pb-4">
-                        {{signinLabel | localize: 'signinLabel':'signin':'label' | uppercase}}
+                        {{accountLabel | localize: 'accountLabel':'signin':'label'}}
                     </div>
-                    <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="250px"></bh-errormessage>
+                    <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="300px"></bh-errormessage>
                     <div>
                         <mat-form-field floatLabel="never" class="pb-4 signin-field">
                             <mat-label>{{emailLabel | localize: 'emailLabel':'signin':'label'}}</mat-label>

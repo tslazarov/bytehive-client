@@ -35,6 +35,7 @@ export class SigninComponent implements OnInit, OnDestroy {
     signinFormGroup: FormGroup;
 
     // labels:
+    accountLabel: string;
     signinLabel: string;
     emailLabel: string;
     emailRequiredErrorLabel: string;
@@ -85,6 +86,7 @@ export class SigninComponent implements OnInit, OnDestroy {
     }
 
     setLabelsMessages(): void {
+        this.accountLabel = this.translationService.localizeValue('accountLabel', 'signin', 'label');
         this.signinLabel = this.translationService.localizeValue('signinLabel', 'signin', 'label');
         this.emailLabel = this.translationService.localizeValue('emailLabel', 'signin', 'label');
         this.emailRequiredErrorLabel = this.translationService.localizeValue('emailRequiredErrorLabel', 'signin', 'label');

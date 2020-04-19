@@ -43,6 +43,10 @@ export class LabelsMessages {
             }
         },
         'signin': {
+            'accountLabel': {
+                'en': 'Account',
+                'bg': 'Акаунт'
+            },
             'signinLabel': {
                 'en': 'Sign in',
                 'bg': 'Влез'
@@ -85,7 +89,7 @@ export class LabelsMessages {
             },
             'serverErrorLabel': {
                 'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте по-късно'
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
             },
             'resetPasswordSuccessLabel': {
                 'en': 'The password was changed successfully',
@@ -148,6 +152,22 @@ export class LabelsMessages {
             'signupLabel': {
                 'en': 'Sign up',
                 'bg': 'Регистрирай се'
+            },
+            'signupHeaderLabel': {
+                'en': 'Create account',
+                'bg': 'Създай акаунт'
+            },
+            'duplicateEmailErrorLabel': {
+                'en': 'A user with the same email already exists',
+                'bg': 'Потребител със същия имейл вече съществува'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+            },
+            'createAccountSuccessLabel': {
+                'en': 'Your account was created successfully',
+                'bg': 'Твоят акаунт беше създаден успешно'
             }
         },
         'profile': {
@@ -531,7 +551,7 @@ export class LabelsMessages {
             },
             'serverErrorLabel': {
                 'en': 'Verification code was not sent. Please try again later',
-                'bg': 'Кодът за верификация не беше изпратен. Моля опитайте по-късно'
+                'bg': 'Кодът за верификация не беше изпратен. Моля опитайте малко по-късно'
             },
             'invalidInformationLabel': {
                 'en': 'The password was not saved. Please check the provided verification code and email',
