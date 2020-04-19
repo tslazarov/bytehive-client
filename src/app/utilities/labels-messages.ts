@@ -244,17 +244,51 @@ export class LabelsMessages {
                 'bg': 'Страници с детайли'
             },
             'listDetailDescriptionLabel': {
-                'en': 'List pages containing links to detail pages from which information will be scraped.',
-                'bg': 'Списъчни страници съдържащи линкове водещи към детайли страници, от които ще бъде извлечена информация.'
+                'en': 'List pages containing links to detail pages from which data will be scraped.',
+                'bg': 'Списъчни страници съдържащи линкове водещи към детайли страници, от които ще бъдат извлечени данни.'
             },
             'listDescriptionLabel': {
-                'en': 'List pages containing information that will be scraped.',
-                'bg': 'Списъчни страници съдържащи информация, която ще бъде извлечена.'
+                'en': 'List pages containing data that will be scraped.',
+                'bg': 'Списъчни страници съдържащи данни, които ще бъдат извлечени.'
             },
             'detailDescriptionLabel': {
-                'en': 'Detail pages containing information that will be scraped.',
-                'bg': 'Детайлни страници съдържащи информация, която ще бъде извлечена.'
+                'en': 'Detail pages containing data that will be scraped.',
+                'bg': 'Детайлни страници съдържащи данни, които ще бъдат извлечени.'
             },
+        },
+        'exportpicker': {
+            'jsonFormatLabel': {
+                'en': 'JSON Format',
+                'bg': 'JSON Формат'
+            },
+            'xmlFormatLabel': {
+                'en': 'XML Format',
+                'bg': 'XML Формат'
+            },
+            'csvFormatLabel': {
+                'en': 'CSV Format',
+                'bg': 'CSV Формат'
+            },
+            'txtFormatLabel': {
+                'en': 'TXT Format',
+                'bg': 'TXT Формат'
+            },
+            'jsonDescriptionLabel': {
+                'en': 'Scraped data will be received in a JSON file.',
+                'bg': 'Събраните данни ще бъдат получени в JSON файл.'
+            },
+            'xmlDescriptionLabel': {
+                'en': 'Scraped data will be received in a XML file.',
+                'bg': 'Събраните данни ще бъдат получени в XML файл.'
+            },
+            'csvDescriptionLabel': {
+                'en': 'Scraped data will be received in a CSV file.',
+                'bg': 'Събраните данни ще бъдат получени в CSV файл.'
+            },
+            'txtDescriptionLabel': {
+                'en': 'Scraped data will be received in a TXT file.',
+                'bg': 'Събраните данни ще бъдат получени в TXT файл.'
+            }
         },
         'datamapping': {
             'dataMappingLabel': {
