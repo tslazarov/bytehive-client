@@ -47,6 +47,32 @@ body {
     width: calc(100% - 50px);
 }
 
+.success-message {
+    text-align: left;
+    color: #4CAF50;
+    display: inline-block;
+    padding:5px;
+    font-weight: 500;
+    font-size:14px;
+}
+
+.success-message .success-icon-wrap {
+    vertical-align: middle;
+    margin: auto 0px;
+    padding: 6px 0px 0px 6px;
+    width: 50px;
+    display: inline-block;
+}
+
+.success-message .success-content-wrap {
+    vertical-align: middle;
+    margin: auto 0px;
+    padding: 0px;
+    display: inline-block;
+    word-wrap: break-word;
+    width: calc(100% - 50px);
+}
+
 .form-header {
     font-size: 28px;
 }
@@ -250,5 +276,9 @@ button:focus {
 
 .error-icon {
     background: url(../src/assets/icons/error-accent.svg);
+}
+
+.success-icon {
+    background: url(../src/assets/icons/success-accent.svg);
 }
 

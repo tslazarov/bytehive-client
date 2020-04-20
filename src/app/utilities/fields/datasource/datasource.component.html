@@ -1,4 +1,6 @@
 <h4 class="pt-3">{{dataSourceLabel | localize: 'dataSourceLabel':'datasource':'label'}}</h4>
+<bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="100%"></bh-errormessage>
+<bh-successmessage class="pb-3" *ngIf="showSuccessMessage" message="{{successMessageLabel}}" width="100%"></bh-successmessage>
 <div [formGroup]="parentForm">
     <div *ngIf="scrapeType != 3">
         <div class="row pt-5">

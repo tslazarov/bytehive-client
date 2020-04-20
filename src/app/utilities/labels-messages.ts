@@ -416,6 +416,18 @@ export class LabelsMessages {
             'validateLabel': {
                 'en': 'Validate',
                 'bg': 'Валидирай'
+            },
+            'detailLinksFoundLabel': {
+                'en': 'Validation was successful. Detail links were found.',
+                'bg': 'Валидацията беше успешна. Детайлни линкове бяха открити.'
+            },
+            'detailLinksNotFoundLabel': {
+                'en': 'Validation was not successful. Detail links were not found.',
+                'bg': 'Валидацията не беше успешна. Детайлни линкове не бяха открити.'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
             }
         },
         'summary': {
