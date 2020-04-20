@@ -228,6 +228,26 @@ export class LabelsMessages {
             'confirmLabel': {
                 'en': 'Confirm',
                 'bg': 'Потвърди'
+            },
+            'requestReceivedLabel': {
+                'en': 'Your request has been received.',
+                'bg': 'Твоята заявка беше получена.'
+            },
+            'receiveEmailLabel': {
+                'en': 'You will receive an email when the request is processed.',
+                'bg': 'Ще получиш имейл, когато заявката е обработена.'
+            },
+            'goProfileLabel': {
+                'en': 'Go to profile',
+                'bg': 'Отиди в профила'
+            },
+            'createRequestLabel': {
+                'en': 'Create a new request',
+                'bg': 'Направи нова заявка'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
             }
         },
         'scrapepicker': {
@@ -396,6 +416,56 @@ export class LabelsMessages {
             'validateLabel': {
                 'en': 'Validate',
                 'bg': 'Валидирай'
+            },
+            'detailLinksFoundLabel': {
+                'en': 'Validation was successful. Detail links were found.',
+                'bg': 'Валидацията беше успешна. Детайлни линкове бяха открити.'
+            },
+            'detailLinksNotFoundLabel': {
+                'en': 'Validation was not successful. Detail links were not found.',
+                'bg': 'Валидацията не беше успешна. Детайлни линкове не бяха открити.'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+            }
+        },
+        'summary': {
+            'dataSourceLabel': {
+                'en': 'Data Source',
+                'bg': 'Източник на данни'
+            },
+            'listUrlLabel': {
+                'en': 'List link:',
+                'bg': 'Линк към списъчна страница'
+            },
+            'startPageLabel': {
+                'en': 'Start page:',
+                'bg': 'Начална страница:'
+            },
+            'endPageLabel': {
+                'en': 'End page:',
+                'bg': 'Крайна страница:'
+            },
+            'detailMarkupLabel': {
+                'en': 'Detail markup:',
+                'bg': 'Детайлен маркер:'
+            },
+            'detailLinksCountLabel': {
+                'en': 'Detail links count:',
+                'bg': 'Брой детайлни линкове:'
+            },
+            'dataMappingLabel': {
+                'en': 'Data Mapping',
+                'bg': 'Асоциация на данни'
+            },
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'markupLabel': {
+                'en': 'Markup',
+                'bg': 'Маркер'
             }
         },
         'users': {

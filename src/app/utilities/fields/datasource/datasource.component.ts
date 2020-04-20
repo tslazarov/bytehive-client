@@ -15,6 +15,8 @@ import { AutomaticData, AutomaticDialog } from '../../dialogs/automatic/automati
 import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
 import { Subscription } from 'rxjs';
 import { VisualData, VisualDialog } from '../../dialogs/visual/visual.dialog';
+import { ScraperService } from '../../../services/scraper.service';
+import { ValidateList } from '../../../models/validatelist.model';
 
 @Component({
     selector: 'bh-datasource',
@@ -32,6 +34,8 @@ export class DatasourceComponent implements OnInit, OnDestroy {
     // common
     detailUrlModes = DetailModeType;
     selectedDetailUrlMode: DetailModeType;
+    showSuccessMessage: boolean;
+    showErrorMessage: boolean;
 
     // labels
     dataSourceLabel: string;
@@ -50,11 +54,14 @@ export class DatasourceComponent implements OnInit, OnDestroy {
     manualLabel: string;
     visualLabel: string;
     validateLabel: string;
+    successMessageLabel: string;
+    errorMessageLabel: string;
 
     constructor(private clientService: ClientService,
         private dialog: MatDialog,
         private communicationService: CommunicationService,
-        private translationService: TranslationService) { }
+        private translationService: TranslationService,
+        private scraperService: ScraperService) { }
 
     ngOnInit(): void {
         this.setLabelsMessages();
@@ -203,5 +210,41 @@ export class DatasourceComponent implements OnInit, OnDestroy {
                 this.parentForm.patchValue({ detailMarkup: result.markup });
             }
         });
+    }
+
+    validate(): void {
+        if (!this.parentForm.value.listUrl || this.parentForm.controls['listUrl'].invalid || !this.parentForm.value.detailMarkup || this.parentForm.controls['detailMarkup'].invalid) {
+            this.parentForm.controls['listUrl'].markAsTouched();
+            this.parentForm.controls['detailMarkup'].markAsTouched();
+            return;
+        }
+
+        let page = this.parentForm.controls['startPage'].value ? this.parentForm.controls['startPage'].value : 0;
+        let url = this.parentForm.value.listUrl.replace(Constants.PAGING_REGEX, page);
+
+        let validateList = new ValidateList();
+        validateList.url = url;
+        validateList.markup = this.parentForm.controls['detailMarkup'].value;
+
+        this.scraperService.validateList(validateList).subscribe((result) => {
+            if (result) {
+                this.showSuccessMessage = true;
+                this.successMessageLabel = this.translationService.localizeValue('detailLinksFoundLabel', 'datasource', 'label');
+            }
+            else {
+                this.showErrorMessage = true;
+                this.errorMessageLabel = this.translationService.localizeValue('detailLinksNotFoundLabel', 'datasource', 'label');
+            }
+
+            setTimeout(() => {
+                this.showErrorMessage = false;
+                this.showSuccessMessage = false;
+            }, 4000);
+
+        }, (error) => {
+            this.showErrorMessage = true;
+            this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'signup', 'label');
+            setTimeout(() => { this.showErrorMessage = false }, 4000);
+        })
     }
 }

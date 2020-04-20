@@ -43,7 +43,7 @@ const customNotifierOptions: NotifierOptions = {
     position: {
         horizontal: {
             position: 'right',
-            distance: 40
+            distance: 50
         },
         vertical: {
             position: 'top',

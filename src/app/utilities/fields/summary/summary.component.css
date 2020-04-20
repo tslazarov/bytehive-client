@@ -43,6 +43,10 @@
     margin: 20px;
 }
 
+.links:hover {
+    cursor: pointer;
+}
+
 .scrape-type .listdetail-image {
     background: url(../../../../assets/icons/list-detail-accent.svg);
 }

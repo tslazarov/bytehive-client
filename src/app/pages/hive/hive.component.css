@@ -9,6 +9,10 @@
     color: #212121;
 }
 
+.navigation-button:hover {
+    color: #ffeb3b;
+}
+
 .form-content {
     min-height: 400px;
 }

@@ -4,11 +4,16 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 import { TranslationService } from '../../services/utilities/translation.service';
 import { CommunicationService } from '../../services/utilities/communication.service';
-import { FieldMapping } from '../../models/fieldmapping.model';
+import { FieldMappingGroup } from '../../models/fieldmapping-group.model';
 import { Constants } from '../../utilities/constants';
 import { ScrapeType } from '../../models/enums/scrapetype.enum';
 import { BhValidators } from '../../utilities/validators/bhvalidators';
 import { Subscription } from 'rxjs';
+import { ScrapeRequestCreate } from '../../models/scraperequestcreate.model';
+import { ScrapeRequestsService } from '../../services/scraperequests.service';
+import { FieldMapping } from '../../models/fieldmapping.model';
+import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
     selector: 'app-hive',
@@ -24,7 +29,11 @@ export class HiveComponent implements OnInit, OnDestroy {
     scrapeTypeFormGroup: FormGroup;
     dataSourceMappingFormGroup: FormGroup;
     exportTypeFormGroup: FormGroup;
-    fieldMappings: FieldMapping[];
+    fieldMappings: FieldMappingGroup[];
+
+    // common
+    showSuccess: boolean;
+    notifier: NotifierService;
 
     // enums
     scrapeTypes = ScrapeType;
@@ -40,10 +49,19 @@ export class HiveComponent implements OnInit, OnDestroy {
     previousLabel: string;
     nextLabel: string;
     confirmLabel: string;
+    requestReceivedLabel: string;
+    receiveEmailLabel: string;
+    goProfileLabel: string;
+    createRequestLabel: string;
 
-    constructor(private formBuilder: FormBuilder,
+    constructor(private router: Router,
+        private formBuilder: FormBuilder,
         private translationService: TranslationService,
-        private communicationService: CommunicationService) { }
+        private notifierService: NotifierService,
+        private communicationService: CommunicationService,
+        private scrapeRequestsService: ScrapeRequestsService) {
+        this.notifier = notifierService;
+    }
 
     ngOnInit(): void {
         this.setLabelsMessages();
@@ -90,6 +108,10 @@ export class HiveComponent implements OnInit, OnDestroy {
         this.previousLabel = this.translationService.localizeValue('previousLabel', 'hive', 'label');
         this.nextLabel = this.translationService.localizeValue('nextLabel', 'hive', 'label');
         this.confirmLabel = this.translationService.localizeValue('confirmLabel', 'hive', 'label');
+        this.requestReceivedLabel = this.translationService.localizeValue('requestReceivedLabel', 'hive', 'label');
+        this.receiveEmailLabel = this.translationService.localizeValue('receiveEmailLabel', 'hive', 'label');
+        this.goProfileLabel = this.translationService.localizeValue('goProfileLabel', 'hive', 'label');
+        this.createRequestLabel = this.translationService.localizeValue('createRequestLabel', 'hive', 'label');
     }
 
     subscribeScrapeTypeFormDependency(): void {
@@ -189,5 +211,30 @@ export class HiveComponent implements OnInit, OnDestroy {
         else {
             stepper.selected.interacted = true;
         }
+    }
+
+    confirm(): void {
+        let scrapeRequestCreateModel = new ScrapeRequestCreate();
+
+        scrapeRequestCreateModel.scrapeType = this.scrapeTypeFormGroup.controls['scrapeType'].value;
+        scrapeRequestCreateModel.exportType = this.exportTypeFormGroup.controls['exportType'].value;
+        scrapeRequestCreateModel.listUrl = this.dataSourceMappingFormGroup.controls['listUrl'].value;
+        scrapeRequestCreateModel.hasPaging = this.dataSourceMappingFormGroup.controls['hasPaging'].value;
+        scrapeRequestCreateModel.startPage = this.dataSourceMappingFormGroup.controls['startPage'].value;
+        scrapeRequestCreateModel.endPage = this.dataSourceMappingFormGroup.controls['endPage'].value;
+        scrapeRequestCreateModel.detailMarkup = this.dataSourceMappingFormGroup.controls['detailMarkup'].value;
+        scrapeRequestCreateModel.detailUrls = this.dataSourceMappingFormGroup.controls['detailUrls'].value;
+        scrapeRequestCreateModel.fieldMappings = this.fieldMappings.map(fm => { return new FieldMapping(fm.formGroup.controls['fieldName'].value, fm.formGroup.controls['fieldMarkup'].value) });
+
+        this.scrapeRequestsService.createScrapeRequest(scrapeRequestCreateModel).subscribe((result) => {
+            console.log(result);
+            this.showSuccess = true;
+        }, (error) => {
+            this.notifier.notify("error", this.translationService.localizeValue('serverErrorLabel', 'hive', 'label'));
+        });
+    }
+
+    navigate(route: string): void {
+        this.router.navigate([route]);
     }
 }

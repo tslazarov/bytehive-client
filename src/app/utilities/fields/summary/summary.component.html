@@ -14,7 +14,42 @@
     </div>
     <div class="col-lg-6 col-sm-12 tile">
         <div class="content">
-
+            <div class="col-12">
+                <h4 class="pb-2">{{dataSourceLabel | localize: 'dataSourceLabel':'summary':'label'}}</h4>
+                <div *ngIf="dataSourceMappingForm.controls['listUrl'].value">
+                    <span class="bold">{{listUrlLabel | localize: 'listUrlLabel':'summary':'label'}}</span> {{dataSourceMappingForm.controls['listUrl'].value}}
+                </div>
+                <div *ngIf="dataSourceMappingForm.controls['startPage'].value">
+                    <span class="bold">{{startPageLabel | localize: 'startPageLabel':'summary':'label'}}</span> {{dataSourceMappingForm.controls['startPage'].value}}
+                </div>
+                <div *ngIf="dataSourceMappingForm.controls['endPage'].value">
+                    <span class="bold">{{endPageLabel | localize: 'endPageLabel':'summary':'label'}}</span> {{dataSourceMappingForm.controls['endPage'].value}}
+                </div>
+                <div *ngIf="dataSourceMappingForm.controls['detailMarkup'].value">
+                    <span class="bold">{{detailMarkupLabel | localize: 'detailMarkupLabel':'summary':'label'}}</span> {{dataSourceMappingForm.controls['detailMarkup'].value}}
+                </div>
+                <div *ngIf="dataSourceMappingForm.controls['detailUrls'].value">
+                    <span class="bold">{{detailLinksCountLabel | localize: 'detailLinksCountLabel':'summary':'label'}}</span>
+                    <span class="links" (click)="viewLinks()"> {{dataSourceMappingForm.controls['detailUrls'].value.length}}
+                    </span>
+                </div>
+            </div>
+            <div class="col-12 pb-4 pt-4">
+                <div class="mat-divider full-width"></div>
+            </div>
+            <div class="col-12">
+                <h4 class="pb-2">{{dataMappingLabel | localize: 'dataMappingLabel':'summary':'label'}}</h4>
+                <div class="row pb-2">
+                    <div class="col-6 bold"> {{nameLabel | localize: 'nameLabel':'summary':'label' | uppercase}}
+                    </div>
+                    <div class="col-6 bold"> {{markupLabel | localize: 'markupLabel':'summary':'label' | uppercase}}
+                    </div>
+                </div>
+                <div *ngFor="let mapping of fieldMappings" class="row pb-1">
+                    <div class="col-6"> {{ mapping.formGroup.controls['fieldName'].value }} </div>
+                    <div class="col-6"> {{ mapping.formGroup.controls['fieldMarkup'].value }} </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-lg-3 col-md-12 tile">

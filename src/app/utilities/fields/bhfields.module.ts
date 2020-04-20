@@ -15,6 +15,7 @@ import { DatasourceComponent } from './datasource/datasource.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import { ErrorMessageComponent } from './errormessage/errormessage.component';
 import { DirectivesModule } from '../directives/directives.module';
+import { SuccessMessageComponent } from './successmessage/successmessage.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DirectivesModule } from '../directives/directives.module';
         DatasourceComponent,
         SummaryComponent,
         FileuploadComponent,
-        ErrorMessageComponent
+        ErrorMessageComponent,
+        SuccessMessageComponent
     ],
     imports: [
         MaterialModule,
@@ -43,7 +45,8 @@ import { DirectivesModule } from '../directives/directives.module';
         DatasourceComponent,
         SummaryComponent,
         FileuploadComponent,
-        ErrorMessageComponent
+        ErrorMessageComponent,
+        SuccessMessageComponent
     ],
     providers: [
         TranslationService,

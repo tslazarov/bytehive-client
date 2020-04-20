@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.securityLabel = this.translationService.localizeValue('securityLabel', 'profile', 'label');
         this.rewardsLabel = this.translationService.localizeValue('rewardsLabel', 'profile', 'label');
         this.preferencesLabel = this.translationService.localizeValue('preferencesLabel', 'profile', 'label');
-        this.signoutLabel = this.translationService.localizeValue('signOutLabel', 'profile', 'label');
+        this.signoutLabel = this.translationService.localizeValue('signoutLabel', 'profile', 'label');
     }
 
     open(event, action): void {

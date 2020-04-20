@@ -1,0 +1,15 @@
+<div>
+    <div class="row pb-3">
+        <div class="col-10">
+        </div>
+        <div class="col-2 right">
+            <button class="close-button" mat-button (click)="close()">
+                <span class="icon close-icon large-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="linksview-wrapper">
+        <div *ngFor="let link of data.links ; let i = index" class="pb-2">
+            {{i+1}}. <a href="{{link}}" target="_blank">{{link}}</a>
+        </div>
+    </div>

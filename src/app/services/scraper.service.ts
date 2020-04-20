@@ -7,6 +7,7 @@ import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 import { CodeMarkup } from '../models/codemarkup.model';
 import { AutomaticMarkup } from '../models/automaticmarkup.model';
 import { VisualMarkup } from '../models/visualmarkup.model';
+import { ValidateList } from '../models/validatelist.model';
 
 @Injectable()
 export class ScraperService {
@@ -37,5 +38,13 @@ export class ScraperService {
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
         return this.http.put(`${environment.apiBaseUrl}${Constants.SCRAPER_SERVICE_AUTOMATIC_ENDPOINT}`, automaticMarkup, { headers, responseType: 'json' });
+    }
+
+    validateList(validateList: ValidateList): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.put(`${environment.apiBaseUrl}${Constants.SCRAPER_SERVICE_VALIDATE_LIST_ENDPOINT}`, validateList, { headers, responseType: 'json' });
     }
 }

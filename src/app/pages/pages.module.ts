@@ -24,6 +24,7 @@ import { AuthLocalService } from '../services/utilities/auth.service';
 import { SignGuardService } from '../services/guards/sign-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { ProxyComponent } from './proxy/proxy.component';
+import { ScrapeRequestsService } from '../services/scraperequests.service';
 
 @NgModule({
     imports: [
@@ -51,6 +52,7 @@ import { ProxyComponent } from './proxy/proxy.component';
         CommunicationService,
         ClientService,
         AccountService,
+        ScrapeRequestsService,
         AuthLocalService,
         AuthGuardService,
         SignGuardService,
