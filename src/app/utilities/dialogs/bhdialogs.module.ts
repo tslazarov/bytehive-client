@@ -16,6 +16,7 @@ import { ResetPasswordDialog } from './resetpassword/resetpassword.dialog';
 import { ScraperService } from '../../services/scraper.service';
 import { ProxyWrapperComponent } from '../../pages/proxywrapper/proxywrapper.component';
 import { BhFieldsModule } from '../fields/bhfields.module';
+import { LinksViewDialog } from './linksview/linksview.dialog';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { BhFieldsModule } from '../fields/bhfields.module';
         PagingInformationDialog,
         ConfirmationDialog,
         ResetPasswordDialog,
+        LinksViewDialog,
         ProxyWrapperComponent
     ],
     imports: [
@@ -48,7 +50,8 @@ import { BhFieldsModule } from '../fields/bhfields.module';
         AutomaticDialog,
         PagingInformationDialog,
         ConfirmationDialog,
-        ResetPasswordDialog
+        ResetPasswordDialog,
+        LinksViewDialog
     ],
     providers: [
         TranslationService,

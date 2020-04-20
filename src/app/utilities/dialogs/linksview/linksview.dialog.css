@@ -1,0 +1,16 @@
+.close-icon {
+    background: url(../../../../assets/icons/close-accent.svg);
+}
+
+.close-button {
+    background-color: #ffffff;
+}
+
+.close-button:hover {
+    background-color: #efefef;
+}
+
+.linksview-wrapper {
+    height:70vh;
+    overflow:auto;
+}

@@ -398,6 +398,44 @@ export class LabelsMessages {
                 'bg': 'Валидирай'
             }
         },
+        'summary': {
+            'dataSourceLabel': {
+                'en': 'Data Source',
+                'bg': 'Източник на данни'
+            },
+            'listUrlLabel': {
+                'en': 'List link:',
+                'bg': 'Линк към списъчна страница'
+            },
+            'startPageLabel': {
+                'en': 'Start page:',
+                'bg': 'Начална страница:'
+            },
+            'endPageLabel': {
+                'en': 'End page:',
+                'bg': 'Крайна страница:'
+            },
+            'detailMarkupLabel': {
+                'en': 'Detail markup:',
+                'bg': 'Детайлен маркер:'
+            },
+            'detailLinksCountLabel': {
+                'en': 'Detail links count:',
+                'bg': 'Брой детайлни линкове:'
+            },
+            'dataMappingLabel': {
+                'en': 'Data Mapping',
+                'bg': 'Асоциация на данни'
+            },
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'markupLabel': {
+                'en': 'Markup',
+                'bg': 'Маркер'
+            }
+        },
         'users': {
             'providersLabel': {
                 'en': 'Providers',
