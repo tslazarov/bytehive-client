@@ -25,4 +25,7 @@ export class Constants {
     static readonly SCRAPER_SERVICE_VISUAL_ENDPOINT = 'api/scraper/visual';
     static readonly SCRAPER_SERVICE_AUTOMATIC_ENDPOINT = 'api/scraper/automatic';
     static readonly SCRAPER_SERVICE_CODE_ENDPOINT = 'api/scraper/code';
+
+    static readonly SCRAPE_REQUEST_SERVICE_BASE_ENDPOINT = 'api/scraperequests';
+    static readonly SCRAPE_REQUEST_SERVICE_CREATE_ENDPOINT = 'api/scraperequests/create';
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ClientService } from '../../../services/client.service';
 import { first } from 'rxjs/operators';
-import { FieldMapping } from '../../../models/fieldmapping.model';
+import { FieldMappingGroup } from '../../../models/fieldmapping-group.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { CommunicationService } from '../../../services/utilities/communication.service';
@@ -20,7 +20,7 @@ import { VisualDialog, VisualData } from '../../dialogs/visual/visual.dialog';
 })
 export class DatamappingComponent implements OnInit, OnDestroy {
     @Input() parentForm: FormGroup;
-    @Input() fieldMappings: FieldMapping[];
+    @Input() fieldMappings: FieldMappingGroup[];
 
     // subscriptions
     languageChangeSubscription: Subscription;
@@ -72,7 +72,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     }
 
     addMapping(): void {
-        let fieldMapping = new FieldMapping(this.formBuilder);
+        let fieldMapping = new FieldMappingGroup(this.formBuilder);
         this.fieldMappings.push(fieldMapping);
     }
 
@@ -84,7 +84,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         }
     }
 
-    automaticMapping(fieldMapping: FieldMapping): void {
+    automaticMapping(fieldMapping: FieldMappingGroup): void {
         if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
             this.parentForm.controls['detailUrl'].markAsTouched();
             return;
@@ -106,7 +106,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         });
     }
 
-    visualMapping(fieldMapping: FieldMapping): void {
+    visualMapping(fieldMapping: FieldMappingGroup): void {
         if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
             this.parentForm.controls['detailUrl'].markAsTouched();
             return;
@@ -129,7 +129,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         });
     }
 
-    codeMapping(fieldMapping: FieldMapping): void {
+    codeMapping(fieldMapping: FieldMappingGroup): void {
         if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
             this.parentForm.controls['detailUrl'].markAsTouched();
             return;
@@ -156,7 +156,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
             });
     }
 
-    manualMapping(fieldMapping: FieldMapping): void {
+    manualMapping(fieldMapping: FieldMappingGroup): void {
         let manualData = new ManualData();
         manualData.markup = fieldMapping.formGroup.value.fieldMarkup;
 
@@ -187,7 +187,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
             });
     }
 
-    toggleEditMode(fieldMapping: FieldMapping, editable: boolean): void {
+    toggleEditMode(fieldMapping: FieldMappingGroup, editable: boolean): void {
         fieldMapping.editMode = editable;
     }
 

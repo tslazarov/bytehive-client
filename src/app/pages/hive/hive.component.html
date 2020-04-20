@@ -90,7 +90,7 @@
                     </button>
                 </div>
                 <div class="col-md-6 col-sm-12 right">
-                    <button disableRipple mat-flat-button class="direction" matStepperNext>
+                    <button disableRipple mat-flat-button class="direction" (click)="confirm()">
                         {{confirmLabel | localize: 'confirmLabel':'hive':'label' | uppercase}}
                     </button>
                 </div>

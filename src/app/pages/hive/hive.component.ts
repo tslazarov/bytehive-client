@@ -4,11 +4,14 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 import { TranslationService } from '../../services/utilities/translation.service';
 import { CommunicationService } from '../../services/utilities/communication.service';
-import { FieldMapping } from '../../models/fieldmapping.model';
+import { FieldMappingGroup } from '../../models/fieldmapping-group.model';
 import { Constants } from '../../utilities/constants';
 import { ScrapeType } from '../../models/enums/scrapetype.enum';
 import { BhValidators } from '../../utilities/validators/bhvalidators';
 import { Subscription } from 'rxjs';
+import { ScrapeRequestCreate } from '../../models/scraperequestcreate.model';
+import { ScrapeRequestsService } from '../../services/scraperequests.service';
+import { FieldMapping } from '../../models/fieldmapping.model';
 
 @Component({
     selector: 'app-hive',
@@ -24,7 +27,7 @@ export class HiveComponent implements OnInit, OnDestroy {
     scrapeTypeFormGroup: FormGroup;
     dataSourceMappingFormGroup: FormGroup;
     exportTypeFormGroup: FormGroup;
-    fieldMappings: FieldMapping[];
+    fieldMappings: FieldMappingGroup[];
 
     // enums
     scrapeTypes = ScrapeType;
@@ -43,7 +46,8 @@ export class HiveComponent implements OnInit, OnDestroy {
 
     constructor(private formBuilder: FormBuilder,
         private translationService: TranslationService,
-        private communicationService: CommunicationService) { }
+        private communicationService: CommunicationService,
+        private scrapeRequestsService: ScrapeRequestsService) { }
 
     ngOnInit(): void {
         this.setLabelsMessages();
@@ -189,5 +193,25 @@ export class HiveComponent implements OnInit, OnDestroy {
         else {
             stepper.selected.interacted = true;
         }
+    }
+
+    confirm(): void {
+        let scrapeRequestCreateModel = new ScrapeRequestCreate();
+
+        scrapeRequestCreateModel.scrapeType = this.scrapeTypeFormGroup.controls['scrapeType'].value;
+        scrapeRequestCreateModel.exportType = this.exportTypeFormGroup.controls['exportType'].value;
+        scrapeRequestCreateModel.listUrl = this.dataSourceMappingFormGroup.controls['listUrl'].value;
+        scrapeRequestCreateModel.hasPaging = this.dataSourceMappingFormGroup.controls['hasPaging'].value;
+        scrapeRequestCreateModel.startPage = this.dataSourceMappingFormGroup.controls['startPage'].value;
+        scrapeRequestCreateModel.endPage = this.dataSourceMappingFormGroup.controls['endPage'].value;
+        scrapeRequestCreateModel.detailMarkup = this.dataSourceMappingFormGroup.controls['detailMarkup'].value;
+        scrapeRequestCreateModel.detailUrls = this.dataSourceMappingFormGroup.controls['detailUrls'].value;
+        scrapeRequestCreateModel.fieldMappings = this.fieldMappings.map(fm => { return new FieldMapping(fm.formGroup.controls['fieldName'].value, fm.formGroup.controls['fieldMarkup'].value) });
+
+        this.scrapeRequestsService.createScrapeRequest(scrapeRequestCreateModel).subscribe((result) => {
+            console.log(result);
+        }, (error) => {
+            console.log(error);
+        });
     }
 }
