@@ -228,6 +228,26 @@ export class LabelsMessages {
             'confirmLabel': {
                 'en': 'Confirm',
                 'bg': 'Потвърди'
+            },
+            'requestReceivedLabel': {
+                'en': 'Your request has been received.',
+                'bg': 'Твоята заявка беше получена.'
+            },
+            'receiveEmailLabel': {
+                'en': 'You will receive an email when the request is processed.',
+                'bg': 'Ще получиш имейл, когато заявката е обработена.'
+            },
+            'goProfileLabel': {
+                'en': 'Go to profile',
+                'bg': 'Отиди в профила'
+            },
+            'createRequestLabel': {
+                'en': 'Create a new request',
+                'bg': 'Направи нова заявка'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
             }
         },
         'scrapepicker': {

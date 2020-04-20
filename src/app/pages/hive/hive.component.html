@@ -1,5 +1,16 @@
 <div class="page-content mat-elevation-z3">
-    <mat-horizontal-stepper linear #stepper [disableRipple]="true" (selectionChange)="stepChanged($event, stepper)">
+    <div *ngIf="showSuccess" class="center pt-5 pb-5">
+        <!-- <img src="../../../assets/images/signin.png" class="image" /> -->
+        <h6>{{requestReceivedLabel | localize: 'requestReceivedLabel':'hive':'label'}}</h6>
+        <h6>{{receiveEmailLabel | localize: 'receiveEmailLabel':'hive':'label'}}</h6>
+        <button disableRipple mat-flat-button class="mt-3 navigation-button" (click)="navigate('/profile')">
+            {{goProfileLabel | localize: 'goProfileLabel':'hive':'label'}}
+        </button> |
+        <button disableRipple mat-flat-button class="mt-3 navigation-button" (click)="navigate('/hive')">
+            {{createRequestLabel | localize: 'createRequestLabel':'hive':'label'}}
+        </button>
+    </div>
+    <mat-horizontal-stepper *ngIf="!showSuccess" linear #stepper [disableRipple]="true" (selectionChange)="stepChanged($event, stepper)">
         <ng-template matStepperIcon="edit">
             <span class="small-icon edit-icon"></span>
         </ng-template>

@@ -12,6 +12,8 @@ import { Subscription } from 'rxjs';
 import { ScrapeRequestCreate } from '../../models/scraperequestcreate.model';
 import { ScrapeRequestsService } from '../../services/scraperequests.service';
 import { FieldMapping } from '../../models/fieldmapping.model';
+import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
     selector: 'app-hive',
@@ -29,6 +31,10 @@ export class HiveComponent implements OnInit, OnDestroy {
     exportTypeFormGroup: FormGroup;
     fieldMappings: FieldMappingGroup[];
 
+    // common
+    showSuccess: boolean;
+    notifier: NotifierService;
+
     // enums
     scrapeTypes = ScrapeType;
 
@@ -43,11 +49,19 @@ export class HiveComponent implements OnInit, OnDestroy {
     previousLabel: string;
     nextLabel: string;
     confirmLabel: string;
+    requestReceivedLabel: string;
+    receiveEmailLabel: string;
+    goProfileLabel: string;
+    createRequestLabel: string;
 
-    constructor(private formBuilder: FormBuilder,
+    constructor(private router: Router,
+        private formBuilder: FormBuilder,
         private translationService: TranslationService,
+        private notifierService: NotifierService,
         private communicationService: CommunicationService,
-        private scrapeRequestsService: ScrapeRequestsService) { }
+        private scrapeRequestsService: ScrapeRequestsService) {
+        this.notifier = notifierService;
+    }
 
     ngOnInit(): void {
         this.setLabelsMessages();
@@ -94,6 +108,10 @@ export class HiveComponent implements OnInit, OnDestroy {
         this.previousLabel = this.translationService.localizeValue('previousLabel', 'hive', 'label');
         this.nextLabel = this.translationService.localizeValue('nextLabel', 'hive', 'label');
         this.confirmLabel = this.translationService.localizeValue('confirmLabel', 'hive', 'label');
+        this.requestReceivedLabel = this.translationService.localizeValue('requestReceivedLabel', 'hive', 'label');
+        this.receiveEmailLabel = this.translationService.localizeValue('receiveEmailLabel', 'hive', 'label');
+        this.goProfileLabel = this.translationService.localizeValue('goProfileLabel', 'hive', 'label');
+        this.createRequestLabel = this.translationService.localizeValue('createRequestLabel', 'hive', 'label');
     }
 
     subscribeScrapeTypeFormDependency(): void {
@@ -210,8 +228,13 @@ export class HiveComponent implements OnInit, OnDestroy {
 
         this.scrapeRequestsService.createScrapeRequest(scrapeRequestCreateModel).subscribe((result) => {
             console.log(result);
+            this.showSuccess = true;
         }, (error) => {
-            console.log(error);
+            this.notifier.notify("error", this.translationService.localizeValue('serverErrorLabel', 'hive', 'label'));
         });
+    }
+
+    navigate(route: string): void {
+        this.router.navigate([route]);
     }
 }
