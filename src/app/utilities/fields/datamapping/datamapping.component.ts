@@ -12,6 +12,9 @@ import { ManualData, ManualDialog } from '../../dialogs/manual/manual.dialog';
 import { AutomaticData, AutomaticDialog } from '../../dialogs/automatic/automatic.dialog';
 import { Subscription } from 'rxjs';
 import { VisualDialog, VisualData } from '../../dialogs/visual/visual.dialog';
+import { FieldMapping } from '../../../models/fieldmapping.model';
+import { ValidateDetail } from '../../../models/validatedetail.model';
+import { ScraperService } from '../../../services/scraper.service';
 
 @Component({
     selector: 'bh-datamapping',
@@ -42,6 +45,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     constructor(private formBuilder: FormBuilder,
         private dialog: MatDialog,
         private clientService: ClientService,
+        private scraperService: ScraperService,
         private communicationService: CommunicationService,
         private translationService: TranslationService) { }
 
@@ -192,6 +196,20 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     }
 
     validate() {
+        if (!this.parentForm.value.detailUrl || this.parentForm.controls['detailUrl'].invalid) {
+            this.parentForm.controls['detailUrl'].markAsTouched();
+            return;
+        }
 
+        let url = this.parentForm.value.detailUrl;
+
+        let validateDetail = new ValidateDetail();
+        validateDetail.url = url;
+        validateDetail.fieldMappings = this.fieldMappings.map(fm => { return new FieldMapping(fm.formGroup.controls['fieldName'].value, fm.formGroup.controls['fieldMarkup'].value) });
+
+        this.scraperService.validateDetail(validateDetail).subscribe((result) => {
+            console.log(result);
+        }, (error) => {
+        })
     }
 }

@@ -8,6 +8,7 @@ import { NgZone } from "@angular/core";
 export interface TextSelectEvent {
     text: string;
     element: string;
+    elementName: string;
     viewportRectangle: SelectionRectangle | null;
     hostRectangle: SelectionRectangle | null;
 }
@@ -113,7 +114,8 @@ export class TextSelectDirective implements OnInit, OnDestroy {
         var selection = document.getSelection();
 
         if (selection.rangeCount > 0) {
-            var parentEl = selection.getRangeAt(0).commonAncestorContainer;
+            var parentEl = selection.getRangeAt(0).commonAncestorContainer as any;
+
             if (parentEl.nodeType != 1) {
                 parentEl = parentEl.parentNode;
             }
@@ -126,6 +128,7 @@ export class TextSelectDirective implements OnInit, OnDestroy {
                     this.textSelectEvent.next({
                         text: "",
                         element: "",
+                        elementName: "",
                         viewportRectangle: null,
                         hostRectangle: null
                     });
@@ -149,7 +152,8 @@ export class TextSelectDirective implements OnInit, OnDestroy {
                     this.hasSelection = true;
                     this.textSelectEvent.emit({
                         text: selection.toString(),
-                        element: parentEl ? parentEl.nodeName.toLowerCase() : "",
+                        element: parentEl ? parentEl.nodeName.toLowerCase() != '#text' ? parentEl.outerHTML : '' : '',
+                        elementName: parentEl ? parentEl.nodeName.toLowerCase() : '',
                         viewportRectangle: {
                             left: viewportRectangle.left,
                             top: viewportRectangle.top,
