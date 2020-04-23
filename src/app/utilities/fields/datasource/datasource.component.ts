@@ -243,7 +243,7 @@ export class DatasourceComponent implements OnInit, OnDestroy {
 
         }, (error) => {
             this.showErrorMessage = true;
-            this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'signup', 'label');
+            this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'datasource', 'label');
             setTimeout(() => { this.showErrorMessage = false }, 4000);
         })
     }

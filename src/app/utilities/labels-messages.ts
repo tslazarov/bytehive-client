@@ -354,6 +354,10 @@ export class LabelsMessages {
             'validateLabel': {
                 'en': 'Validate',
                 'bg': 'Валидирай'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
             }
         },
         'datasource': {
@@ -728,6 +732,28 @@ export class LabelsMessages {
             'invalidInformationLabel': {
                 'en': 'The password was not saved. Please check the provided verification code and email',
                 'bg': 'Паролата не беше запазена. Моля проверете предоставените код за верификация и имейл'
+            }
+        },
+        'detailvalidation-dialog': {
+            'errorStatusLabel': {
+                'en': 'Some fields do not have values.',
+                'bg': 'Някои полета нямат стойности.'
+            },
+            'successStatusLabel': {
+                'en': 'All fields have values.',
+                'bg': 'Всички полета имат стойности.'
+            },
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'valueLabel': {
+                'en': 'Value',
+                'bg': 'Стойност'
+            },
+            'noValueLabel': {
+                'en': '<no value>',
+                'bg': '<няма стойност>'
             }
         },
         'proxy': {
