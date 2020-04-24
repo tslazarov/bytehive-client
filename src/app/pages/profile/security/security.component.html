@@ -1,0 +1,53 @@
+<div class="row p-5">
+    <div class="header-row">
+        <span class="icon security-icon left-icon large-x2-icon header-icon"></span>
+        <span class="header-title pl-2">{{securityLabel | localize: 'securityLabel':'security-profile':'label'}}</span>
+    </div>
+</div>
+<div class="pl-5 pr-5 pt-4">
+    <div [formGroup]="changePasswordFormGroup" class="mb-4">
+        <div>
+            <mat-form-field floatLabel="never" class="pt-1 pb-4 profile-field">
+                <mat-label>{{currentPasswordLabel | localize: 'currentPasswordLabel':'security-profile':'label'}}</mat-label>
+                <input matInput autocomplete="off" formControlName="currentPassword" [type]="showCurrentPassword ? 'text' : 'password'">
+                <span matSuffix (click)="showCurrentPassword = !showCurrentPassword" class="{{showCurrentPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
+                <mat-error *ngIf="changePasswordFormGroup.hasError('required', 'currentPassword')">
+                    {{passwordRequiredErrorLabel | localize: 'passwordRequiredErrorLabel':'security-profile':'label'}}
+                </mat-error>
+                <mat-error *ngIf="changePasswordFormGroup.hasError('minlength', 'currentPassword')">
+                    {{passwordLengthErrorLabel | localize: 'passwordLengthErrorLabel':'security-profile':'label'}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div formGroupName="password">
+            <div>
+                <mat-form-field floatLabel="never" class="pt-1 pb-4 profile-field">
+                    <mat-label>{{passwordLabel | localize: 'passwordLabel':'security-profile':'label'}}</mat-label>
+                    <input matInput autocomplete="off" formControlName="password" [type]="showNewPassword ? 'text' : 'password'">
+                    <span matSuffix (click)="showNewPassword = !showNewPassword" class="{{showNewPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
+                    <mat-error *ngIf="changePasswordFormGroup.get('password').hasError('required', 'password')">
+                        {{passwordRequiredErrorLabel | localize: 'passwordRequiredErrorLabel':'security-profile':'label'}}
+                    </mat-error>
+                    <mat-error *ngIf="changePasswordFormGroup.get('password').hasError('minlength', 'password')">
+                        {{passwordLengthErrorLabel | localize: 'passwordLengthErrorLabel':'security-profile':'label'}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field floatLabel="never" class="pt-1 pb-4 profile-field">
+                    <mat-label>{{confirmPasswordLabel | localize: 'confirmPasswordLabel':'security-profile':'label'}}</mat-label>
+                    <input matInput autocomplete="off" formControlName="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'" type="password"
+                        [errorStateMatcher]="confirmPasswordMatcher">
+                    <span matSuffix (click)="showConfirmPassword = !showConfirmPassword" class="{{showConfirmPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
+                    <mat-error *ngIf="changePasswordFormGroup.get('password').errors">
+                        {{confirmPasswordMatchErrorLabel | localize: 'confirmPasswordMatchErrorLabel':'security-profile':'label'}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <button disableRipple mat-flat-button [ngClass]="changePasswordFormGroup.invalid ? 'changepassword disabled': 'changepassword'"
+        (click)="changePassword()" [disabled]="changePasswordFormGroup.invalid">
+        {{saveLabel | localize: 'saveLabel':'security-profile':'label' | uppercase}}
+    </button>
+</div>

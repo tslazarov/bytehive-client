@@ -200,6 +200,40 @@ export class LabelsMessages {
                 'bg': 'Излез'
             }
         },
+        'security-profile': {
+            'securityLabel': {
+                'en': 'Security',
+                'bg': 'Сигурност'
+            },
+            'currentPasswordLabel': {
+                'en': 'Current password',
+                'bg': 'Настояща парола'
+            },
+            'passwordLabel': {
+                'en': 'Password',
+                'bg': 'Парола'
+            },
+            'passwordRequiredErrorLabel': {
+                'en': 'Please enter a password',
+                'bg': 'Моля въведете парола'
+            },
+            'passwordLengthErrorLabel': {
+                'en': 'Password should be at least 6 characters',
+                'bg': 'Паролата трябва да бъде поне 6 символа'
+            },
+            'confirmPasswordLabel': {
+                'en': 'Confirm password',
+                'bg': 'Паролата за потвърждение'
+            },
+            'confirmPasswordMatchErrorLabel': {
+                'en': 'Confirm password does not match',
+                'bg': 'Паролата за потвърждение не съвпада'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            }
+        },
         'hive': {
             'selectPagesTypeLabel': {
                 'en': 'Select pages type',

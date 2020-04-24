@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     // common
     lastAction: any;
+    selectedAction: string;
 
     // subscriptions
     languageChangeSubscription: Subscription;
@@ -65,6 +66,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
         }
         this.lastAction = event.currentTarget;
         event.currentTarget.classList.add('selected');
+
+        this.selectedAction = action;
     }
 
     signout(): void {

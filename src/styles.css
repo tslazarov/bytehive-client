@@ -251,6 +251,11 @@ button:focus {
     background-size: cover;
 }
 
+.large-x2-icon {
+    width: 60px;
+    height: 60px;
+}
+
 .large-icon {
     width: 30px;
     height: 30px;

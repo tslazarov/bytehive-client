@@ -1,7 +1,7 @@
 <div class="page-content">
     <div class="row">
         <div class="col-md-6 col-lg-3 tile-wrapper">
-            <div class="mat-elevation-z3 p-3">
+            <div class="mat-elevation-z3 p-3 profile-content-wrapper">
                 <div class="profile-wrapper">
                     <div class="avatar-container">
                         <div class="avatar">
@@ -45,8 +45,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-9 mat-elevation-z3 tile-wrapper">
-            Test
+        <div class="col-md-6 col-lg-9 mat-elevation-z3 content-wrapper tile-wrapper">
+            <bh-profile-security *ngIf="selectedAction !='security'"></bh-profile-security>
         </div>
     </div>
 </div>
