@@ -15,6 +15,7 @@ export class Constants {
     static readonly ACCOUNT_SERVICE_RESET_CODE_ENDPOINT = 'api/account/resetcode';
     static readonly ACCOUNT_SERVICE_RESET_PASSWORD_ENDPOINT = 'api/account/resetpassword';
     static readonly ACCOUNT_SERVICE_CHANGE_PASSWORD_ENDPOINT = 'api/account/changepassword';
+    static readonly ACCOUNT_SERVICE_CHANGE_SETTINGS_ENDPOINT = 'api/account/changesettings';
 
     static readonly USER_SERVICE_BASE_ENDPOINT = 'api/users/';
     static readonly USER_SERVICE_ALL_ENDPOINT = 'api/users/all';

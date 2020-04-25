@@ -246,6 +246,28 @@ export class LabelsMessages {
                 'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
+        'settings-profile': {
+            'settingsLabel': {
+                'en': 'Settings',
+                'bg': 'Настройки'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            },
+            'settingsChangedLabel': {
+                'en': 'Settings were successfully changed.',
+                'bg': 'Настройките бяха успешно променени.'
+            },
+            'settingsNotChangedLabel': {
+                'en': 'Settings were not changed.',
+                'bg': 'Настройките не бяха променени.'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            }
+        },
         'hive': {
             'selectPagesTypeLabel': {
                 'en': 'Select pages type',

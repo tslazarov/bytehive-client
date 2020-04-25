@@ -1,0 +1,28 @@
+<div class="row pl-5 pt-5 pb-3">
+    <div class="header-row">
+        <span class="icon settings-icon left-icon large-x2-icon header-icon"></span>
+        <span class="header-title pl-2">{{settingsLabel | localize: 'settingsLabel':'settings-profile':'label'}}</span>
+    </div>
+</div>
+<div class="pl-5 pr-5 pt-4">
+    <div>
+        <div [formGroup]="settingsFormGroup" class="mb-4">
+            <div class="message-wrapper pb-3">
+                <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="100%"></bh-errormessage>
+                <bh-successmessage class="pb-3" *ngIf="showSuccessMessage" message="{{successMessageLabel}}" width="100%"></bh-successmessage>
+            </div>
+            <div *ngIf="showLoading" class="loading-wrapper">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div *ngIf="!showLoading">
+                <div>
+
+                </div>
+            </div>
+        </div>
+        <button disableRipple mat-flat-button [ngClass]="settingsFormGroup.invalid ? 'settings disabled': 'settings'" (click)="changeSettings()"
+            [disabled]="settingsFormGroup.invalid">
+            {{saveLabel | localize: 'saveLabel':'settings-profile':'label' | uppercase}}
+        </button>
+    </div>
+</div>

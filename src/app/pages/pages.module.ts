@@ -26,6 +26,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProxyComponent } from './proxy/proxy.component';
 import { ScrapeRequestsService } from '../services/scraperequests.service';
 import { SecurityComponent } from './profile/security/security.component';
+import { SettingsComponent } from './profile/settings/settings.component';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import { SecurityComponent } from './profile/security/security.component';
         SignupComponent,
         ProfileComponent,
         ProxyComponent,
-        SecurityComponent
+        SecurityComponent,
+        SettingsComponent
     ],
     entryComponents: [],
     providers: [

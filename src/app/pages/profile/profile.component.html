@@ -46,7 +46,8 @@
             </div>
         </div>
         <div class="col-md-6 col-lg-9 mat-elevation-z3 content-wrapper tile-wrapper">
-            <bh-profile-security *ngIf="selectedAction !='security'"></bh-profile-security>
+            <bh-profile-settings *ngIf="selectedAction == 'preferences'"></bh-profile-settings>
+            <bh-profile-security *ngIf="selectedAction == 'security'"></bh-profile-security>
         </div>
     </div>
 </div>
