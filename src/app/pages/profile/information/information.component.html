@@ -1,0 +1,55 @@
+<div class="row pl-5 pt-5 pb-3">
+    <div class="header-row">
+        <span class="icon information-icon left-icon large-x2-icon header-icon"></span>
+        <span class="header-title pl-2">{{informationLabel | localize: 'informationLabel':'information-profile':'label'}}</span>
+    </div>
+</div>
+<div class="pl-5 pr-5 pt-4">
+    <div>
+        <div [formGroup]="profileInformationFormGroup" class="mb-4">
+            <div class="message-wrapper pb-3">
+                <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="100%"></bh-errormessage>
+                <bh-successmessage class="pb-3" *ngIf="showSuccessMessage" message="{{successMessageLabel}}" width="100%"></bh-successmessage>
+            </div>
+            <div *ngIf="showLoading" class="loading-wrapper">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div *ngIf="!showLoading">
+                <div>
+                    <mat-form-field floatLabel="never" class="pb-4 information-field">
+                        <mat-label>{{firstNameLabel | localize: 'firstNameLabel':'information-profile':'label'}}</mat-label>
+                        <input matInput autocomplete="off" formControlName="firstName">
+                        <span matSuffix class="required">*</span>
+                        <mat-error *ngIf="profileInformationFormGroup.hasError('required', 'firstName')">
+                            {{firstNameRequiredErrorLabel | localize: 'firstNameRequiredErrorLabel':'information-profile':'label'}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field floatLabel="never" class="pb-4 information-field">
+                        <mat-label>{{lastNameLabel | localize: 'lastNameLabel':'information-profile':'label'}}</mat-label>
+                        <input matInput autocomplete="off" formControlName="lastName">
+                        <span matSuffix class="required">*</span>
+                        <mat-error *ngIf="profileInformationFormGroup.hasError('required', 'lastName')">
+                            {{lastNameRequiredErrorLabel | localize: 'lastNameRequiredErrorLabel':'information-profile':'label'}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field floatLabel="never" class="pt-1 pb-4 information-field">
+                        <mat-label>{{occupationLabel | localize: 'occupationLabel':'information-label':'label'}}</mat-label>
+                        <mat-select formControlName="occupation">
+                            <mat-option *ngFor="let occupation of occupations" [value]="occupation.value">
+                                {{occupation.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button disableRipple mat-flat-button [ngClass]="profileInformationFormGroup.invalid ? 'information disabled': 'information'"
+        (click)="changeProfileInformation()" [disabled]="profileInformationFormGroup.invalid">
+        {{saveLabel | localize: 'saveLabel':'information-profile':'label' | uppercase}}
+    </button>
+</div>

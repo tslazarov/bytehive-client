@@ -117,7 +117,7 @@ export class SignupComponent implements OnInit {
                 let labelName = occupationType.toLowerCase() + "Label";
                 let occupation = new Occupation();
                 occupation.value = OccupationType[occupationType];
-                occupation.label = this.translationService.localizeValue(labelName, 'occupation', 'label');
+                occupation.name = this.translationService.localizeValue(labelName, 'occupation', 'label');
 
                 this.occupations.push(occupation);
             }

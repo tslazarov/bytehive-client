@@ -251,6 +251,10 @@ export class LabelsMessages {
                 'en': 'Preferences',
                 'bg': 'Настройки'
             },
+            'languageLabel': {
+                'en': 'Default language',
+                'bg': 'Език по подразбиране'
+            },
             'saveLabel': {
                 'en': 'Save',
                 'bg': 'Запази'
@@ -262,6 +266,48 @@ export class LabelsMessages {
             'settingsNotChangedLabel': {
                 'en': 'Settings were not changed.',
                 'bg': 'Настройките не бяха променени.'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            }
+        },
+        'information-profile': {
+            'informationLabel': {
+                'en': 'Personal information',
+                'bg': 'Лична информация'
+            },
+            'firstNameLabel': {
+                'en': 'First name',
+                'bg': 'Име'
+            },
+            'firstNameRequiredErrorLabel': {
+                'en': 'Please enter a first name',
+                'bg': 'Моля въведете име'
+            },
+            'lastNameLabel': {
+                'en': 'Last name',
+                'bg': 'Фамилия'
+            },
+            'lastNameRequiredErrorLabel': {
+                'en': 'Please enter a last name',
+                'bg': 'Моля въведете фамилия'
+            },
+            'occupationLabel': {
+                'en': 'Occupation',
+                'bg': 'Професия'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            },
+            'informationChangedLabel': {
+                'en': 'Personal information was successfully changed.',
+                'bg': 'Личната информация беше успешно променена.'
+            },
+            'informationNotChangedLabel': {
+                'en': 'Personal information was not changed.',
+                'bg': 'Личната информация не беше променена.'
             },
             'serverErrorLabel': {
                 'en': 'Error occured. Please try again later.',

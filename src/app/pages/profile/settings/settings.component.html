@@ -17,7 +17,7 @@
             <div *ngIf="!showLoading">
                 <div>
                     <mat-form-field floatLabel="never" class="pt-1 pb-4 settings-field">
-                        <mat-label>Default language</mat-label>
+                        <mat-label>{{languageLabel | localize: 'languageLabel':'settings-profile':'label'}}</mat-label>
                         <mat-select formControlName="defaultLanguage">
                             <mat-option *ngFor="let language of languages" [value]="language.value">
                                 {{language.name}}

@@ -26,12 +26,13 @@ export class SettingsComponent implements OnInit {
 
     // labels
     settingsLabel: string;
+    languageLabel: string;
     saveLabel: string;
     errorMessageLabel: string;
     successMessageLabel: string;
 
     constructor(private formBuilder: FormBuilder,
-        private accountSerivce: AccountService,
+        private accountService: AccountService,
         private translationService: TranslationService,
         private communicationService: CommunicationService) { }
 
@@ -46,7 +47,7 @@ export class SettingsComponent implements OnInit {
             this.setLabelsMessages();
         });
 
-        this.accountSerivce.getProfile().subscribe((result) => {
+        this.accountService.getProfile().subscribe((result) => {
             if (result) {
                 this.settingsFormGroup.controls['defaultLanguage'].setValue(result.defaultLanguage);
             }
@@ -64,6 +65,7 @@ export class SettingsComponent implements OnInit {
 
     setLabelsMessages() {
         this.settingsLabel = this.translationService.localizeValue('settingsLabel', 'settings-profile', 'label');
+        this.languageLabel = this.translationService.localizeValue('languageLabel', 'settings-profile', 'label');
         this.saveLabel = this.translationService.localizeValue('saveLabel', 'settings-profile', 'label');
     }
 
@@ -73,7 +75,7 @@ export class SettingsComponent implements OnInit {
 
         this.showLoading = true;
 
-        this.accountSerivce.changesettings(changeSettings).subscribe(result => {
+        this.accountService.changeSettings(changeSettings).subscribe(result => {
             this.showLoading = false;
 
             if (result) {

@@ -8,8 +8,8 @@
     font-size: 52px;
 }
 
-.security-icon {
-    background: url(../../../../assets/icons/security-accent.svg);
+.information-icon {
+    background: url(../../../../assets/icons/information-accent.svg);
 }
 
 .message-wrapper {
@@ -22,7 +22,7 @@
     margin: 80px 0px;
 }
 
-.profile-field {
+.information-field {
     min-width: 350px;
 }
 
@@ -30,42 +30,24 @@
     color: #ffeb3b;
 }
 
-.changepassword {
+.information {
     min-width: 250px;
     background-color: #ffeb3b;
     color: #ffffff;
 }
 
-.changepassword.disabled {
+.information.disabled {
     min-width: 250px;
     background-color: #dfdfdf;
     color: #ffffff;
 }
 
-.changepassword:hover {
+.information:hover {
     background-color: #ffeb3b;
     color: #212121;
 }
 
-.changepassword.disabled:hover {
+.information.disabled:hover {
     background-color: #dfdfdf;
     color: #ffffff;
-}
-
-.password-enabled-icon {
-    background: url(../../../../assets/icons/password-enabled.svg);
-    background-position-y: 30px;
-}
-
-.password-disabled-icon {
-    background: url(../../../../assets/icons/password-disabled.svg);
-    background-position-y: 30px;
-}
-
-.password-enabled-icon:hover {
-    cursor: pointer;
-}
-
-.password-disabled-icon:hover {
-    cursor: pointer;
 }

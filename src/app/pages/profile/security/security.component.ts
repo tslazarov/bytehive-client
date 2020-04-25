@@ -40,7 +40,7 @@ export class SecurityComponent implements OnInit {
     successMessageLabel: string;
 
     constructor(private formBuilder: FormBuilder,
-        private accountSerivce: AccountService,
+        private accountService: AccountService,
         private translationService: TranslationService,
         private communicationService: CommunicationService) { }
 
@@ -85,7 +85,7 @@ export class SecurityComponent implements OnInit {
 
         this.showLoading = true;
 
-        this.accountSerivce.changepassword(changePassword).subscribe(result => {
+        this.accountService.changePassword(changePassword).subscribe(result => {
             this.showLoading = false;
 
             if (result) {

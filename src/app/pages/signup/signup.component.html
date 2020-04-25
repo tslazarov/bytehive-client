@@ -75,7 +75,7 @@
                             <mat-label>{{occupationLabel | localize: 'occupationLabel':'signup':'label'}}</mat-label>
                             <mat-select formControlName="occupation">
                                 <mat-option *ngFor="let occupation of occupations" [value]="occupation.value">
-                                    {{occupation.label}}
+                                    {{occupation.name}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>

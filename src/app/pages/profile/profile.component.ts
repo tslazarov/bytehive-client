@@ -41,11 +41,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.setLabelsMessages();
 
-        this.accountService.getProfile().subscribe((result) => {
-            this.profile = result;
-        }, (error) => {
-
-        });
+        this.fetchProfile();
 
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
             this.setLabelsMessages();
@@ -54,6 +50,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.languageChangeSubscription.unsubscribe();
+    }
+
+    fetchProfile() {
+        this.accountService.getProfile().subscribe((result) => {
+            this.profile = result;
+        }, (error) => {
+
+        });
     }
 
     setLabelsMessages(): void {
@@ -97,4 +101,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.router.navigate(['/']);
     }
 
+    profileChange() {
+        this.fetchProfile();
+    }
 }

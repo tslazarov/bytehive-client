@@ -1,4 +1,4 @@
 export class Occupation {
-    label: string;
+    name: string;
     value: string;
 }
