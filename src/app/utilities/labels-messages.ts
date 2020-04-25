@@ -84,16 +84,16 @@ export class LabelsMessages {
                 'bg': 'Нямате акаунт? Регистрирайте се'
             },
             'invalidCredentialsLabel': {
-                'en': 'Incorrect email or password',
-                'bg': 'Невалидни парола или имейл'
+                'en': 'Incorrect email or password.',
+                'bg': 'Невалидни парола или имейл.'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             },
             'resetPasswordSuccessLabel': {
-                'en': 'The password was changed successfully',
-                'bg': 'Паролата беше променена успешно'
+                'en': 'The password was changed successfully.',
+                'bg': 'Паролата беше променена успешно.'
             }
         },
         'signup': {
@@ -158,16 +158,16 @@ export class LabelsMessages {
                 'bg': 'Създай акаунт'
             },
             'duplicateEmailErrorLabel': {
-                'en': 'A user with the same email already exists',
-                'bg': 'Потребител със същия имейл вече съществува'
+                'en': 'A user with the same email already exists.',
+                'bg': 'Потребител със същия имейл вече съществува.'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             },
             'createAccountSuccessLabel': {
-                'en': 'Your account was created successfully',
-                'bg': 'Твоят акаунт беше създаден успешно'
+                'en': 'Your account was created successfully.',
+                'bg': 'Твоят акаунт беше създаден успешно.'
             }
         },
         'profile': {
@@ -232,6 +232,18 @@ export class LabelsMessages {
             'saveLabel': {
                 'en': 'Save',
                 'bg': 'Запази'
+            },
+            'passwordChangedLabel': {
+                'en': 'Password was successfully changed.',
+                'bg': 'Паролата беше успешно променена.'
+            },
+            'passwordNotChangedLabel': {
+                'en': 'Password was not changed. Please check the currently entered password.',
+                'bg': 'Паролата не беше променена. Моля проверете въведената настояща парола.'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'hive': {
@@ -280,8 +292,8 @@ export class LabelsMessages {
                 'bg': 'Направи нова заявка'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'scrapepicker': {
@@ -390,8 +402,8 @@ export class LabelsMessages {
                 'bg': 'Валидирай'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'datasource': {
@@ -464,8 +476,8 @@ export class LabelsMessages {
                 'bg': 'Валидацията не беше успешна. Детайлни линкове не бяха открити.'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'summary': {
@@ -638,8 +650,8 @@ export class LabelsMessages {
                 'bg': 'Уникален селектор не беше намерен'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'visual-dialog': {
@@ -656,8 +668,8 @@ export class LabelsMessages {
                 'bg': 'Уникален селектор не беше намерен'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'code-dialog': {
@@ -678,8 +690,8 @@ export class LabelsMessages {
                 'bg': 'Уникален селектор не беше намерен'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'pageinformation-dialog': {
@@ -760,12 +772,12 @@ export class LabelsMessages {
                 'bg': 'Запази парола'
             },
             'serverErrorLabel': {
-                'en': 'Verification code was not sent. Please try again later',
-                'bg': 'Кодът за верификация не беше изпратен. Моля опитайте малко по-късно'
+                'en': 'Verification code was not sent. Please try again later.',
+                'bg': 'Кодът за верификация не беше изпратен. Моля опитайте малко по-късно.'
             },
             'invalidInformationLabel': {
-                'en': 'The password was not saved. Please check the provided verification code and email',
-                'bg': 'Паролата не беше запазена. Моля проверете предоставените код за верификация и имейл'
+                'en': 'The password was not saved. Please check the provided verification code and email.',
+                'bg': 'Паролата не беше запазена. Моля проверете предоставените код за верификация и имейл.'
             }
         },
         'detailvalidation-dialog': {

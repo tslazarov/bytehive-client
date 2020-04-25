@@ -71,24 +71,48 @@
 
 /* icons */
 
+.menu-item.selected .requests-icon{
+    background: url(../../../assets/icons/requests-solid.svg);
+}
+
 .requests-icon {
     background: url(../../../assets/icons/requests-accent.svg);
+}
+
+.menu-item.selected .orders-icon {
+    background: url(../../../assets/icons/orders-solid.svg);
 }
 
 .orders-icon {
     background: url(../../../assets/icons/orders-accent.svg);
 }
 
+.menu-item.selected .information-icon {
+    background: url(../../../assets/icons/information-solid.svg);
+}
+
 .information-icon {
     background: url(../../../assets/icons/information-accent.svg);
+}
+
+.menu-item.selected .rewards-icon {
+    background: url(../../../assets/icons/rewards-solid.svg);
 }
 
 .rewards-icon {
     background: url(../../../assets/icons/rewards-accent.svg);
 }
 
+.menu-item.selected .security-icon {
+    background: url(../../../assets/icons/security-solid.svg);
+}
+
 .security-icon {
     background: url(../../../assets/icons/security-accent.svg);
+}
+
+.menu-item.selected .preferences-icon {
+    background: url(../../../assets/icons/settings-solid.svg);
 }
 
 .preferences-icon {

@@ -9,6 +9,7 @@ import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 import { SigninExternalUser } from '../models/signinexternaluser.model';
 import { ResetCodeVerification } from '../models/resetcodeverification.model';
 import { ResetPasswordVerification } from '../models/resetpasswordverification.model';
+import { ChangePassword } from '../models/changepassword.model';
 
 @Injectable()
 export class AccountService {
@@ -58,5 +59,13 @@ export class AccountService {
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
 
         return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_RESET_PASSWORD_ENDPOINT}`, resetPasswordVerification, { headers, responseType: 'json' });
+    }
+
+    changepassword(changePassword: ChangePassword): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_CHANGE_PASSWORD_ENDPOINT}`, changePassword, { headers, responseType: 'json' });
     }
 }
