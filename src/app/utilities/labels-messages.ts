@@ -248,7 +248,7 @@ export class LabelsMessages {
         },
         'settings-profile': {
             'settingsLabel': {
-                'en': 'Settings',
+                'en': 'Preferences',
                 'bg': 'Настройки'
             },
             'saveLabel': {

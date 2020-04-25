@@ -19,6 +19,14 @@ export class AccountService {
         private httpHeaderHelper: HttpHeaderHelper) {
     }
 
+    getProfile(): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.get(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_PROFILE_ENDPOINT}`, { headers, responseType: 'json' });
+    }
+
     signup(signupUser: SignupUser): Observable<any> {
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');

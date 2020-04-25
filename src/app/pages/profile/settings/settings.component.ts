@@ -5,6 +5,7 @@ import { TranslationService } from '../../../services/utilities/translation.serv
 import { CommunicationService } from '../../../services/utilities/communication.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ChangeSettings } from '../../../models/changesettings.model';
+import { Constants } from '../../../utilities/constants';
 
 @Component({
     selector: 'bh-profile-settings',
@@ -14,6 +15,7 @@ import { ChangeSettings } from '../../../models/changesettings.model';
 export class SettingsComponent implements OnInit {
 
     // common
+    languages: any[];
     settingsFormGroup: FormGroup;
     showLoading: boolean;
     showErrorMessage: boolean;
@@ -43,10 +45,21 @@ export class SettingsComponent implements OnInit {
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
             this.setLabelsMessages();
         });
+
+        this.accountSerivce.getProfile().subscribe((result) => {
+            if (result) {
+                this.settingsFormGroup.controls['defaultLanguage'].setValue(result.defaultLanguage);
+            }
+        })
+
+        this.fetchLanguages();
     }
 
     ngOnDestroy(): void {
         this.languageChangeSubscription.unsubscribe();
+    }
+    fetchLanguages(): void {
+        this.languages = [{ 'value': 0, 'name': 'English' }, { 'value': 1, 'name': 'Български' }];
     }
 
     setLabelsMessages() {
@@ -64,7 +77,8 @@ export class SettingsComponent implements OnInit {
             this.showLoading = false;
 
             if (result) {
-                this.settingsFormGroup.reset();
+                this.changeLanguage(changeSettings.defaultLanguage == 0 ? 'en' : 'bg');
+
                 this.successMessageLabel = this.translationService.localizeValue('settingsChangedLabel', 'settings-profile', 'label');
                 this.showSuccessMessage = true;
                 setTimeout(() => this.showSuccessMessage = false, 3000);
@@ -83,4 +97,11 @@ export class SettingsComponent implements OnInit {
         });
     }
 
+    changeLanguage(language: string): void {
+        localStorage.setItem(Constants.LANGUAGE_KEY, language);
+
+        // update labels
+        this.translationService.updateLanguage();
+        this.communicationService.emitLanguageChange();
+    }
 }

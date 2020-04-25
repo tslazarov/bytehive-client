@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit, OnDestroy {
 
     // common
+    profile: any = {};
     lastAction: any;
     selectedAction: string;
 
@@ -39,6 +40,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.setLabelsMessages();
+
+        this.accountService.getProfile().subscribe((result) => {
+            this.profile = result;
+        }, (error) => {
+
+        });
 
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
             this.setLabelsMessages();
