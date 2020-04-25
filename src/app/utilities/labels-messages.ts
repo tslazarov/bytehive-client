@@ -277,6 +277,14 @@ export class LabelsMessages {
                 'en': 'Personal information',
                 'bg': 'Лична информация'
             },
+            'personalDataLabel': {
+                'en': 'Personal data',
+                'bg': 'Лична данни'
+            },
+            'profileDataLabel': {
+                'en': 'Profile data',
+                'bg': 'Профилни данни'
+            },
             'firstNameLabel': {
                 'en': 'First name',
                 'bg': 'Име'
@@ -297,6 +305,18 @@ export class LabelsMessages {
                 'en': 'Occupation',
                 'bg': 'Професия'
             },
+            'emailLabel': {
+                'en': 'Email',
+                'bg': 'Имейл'
+            },
+            'emailRequiredErrorLabel': {
+                'en': 'Please enter an email',
+                'bg': 'Моля въведете имейл'
+            },
+            'emailPatternErrorLabel': {
+                'en': 'Please enter a valid email',
+                'bg': 'Моля въведете валиден имейл'
+            },
             'saveLabel': {
                 'en': 'Save',
                 'bg': 'Запази'
@@ -308,6 +328,14 @@ export class LabelsMessages {
             'informationNotChangedLabel': {
                 'en': 'Personal information was not changed.',
                 'bg': 'Личната информация не беше променена.'
+            },
+            'emailChangedLabel': {
+                'en': 'Email address was successfully changed.',
+                'bg': 'Имейл адресът беше успешно променен.'
+            },
+            'emailNotChangedLabel': {
+                'en': 'Email address was not changed.',
+                'bg': 'Имейл адресът не беше променен.'
             },
             'serverErrorLabel': {
                 'en': 'Error occured. Please try again later.',

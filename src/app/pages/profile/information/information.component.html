@@ -4,52 +4,102 @@
         <span class="header-title pl-2">{{informationLabel | localize: 'informationLabel':'information-profile':'label'}}</span>
     </div>
 </div>
-<div class="pl-5 pr-5 pt-4">
-    <div>
-        <div [formGroup]="profileInformationFormGroup" class="mb-4">
-            <div class="message-wrapper pb-3">
-                <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="100%"></bh-errormessage>
-                <bh-successmessage class="pb-3" *ngIf="showSuccessMessage" message="{{successMessageLabel}}" width="100%"></bh-successmessage>
-            </div>
-            <div *ngIf="showLoading" class="loading-wrapper">
-                <mat-spinner></mat-spinner>
-            </div>
-            <div *ngIf="!showLoading">
-                <div>
-                    <mat-form-field floatLabel="never" class="pb-4 information-field">
-                        <mat-label>{{firstNameLabel | localize: 'firstNameLabel':'information-profile':'label'}}</mat-label>
-                        <input matInput autocomplete="off" formControlName="firstName">
-                        <span matSuffix class="required">*</span>
-                        <mat-error *ngIf="profileInformationFormGroup.hasError('required', 'firstName')">
-                            {{firstNameRequiredErrorLabel | localize: 'firstNameRequiredErrorLabel':'information-profile':'label'}}
-                        </mat-error>
-                    </mat-form-field>
+<div class="pl-4 pr-5 pt-4 pb-5">
+    <mat-accordion>
+        <mat-expansion-panel class="mat-elevation-z0 expansion-panel" expanded="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="expansion-header">
+                    <span class="pl-4">
+                        {{personalDataLabel | localize: 'personalDataLabel':'information-profile':'label'}}
+                    </span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="ml-4">
+                <div [formGroup]="profileInformationFormGroup" class="mb-4">
+                    <div class="message-wrapper pb-3">
+                        <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="100%"></bh-errormessage>
+                        <bh-successmessage class="pb-3" *ngIf="showSuccessMessage" message="{{successMessageLabel}}" width="100%"></bh-successmessage>
+                    </div>
+                    <div *ngIf="showLoading" class="loading-wrapper">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <div *ngIf="!showLoading">
+                        <div>
+                            <mat-form-field floatLabel="never" class="pb-4 information-field">
+                                <mat-label>{{firstNameLabel | localize: 'firstNameLabel':'information-profile':'label'}}</mat-label>
+                                <input matInput autocomplete="off" formControlName="firstName">
+                                <span matSuffix class="required">*</span>
+                                <mat-error *ngIf="profileInformationFormGroup.hasError('required', 'firstName')">
+                                    {{firstNameRequiredErrorLabel | localize: 'firstNameRequiredErrorLabel':'information-profile':'label'}}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field floatLabel="never" class="pb-4 information-field">
+                                <mat-label>{{lastNameLabel | localize: 'lastNameLabel':'information-profile':'label'}}</mat-label>
+                                <input matInput autocomplete="off" formControlName="lastName">
+                                <span matSuffix class="required">*</span>
+                                <mat-error *ngIf="profileInformationFormGroup.hasError('required', 'lastName')">
+                                    {{lastNameRequiredErrorLabel | localize: 'lastNameRequiredErrorLabel':'information-profile':'label'}}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field floatLabel="never" class="pb-4 information-field">
+                                <mat-label>{{occupationLabel | localize: 'occupationLabel':'information-label':'label'}}</mat-label>
+                                <mat-select formControlName="occupation">
+                                    <mat-option *ngFor="let occupation of occupations" [value]="occupation.value">
+                                        {{occupation.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <mat-form-field floatLabel="never" class="pb-4 information-field">
-                        <mat-label>{{lastNameLabel | localize: 'lastNameLabel':'information-profile':'label'}}</mat-label>
-                        <input matInput autocomplete="off" formControlName="lastName">
-                        <span matSuffix class="required">*</span>
-                        <mat-error *ngIf="profileInformationFormGroup.hasError('required', 'lastName')">
-                            {{lastNameRequiredErrorLabel | localize: 'lastNameRequiredErrorLabel':'information-profile':'label'}}
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field floatLabel="never" class="pt-1 pb-4 information-field">
-                        <mat-label>{{occupationLabel | localize: 'occupationLabel':'information-label':'label'}}</mat-label>
-                        <mat-select formControlName="occupation">
-                            <mat-option *ngFor="let occupation of occupations" [value]="occupation.value">
-                                {{occupation.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
             </div>
+            <button disableRipple mat-flat-button [ngClass]="profileInformationFormGroup.invalid ? 'information disabled ml-4': 'information ml-4'"
+                (click)="changeProfileInformation()" [disabled]="profileInformationFormGroup.invalid">
+                {{saveLabel | localize: 'saveLabel':'information-profile':'label' | uppercase}}
+            </button>
+        </mat-expansion-panel>
+        <div class="col-12 pb-4 pt-4">
+            <div class="mat-divider full-width"></div>
         </div>
-    </div>
-    <button disableRipple mat-flat-button [ngClass]="profileInformationFormGroup.invalid ? 'information disabled': 'information'"
-        (click)="changeProfileInformation()" [disabled]="profileInformationFormGroup.invalid">
-        {{saveLabel | localize: 'saveLabel':'information-profile':'label' | uppercase}}
-    </button>
+        <mat-expansion-panel class="mat-elevation-z0 expansion-panel" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="expansion-header">
+                    <span class="pl-4">
+                        {{profileDataLabel | localize: 'profileDataLabel':'information-profile':'label'}}
+                    </span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="ml-4">
+                <div [formGroup]="emailFormGroup" class="mb-4">
+                    <div class="message-wrapper pb-3">
+                        <bh-errormessage class="pb-3" *ngIf="showEmailErrorMessage" message="{{errorMessageLabel}}" width="100%"></bh-errormessage>
+                        <bh-successmessage class="pb-3" *ngIf="showEmailSuccessMessage" message="{{successMessageLabel}}" width="100%"></bh-successmessage>
+                    </div>
+                    <div>
+                        <div>
+                            <mat-form-field floatLabel="never" class="pt-1 pb-4 information-field">
+                                <mat-label>{{emailLabel | localize: 'emailLabel':'information-profile':'label'}}</mat-label>
+                                <input matInput autocomplete="off" formControlName="email">
+                                <span matSuffix class="required">*</span>
+                                <mat-error *ngIf="emailFormGroup.hasError('required', 'email')">
+                                    {{emailRequiredErrorLabel | localize: 'emailRequiredErrorLabel':'information-profile':'label'}}
+                                </mat-error>
+                                <mat-error *ngIf="emailFormGroup.hasError('email', 'email')">
+                                    {{emailPatternErrorLabel | localize: 'emailPatternErrorLabel':'information-profile':'label'}}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button disableRipple mat-flat-button [ngClass]="emailFormGroup.invalid ? 'information disabled ml-4': 'information ml-4'"
+                (click)="changeEmail()" [disabled]="emailFormGroup.invalid">
+                {{saveLabel | localize: 'saveLabel':'information-profile':'label' | uppercase}}
+            </button>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>

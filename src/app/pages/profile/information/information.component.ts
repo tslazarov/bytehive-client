@@ -20,20 +20,28 @@ export class InformationComponent implements OnInit {
     // common
     occupations: any[];
     profileInformationFormGroup: FormGroup;
+    emailFormGroup: FormGroup;
     showLoading: boolean;
     showErrorMessage: boolean;
+    showEmailErrorMessage: boolean;
     showSuccessMessage: boolean;
+    showEmailSuccessMessage: boolean;
 
     // subscriptions
     languageChangeSubscription: Subscription;
 
     // labels
     informationLabel: string;
+    personalDataLabel: string;
+    profileDataLabel: string;
     firstNameLabel: string;
     firstNameRequiredErrorLabel: string;
     lastNameLabel: string;
     lastNameRequiredErrorLabel: string;
     occupationLabel: string;
+    emailLabel: string;
+    emailRequiredErrorLabel: string;
+    emailPatternErrorLabel: string;
     saveLabel: string;
     errorMessageLabel: string;
     successMessageLabel: string;
@@ -50,6 +58,10 @@ export class InformationComponent implements OnInit {
             occupation: ['', [Validators.required]],
         });
 
+        this.emailFormGroup = this.formBuilder.group({
+            email: ['', [Validators.required, Validators.email]]
+        });
+
         this.setLabelsMessages();
 
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
@@ -62,6 +74,7 @@ export class InformationComponent implements OnInit {
                 this.profileInformationFormGroup.controls['firstName'].setValue(result.firstName);
                 this.profileInformationFormGroup.controls['lastName'].setValue(result.lastName);
                 this.profileInformationFormGroup.controls['occupation'].setValue(result.occupation);
+                this.emailFormGroup.controls['email'].setValue(result.email);
             }
         })
 
@@ -89,11 +102,16 @@ export class InformationComponent implements OnInit {
 
     setLabelsMessages() {
         this.informationLabel = this.translationService.localizeValue('informationLabel', 'information-profile', 'label');
+        this.personalDataLabel = this.translationService.localizeValue('personalDataLabel', 'information-profile', 'label');
+        this.profileDataLabel = this.translationService.localizeValue('profileDataLabel', 'information-profile', 'label');
         this.firstNameLabel = this.translationService.localizeValue('firstNameLabel', 'information-profile', 'label');
         this.firstNameRequiredErrorLabel = this.translationService.localizeValue('firstNameRequiredErrorLabel', 'information-profile', 'label');
         this.lastNameLabel = this.translationService.localizeValue('lastNameLabel', 'information-profile', 'label');
         this.lastNameRequiredErrorLabel = this.translationService.localizeValue('lastNameRequiredErrorLabel', 'information-profile', 'label');
         this.occupationLabel = this.translationService.localizeValue('occupationLabel', 'information-profile', 'label');
+        this.emailLabel = this.translationService.localizeValue('emailLabel', 'information-profile', 'label');
+        this.emailRequiredErrorLabel = this.translationService.localizeValue('emailRequiredErrorLabel', 'information-profile', 'label');
+        this.emailPatternErrorLabel = this.translationService.localizeValue('emailPatternErrorLabel', 'information-profile', 'label');
         this.saveLabel = this.translationService.localizeValue('saveLabel', 'information-profile', 'label');
     }
 
@@ -125,5 +143,9 @@ export class InformationComponent implements OnInit {
 
             setTimeout(() => this.showErrorMessage = false, 3000);
         });
+    }
+
+    changeEmail() {
+        console.log('change');
     }
 }

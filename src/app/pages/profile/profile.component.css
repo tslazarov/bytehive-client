@@ -2,6 +2,10 @@
     min-height: 550px;
 }
 
+.tile-content-wrapper {
+    min-height: 695px;
+}
+
 .profile-content-wrapper {
     background: rgba(247,247,247);
     background: linear-gradient(180deg, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 90%);

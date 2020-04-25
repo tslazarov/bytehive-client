@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mat-elevation-z3 mt-3">
+            <div class="mat-elevation-z3 mt-4 mb-4">
                 <div class="menu-item" (click)="open($event, 'request')">
                     <span class="icon requests-icon left-icon large-icon menu-icon"></span>
                     <span class="menu-title">{{myRequestsLabel | localize: 'myRequestsLabel':'profile':'label'}}</span>
@@ -45,10 +45,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-9 mat-elevation-z3 content-wrapper tile-wrapper">
-            <bh-profile-information *ngIf="selectedAction == 'personalInformation'" (profileChange)="profileChange()"></bh-profile-information>
-            <bh-profile-security *ngIf="selectedAction == 'security'"></bh-profile-security>
-            <bh-profile-settings *ngIf="selectedAction == 'preferences'"></bh-profile-settings>
+        <div class="col-md-6 col-lg-9">
+            <div class="tile-content-wrapper content-wrapper mat-elevation-z3">
+                <bh-profile-information *ngIf="selectedAction == 'personalInformation'" (profileChange)="profileChange()"></bh-profile-information>
+                <bh-profile-security *ngIf="selectedAction == 'security'"></bh-profile-security>
+                <bh-profile-settings *ngIf="selectedAction == 'preferences'"></bh-profile-settings>
+            </div>
         </div>
     </div>
 </div>

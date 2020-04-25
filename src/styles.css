@@ -184,6 +184,10 @@ body {
     color: #313131 !important;
 }
 
+.mat-expansion-panel-header:hover {
+    background-color: transparent !important;
+}
+
 /* Custom mat menus */
 
 .mat-menu-panel .mat-button-focus-overlay  {

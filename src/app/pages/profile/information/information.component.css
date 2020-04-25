@@ -51,3 +51,16 @@
     background-color: #dfdfdf;
     color: #ffffff;
 }
+
+.expansion-panel {
+    background-color: transparent;
+}
+
+.expansion-header {
+    font-size: 24px;
+    border-left: 5px solid transparent;
+}
+
+.mat-expanded .expansion-header {
+    border-left: 5px solid #ffeb3b;
+}
