@@ -51,7 +51,6 @@ export class VisualDialog {
             visualMarkup.element = selection.element;
             visualMarkup.elementName = selection.elementName;
             visualMarkup.scrapeLink = this.data.scrapeLink;
-            console.log(visualMarkup);
 
             this.showLoading = true;
 

@@ -970,6 +970,56 @@ export class LabelsMessages {
                 'bg': '<няма стойност>'
             }
         },
+        'requestdetail-dialog': {
+            'fromLabel': {
+                'en': 'from',
+                'bg': 'от'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'scrapeTypeLabel': {
+                'en': 'Scrape type',
+                'bg': 'Tип на страници'
+            },
+            'exportTypeLabel': {
+                'en': 'Export type',
+                'bg': 'Тип на експортиране'
+            },
+            'listUrlLabel': {
+                'en': 'List link:',
+                'bg': 'Линк към списъчна страница'
+            },
+            'startPageLabel': {
+                'en': 'Start page:',
+                'bg': 'Начална страница:'
+            },
+            'endPageLabel': {
+                'en': 'End page:',
+                'bg': 'Крайна страница:'
+            },
+            'detailMarkupLabel': {
+                'en': 'Detail markup:',
+                'bg': 'Детайлен маркер:'
+            },
+            'detailLinksCountLabel': {
+                'en': 'Detail links count:',
+                'bg': 'Брой детайлни линкове:'
+            },
+            'dataMappingLabel': {
+                'en': 'Data Mapping',
+                'bg': 'Асоциация на данни'
+            },
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'markupLabel': {
+                'en': 'Markup',
+                'bg': 'Маркер'
+            }
+        },
         'proxy': {
             'selectLabel': {
                 'en': 'Select',
@@ -1040,6 +1090,38 @@ export class LabelsMessages {
             'paidStatusLabel': {
                 'en': 'Paid',
                 'bg': 'Платена'
+            }
+        },
+        'export-type': {
+            'jsonFormatLabel': {
+                'en': 'JSON Format',
+                'bg': 'JSON Формат'
+            },
+            'xmlFormatLabel': {
+                'en': 'XML Format',
+                'bg': 'XML Формат'
+            },
+            'csvFormatLabel': {
+                'en': 'CSV Format',
+                'bg': 'CSV Формат'
+            },
+            'txtFormatLabel': {
+                'en': 'TXT Format',
+                'bg': 'TXT Формат'
+            }
+        },
+        'scrape-type': {
+            'listDetailPagesLabel': {
+                'en': 'List & Detail pages',
+                'bg': 'Страници със списък и детайли'
+            },
+            'listPagesLabel': {
+                'en': 'List pages',
+                'bg': 'Страници със списък'
+            },
+            'detailPagesLabel': {
+                'en': 'Detail pages',
+                'bg': 'Страници с детайли'
             }
         }
     }

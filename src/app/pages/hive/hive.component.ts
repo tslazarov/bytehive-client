@@ -227,7 +227,6 @@ export class HiveComponent implements OnInit, OnDestroy {
         scrapeRequestCreateModel.fieldMappings = this.fieldMappings.map(fm => { return new FieldMapping(fm.formGroup.controls['fieldName'].value, fm.formGroup.controls['fieldMarkup'].value) });
 
         this.scrapeRequestsService.createScrapeRequest(scrapeRequestCreateModel).subscribe((result) => {
-            console.log(result);
             this.showSuccess = true;
         }, (error) => {
             this.notifier.notify("error", this.translationService.localizeValue('serverErrorLabel', 'hive', 'label'));

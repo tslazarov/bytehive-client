@@ -157,8 +157,6 @@ export class InformationComponent implements OnInit {
         let emailChangeData = new EmailChangeData();
         emailChangeData.email = this.emailFormGroup.controls['email'].value;
 
-        console.log(emailChangeData);
-
         let dialogRef = this.dialog.open(EmailChangeDialog, { width: '450px', minHeight: '100px', autoFocus: false, data: { emailChangeData } });
 
         dialogRef.afterClosed().subscribe(result => {

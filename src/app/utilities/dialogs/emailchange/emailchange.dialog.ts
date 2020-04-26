@@ -55,7 +55,6 @@ export class EmailChangeDialog {
         let emailChange = new EmailChange();
         emailChange.email = this.email;
         emailChange.password = this.emailChangeFormGroup.value.password;
-        console.log(emailChange);
 
         this.showLoading = true;
 

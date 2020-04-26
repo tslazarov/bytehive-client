@@ -1,0 +1,65 @@
+<div>
+    <div class="row pb-3">
+        <div class="col-10">
+        </div>
+        <div class="col-2 right">
+            <button class="close-button" mat-button (click)="close()">
+                <span class="icon close-icon large-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="requestdetail-wrapper pt-3">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>{{data.creationDate | localizedDate :'d MMM yyyy HH:mm:ss'}}</h5>
+            </div>
+            <div class="col-md-6 right">{{fromLabel | localize: 'fromLabel':'requestdetail-dialog':'label'}}
+                <span class="bold">{{data.email}}</span></div>
+        </div>
+        <div class="pb-3 pt-1">
+            <div class="mat-divider full-width"></div>
+        </div>
+        <div>{{statusLabel | localize: 'statusLabel':'requestdetail-dialog':'label'}}: <span class="bold">{{data.status |
+                scrapestatusconvert:true}}
+            </span></div>
+        <div>{{scrapeTypeLabel | localize: 'scrapeTypeLabel':'requestdetail-dialog':'label'}}: <span class="bold">{{data.exportType
+                | exporttypeconvert:true}}</span></div>
+        <div>{{exportTypeLabel | localize: 'exportTypeLabel':'requestdetail-dialog':'label'}}: <span class="bold">{{data.scrapeType
+                | scrapetypeconvert:true}}</span></div>
+        <div class="pb-3 pt-3">
+            <div class="mat-divider full-width"></div>
+        </div>
+        <div *ngIf="requestData.ListUrl">{{listUrlLabel | localize: 'listUrlLabel':'requestdetail-dialog':'label'}}:
+            <span class="bold">{{requestData.ListUrl}}</span></div>
+        <div *ngIf="requestData.StartPage">{{startPageLabel | localize: 'startPageLabel':'requestdetail-dialog':'label'}}:
+            <span class="bold">{{requestData.StartPage}}</span></div>
+        <div *ngIf="requestData.EndPage">{{endPageLabel | localize: 'endPageLabel':'requestdetail-dialog':'label'}}:
+            <span class="bold">{{requestData.EndPage}}</span></div>
+        <div *ngIf="requestData.DetailMarkup">{{detailMarkupLabel | localize: 'detailMarkupLabel':'requestdetail-dialog':'label'}}:
+            <span class="bold">{{requestData.DetailMarkup}}</span></div>
+        <div *ngIf="requestData.DetailUrls.length > 0">{{detailLinksCountLabel | localize: 'detailLinksCountLabel':'requestdetail-dialog':'label'}}:
+            <span class="bold">{{requestData.DetailUrls.length}}</span></div>
+        <div class="pb-3 pt-3">
+            <div class="mat-divider full-width"></div>
+        </div>
+        <div class="pb-3">{{dataMappingLabel | localize: 'dataMappingLabel':'requestdetail-dialog':'label'}}:</div>
+        <div class="row pb-2">
+            <div class="col-1"></div>
+            <div class="col-5 bold center">{{nameLabel | localize: 'nameLabel':'requestdetail-dialog':'label' | uppercase}}</div>
+            <div class="col-6 bold center">{{valueLabel | localize: 'valueLabel':'requestdetail-dialog':'label' | uppercase}}</div>
+        </div>
+        <div class="mb-4">
+            <div *ngFor="let mapping of requestData.FieldMappings ; let i = index" class="row pb-2">
+                <div class="col-1 center">
+                    {{i + 1}}
+                </div>
+                <div class="col-5 center">
+                    {{mapping.FieldName}}
+                </div>
+                <div class="col-6 center">
+                    {{mapping.FieldMarkup }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,8 @@ import { ScrapeRequestsService } from '../../services/scraperequests.service';
 import { Constants } from '../../utilities/constants';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { RequestStatus } from '../../models/enums/requeststatus.enum';
+import { RequestDetailData, RequestDetailDialog } from '../../utilities/dialogs/requestdetail/requestdetail.dialog';
 
 export const CONDITIONS_FUNCTIONS = {
     'contains': function (value, filteredValue) {
@@ -148,11 +150,11 @@ export class ScrapeRequestsComponent implements OnInit {
         this.scrapeRequestStatuses = [];
 
         this.scrapeRequestStatuses.push({ 'value': -1, 'label': this.translationService.localizeValue('allStatusLabel', 'scrape-status', 'label') });
-        this.scrapeRequestStatuses.push({ 'value': 0, 'label': this.translationService.localizeValue('pendingStatusLabel', 'scrape-status', 'label') });
-        this.scrapeRequestStatuses.push({ 'value': 1, 'label': this.translationService.localizeValue('startedStatusLabel', 'scrape-status', 'label') });
-        this.scrapeRequestStatuses.push({ 'value': 2, 'label': this.translationService.localizeValue('completedStatusLabel', 'scrape-status', 'label') });
-        this.scrapeRequestStatuses.push({ 'value': 3, 'label': this.translationService.localizeValue('failedStatusLabel', 'scrape-status', 'label') });
-        this.scrapeRequestStatuses.push({ 'value': 4, 'label': this.translationService.localizeValue('paidStatusLabel', 'scrape-status', 'label') });
+        this.scrapeRequestStatuses.push({ 'value': RequestStatus.Pending, 'label': this.translationService.localizeValue('pendingStatusLabel', 'scrape-status', 'label') });
+        this.scrapeRequestStatuses.push({ 'value': RequestStatus.Started, 'label': this.translationService.localizeValue('startedStatusLabel', 'scrape-status', 'label') });
+        this.scrapeRequestStatuses.push({ 'value': RequestStatus.Completed, 'label': this.translationService.localizeValue('completedStatusLabel', 'scrape-status', 'label') });
+        this.scrapeRequestStatuses.push({ 'value': RequestStatus.Failed, 'label': this.translationService.localizeValue('failedStatusLabel', 'scrape-status', 'label') });
+        this.scrapeRequestStatuses.push({ 'value': RequestStatus.Paid, 'label': this.translationService.localizeValue('paidStatusLabel', 'scrape-status', 'label') });
     }
 
     statusChange(status: any): void {
@@ -212,7 +214,25 @@ export class ScrapeRequestsComponent implements OnInit {
     }
 
     showDetail(id: string): void {
+        this.scrapeRequestsService.getScrapeRequest(id).subscribe(result => {
+            if (result) {
+                let requestDetailData = new RequestDetailData();
+                requestDetailData.id = result.id;
+                requestDetailData.creationDate = result.creationDate;
+                requestDetailData.data = result.data;
+                requestDetailData.downloadUrl = result.downloadUrl;
+                requestDetailData.email = result.email;
+                requestDetailData.exportType = result.exportType;
+                requestDetailData.scrapeType = result.scrapeType;
+                requestDetailData.status = result.status;
 
+                let dialogRef = this.dialog.open(RequestDetailDialog, { width: '700px', minHeight: '450px', autoFocus: false, data: requestDetailData });
+
+                dialogRef.afterClosed().subscribe();
+            }
+        }, (error) => {
+
+        });
     }
 
     delete(id: string): void {

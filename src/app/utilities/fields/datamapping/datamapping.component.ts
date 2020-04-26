@@ -212,7 +212,6 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         validateDetail.fieldMappings = this.fieldMappings.map(fm => { return new FieldMapping(fm.formGroup.controls['fieldName'].value, fm.formGroup.controls['fieldMarkup'].value) });
 
         this.scraperService.validateDetail(validateDetail).subscribe((result) => {
-            console.log(result);
             if (result) {
                 let detailValidationData = new DetailValidationData();
                 detailValidationData.valid = result.valid;
