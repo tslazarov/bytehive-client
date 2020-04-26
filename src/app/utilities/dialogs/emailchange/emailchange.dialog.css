@@ -10,28 +10,28 @@
     background-color: #efefef;
 }
 
-.resetpassword-field {
+.emailchange-field {
     min-width: 300px;
 }
 
-.sendcode {
+.save {
     min-width: 300px;
     background-color: #ffeb3b;
     color: #ffffff;
 }
 
-.sendcode.disabled {
+.save.disabled {
     min-width: 300px;
     background-color: #dfdfdf;
     color: #ffffff;
 }
 
-.sendcode:hover {
+.save:hover {
     background-color: #ffeb3b;
     color: #212121;
 }
 
-.sendcode.disabled:hover {
+.save.disabled:hover {
     background-color: #dfdfdf;
     color: #ffffff;
 }

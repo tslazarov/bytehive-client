@@ -12,6 +12,7 @@ import { ResetPasswordVerification } from '../models/resetpasswordverification.m
 import { ChangePassword } from '../models/changepassword.model';
 import { ChangeSettings } from '../models/changesettings.model';
 import { ChangeInformation } from '../models/changeinformation.model';
+import { EmailChange } from '../models/emailchange.model';
 
 @Injectable()
 export class AccountService {
@@ -93,5 +94,13 @@ export class AccountService {
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
         return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_CHANGE_INFORMATION_ENDPOINT}`, changeInformation, { headers, responseType: 'json' });
+    }
+
+    changeEmail(emailChange: EmailChange): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_CHANGE_EMAIL_ENDPOINT}`, emailChange, { headers, responseType: 'json' });
     }
 }

@@ -7,6 +7,9 @@ import { CommunicationService } from '../../../services/utilities/communication.
 import { OccupationType } from '../../../models/enums/occupationtype.enum';
 import { Occupation } from '../../../models/occupation.model';
 import { ChangeInformation } from '../../../models/changeinformation.model';
+import { EmailChangeData, EmailChangeDialog } from '../../../utilities/dialogs/emailchange/emailchange.dialog';
+import { NotifierService } from 'angular-notifier';
+import { MatDialog } from '@angular/material';
 
 @Component({
     selector: 'bh-profile-information',
@@ -18,6 +21,7 @@ export class InformationComponent implements OnInit {
     @Output() profileChange = new EventEmitter<any>();
 
     // common
+    notifier: NotifierService;
     occupations: any[];
     profileInformationFormGroup: FormGroup;
     emailFormGroup: FormGroup;
@@ -47,9 +51,13 @@ export class InformationComponent implements OnInit {
     successMessageLabel: string;
 
     constructor(private formBuilder: FormBuilder,
+        private dialog: MatDialog,
         private accountService: AccountService,
         private translationService: TranslationService,
-        private communicationService: CommunicationService) { }
+        private communicationService: CommunicationService,
+        private notifierService: NotifierService) {
+        this.notifier = notifierService;
+    }
 
     ngOnInit() {
         this.profileInformationFormGroup = this.formBuilder.group({
@@ -146,6 +154,17 @@ export class InformationComponent implements OnInit {
     }
 
     changeEmail() {
-        console.log('change');
+        let emailChangeData = new EmailChangeData();
+        emailChangeData.email = this.emailFormGroup.controls['email'].value;
+
+        console.log(emailChangeData);
+
+        let dialogRef = this.dialog.open(EmailChangeDialog, { width: '450px', minHeight: '100px', autoFocus: false, data: { emailChangeData } });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.notifier.notify("success", this.translationService.localizeValue('emailChangeSuccessLabel', 'information-profile', 'label'));
+            }
+        });
     }
 }

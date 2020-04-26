@@ -1,0 +1,37 @@
+<div class="p-2">
+    <div class="row pb-3">
+        <div class="col-10">
+        </div>
+        <div class="col-2 right">
+            <button class="close-button" mat-button (click)="close()">
+                <span class="icon close-icon large-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="dialog-wrapper pt-1">
+        <div *ngIf="showLoading" class="loading-wrapper">
+            <mat-spinner></mat-spinner>
+        </div>
+        <bh-errormessage class="pb-3" *ngIf="showErrorMessage && !showLoading" message="{{errorMessageLabel}}" width="300px"></bh-errormessage>
+        <div *ngIf="!showLoading" [formGroup]="emailChangeFormGroup" class="center">
+            <div>
+                <mat-form-field floatLabel="never" class="pb-4 emailchange-field">
+                    <mat-label>{{passwordLabel | localize: 'passwordLabel':'emailchange-dialog':'label'}}</mat-label>
+                    <input matInput autocomplete="off" formControlName="password" [type]="showPassword ? 'text' : 'password'">
+                    <span matSuffix (click)="showPassword = !showPassword" class="{{showPassword ? 'icon password-disabled-icon medium-icon' : 'icon password-enabled-icon medium-icon'}}"></span>
+                    <mat-error *ngIf="emailChangeFormGroup.hasError('required', 'password')">
+                        {{passwordRequiredErrorLabel | localize: 'passwordRequiredErrorLabel':'emailchange-dialog':'label'}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col-12 center">
+            <button *ngIf="!showLoading" [ngClass]="emailChangeFormGroup.invalid ? 'save disabled': 'save'" disableRipple mat-flat-button
+                (click)="save()" [disabled]="emailChangeFormGroup.invalid">
+                <span>{{saveLabel | localize: 'saveLabel':'emailchange-dialog':'label' | uppercase}}</span>
+            </button>
+        </div>
+    </div>
+</div>

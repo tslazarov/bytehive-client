@@ -18,6 +18,7 @@ import { ProxyWrapperComponent } from '../../pages/proxywrapper/proxywrapper.com
 import { BhFieldsModule } from '../fields/bhfields.module';
 import { LinksViewDialog } from './linksview/linksview.dialog';
 import { DetailValidationDialog } from './detailvalidation/detailvalidation.dialog';
+import { EmailChangeDialog } from './emailchange/emailchange.dialog';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { DetailValidationDialog } from './detailvalidation/detailvalidation.dial
         ResetPasswordDialog,
         LinksViewDialog,
         DetailValidationDialog,
+        EmailChangeDialog,
         ProxyWrapperComponent
     ],
     imports: [
@@ -54,7 +56,8 @@ import { DetailValidationDialog } from './detailvalidation/detailvalidation.dial
         ConfirmationDialog,
         ResetPasswordDialog,
         LinksViewDialog,
-        DetailValidationDialog
+        DetailValidationDialog,
+        EmailChangeDialog
     ],
     providers: [
         TranslationService,

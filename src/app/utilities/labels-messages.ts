@@ -340,6 +340,10 @@ export class LabelsMessages {
             'serverErrorLabel': {
                 'en': 'Error occured. Please try again later.',
                 'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            },
+            'emailChangeSuccessLabel': {
+                'en': 'The email address was changed successfully.',
+                'bg': 'Имейл адресът беше променен успешно.'
             }
         },
         'hive': {
@@ -652,6 +656,44 @@ export class LabelsMessages {
                 'bg': 'Сигурни ли сте, че искате да изтриете този потребител?'
             }
         },
+        'scraperequests': {
+            'statusesLabel': {
+                'en': 'Statuses',
+                'bg': 'Статуси'
+            },
+            'searchLabel': {
+                'en': 'Search',
+                'bg': 'Търси'
+            },
+            'creationDateLabel': {
+                'en': 'Created on',
+                'bg': 'Създадена на'
+            },
+            'userLabel': {
+                'en': 'User',
+                'bg': 'Потребител'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'linkLabel': {
+                'en': 'Link',
+                'bg': 'Линк'
+            },
+            'detailsLabel': {
+                'en': 'Details',
+                'bg': 'Детайли'
+            },
+            'deleteLabel': {
+                'en': 'Delete',
+                'bg': 'Изтрий'
+            },
+            'confirmDeleteScrapeRequestLabel': {
+                'en': 'Are you sure you want to delete this request?',
+                'bg': 'Сигурни ли сте, че искате да изтриете тази заявка?'
+            }
+        },
         'fileupload': {
             'dragDropLabel': {
                 'en': 'Drag and drop file here',
@@ -876,6 +918,32 @@ export class LabelsMessages {
                 'bg': 'Паролата не беше запазена. Моля проверете предоставените код за верификация и имейл.'
             }
         },
+        'emailchange-dialog': {
+            'passwordLabel': {
+                'en': 'Password',
+                'bg': 'Парола'
+            },
+            'passwordRequiredErrorLabel': {
+                'en': 'Please enter a password',
+                'bg': 'Моля въведете парола'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            },
+            'emailNotChangedLabel': {
+                'en': 'Provided password is incorrect.',
+                'bg': 'Изпратената парола е неправилна.'
+            },
+            'duplicateEmailErrorLabel': {
+                'en': 'A user with the same email already exists.',
+                'bg': 'Потребител със същия имейл вече съществува.'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            }
+        },
         'detailvalidation-dialog': {
             'errorStatusLabel': {
                 'en': 'Some fields do not have values.',
@@ -942,6 +1010,32 @@ export class LabelsMessages {
             'ofLabel': {
                 'en': 'of',
                 'bg': 'от'
+            }
+        },
+        'scrape-status': {
+            'allStatusLabel': {
+                'en': 'All',
+                'bg': 'Всички'
+            },
+            'pendingStatusLabel': {
+                'en': 'Pending',
+                'bg': 'Чакаща'
+            },
+            'startedStatusLabel': {
+                'en': 'Started',
+                'bg': 'Започнала'
+            },
+            'completedStatusLabel': {
+                'en': 'Completed',
+                'bg': 'Завършена'
+            },
+            'failedStatusLabel': {
+                'en': 'Failed',
+                'bg': 'Неуспешна'
+            },
+            'paidStatusLabel': {
+                'en': 'Paid',
+                'bg': 'Платена'
             }
         }
     }
