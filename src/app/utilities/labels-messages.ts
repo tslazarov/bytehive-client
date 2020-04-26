@@ -665,6 +665,10 @@ export class LabelsMessages {
                 'en': 'Search',
                 'bg': 'Търси'
             },
+            'filterDateLabel': {
+                'en': 'Filter by date',
+                'bg': 'Филтрирай по дата'
+            },
             'creationDateLabel': {
                 'en': 'Created on',
                 'bg': 'Създадена на'

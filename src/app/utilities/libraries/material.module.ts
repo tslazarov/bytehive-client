@@ -36,6 +36,7 @@ import {
     DateAdapter,
     MAT_DATE_FORMATS
 } from '@angular/material';
+import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
 import { CdkTableModule } from '@angular/cdk/table';
 
 @NgModule({
@@ -72,6 +73,8 @@ import { CdkTableModule } from '@angular/cdk/table';
         MatTabsModule,
         MatToolbarModule,
         MatTooltipModule,
+        SatDatepickerModule,
+        SatNativeDateModule
     ],
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: 'bg' },

@@ -45,3 +45,32 @@ tr.mat-row:hover .request-action-picker {
     cursor: pointer;
     font-weight: 500;
 }
+
+.full-width {
+    width: 100%;
+}
+
+/* datepicker */
+.date-field .mat-form-field-underline {
+    height: 1.5px !important;
+}
+
+.mat-datepicker-toggle-active {
+    color: inherit;
+}
+
+.custom-date-picker {
+    text-align: center !important;
+    font-size: 16px !important;
+    background-color: transparent;
+    border-width: 0 0 1px 0;
+    border-radius: 0px;
+}
+
+.custom-date-picker:focus {
+    background-color: transparent;
+}
+
+.custom-date-picker:hover {
+    cursor: pointer;
+}

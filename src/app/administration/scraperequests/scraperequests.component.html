@@ -15,12 +15,26 @@
                 <input matInput (keyup)="applyGlobalFilter($event.target.value)" placeholder="{{searchLabel | localize: 'searchLabel':'scraperequests':'label'}}">
             </mat-form-field>
         </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-2 col-sm-12">
+            <div [formGroup]="dateForm">
+                <mat-form-field class="wrapper-custom date-field full-width" floatLabel="never">
+                    <input readonly type="text" (click)="picker.open()" matInput [value]="filterDate" (dateChange)="onDateChange($event)" [min]="minDate"
+                        [max]="maxDate" [satDatepicker]="picker" class="date custom-date-picker" placeholder="{{filterDateLabel | localize: 'filterDateLabel':'scraperequests':'label'}}"
+                        autocomplete="off" formControlName="date">
+                    <sat-datepicker #picker [rangeMode]="true" touchUi="true" [closeAfterSelection]="false"></sat-datepicker>
+                    <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+                </mat-form-field>
+            </div>
+        </div>
     </div>
     <div>
         <table mat-table matSort [dataSource]="dataSource">
             <ng-container matColumnDef="creationDate">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>{{creationDateLabel | localize: 'creationDateLabel':'scraperequests':'label'}}</th>
-                <td mat-cell *matCellDef="let element"> {{element.creationDate | localizedDate :'d MMM yyyy hh:mm:ss'}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.creationDate | localizedDate :'d MMM yyyy HH:mm:ss'}}
+                </td>
             </ng-container>
             <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>{{userLabel | localize: 'userLabel':'scraperequests':'label'}}</th>
