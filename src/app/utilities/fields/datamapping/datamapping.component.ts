@@ -15,6 +15,7 @@ import { VisualDialog, VisualData } from '../../dialogs/visual/visual.dialog';
 import { FieldMapping } from '../../../models/fieldmapping.model';
 import { ValidateDetail } from '../../../models/validatedetail.model';
 import { ScraperService } from '../../../services/scraper.service';
+import { DetailValidationDialog, DetailValidationData } from '../../dialogs/detailvalidation/detailvalidation.dialog';
 
 @Component({
     selector: 'bh-datamapping',
@@ -28,6 +29,9 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     // subscriptions
     languageChangeSubscription: Subscription;
 
+    // common
+    showErrorMessage: boolean;
+
     // labels
     dataMappingLabel: string;
     detailUrlLabel: string;
@@ -40,7 +44,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
     codeLabel: string;
     manualLabel: string;
     validateLabel: string;
-
+    errorMessageLabel: string;
 
     constructor(private formBuilder: FormBuilder,
         private dialog: MatDialog,
@@ -208,8 +212,19 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         validateDetail.fieldMappings = this.fieldMappings.map(fm => { return new FieldMapping(fm.formGroup.controls['fieldName'].value, fm.formGroup.controls['fieldMarkup'].value) });
 
         this.scraperService.validateDetail(validateDetail).subscribe((result) => {
-            console.log(result);
+            if (result) {
+                let detailValidationData = new DetailValidationData();
+                detailValidationData.valid = result.valid;
+                detailValidationData.fieldMappings = result.fieldMappings;
+
+                let dialogRef = this.dialog.open(DetailValidationDialog, { width: '700px', minHeight: '450px', autoFocus: false, data: detailValidationData });
+
+                dialogRef.afterClosed().subscribe(result => { });
+            }
         }, (error) => {
+            this.showErrorMessage = true;
+            this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'datamapping', 'label');
+            setTimeout(() => { this.showErrorMessage = false }, 4000);
         })
     }
 }

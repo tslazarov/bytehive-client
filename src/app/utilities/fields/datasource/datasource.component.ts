@@ -119,9 +119,7 @@ export class DatasourceComponent implements OnInit, OnDestroy {
     pagingInformation(): void {
         let dialogRef = this.dialog.open(PagingInformationDialog, { width: '50vw', minHeight: '220px', autoFocus: false });
 
-        dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
-        });
+        dialogRef.afterClosed().subscribe(result => { });
     }
 
     automaticMapping(): void {
@@ -243,7 +241,7 @@ export class DatasourceComponent implements OnInit, OnDestroy {
 
         }, (error) => {
             this.showErrorMessage = true;
-            this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'signup', 'label');
+            this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'datasource', 'label');
             setTimeout(() => { this.showErrorMessage = false }, 4000);
         })
     }

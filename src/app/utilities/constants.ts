@@ -7,6 +7,7 @@ export class Constants {
     static readonly PAGING_REGEX = '{{page}}';
 
     static readonly ACCOUNT_SERVICE_BASE_ENDPOINT = 'api/account/';
+    static readonly ACCOUNT_SERVICE_PROFILE_ENDPOINT = 'api/account/profile';
     static readonly ACCOUNT_SERVICE_SIGNUP_ENDPOINT = 'api/account/signup';
     static readonly ACCOUNT_SERVICE_SIGNIN_ENDPOINT = 'api/account/signin';
     static readonly ACCOUNT_SERVICE_SIGNIN_EXTERNAL_ENDPOINT = 'api/account/signinExternal';
@@ -14,6 +15,10 @@ export class Constants {
     static readonly ACCOUNT_SERVICE_REFRESH_TOKEN_ENDPOINT = 'api/account/refreshtoken';
     static readonly ACCOUNT_SERVICE_RESET_CODE_ENDPOINT = 'api/account/resetcode';
     static readonly ACCOUNT_SERVICE_RESET_PASSWORD_ENDPOINT = 'api/account/resetpassword';
+    static readonly ACCOUNT_SERVICE_CHANGE_PASSWORD_ENDPOINT = 'api/account/changepassword';
+    static readonly ACCOUNT_SERVICE_CHANGE_SETTINGS_ENDPOINT = 'api/account/settings';
+    static readonly ACCOUNT_SERVICE_CHANGE_INFORMATION_ENDPOINT = 'api/account/information';
+    static readonly ACCOUNT_SERVICE_CHANGE_EMAIL_ENDPOINT = 'api/account/email';
 
     static readonly USER_SERVICE_BASE_ENDPOINT = 'api/users/';
     static readonly USER_SERVICE_ALL_ENDPOINT = 'api/users/all';
@@ -30,4 +35,7 @@ export class Constants {
 
     static readonly SCRAPE_REQUEST_SERVICE_BASE_ENDPOINT = 'api/scraperequests';
     static readonly SCRAPE_REQUEST_SERVICE_CREATE_ENDPOINT = 'api/scraperequests/create';
+    static readonly SCRAPE_REQUEST_SERVICE_ALL_ENDPOINT = 'api/scraperequests/all';
+    static readonly SCRAPE_REQUEST_SERVICE_DETAIL_ENDPOINT = 'api/scraperequests/detail';
+    static readonly SCRAPE_REQUEST_SERVICE_DELETE_ENDPOINT = 'api/scraperequests/delete';
 }

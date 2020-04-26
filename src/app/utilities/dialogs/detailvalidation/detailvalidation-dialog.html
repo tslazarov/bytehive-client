@@ -1,0 +1,36 @@
+<div>
+    <div class="row pb-3">
+        <div class="col-10">
+        </div>
+        <div class="col-2 right">
+            <button class="close-button" mat-button (click)="close()">
+                <span class="icon close-icon large-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="col-12">
+        <bh-errormessage class="pb-3" *ngIf="!data.valid" message="{{errorStatusLabel}}" width="100%"></bh-errormessage>
+        <bh-successmessage class="pb-3" *ngIf="data.valid" message="{{successStatusLabel}}" width="100%"></bh-successmessage>
+    </div>
+    <div class="detailvalidation-wrapper col-12 pb-2">
+        <div class="row pb-3">
+            <div class="col-1"></div>
+            <div class="col-5 bold center">{{nameLabel | localize: 'nameLabel':'detailvalidation-dialog':'label' | uppercase}}</div>
+            <div class="col-6 bold center">{{valueLabel | localize: 'valueLabel':'detailvalidation-dialog':'label' | uppercase}}</div>
+        </div>
+        <div *ngFor="let mapping of data.fieldMappings ; let i = index" [ngClass]="mapping.item2 ? 'valid row' : 'invalid row'">
+            <div class="col-1 center">
+                {{i + 1}}
+            </div>
+            <div class="col-5 center">
+                {{mapping.item1}}
+            </div>
+            <div class="col-6 center">
+                {{mapping.item2 ? ((mapping.item2.length > 200) ? (mapping.item2 | slice:0:200)+'...':(mapping.item2)) : (noValueLabel |
+                localize: 'noValueLabel':'detailvalidation-dialog':'label') }}
+            </div>
+            <div class="col-12 mt-3 mb-3">
+                <div class="mat-divider full-width"></div>
+            </div>
+        </div>
+    </div>

@@ -28,7 +28,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-    displayedColumns: string[] = ['email', 'firstName', 'registrationDate', 'requests', 'action'];
+    displayedColumns: string[] = ['email', 'firstName', 'registrationDate', 'totalRequests', 'action'];
 
     dataSource: MatTableDataSource<any>;
     providers: any[];

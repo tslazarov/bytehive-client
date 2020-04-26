@@ -2,13 +2,21 @@
     min-height: 550px;
 }
 
+.tile-content-wrapper {
+    min-height: 695px;
+}
+
+.profile-content-wrapper {
+    background: rgba(247,247,247);
+    background: linear-gradient(180deg, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 90%);
+}
+
 .profile-wrapper {
     text-align: center;
     box-sizing: border-box;
 }
 
 .avatar-container {
-    background-color: #fff;
     border-radius: 50%;
     display: inline-block;
     margin-bottom: 2px;
@@ -42,12 +50,12 @@
 
 .menu-item:hover {
     cursor: pointer;
-    background-color: #fafafa;
+    background-color: #f7f7f7;
 }
 
 .menu-item.selected {
     border-left: 5px solid #ffeb3b;
-    background-color: #fafafa;
+    background-color: #f7f7f7;
     padding: 15px 30px 15px 25px;
 }
 
@@ -60,26 +68,55 @@
     font-weight: 500;
 }
 
+.content-wrapper {
+    background: rgba(247,247,247);
+    background: linear-gradient(180deg, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 30%);
+}
+
 /* icons */
+
+.menu-item.selected .requests-icon{
+    background: url(../../../assets/icons/requests-solid.svg);
+}
 
 .requests-icon {
     background: url(../../../assets/icons/requests-accent.svg);
+}
+
+.menu-item.selected .orders-icon {
+    background: url(../../../assets/icons/orders-solid.svg);
 }
 
 .orders-icon {
     background: url(../../../assets/icons/orders-accent.svg);
 }
 
+.menu-item.selected .information-icon {
+    background: url(../../../assets/icons/information-solid.svg);
+}
+
 .information-icon {
     background: url(../../../assets/icons/information-accent.svg);
+}
+
+.menu-item.selected .rewards-icon {
+    background: url(../../../assets/icons/rewards-solid.svg);
 }
 
 .rewards-icon {
     background: url(../../../assets/icons/rewards-accent.svg);
 }
 
+.menu-item.selected .security-icon {
+    background: url(../../../assets/icons/security-solid.svg);
+}
+
 .security-icon {
     background: url(../../../assets/icons/security-accent.svg);
+}
+
+.menu-item.selected .preferences-icon {
+    background: url(../../../assets/icons/settings-solid.svg);
 }
 
 .preferences-icon {

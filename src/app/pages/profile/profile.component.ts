@@ -15,7 +15,9 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit, OnDestroy {
 
     // common
+    profile: any = {};
     lastAction: any;
+    selectedAction: string;
 
     // subscriptions
     languageChangeSubscription: Subscription;
@@ -39,6 +41,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.setLabelsMessages();
 
+        this.fetchProfile();
+
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
             this.setLabelsMessages();
         });
@@ -46,6 +50,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.languageChangeSubscription.unsubscribe();
+    }
+
+    fetchProfile() {
+        this.accountService.getProfile().subscribe((result) => {
+            this.profile = result;
+        }, (error) => {
+
+        });
     }
 
     setLabelsMessages(): void {
@@ -65,6 +77,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
         }
         this.lastAction = event.currentTarget;
         event.currentTarget.classList.add('selected');
+
+        this.selectedAction = action;
     }
 
     signout(): void {
@@ -87,4 +101,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.router.navigate(['/']);
     }
 
+    profileChange() {
+        this.fetchProfile();
+    }
 }

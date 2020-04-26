@@ -1,0 +1,55 @@
+.close-icon {
+    background: url(../../../../assets/icons/close-accent.svg);
+}
+
+.close-button {
+    background-color: #ffffff;
+}
+
+.close-button:hover {
+    background-color: #efefef;
+}
+
+.emailchange-field {
+    min-width: 300px;
+}
+
+.save {
+    min-width: 300px;
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.save.disabled {
+    min-width: 300px;
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.save:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.save.disabled:hover {
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.password-enabled-icon {
+    background: url(../../../../assets/icons/password-enabled.svg);
+    background-position-y: 30px;
+}
+
+.password-disabled-icon {
+    background: url(../../../../assets/icons/password-disabled.svg);
+    background-position-y: 30px;
+}
+
+.password-enabled-icon:hover {
+    cursor: pointer;
+}
+
+.password-disabled-icon:hover {
+    cursor: pointer;
+}

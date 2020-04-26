@@ -1,4 +1,5 @@
 <h4 class="pt-3">{{dataMappingLabel | localize: 'dataMappingLabel':'datamapping':'label'}}</h4>
+<bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="100%"></bh-errormessage>
 <div [formGroup]="parentForm" class="row pt-5">
     <div class="col-10 detail-url-wrapper pb-3">
         <mat-form-field floatLabel="never">

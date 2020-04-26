@@ -85,7 +85,7 @@ export class ResetPasswordDialog {
 
         this.showLoading = true;
 
-        this.accountService.resetcode(resetCodeVerification)
+        this.accountService.resetCode(resetCodeVerification)
             .subscribe((result) => {
                 this.codeSent = true;
                 this.showLoading = false;
@@ -107,7 +107,7 @@ export class ResetPasswordDialog {
 
         this.showLoading = true;
 
-        this.accountService.resetpassword(resetPasswordVerification)
+        this.accountService.resetPassword(resetPasswordVerification)
             .subscribe((result) => {
                 this.showLoading = false;
                 this.dialogRef.close(true);

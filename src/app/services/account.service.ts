@@ -9,12 +9,24 @@ import { HttpHeaderHelper } from '../utilities/helpers/httpheader-helper';
 import { SigninExternalUser } from '../models/signinexternaluser.model';
 import { ResetCodeVerification } from '../models/resetcodeverification.model';
 import { ResetPasswordVerification } from '../models/resetpasswordverification.model';
+import { ChangePassword } from '../models/changepassword.model';
+import { ChangeSettings } from '../models/changesettings.model';
+import { ChangeInformation } from '../models/changeinformation.model';
+import { EmailChange } from '../models/emailchange.model';
 
 @Injectable()
 export class AccountService {
 
     constructor(private http: HttpClient,
         private httpHeaderHelper: HttpHeaderHelper) {
+    }
+
+    getProfile(): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.get(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_PROFILE_ENDPOINT}`, { headers, responseType: 'json' });
     }
 
     signup(signupUser: SignupUser): Observable<any> {
@@ -46,17 +58,49 @@ export class AccountService {
         return this.http.get(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_SIGNOUT_ENDPOINT}`, { headers, responseType: 'json' });
     }
 
-    resetcode(resetCodeVerification: ResetCodeVerification): Observable<any> {
+    resetCode(resetCodeVerification: ResetCodeVerification): Observable<any> {
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
 
         return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_RESET_CODE_ENDPOINT}`, resetCodeVerification, { headers, responseType: 'json' });
     }
 
-    resetpassword(resetPasswordVerification: ResetPasswordVerification): Observable<any> {
+    resetPassword(resetPasswordVerification: ResetPasswordVerification): Observable<any> {
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
 
         return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_RESET_PASSWORD_ENDPOINT}`, resetPasswordVerification, { headers, responseType: 'json' });
+    }
+
+    changePassword(changePassword: ChangePassword): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_CHANGE_PASSWORD_ENDPOINT}`, changePassword, { headers, responseType: 'json' });
+    }
+
+    changeSettings(changeSettings: ChangeSettings): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_CHANGE_SETTINGS_ENDPOINT}`, changeSettings, { headers, responseType: 'json' });
+    }
+
+    changeInformation(changeInformation: ChangeInformation): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_CHANGE_INFORMATION_ENDPOINT}`, changeInformation, { headers, responseType: 'json' });
+    }
+
+    changeEmail(emailChange: EmailChange): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_CHANGE_EMAIL_ENDPOINT}`, emailChange, { headers, responseType: 'json' });
     }
 }

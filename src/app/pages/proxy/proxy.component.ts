@@ -54,7 +54,6 @@ export class ProxyComponent implements OnInit, OnDestroy {
                         }, 1000);
                     }, (error) => {
                         // TODO: Page cannot be loaded
-                        console.log('');
                     })
             }
         });

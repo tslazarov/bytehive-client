@@ -1,0 +1,24 @@
+.close-icon {
+    background: url(../../../../assets/icons/close-accent.svg);
+}
+
+.close-button {
+    background-color: #ffffff;
+}
+
+.close-button:hover {
+    background-color: #efefef;
+}
+
+.detailvalidation-wrapper {
+    height:70vh;
+    overflow:auto;
+}
+
+.valid {
+    color: #4CAF50;
+}
+
+.invalid {
+    color: #F44336;
+}

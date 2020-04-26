@@ -84,16 +84,16 @@ export class LabelsMessages {
                 'bg': 'Нямате акаунт? Регистрирайте се'
             },
             'invalidCredentialsLabel': {
-                'en': 'Incorrect email or password',
-                'bg': 'Невалидни парола или имейл'
+                'en': 'Incorrect email or password.',
+                'bg': 'Невалидни парола или имейл.'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             },
             'resetPasswordSuccessLabel': {
-                'en': 'The password was changed successfully',
-                'bg': 'Паролата беше променена успешно'
+                'en': 'The password was changed successfully.',
+                'bg': 'Паролата беше променена успешно.'
             }
         },
         'signup': {
@@ -158,16 +158,16 @@ export class LabelsMessages {
                 'bg': 'Създай акаунт'
             },
             'duplicateEmailErrorLabel': {
-                'en': 'A user with the same email already exists',
-                'bg': 'Потребител със същия имейл вече съществува'
+                'en': 'A user with the same email already exists.',
+                'bg': 'Потребител със същия имейл вече съществува.'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             },
             'createAccountSuccessLabel': {
-                'en': 'Your account was created successfully',
-                'bg': 'Твоят акаунт беше създаден успешно'
+                'en': 'Your account was created successfully.',
+                'bg': 'Твоят акаунт беше създаден успешно.'
             }
         },
         'profile': {
@@ -198,6 +198,152 @@ export class LabelsMessages {
             'signoutLabel': {
                 'en': 'Sign out',
                 'bg': 'Излез'
+            }
+        },
+        'security-profile': {
+            'securityLabel': {
+                'en': 'Security',
+                'bg': 'Сигурност'
+            },
+            'currentPasswordLabel': {
+                'en': 'Current password',
+                'bg': 'Настояща парола'
+            },
+            'passwordLabel': {
+                'en': 'Password',
+                'bg': 'Парола'
+            },
+            'passwordRequiredErrorLabel': {
+                'en': 'Please enter a password',
+                'bg': 'Моля въведете парола'
+            },
+            'passwordLengthErrorLabel': {
+                'en': 'Password should be at least 6 characters',
+                'bg': 'Паролата трябва да бъде поне 6 символа'
+            },
+            'confirmPasswordLabel': {
+                'en': 'Confirm password',
+                'bg': 'Паролата за потвърждение'
+            },
+            'confirmPasswordMatchErrorLabel': {
+                'en': 'Confirm password does not match',
+                'bg': 'Паролата за потвърждение не съвпада'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            },
+            'passwordChangedLabel': {
+                'en': 'Password was successfully changed.',
+                'bg': 'Паролата беше успешно променена.'
+            },
+            'passwordNotChangedLabel': {
+                'en': 'Password was not changed. Please check the currently entered password.',
+                'bg': 'Паролата не беше променена. Моля проверете въведената настояща парола.'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            }
+        },
+        'settings-profile': {
+            'settingsLabel': {
+                'en': 'Preferences',
+                'bg': 'Настройки'
+            },
+            'languageLabel': {
+                'en': 'Default language',
+                'bg': 'Език по подразбиране'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            },
+            'settingsChangedLabel': {
+                'en': 'Settings were successfully changed.',
+                'bg': 'Настройките бяха успешно променени.'
+            },
+            'settingsNotChangedLabel': {
+                'en': 'Settings were not changed.',
+                'bg': 'Настройките не бяха променени.'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            }
+        },
+        'information-profile': {
+            'informationLabel': {
+                'en': 'Personal information',
+                'bg': 'Лична информация'
+            },
+            'personalDataLabel': {
+                'en': 'Personal data',
+                'bg': 'Лична данни'
+            },
+            'profileDataLabel': {
+                'en': 'Profile data',
+                'bg': 'Профилни данни'
+            },
+            'firstNameLabel': {
+                'en': 'First name',
+                'bg': 'Име'
+            },
+            'firstNameRequiredErrorLabel': {
+                'en': 'Please enter a first name',
+                'bg': 'Моля въведете име'
+            },
+            'lastNameLabel': {
+                'en': 'Last name',
+                'bg': 'Фамилия'
+            },
+            'lastNameRequiredErrorLabel': {
+                'en': 'Please enter a last name',
+                'bg': 'Моля въведете фамилия'
+            },
+            'occupationLabel': {
+                'en': 'Occupation',
+                'bg': 'Професия'
+            },
+            'emailLabel': {
+                'en': 'Email',
+                'bg': 'Имейл'
+            },
+            'emailRequiredErrorLabel': {
+                'en': 'Please enter an email',
+                'bg': 'Моля въведете имейл'
+            },
+            'emailPatternErrorLabel': {
+                'en': 'Please enter a valid email',
+                'bg': 'Моля въведете валиден имейл'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            },
+            'informationChangedLabel': {
+                'en': 'Personal information was successfully changed.',
+                'bg': 'Личната информация беше успешно променена.'
+            },
+            'informationNotChangedLabel': {
+                'en': 'Personal information was not changed.',
+                'bg': 'Личната информация не беше променена.'
+            },
+            'emailChangedLabel': {
+                'en': 'Email address was successfully changed.',
+                'bg': 'Имейл адресът беше успешно променен.'
+            },
+            'emailNotChangedLabel': {
+                'en': 'Email address was not changed.',
+                'bg': 'Имейл адресът не беше променен.'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            },
+            'emailChangeSuccessLabel': {
+                'en': 'The email address was changed successfully.',
+                'bg': 'Имейл адресът беше променен успешно.'
             }
         },
         'hive': {
@@ -246,8 +392,8 @@ export class LabelsMessages {
                 'bg': 'Направи нова заявка'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'scrapepicker': {
@@ -354,6 +500,10 @@ export class LabelsMessages {
             'validateLabel': {
                 'en': 'Validate',
                 'bg': 'Валидирай'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'datasource': {
@@ -426,8 +576,8 @@ export class LabelsMessages {
                 'bg': 'Валидацията не беше успешна. Детайлни линкове не бяха открити.'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'summary': {
@@ -504,6 +654,48 @@ export class LabelsMessages {
             'confirmDeleteUserLabel': {
                 'en': 'Are you sure you want to delete this user?',
                 'bg': 'Сигурни ли сте, че искате да изтриете този потребител?'
+            }
+        },
+        'scraperequests': {
+            'statusesLabel': {
+                'en': 'Statuses',
+                'bg': 'Статуси'
+            },
+            'searchLabel': {
+                'en': 'Search',
+                'bg': 'Търси'
+            },
+            'filterDateLabel': {
+                'en': 'Filter by date',
+                'bg': 'Филтрирай по дата'
+            },
+            'creationDateLabel': {
+                'en': 'Created on',
+                'bg': 'Създадена на'
+            },
+            'userLabel': {
+                'en': 'User',
+                'bg': 'Потребител'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'linkLabel': {
+                'en': 'Link',
+                'bg': 'Линк'
+            },
+            'detailsLabel': {
+                'en': 'Details',
+                'bg': 'Детайли'
+            },
+            'deleteLabel': {
+                'en': 'Delete',
+                'bg': 'Изтрий'
+            },
+            'confirmDeleteScrapeRequestLabel': {
+                'en': 'Are you sure you want to delete this request?',
+                'bg': 'Сигурни ли сте, че искате да изтриете тази заявка?'
             }
         },
         'fileupload': {
@@ -600,8 +792,8 @@ export class LabelsMessages {
                 'bg': 'Уникален селектор не беше намерен'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'visual-dialog': {
@@ -618,8 +810,8 @@ export class LabelsMessages {
                 'bg': 'Уникален селектор не беше намерен'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'code-dialog': {
@@ -640,8 +832,8 @@ export class LabelsMessages {
                 'bg': 'Уникален селектор не беше намерен'
             },
             'serverErrorLabel': {
-                'en': 'Error occured. Please try again later',
-                'bg': 'Възникна грешка. Моля опитайте малко по-късно'
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'pageinformation-dialog': {
@@ -722,12 +914,110 @@ export class LabelsMessages {
                 'bg': 'Запази парола'
             },
             'serverErrorLabel': {
-                'en': 'Verification code was not sent. Please try again later',
-                'bg': 'Кодът за верификация не беше изпратен. Моля опитайте малко по-късно'
+                'en': 'Verification code was not sent. Please try again later.',
+                'bg': 'Кодът за верификация не беше изпратен. Моля опитайте малко по-късно.'
             },
             'invalidInformationLabel': {
-                'en': 'The password was not saved. Please check the provided verification code and email',
-                'bg': 'Паролата не беше запазена. Моля проверете предоставените код за верификация и имейл'
+                'en': 'The password was not saved. Please check the provided verification code and email.',
+                'bg': 'Паролата не беше запазена. Моля проверете предоставените код за верификация и имейл.'
+            }
+        },
+        'emailchange-dialog': {
+            'passwordLabel': {
+                'en': 'Password',
+                'bg': 'Парола'
+            },
+            'passwordRequiredErrorLabel': {
+                'en': 'Please enter a password',
+                'bg': 'Моля въведете парола'
+            },
+            'saveLabel': {
+                'en': 'Save',
+                'bg': 'Запази'
+            },
+            'emailNotChangedLabel': {
+                'en': 'Provided password is incorrect.',
+                'bg': 'Изпратената парола е неправилна.'
+            },
+            'duplicateEmailErrorLabel': {
+                'en': 'A user with the same email already exists.',
+                'bg': 'Потребител със същия имейл вече съществува.'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            }
+        },
+        'detailvalidation-dialog': {
+            'errorStatusLabel': {
+                'en': 'Some fields do not have values.',
+                'bg': 'Някои полета нямат стойности.'
+            },
+            'successStatusLabel': {
+                'en': 'All fields have values.',
+                'bg': 'Всички полета имат стойности.'
+            },
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'valueLabel': {
+                'en': 'Value',
+                'bg': 'Стойност'
+            },
+            'noValueLabel': {
+                'en': '<no value>',
+                'bg': '<няма стойност>'
+            }
+        },
+        'requestdetail-dialog': {
+            'fromLabel': {
+                'en': 'from',
+                'bg': 'от'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'scrapeTypeLabel': {
+                'en': 'Scrape type',
+                'bg': 'Tип на страници'
+            },
+            'exportTypeLabel': {
+                'en': 'Export type',
+                'bg': 'Тип на експортиране'
+            },
+            'listUrlLabel': {
+                'en': 'List link:',
+                'bg': 'Линк към списъчна страница'
+            },
+            'startPageLabel': {
+                'en': 'Start page:',
+                'bg': 'Начална страница:'
+            },
+            'endPageLabel': {
+                'en': 'End page:',
+                'bg': 'Крайна страница:'
+            },
+            'detailMarkupLabel': {
+                'en': 'Detail markup:',
+                'bg': 'Детайлен маркер:'
+            },
+            'detailLinksCountLabel': {
+                'en': 'Detail links count:',
+                'bg': 'Брой детайлни линкове:'
+            },
+            'dataMappingLabel': {
+                'en': 'Data Mapping',
+                'bg': 'Асоциация на данни'
+            },
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'markupLabel': {
+                'en': 'Markup',
+                'bg': 'Маркер'
             }
         },
         'proxy': {
@@ -774,6 +1064,64 @@ export class LabelsMessages {
             'ofLabel': {
                 'en': 'of',
                 'bg': 'от'
+            }
+        },
+        'scrape-status': {
+            'allStatusLabel': {
+                'en': 'All',
+                'bg': 'Всички'
+            },
+            'pendingStatusLabel': {
+                'en': 'Pending',
+                'bg': 'Чакаща'
+            },
+            'startedStatusLabel': {
+                'en': 'Started',
+                'bg': 'Започнала'
+            },
+            'completedStatusLabel': {
+                'en': 'Completed',
+                'bg': 'Завършена'
+            },
+            'failedStatusLabel': {
+                'en': 'Failed',
+                'bg': 'Неуспешна'
+            },
+            'paidStatusLabel': {
+                'en': 'Paid',
+                'bg': 'Платена'
+            }
+        },
+        'export-type': {
+            'jsonFormatLabel': {
+                'en': 'JSON Format',
+                'bg': 'JSON Формат'
+            },
+            'xmlFormatLabel': {
+                'en': 'XML Format',
+                'bg': 'XML Формат'
+            },
+            'csvFormatLabel': {
+                'en': 'CSV Format',
+                'bg': 'CSV Формат'
+            },
+            'txtFormatLabel': {
+                'en': 'TXT Format',
+                'bg': 'TXT Формат'
+            }
+        },
+        'scrape-type': {
+            'listDetailPagesLabel': {
+                'en': 'List & Detail pages',
+                'bg': 'Страници със списък и детайли'
+            },
+            'listPagesLabel': {
+                'en': 'List pages',
+                'bg': 'Страници със списък'
+            },
+            'detailPagesLabel': {
+                'en': 'Detail pages',
+                'bg': 'Страници с детайли'
             }
         }
     }

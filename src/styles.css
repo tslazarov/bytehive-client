@@ -184,7 +184,36 @@ body {
     color: #313131 !important;
 }
 
+.mat-expansion-panel-header:hover {
+    background-color: transparent !important;
+}
+
 /* Custom mat menus */
+
+.mat-calendar-body-today
+{
+    border-width: 0px !important;
+    box-shadow: none !important;
+}
+
+.mat-calendar-cell-semi-selected {
+    background-color: rgba(0,0,0,.04);
+}
+
+.mat-calendar-body-begin-range:not(.mat-calendar-body-end-range) {
+    border-radius: 100% 0 0 100%;
+    background-color: rgba(0,0,0,.04);
+}
+
+.mat-calendar-body-end-range:not(.mat-calendar-body-begin-range) {
+    border-radius: 0 100% 100% 0;
+    background-color: rgba(0,0,0,.04);
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+    width: 1.5em !important;
+    padding-bottom: 2px;
+}
 
 .mat-menu-panel .mat-button-focus-overlay  {
     background-color: transparent !important;
@@ -249,6 +278,11 @@ button:focus {
 .icon {
     display: inline-block;
     background-size: cover;
+}
+
+.large-x2-icon {
+    width: 60px;
+    height: 60px;
 }
 
 .large-icon {

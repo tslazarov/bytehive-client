@@ -1,0 +1,66 @@
+.header-icon {
+    vertical-align: middle;
+}
+
+.header-title {
+    vertical-align: middle;
+    font-weight: 400;
+    font-size: 52px;
+}
+
+.information-icon {
+    background: url(../../../../assets/icons/information-accent.svg);
+}
+
+.message-wrapper {
+    min-width: 350px;
+    margin-left: -20px;
+}
+
+.loading-wrapper {
+    width: 250px;
+    margin: 80px 0px;
+}
+
+.information-field {
+    min-width: 350px;
+}
+
+.required {
+    color: #ffeb3b;
+}
+
+.information {
+    min-width: 250px;
+    background-color: #ffeb3b;
+    color: #ffffff;
+}
+
+.information.disabled {
+    min-width: 250px;
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.information:hover {
+    background-color: #ffeb3b;
+    color: #212121;
+}
+
+.information.disabled:hover {
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.expansion-panel {
+    background-color: transparent;
+}
+
+.expansion-header {
+    font-size: 24px;
+    border-left: 5px solid transparent;
+}
+
+.mat-expanded .expansion-header {
+    border-left: 5px solid #ffeb3b;
+}

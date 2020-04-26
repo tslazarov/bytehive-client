@@ -20,6 +20,7 @@ import { AuthAdminGuardService } from '../services/guards/authadmin-guard.servic
 import { UsersService } from '../services/users.service';
 import { UsersDetailComponent } from './usersdetail/usersdetail.component';
 import { BhDialogsModule } from '../utilities/dialogs/bhdialogs.module';
+import { ScrapeRequestsService } from '../services/scraperequests.service';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -45,6 +46,7 @@ registerLocaleData(localeBg, 'bg');
         ClientService,
         AccountService,
         UsersService,
+        ScrapeRequestsService,
         AuthLocalService,
         AuthAdminGuardService,
         HttpHeaderHelper
