@@ -54,6 +54,7 @@ export class AutomaticDialog {
         automaticMarkup.url = this.data.url;
         automaticMarkup.text = text;
         automaticMarkup.scrapeLink = this.data.scrapeLink;
+        automaticMarkup.isUnique = this.data.isUnique;
 
         this.showLoading = true;
 
@@ -91,4 +92,5 @@ export class AutomaticData {
     markup: string;
     url: string;
     scrapeLink: boolean;
+    isUnique: boolean;
 }
