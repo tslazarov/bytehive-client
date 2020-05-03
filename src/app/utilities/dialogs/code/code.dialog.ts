@@ -60,6 +60,7 @@ export class CodeDialog {
         codeMarkup.line = this.editor.getSelection().startLineNumber;
         codeMarkup.text = this.editor.getModel().getValueInRange(this.editor.getSelection());
         codeMarkup.scrapeLink = this.data.scrapeLink;
+        codeMarkup.isUnique = this.data.isUnique;
 
         this.showLoading = true;
 
@@ -99,4 +100,5 @@ export class CodeData {
     code: string;
     markup: string;
     scrapeLink: boolean;
+    isUnique: boolean;
 }

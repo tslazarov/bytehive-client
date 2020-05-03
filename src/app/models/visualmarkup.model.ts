@@ -4,4 +4,5 @@ export class VisualMarkup {
     element: string;
     elementName: string;
     scrapeLink: boolean;
+    isUnique: boolean;
 }

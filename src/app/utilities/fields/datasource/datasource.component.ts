@@ -135,6 +135,7 @@ export class DatasourceComponent implements OnInit, OnDestroy {
         automaticData.markup = this.parentForm.value.detailMarkup;
         automaticData.url = url;
         automaticData.scrapeLink = true;
+        automaticData.isUnique = false;
 
         let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', minHeight: '380px', autoFocus: false, data: automaticData });
 
@@ -159,6 +160,7 @@ export class DatasourceComponent implements OnInit, OnDestroy {
         visualData.proxyUrl = '/proxy?url=' + url;
         visualData.url = url;
         visualData.scrapeLink = true;
+        visualData.isUnique = false;
 
         let dialogRef = this.dialog.open(VisualDialog, { width: '90vw', minHeight: '380px', autoFocus: false, data: visualData });
 
@@ -186,6 +188,7 @@ export class DatasourceComponent implements OnInit, OnDestroy {
                 codeData.markup = this.parentForm.value.detailMarkup;
                 codeData.url = url;
                 codeData.scrapeLink = true;
+                codeData.isUnique = false;
 
                 let dialogRef = this.dialog.open(CodeDialog, { width: '90vw', height: '90vh', autoFocus: false, data: codeData });
 

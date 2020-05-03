@@ -3,4 +3,5 @@ export class CodeMarkup {
     text: string;
     line: number;
     scrapeLink: boolean;
+    isUnique: boolean;
 }

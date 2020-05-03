@@ -16,6 +16,7 @@ import { FieldMapping } from '../../../models/fieldmapping.model';
 import { ValidateDetail } from '../../../models/validatedetail.model';
 import { ScraperService } from '../../../services/scraper.service';
 import { DetailValidationDialog, DetailValidationData } from '../../dialogs/detailvalidation/detailvalidation.dialog';
+import { ScrapeType } from '../../../models/enums/scrapetype.enum';
 
 @Component({
     selector: 'bh-datamapping',
@@ -23,8 +24,10 @@ import { DetailValidationDialog, DetailValidationData } from '../../dialogs/deta
     styleUrls: ['./datamapping.component.css']
 })
 export class DatamappingComponent implements OnInit, OnDestroy {
+
     @Input() parentForm: FormGroup;
     @Input() fieldMappings: FieldMappingGroup[];
+    @Input() scrapeType: ScrapeType;
 
     // subscriptions
     languageChangeSubscription: Subscription;
@@ -104,6 +107,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         automaticData.markup = fieldMapping.formGroup.value.fieldMarkup;
         automaticData.url = url;
         automaticData.scrapeLink = false;
+        automaticData.isUnique = this.scrapeType != ScrapeType.List;
 
         let dialogRef = this.dialog.open(AutomaticDialog, { width: '60vw', minHeight: '380px', autoFocus: false, data: automaticData });
 
@@ -127,6 +131,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
         visualData.proxyUrl = '/proxy?url=' + url;
         visualData.url = url;
         visualData.scrapeLink = false;
+        visualData.isUnique = this.scrapeType != ScrapeType.List;
 
         let dialogRef = this.dialog.open(VisualDialog, { width: '90vw', minHeight: '380px', autoFocus: false, data: visualData });
 
@@ -153,6 +158,7 @@ export class DatamappingComponent implements OnInit, OnDestroy {
                 codeData.code = markup;
                 codeData.markup = fieldMapping.formGroup.value.fieldMarkup;
                 codeData.scrapeLink = false;
+                codeData.isUnique = this.scrapeType != ScrapeType.List;
 
                 let dialogRef = this.dialog.open(CodeDialog, { width: '90vw', height: '90vh', autoFocus: false, data: codeData });
 

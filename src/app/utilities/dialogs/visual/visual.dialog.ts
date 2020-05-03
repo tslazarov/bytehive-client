@@ -51,6 +51,7 @@ export class VisualDialog {
             visualMarkup.element = selection.element;
             visualMarkup.elementName = selection.elementName;
             visualMarkup.scrapeLink = this.data.scrapeLink;
+            visualMarkup.isUnique = this.data.isUnique;
 
             this.showLoading = true;
 
@@ -90,4 +91,5 @@ export class VisualData {
     proxyUrl: string;
     markup: string;
     scrapeLink: boolean;
+    isUnique: boolean;
 }
