@@ -681,6 +681,14 @@ export class LabelsMessages {
                 'en': 'Status',
                 'bg': 'Статус'
             },
+            'entriesCountLabel': {
+                'en': 'Records count',
+                'bg': 'Брой записи'
+            },
+            'entriesLabel': {
+                'en': 'records',
+                'bg': 'записа'
+            },
             'linkLabel': {
                 'en': 'Link',
                 'bg': 'Линк'

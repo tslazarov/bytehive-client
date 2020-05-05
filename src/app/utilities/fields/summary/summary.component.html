@@ -28,7 +28,7 @@
                 <div *ngIf="dataSourceMappingForm.controls['detailMarkup'].value">
                     <span class="bold">{{detailMarkupLabel | localize: 'detailMarkupLabel':'summary':'label'}}</span> {{dataSourceMappingForm.controls['detailMarkup'].value}}
                 </div>
-                <div *ngIf="dataSourceMappingForm.controls['detailUrls'].value">
+                <div *ngIf="dataSourceMappingForm.controls['detailUrls'].value && dataSourceMappingForm.controls['detailUrls'].value.length > 0">
                     <span class="bold">{{detailLinksCountLabel | localize: 'detailLinksCountLabel':'summary':'label'}}</span>
                     <span class="links" (click)="viewLinks()"> {{dataSourceMappingForm.controls['detailUrls'].value.length}}
                     </span>

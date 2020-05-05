@@ -7,5 +7,7 @@ export class ListScrapeRequest {
     email: string;
     creationDate: Date;
     downloadUrl: string;
+    fileName: string;
+    entries: number;
     status: number;
 }

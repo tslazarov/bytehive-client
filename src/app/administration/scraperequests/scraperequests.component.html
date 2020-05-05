@@ -45,9 +45,16 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>{{statusLabel | localize: 'statusLabel':'scraperequests':'label'}}</th>
                 <td mat-cell *matCellDef="let element"> {{element.status | scrapestatusconvert:triggerStatusUpdate }} </td>
             </ng-container>
+            <ng-container matColumnDef="entries">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>{{entriesCountLabel | localize: 'entriesCountLabel':'scraperequests':'label'}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.entries}} {{entriesLabel | localize: 'entriesLabel':'scraperequests':'label'
+                    | lowercase}} </td>
+            </ng-container>
             <ng-container matColumnDef="downloadUrl">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>{{linkLabel | localize: 'linkLabel':'scraperequests':'label'}}</th>
-                <td mat-cell *matCellDef="let element"> {{ element.downloadUrl }} </td>
+                <td mat-cell *matCellDef="let element"> <a *ngIf="element.status == 2 || element.status == 4" href="{{ element.downloadUrl }}">{{
+                        element.fileName }}</a>
+                </td>
             </ng-container>
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef></th>
