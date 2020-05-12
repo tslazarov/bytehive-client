@@ -39,4 +39,7 @@ export class Constants {
     static readonly SCRAPE_REQUEST_SERVICE_DETAIL_ENDPOINT = 'api/scraperequests/detail';
     static readonly SCRAPE_REQUEST_SERVICE_FILE_ENDPOINT = 'api/scraperequests/file';
     static readonly SCRAPE_REQUEST_SERVICE_DELETE_ENDPOINT = 'api/scraperequests/delete';
+
+    static readonly PAYMENT_SERVICE_BASE_ENDPOINT = 'api/payment';
+    static readonly PAYMENT_SERVICE_CREATE_ENDPOINT = 'api/payment/create';
 }
