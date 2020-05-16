@@ -1,11 +1,11 @@
 .detail-mode-picker {
     min-width: 170px;
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #ffffff;
 }
 
 .detail-mode-picker:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 
@@ -29,7 +29,7 @@
 
 .validate:hover {
     background-color: #212121;
-    color: #ffeb3b;
+    color: #FFEB3B;
 }
 
 .validate.disabled:hover {

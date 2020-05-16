@@ -23,12 +23,12 @@
 
 .signin {
     min-width: 300px;
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #ffffff;
 }
 
 .signin:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .required {
-    color: #ffeb3b;
+    color: #FFEB3B;
 }
 
 .password-enabled-icon {

@@ -16,7 +16,7 @@
 
 .save {
     min-width: 300px;
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #ffffff;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .save:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 

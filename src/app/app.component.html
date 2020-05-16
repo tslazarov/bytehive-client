@@ -4,6 +4,7 @@
         <span class="spacer"></span>
         <button disableRipple mat-button (click)="navigate('/')">{{homeLabel | localize: 'homeLabel':'navigation':'label'}}</button>
         <button disableRipple mat-button (click)="navigate('/hive')">{{hiveLabel | localize: 'hiveLabel':'navigation':'label'}}</button>
+        <button disableRipple mat-button (click)="navigate('/pricing')">{{pricingLabel | localize: 'pricingLabel':'navigation':'label'}}</button>
         <button disableRipple mat-button (click)="navigate('/faq')">{{faqLabel | localize: 'faqLabel':'navigation':'label'}}</button>
         <button *ngIf="navigationAdministrationSegment" disableRipple mat-button class="administration-picker" [matMenuTriggerFor]="administration">
             {{administrationLabel | localize: 'administrationLabel':'navigation':'label'}}

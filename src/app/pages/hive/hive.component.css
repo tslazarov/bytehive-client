@@ -1,16 +1,16 @@
 .direction {
     min-width: 150px;
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #ffffff;
 }
 
 .direction:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 
 .navigation-button:hover {
-    color: #ffeb3b;
+    color: #FFEB3B;
 }
 
 .form-content {

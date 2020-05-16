@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
-import { environment } from '../../../environments/environment';
-import { Constants } from '../../utilities/constants';
+import { PaymentsService } from '../../services/payments.service';
+import { PayPalPaymentDialog, PayPalPaymentData } from '../../utilities/dialogs/paypalpayment/paypalpayment.dialog';
+import { MatDialog } from '@angular/material';
+import { Subscription } from 'rxjs';
+import { CommunicationService } from '../../services/utilities/communication.service';
+import { TranslationService } from '../../services/utilities/translation.service';
+import { ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
+import { AuthLocalService } from '../../services/utilities/auth.service';
+import { first } from 'rxjs/operators';
 
 @Component({
     selector: 'app-pricing',
@@ -10,59 +16,106 @@ import { Constants } from '../../utilities/constants';
 })
 export class PricingComponent implements OnInit {
 
-    public payPalConfig?: IPayPalConfig;
+    // subscriptions
+    languageChangeSubscription: Subscription;
 
-    constructor() { }
+    // common
+    paymentTiers: PaymentTier[];
+
+    // labels
+    pricingLabel: string;
+    currencyLabel: string;
+    pollenLabel: string;
+    purchaseNowLabel: string;
+
+    constructor(private dialog: MatDialog,
+        private router: Router,
+        private route: ActivatedRoute,
+        private paymentService: PaymentsService,
+        private communicationService: CommunicationService,
+        private authLocalService: AuthLocalService,
+        private translationService: TranslationService) { }
 
     ngOnInit() {
-        this.initConfig();
+        this.paymentTiers = [];
+
+        this.paymentService.getAllTiers()
+            .subscribe((result) => {
+                result.forEach(tier => {
+                    var paymentTier = new PaymentTier();
+                    paymentTier.labelName = `${tier.name.toLowerCase()}Label`
+                    paymentTier.name = this.translationService.localizeValue(paymentTier.labelName, 'pricing', 'label');
+                    paymentTier.tierName = tier.name;
+                    paymentTier.description = tier.description;
+                    paymentTier.price = tier.price;
+                    paymentTier.value = tier.value;
+
+                    this.paymentTiers.push(paymentTier);
+                });
+            })
+
+
+        this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
+            this.setLabelsMessages();
+            this.paymentTiers.forEach(pt => {
+                pt.name = this.translationService.localizeValue(pt.labelName, 'pricing', 'label');
+            })
+        });
     }
 
-    initConfig(): void {
-        console.log('init');
-        this.payPalConfig = {
-            clientId: 'AaMSkmD3_aPX5RkufemL54vWvPs1RzsnDJgrE_dsFQTgFTFwemC6v1N-oGoIvO8-ujP4yHrI86D5I8CM',
-            currency: 'EUR',
-            // for creating orders (transactions) on server see
-            // https://developer.paypal.com/docs/checkout/reference/server-integration/set-up-transaction/
-            createOrderOnServer: (data) => fetch(`${environment.apiBaseUrl}${Constants.PAYMENT_SERVICE_CREATE_ENDPOINT}`, {
-                method: 'post', headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    'provider': 'paypal',
-                    'tier': 'Enterprise',
-                    'price': 20.5
-                })
-            })
-                .then((res) => res.json())
-                .then((order) => {
-                    var parsedOrder = JSON.parse(order);
+    ngOnDestroy(): void {
+        this.languageChangeSubscription.unsubscribe();
+    }
 
-                    return parsedOrder.id;
-                }),
-            authorizeOnServer: (approveData) =>
-                fetch('/my-server/authorize-paypal-transaction', {
-                    body: JSON.stringify({
-                        orderID: approveData.orderID
-                    })
-                }).then((res) => {
-                    return res.json();
-                }).then((details) => {
-                    alert('Authorization created for ' + details.payer_given_name);
-                }),
-            onApprove: (data) => {
-                console.log(data);
-            },
-            onCancel: (data, actions) => {
-                console.log('OnCancel', data, actions);
-            },
-            onError: err => {
-                console.log('OnError', err);
-            },
-            onClick: (data, actions) => {
-                console.log('onClick', data, actions);
-            },
-        };
+    setLabelsMessages(): void {
+        this.pricingLabel = this.translationService.localizeValue('pricingLabel', 'pricing', 'label');
+        this.currencyLabel = this.translationService.localizeValue('currencyLabel', 'pricing', 'label');
+        this.pollenLabel = this.translationService.localizeValue('pollenLabel', 'pricing', 'label');
+        this.purchaseNowLabel = this.translationService.localizeValue('purchaseNowLabel', 'pricing', 'label');
+    }
+
+    purchase(tier: string, price: number): void {
+        this.authLocalService.isAuthenticated()
+            .pipe(first())
+            .subscribe((authenticated) => {
+                if (authenticated) {
+                    this.handlePayment(tier, price);
+                }
+                else {
+                    let url = this.getUrl(this.route.snapshot);
+                    localStorage.setItem('bh_callback', url);
+
+                    this.router.navigate(['/signin']);
+                }
+            });
+    }
+
+    handlePayment(tier: string, price: number): void {
+        let payPalPaymentData = new PayPalPaymentData();
+        payPalPaymentData.tier = tier;
+        payPalPaymentData.price = price;
+
+        let dialogRef = this.dialog.open(PayPalPaymentDialog, { width: '450px', minHeight: '100px', autoFocus: false, data: { payPalPaymentData } });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+            }
+        });
+    }
+
+    getUrl(route: ActivatedRouteSnapshot): string {
+        return route.pathFromRoot
+            .filter(v => v.routeConfig)
+            .map(v => v.routeConfig!.path)
+            .join('/');
     }
 }
+
+export class PaymentTier {
+    labelName: string;
+    name: string;
+    tierName: string;
+    price: number;
+    value: number;
+    description: string;
+} 

@@ -30,6 +30,7 @@ import { SecurityComponent } from './profile/security/security.component';
 import { SettingsComponent } from './profile/settings/settings.component';
 import { InformationComponent } from './profile/information/information.component';
 import { PricingComponent } from './pricing/pricing.component';
+import { PaymentsService } from '../services/payments.service';
 
 @NgModule({
     imports: [
@@ -63,6 +64,7 @@ import { PricingComponent } from './pricing/pricing.component';
         ClientService,
         AccountService,
         ScrapeRequestsService,
+        PaymentsService,
         AuthLocalService,
         AuthGuardService,
         SignGuardService,

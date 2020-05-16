@@ -27,12 +27,12 @@
 }
 
 .required {
-    color: #ffeb3b;
+    color: #FFEB3B;
 }
 
 .changepassword {
     min-width: 250px;
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #ffffff;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .changepassword:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 

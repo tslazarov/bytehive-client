@@ -13,6 +13,10 @@ export class LabelsMessages {
                 'en': 'FAQs',
                 'bg': 'Въпроси'
             },
+            'pricingLabel': {
+                'en': 'Pricing',
+                'bg': 'Цени'
+            },
             'signinLabel': {
                 'en': 'Sign in',
                 'bg': 'Влез'
@@ -40,6 +44,36 @@ export class LabelsMessages {
             'requestsLabel': {
                 'en': 'Requests',
                 'bg': 'Заявки'
+            }
+        },
+        'pricing': {
+            'pricingLabel': {
+                'en': 'Pricing',
+                'bg': 'Цени'
+            },
+            'workerLabel': {
+                'en': 'Worker',
+                'bg': 'Работник'
+            },
+            'droneLabel': {
+                'en': 'Drone',
+                'bg': 'Търтей'
+            },
+            'queenLabel': {
+                'en': 'Queen',
+                'bg': 'Кралица'
+            },
+            'currencyLabel': {
+                'en': 'eur',
+                'bg': 'евро'
+            },
+            'pollenLabel': {
+                'en': 'pollen',
+                'bg': 'прашец'
+            },
+            'purchaseNowLabel': {
+                'en': 'Purchase now',
+                'bg': 'Купи сега'
             }
         },
         'signin': {
