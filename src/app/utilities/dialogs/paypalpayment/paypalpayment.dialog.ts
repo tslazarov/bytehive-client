@@ -24,6 +24,8 @@ export class PayPalPaymentDialog {
     }
 
     initConfig(tier: string, price: number): void {
+        let token = localStorage.getItem('bh_auth_token');
+
         this.payPalConfig = {
             clientId: environment.paypalClientId,
             currency: 'EUR',
@@ -32,7 +34,8 @@ export class PayPalPaymentDialog {
             },
             createOrderOnServer: (data) => fetch(`${environment.apiBaseUrl}${Constants.PAYMENT_SERVICE_CREATE_ENDPOINT}`, {
                 method: 'post', headers: {
-                    'content-type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     'provider': 'paypal',
@@ -48,7 +51,8 @@ export class PayPalPaymentDialog {
                 }),
             authorizeOnServer: (approveData) => fetch(`${environment.apiBaseUrl}${Constants.PAYMENT_SERVICE_AUTHORIZE_ENDPOINT}`, {
                 method: 'post', headers: {
-                    'content-type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     'provider': 'paypal',
@@ -69,10 +73,13 @@ export class PayPalPaymentDialog {
     }
 
     verifyPayment(details: any) {
+        let token = localStorage.getItem('bh_auth_token');
+
         var order = JSON.parse(details);
         fetch(`${environment.apiBaseUrl}${Constants.PAYMENT_SERVICE_VERIFY_ENDPOINT}`, {
             method: 'post', headers: {
-                'content-type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
                 'provider': 'paypal',
