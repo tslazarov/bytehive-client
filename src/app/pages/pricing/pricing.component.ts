@@ -8,6 +8,7 @@ import { TranslationService } from '../../services/utilities/translation.service
 import { ActivatedRouteSnapshot, Router, ActivatedRoute } from '@angular/router';
 import { AuthLocalService } from '../../services/utilities/auth.service';
 import { first } from 'rxjs/operators';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
     selector: 'app-pricing',
@@ -21,6 +22,7 @@ export class PricingComponent implements OnInit {
 
     // common
     paymentTiers: PaymentTier[];
+    notifier: NotifierService;
 
     // labels
     pricingLabel: string;
@@ -34,7 +36,10 @@ export class PricingComponent implements OnInit {
         private paymentService: PaymentsService,
         private communicationService: CommunicationService,
         private authLocalService: AuthLocalService,
-        private translationService: TranslationService) { }
+        private notifierService: NotifierService,
+        private translationService: TranslationService) {
+        this.notifier = notifierService;
+    }
 
     ngOnInit() {
         this.paymentTiers = [];
@@ -99,6 +104,7 @@ export class PricingComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
+                this.notifier.notify("success", this.translationService.localizeValue('paymentSuccessLabel', 'pricing', 'label'));
             }
         });
     }

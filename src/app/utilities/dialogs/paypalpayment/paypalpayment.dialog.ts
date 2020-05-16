@@ -11,7 +11,13 @@ import { Constants } from '../../constants';
     styleUrls: ['./paypalpayment.dialog.css']
 })
 export class PayPalPaymentDialog {
+
+    showLoading: boolean;
+    showErrorMessage: boolean;
+
     payPalConfig?: IPayPalConfig;
+
+    errorMessageLabel: string;
 
     constructor(public dialogRef: MatDialogRef<PayPalPaymentDialog>,
         private translationService: TranslationService,
@@ -64,15 +70,17 @@ export class PayPalPaymentDialog {
                 this.verifyPayment(details);
             }),
             onApprove: (data) => {
-                console.log(data);
+                this.showLoading = true;
             },
-            onError: err => {
-                console.log('OnError', err);
+            onError: (err) => {
+                this.showLoading = false;
             }
         };
     }
 
     verifyPayment(details: any) {
+        this.showLoading = true;
+
         let token = localStorage.getItem('bh_auth_token');
 
         var order = JSON.parse(details);
@@ -88,6 +96,17 @@ export class PayPalPaymentDialog {
         }).then((res) => {
             return res.json();
         }).then((details) => {
+            this.showLoading = false;
+
+            this.dialogRef.close(true);
+
+        }, (error) => {
+            this.showLoading = false;
+
+            this.showErrorMessage = true;
+            this.errorMessageLabel = this.translationService.localizeValue('serverErrorLabel', 'paymentpaypal-dialog', 'label');
+
+            setTimeout(() => this.showErrorMessage = false, 3000);
         });
     }
 

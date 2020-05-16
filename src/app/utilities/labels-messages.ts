@@ -74,6 +74,10 @@ export class LabelsMessages {
             'purchaseNowLabel': {
                 'en': 'Purchase now',
                 'bg': 'Купи сега'
+            },
+            'paymentSuccessLabel': {
+                'en': 'Your payment has been successful.',
+                'bg': 'Вашето плащане беше успешно.'
             }
         },
         'signin': {
@@ -205,6 +209,10 @@ export class LabelsMessages {
             }
         },
         'profile': {
+            'pollenLabel': {
+                'en': 'pollen',
+                'bg': 'прашец'
+            },
             'myRequestsLabel': {
                 'en': 'My requests',
                 'bg': 'Моите заявки'
@@ -1060,6 +1068,12 @@ export class LabelsMessages {
             'markupLabel': {
                 'en': 'Markup',
                 'bg': 'Маркер'
+            }
+        },
+        'paypalpayment-dialog': {
+            'serverErrorLabel': {
+                'en': 'The payment was not successful. Please try later.',
+                'bg': 'Плащането не беше успешно. Моля опитайте по-късно.'
             }
         },
         'proxy': {
