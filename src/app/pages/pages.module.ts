@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { MaterialModule } from '../utilities/libraries/material.module';
@@ -28,6 +29,8 @@ import { ScrapeRequestsService } from '../services/scraperequests.service';
 import { SecurityComponent } from './profile/security/security.component';
 import { SettingsComponent } from './profile/settings/settings.component';
 import { InformationComponent } from './profile/information/information.component';
+import { PricingComponent } from './pricing/pricing.component';
+import { PaymentsService } from '../services/payments.service';
 
 @NgModule({
     imports: [
@@ -39,7 +42,8 @@ import { InformationComponent } from './profile/information/information.componen
         BhFieldsModule,
         BhDialogsModule,
         PipesModule,
-        DirectivesModule
+        DirectivesModule,
+        NgxPayPalModule
     ],
     declarations: [
         HomeComponent,
@@ -51,7 +55,8 @@ import { InformationComponent } from './profile/information/information.componen
         ProxyComponent,
         SecurityComponent,
         SettingsComponent,
-        InformationComponent
+        InformationComponent,
+        PricingComponent
     ],
     entryComponents: [],
     providers: [
@@ -59,6 +64,7 @@ import { InformationComponent } from './profile/information/information.componen
         ClientService,
         AccountService,
         ScrapeRequestsService,
+        PaymentsService,
         AuthLocalService,
         AuthGuardService,
         SignGuardService,

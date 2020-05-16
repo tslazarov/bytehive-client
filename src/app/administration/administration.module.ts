@@ -21,6 +21,8 @@ import { UsersService } from '../services/users.service';
 import { UsersDetailComponent } from './usersdetail/usersdetail.component';
 import { BhDialogsModule } from '../utilities/dialogs/bhdialogs.module';
 import { ScrapeRequestsService } from '../services/scraperequests.service';
+import { PaymentsComponent } from './payments/payments.component';
+import { PaymentsService } from '../services/payments.service';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -39,7 +41,8 @@ registerLocaleData(localeBg, 'bg');
         DashboardComponent,
         UsersComponent,
         ScrapeRequestsComponent,
-        UsersDetailComponent],
+        UsersDetailComponent,
+        PaymentsComponent],
     entryComponents: [],
     providers: [
         CommunicationService,
@@ -47,6 +50,7 @@ registerLocaleData(localeBg, 'bg');
         AccountService,
         UsersService,
         ScrapeRequestsService,
+        PaymentsService,
         AuthLocalService,
         AuthAdminGuardService,
         HttpHeaderHelper

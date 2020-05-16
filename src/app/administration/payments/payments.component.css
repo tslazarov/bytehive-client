@@ -13,15 +13,15 @@ tr.mat-row:hover {
     background-color: #efefef;
 }
 
-.request-action-picker {
+.payment-action-picker {
     visibility: hidden;
 }
 
-.request-action-picker[aria-expanded="true"] {
+.payment-action-picker[aria-expanded="true"] {
     visibility:visible;
 }
 
-tr.mat-row:hover .request-action-picker {
+tr.mat-row:hover .payment-action-picker {
     visibility:visible;
 }
 

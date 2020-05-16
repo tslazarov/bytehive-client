@@ -21,12 +21,12 @@
 }
 
 .add {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #ffffff;
 }
 
 .add:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 
@@ -44,7 +44,7 @@
 
 .validate:hover {
     background-color: #212121;
-    color: #ffeb3b;
+    color: #FFEB3B;
 }
 
 .validate.disabled:hover {

@@ -132,11 +132,11 @@ body {
 }
 
 .mat-step-header .mat-step-icon-selected {
-    background-color: #ffeb3b !important;
+    background-color: #FFEB3B !important;
 }
 
 .mat-step-header .mat-step-icon-state-done {
-    background-color: #ffeb3b !important;
+    background-color: #FFEB3B !important;
 }
 
 .mat-step-header:hover{
@@ -253,6 +253,10 @@ button:focus {
 }
 
 /* Common */
+
+.full-width {
+    width: 100%;
+}
 
 .left {
     text-align: left !important;

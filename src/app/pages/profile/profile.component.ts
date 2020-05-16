@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     // subscriptions
     languageChangeSubscription: Subscription;
 
+    pollenLabel: string;
     myRequestsLabel: string;
     myOrdersLabel: string;
     personalInformationLabel: string;
@@ -61,6 +62,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
 
     setLabelsMessages(): void {
+        this.pollenLabel = this.translationService.localizeValue('pollenLabel', 'profile', 'label');
         this.myRequestsLabel = this.translationService.localizeValue('myRequestsLabel', 'profile', 'label');
         this.myOrdersLabel = this.translationService.localizeValue('myOrdersLabel', 'profile', 'label');
         this.personalInformationLabel = this.translationService.localizeValue('personalInformationLabel', 'profile', 'label');

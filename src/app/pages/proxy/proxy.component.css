@@ -31,12 +31,12 @@
 }
 
 .indicator__cta-link:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 
 .indicator__cta-link:hover:after {
-    color: #ffeb3b;
+    color: #FFEB3B;
 }
 
 .indicator__cta-link:after {

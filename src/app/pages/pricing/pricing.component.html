@@ -1,0 +1,20 @@
+<div class="page-content mat-elevation-z3 pb-5">
+    <h1 class="pt-3 pb-3 center">{{pricingLabel | localize: 'pricingLabel':'pricing':'label'}}</h1>
+    <div class="row pt-3 pl-5 pr-5 ml-5 mr-5">
+        <div class="col-4" *ngFor="let paymentTier of paymentTiers">
+            <div class="pricing-wrapper center mat-elevation-z3 pb-5">
+                <h3 class="pt-3">{{paymentTier.name}}</h3>
+                <div class="pt-4 pb-4 m-4">
+                    <img width="150px" src="http://localhost:4200/assets/icons/json-accent.svg">
+                </div>
+                <h5 class="pb-3">{{paymentTier.price}} {{currencyLabel | localize: 'currencyLabel':'pricing':'label'}} /
+                    {{paymentTier.value}} {{pollenLabel | localize: 'pollenLabel':'pricing':'label'}}</h5>
+            </div>
+            <div class="button-wrapper mat-elevation-z3">
+                <button disableRipple mat-flat-button class="full-width purchase-button" (click)="purchase(paymentTier.tierName, paymentTier.price)">
+                    {{purchaseNowLabel | localize: 'purchaseNowLabel':'pricing':'label' | uppercase }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

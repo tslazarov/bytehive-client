@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from 'saturn-datepicker';
 import { Subscription } from 'rxjs';
@@ -13,6 +13,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { RequestStatus } from '../../models/enums/requeststatus.enum';
 import { RequestDetailData, RequestDetailDialog } from '../../utilities/dialogs/requestdetail/requestdetail.dialog';
+import { environment } from '../../../environments/environment';
 
 export const CONDITIONS_FUNCTIONS = {
     'contains': function (value, filteredValue) {
@@ -38,12 +39,12 @@ export const CONDITIONS_FUNCTIONS = {
         { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
     ]
 })
-export class ScrapeRequestsComponent implements OnInit {
+export class ScrapeRequestsComponent implements OnInit, OnDestroy {
 
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-    displayedColumns: string[] = ['creationDate', 'email', 'status', 'downloadUrl', 'action'];
+    displayedColumns: string[] = ['creationDate', 'email', 'status', 'entries', 'downloadUrl', 'action'];
 
     dataSource: MatTableDataSource<any>;
     providers: any[];
@@ -72,6 +73,8 @@ export class ScrapeRequestsComponent implements OnInit {
     creationDateLabel: string;
     userLabel: string;
     statusLabel: string;
+    entriesCountLabel: string;
+    entriesLabel: string;
     linkLabel: string;
     detailsLabel: string;
     deleteLabel: string;
@@ -106,6 +109,7 @@ export class ScrapeRequestsComponent implements OnInit {
             .subscribe(result => {
                 result.forEach(scrapeRequest => {
                     var listScrapeRequest = scrapeRequest as ListScrapeRequest;
+                    listScrapeRequest.downloadUrl = `${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_FILE_ENDPOINT}/${listScrapeRequest.id}`;
                     this.scrapeRequests.push(listScrapeRequest);
                 });
 
@@ -138,6 +142,8 @@ export class ScrapeRequestsComponent implements OnInit {
         this.creationDateLabel = this.translationService.localizeValue('creationDateLabel', 'scraperequests', 'label');
         this.userLabel = this.translationService.localizeValue('userLabel', 'scraperequests', 'label');
         this.statusLabel = this.translationService.localizeValue('statusLabel', 'scraperequests', 'label');
+        this.entriesCountLabel = this.translationService.localizeValue('entriesCountLabel', 'scraperequests', 'label');
+        this.entriesLabel = this.translationService.localizeValue('entriesLabel', 'scraperequests', 'label');
         this.linkLabel = this.translationService.localizeValue('linkLabel', 'scraperequests', 'label');
         this.detailsLabel = this.translationService.localizeValue('detailsLabel', 'scraperequests', 'label');
         this.deleteLabel = this.translationService.localizeValue('deleteLabel', 'scraperequests', 'label');
@@ -158,7 +164,7 @@ export class ScrapeRequestsComponent implements OnInit {
     }
 
     statusChange(status: any): void {
-        let filteredRequests = status.value == -1 ? this.scrapeRequests : this.scrapeRequests.filter(user => { return user.status == status.value });
+        let filteredRequests = status.value == -1 ? this.scrapeRequests : this.scrapeRequests.filter(request => { return request.status == status.value });
 
         this.bindDataSource(filteredRequests);
     }
@@ -220,7 +226,6 @@ export class ScrapeRequestsComponent implements OnInit {
                 requestDetailData.id = result.id;
                 requestDetailData.creationDate = result.creationDate;
                 requestDetailData.data = result.data;
-                requestDetailData.downloadUrl = result.downloadUrl;
                 requestDetailData.email = result.email;
                 requestDetailData.exportType = result.exportType;
                 requestDetailData.scrapeType = result.scrapeType;

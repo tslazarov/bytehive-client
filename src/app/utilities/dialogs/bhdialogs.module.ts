@@ -20,6 +20,8 @@ import { LinksViewDialog } from './linksview/linksview.dialog';
 import { DetailValidationDialog } from './detailvalidation/detailvalidation.dialog';
 import { EmailChangeDialog } from './emailchange/emailchange.dialog';
 import { RequestDetailDialog } from './requestdetail/requestdetail.dialog';
+import { PayPalPaymentDialog } from './paypalpayment/paypalpayment.dialog';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
     declarations: [
@@ -35,6 +37,7 @@ import { RequestDetailDialog } from './requestdetail/requestdetail.dialog';
         DetailValidationDialog,
         EmailChangeDialog,
         RequestDetailDialog,
+        PayPalPaymentDialog,
         ProxyWrapperComponent
     ],
     imports: [
@@ -44,7 +47,8 @@ import { RequestDetailDialog } from './requestdetail/requestdetail.dialog';
         FormsModule,
         ReactiveFormsModule,
         MonacoEditorModule,
-        BhFieldsModule
+        BhFieldsModule,
+        NgxPayPalModule
     ],
     exports: [
     ],
@@ -60,7 +64,8 @@ import { RequestDetailDialog } from './requestdetail/requestdetail.dialog';
         LinksViewDialog,
         DetailValidationDialog,
         EmailChangeDialog,
-        RequestDetailDialog
+        RequestDetailDialog,
+        PayPalPaymentDialog
     ],
     providers: [
         TranslationService,

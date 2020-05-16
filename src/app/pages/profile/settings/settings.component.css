@@ -28,7 +28,7 @@
 
 .settings {
     min-width: 250px;
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #ffffff;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .settings:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 

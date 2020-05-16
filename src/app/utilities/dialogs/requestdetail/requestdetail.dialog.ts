@@ -59,7 +59,6 @@ export class RequestDetailData {
     id: string;
     creationDate: Date;
     data: string;
-    downloadUrl: string;
     email: string;
     exportType: ExportType;
     scrapeType: ScrapeType;

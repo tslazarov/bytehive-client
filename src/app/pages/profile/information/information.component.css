@@ -27,12 +27,12 @@
 }
 
 .required {
-    color: #ffeb3b;
+    color: #FFEB3B;
 }
 
 .information {
     min-width: 250px;
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #ffffff;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .information:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 
@@ -62,5 +62,5 @@
 }
 
 .mat-expanded .expansion-header {
-    border-left: 5px solid #ffeb3b;
+    border-left: 5px solid #FFEB3B;
 }

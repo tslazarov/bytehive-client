@@ -16,7 +16,7 @@
 }
 
 .top-navbar-inverse {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
 }
 
 .sticky {
@@ -43,7 +43,7 @@
 }
 
 .top-navbar .mat-button:hover {
-    color: #ffeb3b;
+    color: #FFEB3B;
 }
 
 .top-navbar-inverse .mat-button:hover {
@@ -57,32 +57,32 @@
 
 .top-navbar .signin:hover {
     background-color: #212121;
-    color: #ffeb3b;
+    color: #FFEB3B;
 }
 
 .top-navbar .language-picker {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #ffffff;
 }
 
 .top-navbar .language-picker:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 
 .top-navbar-inverse .language-picker {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #212121;
 }
 
 .top-navbar-inverse .language-picker:hover {
-    background-color: #ffeb3b;
+    background-color: #FFEB3B;
     color: #ffffff;
 }
 
 .top-navbar-inverse .signin {
     background-color: #212121;
-    color: #ffeb3b;
+    color: #FFEB3B;
 }
 
 .top-navbar-inverse .signin:hover {

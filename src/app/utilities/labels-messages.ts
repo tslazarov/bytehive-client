@@ -13,6 +13,10 @@ export class LabelsMessages {
                 'en': 'FAQs',
                 'bg': 'Въпроси'
             },
+            'pricingLabel': {
+                'en': 'Pricing',
+                'bg': 'Цени'
+            },
             'signinLabel': {
                 'en': 'Sign in',
                 'bg': 'Влез'
@@ -40,6 +44,44 @@ export class LabelsMessages {
             'requestsLabel': {
                 'en': 'Requests',
                 'bg': 'Заявки'
+            },
+            'paymentsLabel': {
+                'en': 'Payments',
+                'bg': 'Плащания'
+            }
+        },
+        'pricing': {
+            'pricingLabel': {
+                'en': 'Pricing',
+                'bg': 'Цени'
+            },
+            'workerLabel': {
+                'en': 'Worker',
+                'bg': 'Работник'
+            },
+            'droneLabel': {
+                'en': 'Drone',
+                'bg': 'Търтей'
+            },
+            'queenLabel': {
+                'en': 'Queen',
+                'bg': 'Кралица'
+            },
+            'currencyLabel': {
+                'en': 'eur',
+                'bg': 'евро'
+            },
+            'pollenLabel': {
+                'en': 'pollen',
+                'bg': 'прашец'
+            },
+            'purchaseNowLabel': {
+                'en': 'Purchase now',
+                'bg': 'Купи сега'
+            },
+            'paymentSuccessLabel': {
+                'en': 'Your payment has been successful.',
+                'bg': 'Вашето плащане беше успешно.'
             }
         },
         'signin': {
@@ -171,6 +213,10 @@ export class LabelsMessages {
             }
         },
         'profile': {
+            'pollenLabel': {
+                'en': 'pollen',
+                'bg': 'прашец'
+            },
             'myRequestsLabel': {
                 'en': 'My requests',
                 'bg': 'Моите заявки'
@@ -681,6 +727,14 @@ export class LabelsMessages {
                 'en': 'Status',
                 'bg': 'Статус'
             },
+            'entriesCountLabel': {
+                'en': 'Records count',
+                'bg': 'Брой записи'
+            },
+            'entriesLabel': {
+                'en': 'records',
+                'bg': 'записа'
+            },
             'linkLabel': {
                 'en': 'Link',
                 'bg': 'Линк'
@@ -696,6 +750,56 @@ export class LabelsMessages {
             'confirmDeleteScrapeRequestLabel': {
                 'en': 'Are you sure you want to delete this request?',
                 'bg': 'Сигурни ли сте, че искате да изтриете тази заявка?'
+            }
+        },
+        'payments': {
+            'statusesLabel': {
+                'en': 'Statuses',
+                'bg': 'Статуси'
+            },
+            'searchLabel': {
+                'en': 'Search',
+                'bg': 'Търси'
+            },
+            'filterDateLabel': {
+                'en': 'Filter by date',
+                'bg': 'Филтрирай по дата'
+            },
+            'creationDateLabel': {
+                'en': 'Created on',
+                'bg': 'Създадена на'
+            },
+            'userLabel': {
+                'en': 'User',
+                'bg': 'Потребител'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'priceLabel': {
+                'en': 'Price',
+                'bg': 'Стойност'
+            },
+            'currencyLabel': {
+                'en': 'eur',
+                'bg': 'евро'
+            },
+            'externalIdLabel': {
+                'en': 'Payment number',
+                'bg': 'Номер на плащане'
+            },
+            'detailsLabel': {
+                'en': 'Details',
+                'bg': 'Детайли'
+            },
+            'deleteLabel': {
+                'en': 'Delete',
+                'bg': 'Изтрий'
+            },
+            'confirmDeleteScrapeRequestLabel': {
+                'en': 'Are you sure you want to delete this payment?',
+                'bg': 'Сигурни ли сте, че искате да изтриете това плащане?'
             }
         },
         'fileupload': {
@@ -1020,6 +1124,12 @@ export class LabelsMessages {
                 'bg': 'Маркер'
             }
         },
+        'paypalpayment-dialog': {
+            'serverErrorLabel': {
+                'en': 'The payment was not successful. Please try later.',
+                'bg': 'Плащането не беше успешно. Моля опитайте по-късно.'
+            }
+        },
         'proxy': {
             'selectLabel': {
                 'en': 'Select',
@@ -1123,7 +1233,29 @@ export class LabelsMessages {
                 'en': 'Detail pages',
                 'bg': 'Страници с детайли'
             }
-        }
+        },
+        'payment-status': {
+            'allStatusLabel': {
+                'en': 'All',
+                'bg': 'Всички'
+            },
+            'pendingStatusLabel': {
+                'en': 'Pending',
+                'bg': 'Чакаща'
+            },
+            'completedStatusLabel': {
+                'en': 'Completed',
+                'bg': 'Завършена'
+            },
+            'cancelledStatusLabel': {
+                'en': 'Cancelled',
+                'bg': 'Отказана'
+            },
+            'failedStatusLabel': {
+                'en': 'Failed',
+                'bg': 'Неуспешна'
+            }
+        },
     }
     static readonly messages = {
     }

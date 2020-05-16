@@ -31,6 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
     homeLabel: string;
     hiveLabel: string;
     faqLabel: string;
+    pricingLabel: string;
     signinLabel: string;
     profileLabel: string;
     signoutLabel: string;
@@ -39,6 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
     dashboardLabel: string;
     usersLabel: string;
     requestsLabel: string;
+    paymentsLabel: string;
 
     constructor(private router: Router,
         private translationService: TranslationService,
@@ -89,6 +91,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.homeLabel = this.translationService.localizeValue('homeLabel', 'navigation', 'label');
         this.hiveLabel = this.translationService.localizeValue('hiveLabel', 'navigation', 'label');
         this.faqLabel = this.translationService.localizeValue('faqLabel', 'navigation', 'label');
+        this.pricingLabel = this.translationService.localizeValue('pricingLabel', 'navigation', 'label');
         this.signinLabel = this.translationService.localizeValue('signinLabel', 'navigation', 'label');
         this.profileLabel = this.translationService.localizeValue('profileLabel', 'navigation', 'label');
         this.signoutLabel = this.translationService.localizeValue('signoutLabel', 'navigation', 'label');
@@ -96,6 +99,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.dashboardLabel = this.translationService.localizeValue('dashboardLabel', 'navigation', 'label');
         this.usersLabel = this.translationService.localizeValue('usersLabel', 'navigation', 'label');
         this.requestsLabel = this.translationService.localizeValue('requestsLabel', 'navigation', 'label');
+        this.paymentsLabel = this.translationService.localizeValue('paymentsLabel', 'navigation', 'label');
     }
 
     setCurrentUser(): void {
