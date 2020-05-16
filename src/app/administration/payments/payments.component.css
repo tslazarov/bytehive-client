@@ -1,0 +1,76 @@
+table {
+    width: 100%;
+}
+
+.table-head {
+    background-color: #FFEB3B;
+    color: #212121;
+    border-bottom: 2px solid #FFEB3B;
+    padding-bottom: 1px;
+}
+
+tr.mat-row:hover {
+    background-color: #efefef;
+}
+
+.payment-action-picker {
+    visibility: hidden;
+}
+
+.payment-action-picker[aria-expanded="true"] {
+    visibility:visible;
+}
+
+tr.mat-row:hover .payment-action-picker {
+    visibility:visible;
+}
+
+.action-icon {
+    background: url(../../../assets/icons/action-unfocused.svg);
+}
+
+.action-icon:hover {
+    background: url(../../../assets/icons/action-accent.svg);
+}
+
+.delete {
+    color: #e20405;
+}
+
+.filter-wrapper .mat-form-field {
+    width: 100%;
+}
+
+.user-link:hover {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* datepicker */
+.date-field .mat-form-field-underline {
+    height: 1.5px !important;
+}
+
+.mat-datepicker-toggle-active {
+    color: inherit;
+}
+
+.custom-date-picker {
+    text-align: center !important;
+    font-size: 16px !important;
+    background-color: transparent;
+    border-width: 0 0 1px 0;
+    border-radius: 0px;
+}
+
+.custom-date-picker:focus {
+    background-color: transparent;
+}
+
+.custom-date-picker:hover {
+    cursor: pointer;
+}

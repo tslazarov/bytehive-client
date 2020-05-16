@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from 'saturn-datepicker';
 import { Subscription } from 'rxjs';
@@ -39,7 +39,7 @@ export const CONDITIONS_FUNCTIONS = {
         { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
     ]
 })
-export class ScrapeRequestsComponent implements OnInit {
+export class ScrapeRequestsComponent implements OnInit, OnDestroy {
 
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -164,7 +164,7 @@ export class ScrapeRequestsComponent implements OnInit {
     }
 
     statusChange(status: any): void {
-        let filteredRequests = status.value == -1 ? this.scrapeRequests : this.scrapeRequests.filter(user => { return user.status == status.value });
+        let filteredRequests = status.value == -1 ? this.scrapeRequests : this.scrapeRequests.filter(request => { return request.status == status.value });
 
         this.bindDataSource(filteredRequests);
     }

@@ -44,6 +44,10 @@ export class LabelsMessages {
             'requestsLabel': {
                 'en': 'Requests',
                 'bg': 'Заявки'
+            },
+            'paymentsLabel': {
+                'en': 'Payments',
+                'bg': 'Плащания'
             }
         },
         'pricing': {
@@ -748,6 +752,56 @@ export class LabelsMessages {
                 'bg': 'Сигурни ли сте, че искате да изтриете тази заявка?'
             }
         },
+        'payments': {
+            'statusesLabel': {
+                'en': 'Statuses',
+                'bg': 'Статуси'
+            },
+            'searchLabel': {
+                'en': 'Search',
+                'bg': 'Търси'
+            },
+            'filterDateLabel': {
+                'en': 'Filter by date',
+                'bg': 'Филтрирай по дата'
+            },
+            'creationDateLabel': {
+                'en': 'Created on',
+                'bg': 'Създадена на'
+            },
+            'userLabel': {
+                'en': 'User',
+                'bg': 'Потребител'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'priceLabel': {
+                'en': 'Price',
+                'bg': 'Стойност'
+            },
+            'currencyLabel': {
+                'en': 'eur',
+                'bg': 'евро'
+            },
+            'externalIdLabel': {
+                'en': 'Payment number',
+                'bg': 'Номер на плащане'
+            },
+            'detailsLabel': {
+                'en': 'Details',
+                'bg': 'Детайли'
+            },
+            'deleteLabel': {
+                'en': 'Delete',
+                'bg': 'Изтрий'
+            },
+            'confirmDeleteScrapeRequestLabel': {
+                'en': 'Are you sure you want to delete this payment?',
+                'bg': 'Сигурни ли сте, че искате да изтриете това плащане?'
+            }
+        },
         'fileupload': {
             'dragDropLabel': {
                 'en': 'Drag and drop file here',
@@ -1179,7 +1233,29 @@ export class LabelsMessages {
                 'en': 'Detail pages',
                 'bg': 'Страници с детайли'
             }
-        }
+        },
+        'payment-status': {
+            'allStatusLabel': {
+                'en': 'All',
+                'bg': 'Всички'
+            },
+            'pendingStatusLabel': {
+                'en': 'Pending',
+                'bg': 'Чакаща'
+            },
+            'completedStatusLabel': {
+                'en': 'Completed',
+                'bg': 'Завършена'
+            },
+            'cancelledStatusLabel': {
+                'en': 'Cancelled',
+                'bg': 'Отказана'
+            },
+            'failedStatusLabel': {
+                'en': 'Failed',
+                'bg': 'Неуспешна'
+            }
+        },
     }
     static readonly messages = {
     }

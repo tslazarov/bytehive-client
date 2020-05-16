@@ -40,6 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
     dashboardLabel: string;
     usersLabel: string;
     requestsLabel: string;
+    paymentsLabel: string;
 
     constructor(private router: Router,
         private translationService: TranslationService,
@@ -98,6 +99,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.dashboardLabel = this.translationService.localizeValue('dashboardLabel', 'navigation', 'label');
         this.usersLabel = this.translationService.localizeValue('usersLabel', 'navigation', 'label');
         this.requestsLabel = this.translationService.localizeValue('requestsLabel', 'navigation', 'label');
+        this.paymentsLabel = this.translationService.localizeValue('paymentsLabel', 'navigation', 'label');
     }
 
     setCurrentUser(): void {
