@@ -362,6 +362,22 @@ export class LabelsMessages {
             'shareLabel': {
                 'en': 'Share',
                 'bg': 'Сподели'
+            },
+            'confirmUnlockScrapeRequestLabel': {
+                'en': 'Are you sure you want to unlock this request? This would cost',
+                'bg': 'Сигурни ли сте, че искате да отключите тази заявка? Това ще струва'
+            },
+            'pollenLabel': {
+                'en': 'pollen',
+                'bg': 'прашец'
+            },
+            'unlockRequestSuccessLabel': {
+                'en': 'The request was unlocked successfully.',
+                'bg': 'Заявката беше отключена успешно.'
+            },
+            'unlockRequestErrorLabel': {
+                'en': 'Error occured. Please check your balance or try again later.',
+                'bg': 'Възникна грешка. Моля проверете вашия баланс или опитайте по-късно.'
             }
         },
         'settings-profile': {

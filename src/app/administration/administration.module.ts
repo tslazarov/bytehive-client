@@ -23,6 +23,7 @@ import { BhDialogsModule } from '../utilities/dialogs/bhdialogs.module';
 import { ScrapeRequestsService } from '../services/scraperequests.service';
 import { PaymentsComponent } from './payments/payments.component';
 import { PaymentsService } from '../services/payments.service';
+import { FileManagerHelper } from '../utilities/helpers/filemanager-helper';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -53,7 +54,8 @@ registerLocaleData(localeBg, 'bg');
         PaymentsService,
         AuthLocalService,
         AuthAdminGuardService,
-        HttpHeaderHelper
+        HttpHeaderHelper,
+        FileManagerHelper
     ]
 })
 export class AdministrationModule { }

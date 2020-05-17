@@ -47,7 +47,7 @@
         </div>
         <div class="col-md-6 col-lg-9">
             <div class="tile-content-wrapper content-wrapper mat-elevation-z3">
-                <bh-profile-requests *ngIf="selectedAction == 'request'"></bh-profile-requests>
+                <bh-profile-requests *ngIf="selectedAction == 'request'" [tokens]="profile.tokens" (profileChange)="profileChange()"></bh-profile-requests>
                 <bh-profile-orders *ngIf="selectedAction == 'order'"></bh-profile-orders>
                 <bh-profile-information *ngIf="selectedAction == 'personalInformation'" (profileChange)="profileChange()"></bh-profile-information>
                 <bh-profile-security *ngIf="selectedAction == 'security'"></bh-profile-security>

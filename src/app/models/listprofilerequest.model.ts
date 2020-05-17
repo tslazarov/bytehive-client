@@ -4,6 +4,7 @@ export class ListProfileRequest {
     downloadUrl: string;
     shareableDownloadUrl: string;
     fileName: string;
+    contentType: string;
     entries: number;
     status: number;
     accessKey: string;

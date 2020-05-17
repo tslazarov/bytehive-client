@@ -44,3 +44,11 @@ tr.mat-row:hover .request-action-picker {
 .menu-link:hover {
     cursor: pointer;
 }
+
+.disabled-action {
+    color: #afafaf;
+}
+
+.download-link {
+    visibility:none;
+}

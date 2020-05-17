@@ -34,6 +34,7 @@ import { PricingComponent } from './pricing/pricing.component';
 import { PaymentsService } from '../services/payments.service';
 import { OrdersComponent } from './profile/orders/orders.component';
 import { RequestsComponent } from './profile/requests/requests.component';
+import { FileManagerHelper } from '../utilities/helpers/filemanager-helper';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -75,7 +76,8 @@ registerLocaleData(localeBg, 'bg');
         AuthLocalService,
         AuthGuardService,
         SignGuardService,
-        HttpHeaderHelper
+        HttpHeaderHelper,
+        FileManagerHelper
     ]
 })
 export class PagesModule { }

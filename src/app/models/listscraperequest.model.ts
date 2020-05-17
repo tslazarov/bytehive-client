@@ -5,6 +5,7 @@ export class ListScrapeRequest {
     creationDate: Date;
     downloadUrl: string;
     fileName: string;
+    contentType: string;
     entries: number;
     status: number;
 }

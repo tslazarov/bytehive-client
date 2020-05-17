@@ -42,6 +42,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         private authService: AuthService) { }
 
     ngOnInit(): void {
+        this.selectedAction = 'request';
 
         this.setLabelsMessages();
 
@@ -53,7 +54,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
 
     ngAfterViewInit(): void {
-        this.selectedAction = 'request';
         this.lastAction = this.requestOption.nativeElement;
     }
 
@@ -82,7 +82,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     open(event, action): void {
         event.stopPropagation();
-        console.log(event.currentTarget);
         if (this.lastAction && this.lastAction != event.currentTarget) {
             this.lastAction.classList.remove('selected');
         }

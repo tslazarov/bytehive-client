@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { Component, OnInit, ViewChild, OnDestroy, Output, EventEmitter, Input, ElementRef } from '@angular/core';
+import { MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { CommunicationService } from '../../../services/utilities/communication.service';
@@ -8,6 +8,9 @@ import { ScrapeRequestsService } from '../../../services/scraperequests.service'
 import { ListProfileRequest } from '../../../models/listprofilerequest.model';
 import { environment } from '../../../../environments/environment';
 import { Constants } from '../../../utilities/constants';
+import { ConfirmationData, ConfirmationDialog } from '../../../utilities/dialogs/confirmation/confirmation.dialog';
+import { NotifierService } from 'angular-notifier';
+import { FileManagerHelper } from '../../../utilities/helpers/filemanager-helper';
 
 @Component({
     selector: 'bh-profile-requests',
@@ -16,13 +19,17 @@ import { Constants } from '../../../utilities/constants';
 })
 export class RequestsComponent implements OnInit, OnDestroy {
 
+    @Output() profileChange = new EventEmitter<any>();
+    @Input() tokens: number;
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+    @ViewChild('downloadFileLink', { static: false }) downloadFileLink: ElementRef;
 
     // common
     displayedColumns: string[] = ['creationDate', 'status', 'entries', 'action'];
     dataSource: MatTableDataSource<any>;
     scrapeRequests: ListProfileRequest[];
     triggerStatusUpdate: boolean;
+    notifier: NotifierService;
 
     // subscriptions
     languageChangeSubscription: Subscription;
@@ -37,10 +44,16 @@ export class RequestsComponent implements OnInit, OnDestroy {
     unlockLabel: string;
     downloadLabel: string;
     shareLabel: string;
+    pollenLabel: string;
 
-    constructor(private scrapeRequestsService: ScrapeRequestsService,
+    constructor(private dialog: MatDialog,
+        private fileManagerHelper: FileManagerHelper,
+        private scrapeRequestsService: ScrapeRequestsService,
         private translationService: TranslationService,
-        private communicationService: CommunicationService) { }
+        private communicationService: CommunicationService,
+        private notifierService: NotifierService) {
+        this.notifier = notifierService
+    }
 
     ngOnInit() {
         this.setLabelsMessages();
@@ -89,5 +102,48 @@ export class RequestsComponent implements OnInit, OnDestroy {
         this.unlockLabel = this.translationService.localizeValue('unlockLabel', 'requests-profile', 'label');
         this.downloadLabel = this.translationService.localizeValue('downloadLabel', 'requests-profile', 'label');
         this.shareLabel = this.translationService.localizeValue('shareLabel', 'requests-profile', 'label');
+        this.pollenLabel = this.translationService.localizeValue('pollenLabel', 'requests-profile', 'label');
+    }
+
+    unlock(id: string): void {
+        let scrapeRequest = this.scrapeRequests.find(i => i.id == id);
+
+        if (this.tokens * 100 > scrapeRequest.entries) {
+            let confirmationData = new ConfirmationData();
+            let message = this.translationService.localizeValue('confirmUnlockScrapeRequestLabel', 'requests-profile', 'label');
+            confirmationData.message = `${message} ${Math.ceil(scrapeRequest.entries / 100)} ${this.pollenLabel}.`
+
+            let dialogRef = this.dialog.open(ConfirmationDialog, { width: '40vw', minHeight: '200px', autoFocus: false, data: confirmationData });
+
+            dialogRef.afterClosed().subscribe(result => {
+                if (result) {
+                    this.scrapeRequestsService.unlockScrapeRequest(id)
+                        .subscribe(result => {
+                            if (result) {
+                                this.notifier.notify("success", this.translationService.localizeValue('unlockRequestSuccessLabel', 'requests-profile', 'label'));
+
+                                this.profileChange.emit();
+                                this.fetchScrapeRequests();
+                            }
+                        }, (error) => {
+                            this.notifier.notify("error", this.translationService.localizeValue('unlockRequestErrorLabel', 'requests-profile', 'label'));
+                        });
+                }
+            });
+        }
+    }
+
+    download(fileName: string, contentType: string, id: string): void {
+        this.scrapeRequestsService.downloadScrapeRequest(id)
+            .subscribe((result) => {
+                let url = this.fileManagerHelper.downLoadFileUrl(result, contentType);
+
+                const link = this.downloadFileLink.nativeElement;
+                link.href = url;
+                link.download = fileName;
+                link.click();
+
+                window.URL.revokeObjectURL(url);
+            });
     }
 }
