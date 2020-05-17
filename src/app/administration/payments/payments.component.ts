@@ -150,7 +150,7 @@ export class PaymentsComponent implements OnInit, OnDestroy {
         this.externalIdLabel = this.translationService.localizeValue('externalIdLabel', 'payments', 'label');
         this.detailsLabel = this.translationService.localizeValue('detailsLabel', 'payments', 'label');
         this.deleteLabel = this.translationService.localizeValue('deleteLabel', 'payments', 'label');
-        this.confirmDeletePaymentLabel = this.translationService.localizeValue('confirmDeleteScrapeRequestLabel', 'payments', 'label');
+        this.confirmDeletePaymentLabel = this.translationService.localizeValue('confirmDeletePaymentLabel', 'payments', 'label');
 
         this.fetchStatuses();
     }
@@ -237,7 +237,26 @@ export class PaymentsComponent implements OnInit, OnDestroy {
     }
 
     delete(id: string): void {
-        // delete
+        let confirmationData = new ConfirmationData();
+        confirmationData.message = this.translationService.localizeValue('confirmDeletePaymentLabel', 'payments', 'label');
+
+        let dialogRef = this.dialog.open(ConfirmationDialog, { width: '40vw', minHeight: '200px', autoFocus: false, data: confirmationData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.paymentsService.deletePayment(id)
+                    .subscribe((result) => {
+                        if (result) {
+                            let deletedPaymentIndex = this.payments.map(i => i.id).indexOf(id);
+
+                            this.payments.splice(deletedPaymentIndex, 1);
+                            this.bindDataSource(this.payments);
+                        }
+                    }, (error) => {
+                        //TODO: Show error message;
+                    });
+            }
+        });
     }
 
     navigate(route: string): void {

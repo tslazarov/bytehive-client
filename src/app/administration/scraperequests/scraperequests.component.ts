@@ -243,7 +243,7 @@ export class ScrapeRequestsComponent implements OnInit, OnDestroy {
     delete(id: string): void {
 
         let confirmationData = new ConfirmationData();
-        confirmationData.message = this.translationService.localizeValue('confirmDeleteUserLabel', 'users', 'label');
+        confirmationData.message = this.translationService.localizeValue('confirmDeleteScrapeRequestLabel', 'scraperequests', 'label');
 
         let dialogRef = this.dialog.open(ConfirmationDialog, { width: '40vw', minHeight: '200px', autoFocus: false, data: confirmationData });
 

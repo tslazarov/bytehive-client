@@ -797,7 +797,7 @@ export class LabelsMessages {
                 'en': 'Delete',
                 'bg': 'Изтрий'
             },
-            'confirmDeleteScrapeRequestLabel': {
+            'confirmDeletePaymentLabel': {
                 'en': 'Are you sure you want to delete this payment?',
                 'bg': 'Сигурни ли сте, че искате да изтриете това плащане?'
             }
