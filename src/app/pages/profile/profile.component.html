@@ -15,31 +15,31 @@
                 </div>
             </div>
             <div class="mat-elevation-z3 mt-4 mb-4">
-                <div class="menu-item" (click)="open($event, 'request')">
+                <div #requestOption class="menu-item selected" (click)="open($event, 'request')">
                     <span class="icon requests-icon left-icon large-icon menu-icon"></span>
                     <span class="menu-title">{{myRequestsLabel | localize: 'myRequestsLabel':'profile':'label'}}</span>
                 </div>
-                <div class="menu-item" (click)="open($event, 'order')">
+                <div #orderOption class="menu-item" (click)="open($event, 'order')">
                     <span class="icon orders-icon left-icon large-icon menu-icon"></span>
                     <span class="menu-title">{{myOrdersLabel | localize: 'myOrdersLabel':'profile':'label'}}</span>
                 </div>
-                <div class="menu-item" (click)="open($event, 'personalInformation')">
+                <div #personalInformationOption class="menu-item" (click)="open($event, 'personalInformation')">
                     <span class="icon information-icon left-icon large-icon menu-icon"></span>
                     <span class="menu-title">{{personalInformationLabel | localize: 'personalInformationLabel':'profile':'label'}}</span>
                 </div>
-                <div class="menu-item" (click)="open($event, 'security')">
+                <div #securityOption class="menu-item" (click)="open($event, 'security')">
                     <span class="icon security-icon left-icon large-icon menu-icon"></span>
                     <span class="menu-title">{{securityLabel | localize: 'securityLabel':'profile':'label'}}</span>
                 </div>
-                <div class="menu-item" (click)="open($event, 'rewards')">
+                <div #rewardsOption class="menu-item" (click)="open($event, 'rewards')">
                     <span class="icon rewards-icon left-icon large-icon menu-icon"></span>
                     <span class="menu-title">{{rewardsLabel | localize: 'rewardsLabel':'profile':'label'}}</span>
                 </div>
-                <div class="menu-item" (click)="open($event, 'preferences')">
+                <div #preferencesOption class="menu-item" (click)="open($event, 'preferences')">
                     <span class="icon preferences-icon left-icon large-icon menu-icon"></span>
                     <span class="menu-title">{{preferencesLabel | localize: 'preferencesLabel':'profile':'label'}}</span>
                 </div>
-                <div class="menu-item" (click)="signout()">
+                <div #signoutOption class="menu-item" (click)="signout()">
                     <span class="icon signout-icon left-icon large-icon menu-icon"></span>
                     <span class="menu-title">{{signoutLabel | localize: 'signoutLabel':'profile':'label'}}</span>
                 </div>
@@ -47,6 +47,7 @@
         </div>
         <div class="col-md-6 col-lg-9">
             <div class="tile-content-wrapper content-wrapper mat-elevation-z3">
+                <bh-profile-requests *ngIf="selectedAction == 'request'"></bh-profile-requests>
                 <bh-profile-orders *ngIf="selectedAction == 'order'"></bh-profile-orders>
                 <bh-profile-information *ngIf="selectedAction == 'personalInformation'" (profileChange)="profileChange()"></bh-profile-information>
                 <bh-profile-security *ngIf="selectedAction == 'security'"></bh-profile-security>

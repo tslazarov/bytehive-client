@@ -33,6 +33,7 @@ import { InformationComponent } from './profile/information/information.componen
 import { PricingComponent } from './pricing/pricing.component';
 import { PaymentsService } from '../services/payments.service';
 import { OrdersComponent } from './profile/orders/orders.component';
+import { RequestsComponent } from './profile/requests/requests.component';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -61,7 +62,8 @@ registerLocaleData(localeBg, 'bg');
         SettingsComponent,
         InformationComponent,
         PricingComponent,
-        OrdersComponent
+        OrdersComponent,
+        RequestsComponent
     ],
     entryComponents: [],
     providers: [

@@ -53,7 +53,6 @@ export class OrdersComponent implements OnInit, OnDestroy {
         this.fetchPayments();
     }
 
-
     ngOnDestroy(): void {
         this.languageChangeSubscription.unsubscribe();
     }

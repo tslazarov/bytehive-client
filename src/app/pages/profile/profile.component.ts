@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Renderer } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer, ElementRef, ViewChild } from '@angular/core';
 import { TranslationService } from '../../services/utilities/translation.service';
 import { Subscription } from 'rxjs';
 import { CommunicationService } from '../../services/utilities/communication.service';
@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
     styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
+
+    @ViewChild('requestOption', { static: false }) requestOption: ElementRef;
 
     // common
     profile: any = {};
@@ -40,6 +42,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         private authService: AuthService) { }
 
     ngOnInit(): void {
+
         this.setLabelsMessages();
 
         this.fetchProfile();
@@ -47,6 +50,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
             this.setLabelsMessages();
         });
+    }
+
+    ngAfterViewInit(): void {
+        this.selectedAction = 'request';
+        this.lastAction = this.requestOption.nativeElement;
     }
 
     ngOnDestroy(): void {
@@ -74,6 +82,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     open(event, action): void {
         event.stopPropagation();
+        console.log(event.currentTarget);
         if (this.lastAction && this.lastAction != event.currentTarget) {
             this.lastAction.classList.remove('selected');
         }

@@ -32,6 +32,14 @@ export class ScrapeRequestsService {
         return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_ALL_ENDPOINT}`, { headers, responseType: 'json' });
     }
 
+    getProfileAll(): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_ALL_PROFILE_ENDPOINT}`, { headers, responseType: 'json' });
+    }
+
     getScrapeRequest(id: string): Observable<any> {
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');

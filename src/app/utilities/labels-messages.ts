@@ -294,8 +294,8 @@ export class LabelsMessages {
         },
         'orders-profile': {
             'ordersLabel': {
-                'en': 'Orders',
-                'bg': 'Поръчки',
+                'en': 'My orders',
+                'bg': 'Моите поръчки'
             },
             'creationDateLabel': {
                 'en': 'Created on',
@@ -320,6 +320,44 @@ export class LabelsMessages {
             'pollenLabel': {
                 'en': 'pollen',
                 'bg': 'прашец'
+            }
+        },
+        'requests-profile': {
+            'requestsLabel': {
+                'en': 'My requests',
+                'bg': 'Моите заявки'
+            },
+            'creationDateLabel': {
+                'en': 'Created on',
+                'bg': 'Създадена на'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'entriesCountLabel': {
+                'en': 'Records count',
+                'bg': 'Брой записи'
+            },
+            'entriesLabel': {
+                'en': 'records',
+                'bg': 'записа'
+            },
+            'detailsLabel': {
+                'en': 'Details',
+                'bg': 'Детайли'
+            },
+            'unlockLabel': {
+                'en': 'Unlock',
+                'bg': 'Отключи'
+            },
+            'downloadLabel': {
+                'en': 'Download',
+                'bg': 'Свали'
+            },
+            'shareLabel': {
+                'en': 'Share',
+                'bg': 'Сподели'
             }
         },
         'settings-profile': {
