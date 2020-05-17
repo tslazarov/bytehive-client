@@ -64,7 +64,7 @@ export class PricingComponent implements OnInit {
             this.setLabelsMessages();
             this.paymentTiers.forEach(pt => {
                 pt.name = this.translationService.localizeValue(pt.labelName, 'pricing', 'label');
-            })
+            });
         });
     }
 

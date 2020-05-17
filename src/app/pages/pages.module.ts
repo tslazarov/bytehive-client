@@ -8,7 +8,8 @@ import { MaterialModule } from '../utilities/libraries/material.module';
 import { BhFieldsModule } from '../utilities/fields/bhfields.module';
 import { PipesModule } from '../utilities/pipes/pipes.module';
 import { BhDialogsModule } from '../utilities/dialogs/bhdialogs.module';
-
+import { registerLocaleData } from "@angular/common";
+import localeBg from '@angular/common/locales/bg';
 import { HomeComponent } from './home/home.component';
 import { HiveComponent } from './hive/hive.component';
 import { SigninComponent } from './signin/signin.component';
@@ -31,6 +32,9 @@ import { SettingsComponent } from './profile/settings/settings.component';
 import { InformationComponent } from './profile/information/information.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { PaymentsService } from '../services/payments.service';
+import { OrdersComponent } from './profile/orders/orders.component';
+
+registerLocaleData(localeBg, 'bg');
 
 @NgModule({
     imports: [
@@ -56,7 +60,8 @@ import { PaymentsService } from '../services/payments.service';
         SecurityComponent,
         SettingsComponent,
         InformationComponent,
-        PricingComponent
+        PricingComponent,
+        OrdersComponent
     ],
     entryComponents: [],
     providers: [

@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+}
+
+.header-icon {
+    vertical-align: middle;
+}
+
+.header-title {
+    vertical-align: middle;
+    font-weight: 400;
+    font-size: 52px;
+}
+
+.orders-icon {
+    background: url(../../../../assets/icons/orders-accent.svg);
+}

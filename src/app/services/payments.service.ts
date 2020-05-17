@@ -20,6 +20,14 @@ export class PaymentsService {
         return this.http.get(`${environment.apiBaseUrl}${Constants.PAYMENT_SERVICE_ALL_ENDPOINT}`, { headers, responseType: 'json' });
     }
 
+    getProfileAll(): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.get(`${environment.apiBaseUrl}${Constants.PAYMENT_SERVICE_ALL_PROFILE_ENDPOINT}`, { headers, responseType: 'json' });
+    }
+
     getAllTiers(): Observable<any> {
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');

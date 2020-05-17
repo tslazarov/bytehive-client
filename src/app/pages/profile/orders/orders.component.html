@@ -1,0 +1,35 @@
+<div class="row pl-5 pt-5 pb-3">
+    <div class="header-row">
+        <span class="icon orders-icon left-icon large-x2-icon header-icon"></span>
+        <span class="header-title pl-2">{{ordersLabel | localize: 'ordersLabel':'orders-profile':'label'}}</span>
+    </div>
+</div>
+<div class="pl-5 pr-5 pt-4">
+    <div>
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="creationDate">
+                <th mat-header-cell *matHeaderCellDef>{{creationDateLabel | localize: 'creationDateLabel':'orders-profile':'label'}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.creationDate | localizedDate :'d MMM yyyy HH:mm:ss'}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef>{{priceLabel | localize: 'priceLabel':'orders-profile':'label'}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.price}} {{currencyLabel | localize: 'currencyLabel':'orders-profile':'label'
+                    | lowercase}} </td>
+            </ng-container>
+            <ng-container matColumnDef="tierName">
+                <th mat-header-cell *matHeaderCellDef>{{pricingTierLabel | localize: 'pricingTierLabel':'orders-profile':'label'}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.tierNameLabel}}
+            </ng-container>
+            <ng-container matColumnDef="tierValue">
+                <th mat-header-cell *matHeaderCellDef>{{valueLabel | localize: 'valueLabel':'orders-profile':'label'}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.tierValue}} {{pollenLabel | localize: 'pollenLabel':'orders-profile':'label'
+                    | lowercase}}
+            </ng-container>
+            <tr mat-header-row class="table-head" *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

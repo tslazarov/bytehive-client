@@ -292,6 +292,36 @@ export class LabelsMessages {
                 'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
+        'orders-profile': {
+            'ordersLabel': {
+                'en': 'Orders',
+                'bg': 'Поръчки',
+            },
+            'creationDateLabel': {
+                'en': 'Created on',
+                'bg': 'Създадена на'
+            },
+            'priceLabel': {
+                'en': 'Price',
+                'bg': 'Цена'
+            },
+            'currencyLabel': {
+                'en': 'eur',
+                'bg': 'евро'
+            },
+            'pricingTierLabel': {
+                'en': 'Package tier',
+                'bg': 'Пакет'
+            },
+            'valueLabel': {
+                'en': 'Value',
+                'bg': 'Стойност'
+            },
+            'pollenLabel': {
+                'en': 'pollen',
+                'bg': 'прашец'
+            }
+        },
         'settings-profile': {
             'settingsLabel': {
                 'en': 'Preferences',

@@ -46,6 +46,7 @@ export class Constants {
     static readonly PAYMENT_SERVICE_AUTHORIZE_ENDPOINT = 'api/payment/authorize';
     static readonly PAYMENT_SERVICE_VERIFY_ENDPOINT = 'api/payment/verify';
     static readonly PAYMENT_SERVICE_ALL_ENDPOINT = 'api/payment/all';
+    static readonly PAYMENT_SERVICE_ALL_PROFILE_ENDPOINT = 'api/payment/all/profile';
     static readonly PAYMENT_SERVICE_DETAIL_ENDPOINT = 'api/payment/detail';
     static readonly PAYMENT_SERVICE_TIER_ALL_ENDPOINT = 'api/payment/tier/all';
     static readonly PAYMENT_SERVICE_TIER_DETAIL_ENDPOINT = 'api/payment/tier/detail';

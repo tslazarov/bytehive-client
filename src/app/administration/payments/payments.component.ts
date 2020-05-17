@@ -7,13 +7,9 @@ import { TranslationService } from '../../services/utilities/translation.service
 import { CommunicationService } from '../../services/utilities/communication.service';
 import { ListScrapeRequest } from '../../models/listscraperequest.model';
 import { ConfirmationData, ConfirmationDialog } from '../../utilities/dialogs/confirmation/confirmation.dialog';
-import { ScrapeRequestsService } from '../../services/scraperequests.service';
 import { Constants } from '../../utilities/constants';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
-import { RequestStatus } from '../../models/enums/requeststatus.enum';
-import { RequestDetailData, RequestDetailDialog } from '../../utilities/dialogs/requestdetail/requestdetail.dialog';
-import { environment } from '../../../environments/environment';
 import { ListPayment } from '../../models/listpayment.model';
 import { PaymentsService } from '../../services/payments.service';
 import { PaymentStatus } from '../../models/enums/paymentstatus.enum';
