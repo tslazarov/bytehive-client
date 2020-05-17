@@ -1124,6 +1124,48 @@ export class LabelsMessages {
                 'bg': 'Маркер'
             }
         },
+        'paymentdetail-dialog': {
+            'fromLabel': {
+                'en': 'from',
+                'bg': 'от'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'currencyLabel': {
+                'en': 'eur',
+                'bg': 'евро'
+            },
+            'providerLabel': {
+                'en': 'Provider',
+                'bg': 'Източник'
+            },
+            'externalIdLabel': {
+                'en': 'Payment number',
+                'bg': 'Номер на плащане'
+            },
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'skuLabel': {
+                'en': 'SKU',
+                'bg': 'SKU'
+            },
+            'priceLabel': {
+                'en': 'Price',
+                'bg': 'Стойност'
+            },
+            'valueLabel': {
+                'en': 'Value',
+                'bg': 'Стойност'
+            },
+            'pollenLabel': {
+                'en': 'pollen',
+                'bg': 'прашец'
+            },
+        },
         'paypalpayment-dialog': {
             'serverErrorLabel': {
                 'en': 'The payment was not successful. Please try later.',

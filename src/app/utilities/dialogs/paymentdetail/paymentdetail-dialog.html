@@ -1,0 +1,52 @@
+<div>
+    <div class="row pb-3">
+        <div class="col-10">
+        </div>
+        <div class="col-2 right">
+            <button class="close-button" mat-button (click)="close()">
+                <span class="icon close-icon large-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="paymentdetail-wrapper pt-3">
+        <div class="row">
+            <div class="col-md-5">
+                <h5>{{data.creationDate | localizedDate :'d MMM yyyy HH:mm:ss'}}</h5>
+            </div>
+            <div class="col-md-2 center">
+                {{data.price | number:'1.2-2' }} {{currencyLabel | localize: 'currencyLabel':'paymentdetail-dialog':'label' | uppercase}}
+            </div>
+            <div class="col-md-5 right">{{fromLabel | localize: 'fromLabel':'paymentdetail-dialog':'label'}}
+                <span class="bold">{{data.email}}</span></div>
+        </div>
+        <div class="pb-3 pt-1">
+            <div class="mat-divider full-width"></div>
+        </div>
+        <div>{{statusLabel | localize: 'statusLabel':'paymentdetail-dialog':'label'}}: <span class="bold">{{data.status |
+                paymentstatusconvert:true}}
+            </span>
+        </div>
+        <div>
+            {{providerLabel | localize: 'providerLabel':'paymentdetail-dialog':'label'}}: <span class="bold">{{data.provider}}</span>
+        </div>
+        <div>
+            {{externalIdLabel | localize: 'externalIdLabel':'paymentdetail-dialog':'label'}}: <span class="bold">{{data.externalId}}</span>
+        </div>
+        <div class="pb-3 pt-3">
+            <div class="mat-divider full-width"></div>
+        </div>
+        <div class="row pb-2">
+            <div class="col-3 bold center">{{nameLabel | localize: 'nameLabel':'paymentdetail-dialog':'label' | uppercase}}</div>
+            <div class="col-3 bold center">{{skuLabel | localize: 'skuLabel':'paymentdetail-dialog':'label' | uppercase}}</div>
+            <div class="col-3 bold center">{{priceLabel | localize: 'priceLabel':'paymentdetail-dialog':'label' | uppercase}}</div>
+            <div class="col-3 bold center">{{valueLabel | localize: 'valueLabel':'paymentdetail-dialog':'label' | uppercase}}</div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-3 center">{{data.tierName}}</div>
+            <div class="col-3 center">{{data.tierSku}}</div>
+            <div class="col-3 center">{{data.price}} {{currencyLabel | localize: 'currencyLabel':'paymentdetail-dialog':'label'}}</div>
+            <div class="col-3 center">{{data.tierValue}} {{pollenLabel | localize: 'pollenLabel':'paymentdetail-dialog':'label'}}</div>
+        </div>
+    </div>
+
+</div>

@@ -6,6 +6,7 @@ import { EscapeHtmlPipe } from './safe-html.pipe';
 import { ScrapeStatusConvertionPipe } from './scrape-status.convertion.pipe';
 import { ExportTypeConvertionPipe } from './export-type.convertion.pipe';
 import { ScrapeTypeConvertionPipe } from './scrape-type.convertion.pipe';
+import { PaymentStatusConvertionPipe } from './payment-status.convertion.pipe';
 
 @NgModule({
     declarations: [
@@ -14,6 +15,7 @@ import { ScrapeTypeConvertionPipe } from './scrape-type.convertion.pipe';
         EscapeUrlPipe,
         EscapeHtmlPipe,
         ScrapeStatusConvertionPipe,
+        PaymentStatusConvertionPipe,
         ExportTypeConvertionPipe,
         ScrapeTypeConvertionPipe
     ],
@@ -23,8 +25,9 @@ import { ScrapeTypeConvertionPipe } from './scrape-type.convertion.pipe';
         EscapeUrlPipe,
         EscapeHtmlPipe,
         ScrapeStatusConvertionPipe,
+        PaymentStatusConvertionPipe,
         ExportTypeConvertionPipe,
-        ScrapeTypeConvertionPipe
+        ScrapeTypeConvertionPipe,
     ]
 })
 export class PipesModule {

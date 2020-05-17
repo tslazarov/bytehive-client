@@ -17,6 +17,7 @@ import { environment } from '../../../environments/environment';
 import { ListPayment } from '../../models/listpayment.model';
 import { PaymentsService } from '../../services/payments.service';
 import { PaymentStatus } from '../../models/enums/paymentstatus.enum';
+import { PaymentDetailDialog, PaymentDetailData } from '../../utilities/dialogs/paymentdetail/paymentdetail.dialog';
 
 export const CONDITIONS_FUNCTIONS = {
     'contains': function (value, filteredValue) {
@@ -233,7 +234,17 @@ export class PaymentsComponent implements OnInit, OnDestroy {
     }
 
     showDetail(id: string): void {
-        // show detail
+        this.paymentsService.getPayment(id).subscribe(result => {
+            if (result) {
+                let paymentDetailData = result as PaymentDetailData;
+
+                let dialogRef = this.dialog.open(PaymentDetailDialog, { width: '800px', minHeight: '450px', autoFocus: false, data: paymentDetailData });
+
+                dialogRef.afterClosed().subscribe();
+            }
+        }, (error) => {
+
+        });
     }
 
     delete(id: string): void {

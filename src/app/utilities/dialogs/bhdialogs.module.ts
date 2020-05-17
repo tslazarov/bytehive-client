@@ -22,6 +22,7 @@ import { EmailChangeDialog } from './emailchange/emailchange.dialog';
 import { RequestDetailDialog } from './requestdetail/requestdetail.dialog';
 import { PayPalPaymentDialog } from './paypalpayment/paypalpayment.dialog';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { PaymentDetailDialog } from './paymentdetail/paymentdetail.dialog';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
         DetailValidationDialog,
         EmailChangeDialog,
         RequestDetailDialog,
+        PaymentDetailDialog,
         PayPalPaymentDialog,
         ProxyWrapperComponent
     ],
@@ -65,6 +67,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
         DetailValidationDialog,
         EmailChangeDialog,
         RequestDetailDialog,
+        PaymentDetailDialog,
         PayPalPaymentDialog
     ],
     providers: [

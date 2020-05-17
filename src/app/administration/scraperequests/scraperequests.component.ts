@@ -222,14 +222,7 @@ export class ScrapeRequestsComponent implements OnInit, OnDestroy {
     showDetail(id: string): void {
         this.scrapeRequestsService.getScrapeRequest(id).subscribe(result => {
             if (result) {
-                let requestDetailData = new RequestDetailData();
-                requestDetailData.id = result.id;
-                requestDetailData.creationDate = result.creationDate;
-                requestDetailData.data = result.data;
-                requestDetailData.email = result.email;
-                requestDetailData.exportType = result.exportType;
-                requestDetailData.scrapeType = result.scrapeType;
-                requestDetailData.status = result.status;
+                let requestDetailData = result as RequestDetailData;
 
                 let dialogRef = this.dialog.open(RequestDetailDialog, { width: '700px', minHeight: '450px', autoFocus: false, data: requestDetailData });
 
