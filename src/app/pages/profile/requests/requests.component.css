@@ -36,10 +36,6 @@ tr.mat-row:hover .request-action-picker {
     background: url(../../../../assets/icons/action-accent.svg);
 }
 
-.delete {
-    color: #e20405;
-}
-
 .menu-link {
     text-decoration: none;
     color: #212121;

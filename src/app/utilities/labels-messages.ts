@@ -55,6 +55,10 @@ export class LabelsMessages {
                 'en': 'Pricing',
                 'bg': 'Цени'
             },
+            'pricingTooltipLabel': {
+                'en': '1 pollen = 100 results',
+                'bg': '1 прашец = 100 резултата'
+            },
             'workerLabel': {
                 'en': 'Worker',
                 'bg': 'Работник'

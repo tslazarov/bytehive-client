@@ -7,8 +7,10 @@
                 <div class="pt-4 pb-4 m-4">
                     <img width="150px" src="http://localhost:4200/assets/icons/json-accent.svg">
                 </div>
-                <h5 class="pb-3">{{paymentTier.price}} {{currencyLabel | localize: 'currencyLabel':'pricing':'label'}} /
-                    {{paymentTier.value}} {{pollenLabel | localize: 'pollenLabel':'pricing':'label'}}</h5>
+                <h5 class="pb-3 payment-price">{{paymentTier.price}} {{currencyLabel | localize: 'currencyLabel':'pricing':'label'}}
+                    / {{paymentTier.value}} {{pollenLabel | localize: 'pollenLabel':'pricing':'label'}} <span matTooltip="{{pricingTooltipLabel | localize: 'pricingTooltipLabel':'pricing':'label'}}"
+                        matTooltipPosition="above" matTooltipClass="payment-price-tooltip" class="icon question-icon medium-icon"></span>
+                </h5>
             </div>
             <div class="button-wrapper mat-elevation-z3">
                 <button disableRipple mat-flat-button class="full-width purchase-button" (click)="purchase(paymentTier.tierName, paymentTier.price)">

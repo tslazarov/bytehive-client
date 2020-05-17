@@ -246,6 +246,12 @@ body {
     border-top-style: solid;
 }
 
+.mat-tooltip {
+    background-color: #212121 !important;
+    color: #FFFFFF !important;
+    font-size: 12px;
+}
+
 /* Bootstrap customizations */
 
 button:focus {

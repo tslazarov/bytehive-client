@@ -20,3 +20,15 @@
     background-color: #212121;
     color: #FFEB3B;
 }
+
+.question-icon {
+    background: url(../../../assets/icons/question-accent.svg);
+}
+
+.payment-price {
+    line-height: 30px;
+}
+
+.payment-price span {
+    margin-bottom: -5px;
+}

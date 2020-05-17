@@ -26,6 +26,7 @@ export class PricingComponent implements OnInit {
 
     // labels
     pricingLabel: string;
+    pricingTooltipLabel: string;
     currencyLabel: string;
     pollenLabel: string;
     purchaseNowLabel: string;
@@ -74,6 +75,7 @@ export class PricingComponent implements OnInit {
 
     setLabelsMessages(): void {
         this.pricingLabel = this.translationService.localizeValue('pricingLabel', 'pricing', 'label');
+        this.pricingTooltipLabel = this.translationService.localizeValue('pricingTooltipLabel', 'pricing', 'label');
         this.currencyLabel = this.translationService.localizeValue('currencyLabel', 'pricing', 'label');
         this.pollenLabel = this.translationService.localizeValue('pollenLabel', 'pricing', 'label');
         this.purchaseNowLabel = this.translationService.localizeValue('purchaseNowLabel', 'pricing', 'label');
