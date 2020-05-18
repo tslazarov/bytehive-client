@@ -1,11 +1,11 @@
-export class ListScrapeRequest {
+export class ListProfileRequest {
     id: string;
-    userId: string;
-    email: string;
     creationDate: Date;
     downloadUrl: string;
+    shareableDownloadUrl: string;
     fileName: string;
     contentType: string;
     entries: number;
     status: number;
+    accessKey: string;
 }

@@ -52,8 +52,8 @@
             </ng-container>
             <ng-container matColumnDef="downloadUrl">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>{{linkLabel | localize: 'linkLabel':'scraperequests':'label'}}</th>
-                <td mat-cell *matCellDef="let element"> <a *ngIf="element.status == 2 || element.status == 4" href="{{ element.downloadUrl }}">{{
-                        element.fileName }}</a>
+                <td mat-cell *matCellDef="let element"> <span class="download-element" *ngIf="element.status == 2 || element.status == 4"
+                        (click)="download(element.fileName, element.contentType, element.id)">{{ element.fileName }}</span>
                 </td>
             </ng-container>
             <ng-container matColumnDef="action">
@@ -82,4 +82,5 @@
 
         <mat-paginator [pageSizeOptions]="[20, 50]" showFirstLastButtons></mat-paginator>
     </div>
+    <a class="download-link" #downloadFileLink></a>
 </div>

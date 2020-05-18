@@ -74,3 +74,12 @@ tr.mat-row:hover .request-action-picker {
 .custom-date-picker:hover {
     cursor: pointer;
 }
+
+.download-element:hover {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.download-link {
+    visibility:none;
+}

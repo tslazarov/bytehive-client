@@ -22,6 +22,8 @@ import { EmailChangeDialog } from './emailchange/emailchange.dialog';
 import { RequestDetailDialog } from './requestdetail/requestdetail.dialog';
 import { PayPalPaymentDialog } from './paypalpayment/paypalpayment.dialog';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { PaymentDetailDialog } from './paymentdetail/paymentdetail.dialog';
+import { ShareLinkDialog } from './sharelink/sharelink.dialog';
 
 @NgModule({
     declarations: [
@@ -37,7 +39,9 @@ import { NgxPayPalModule } from 'ngx-paypal';
         DetailValidationDialog,
         EmailChangeDialog,
         RequestDetailDialog,
+        PaymentDetailDialog,
         PayPalPaymentDialog,
+        ShareLinkDialog,
         ProxyWrapperComponent
     ],
     imports: [
@@ -65,7 +69,9 @@ import { NgxPayPalModule } from 'ngx-paypal';
         DetailValidationDialog,
         EmailChangeDialog,
         RequestDetailDialog,
-        PayPalPaymentDialog
+        PaymentDetailDialog,
+        PayPalPaymentDialog,
+        ShareLinkDialog
     ],
     providers: [
         TranslationService,

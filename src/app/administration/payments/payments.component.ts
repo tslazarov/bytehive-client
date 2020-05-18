@@ -7,16 +7,13 @@ import { TranslationService } from '../../services/utilities/translation.service
 import { CommunicationService } from '../../services/utilities/communication.service';
 import { ListScrapeRequest } from '../../models/listscraperequest.model';
 import { ConfirmationData, ConfirmationDialog } from '../../utilities/dialogs/confirmation/confirmation.dialog';
-import { ScrapeRequestsService } from '../../services/scraperequests.service';
 import { Constants } from '../../utilities/constants';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
-import { RequestStatus } from '../../models/enums/requeststatus.enum';
-import { RequestDetailData, RequestDetailDialog } from '../../utilities/dialogs/requestdetail/requestdetail.dialog';
-import { environment } from '../../../environments/environment';
 import { ListPayment } from '../../models/listpayment.model';
 import { PaymentsService } from '../../services/payments.service';
 import { PaymentStatus } from '../../models/enums/paymentstatus.enum';
+import { PaymentDetailDialog, PaymentDetailData } from '../../utilities/dialogs/paymentdetail/paymentdetail.dialog';
 
 export const CONDITIONS_FUNCTIONS = {
     'contains': function (value, filteredValue) {
@@ -150,7 +147,7 @@ export class PaymentsComponent implements OnInit, OnDestroy {
         this.externalIdLabel = this.translationService.localizeValue('externalIdLabel', 'payments', 'label');
         this.detailsLabel = this.translationService.localizeValue('detailsLabel', 'payments', 'label');
         this.deleteLabel = this.translationService.localizeValue('deleteLabel', 'payments', 'label');
-        this.confirmDeletePaymentLabel = this.translationService.localizeValue('confirmDeleteScrapeRequestLabel', 'payments', 'label');
+        this.confirmDeletePaymentLabel = this.translationService.localizeValue('confirmDeletePaymentLabel', 'payments', 'label');
 
         this.fetchStatuses();
     }
@@ -233,11 +230,40 @@ export class PaymentsComponent implements OnInit, OnDestroy {
     }
 
     showDetail(id: string): void {
-        // show detail
+        this.paymentsService.getPayment(id).subscribe(result => {
+            if (result) {
+                let paymentDetailData = result as PaymentDetailData;
+
+                let dialogRef = this.dialog.open(PaymentDetailDialog, { width: '800px', minHeight: '450px', autoFocus: false, data: paymentDetailData });
+
+                dialogRef.afterClosed().subscribe();
+            }
+        }, (error) => {
+
+        });
     }
 
     delete(id: string): void {
-        // delete
+        let confirmationData = new ConfirmationData();
+        confirmationData.message = this.translationService.localizeValue('confirmDeletePaymentLabel', 'payments', 'label');
+
+        let dialogRef = this.dialog.open(ConfirmationDialog, { width: '40vw', minHeight: '200px', autoFocus: false, data: confirmationData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.paymentsService.deletePayment(id)
+                    .subscribe((result) => {
+                        if (result) {
+                            let deletedPaymentIndex = this.payments.map(i => i.id).indexOf(id);
+
+                            this.payments.splice(deletedPaymentIndex, 1);
+                            this.bindDataSource(this.payments);
+                        }
+                    }, (error) => {
+                        //TODO: Show error message;
+                    });
+            }
+        });
     }
 
     navigate(route: string): void {

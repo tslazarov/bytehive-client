@@ -1,0 +1,54 @@
+table {
+    width: 100%;
+}
+
+.header-icon {
+    vertical-align: middle;
+}
+
+.header-title {
+    vertical-align: middle;
+    font-weight: 400;
+    font-size: 52px;
+}
+
+.requests-icon {
+    background: url(../../../../assets/icons/requests-accent.svg);
+}
+
+.request-action-picker {
+    visibility: hidden;
+}
+
+.request-action-picker[aria-expanded="true"] {
+    visibility:visible;
+}
+
+tr.mat-row:hover .request-action-picker {
+    visibility:visible;
+}
+
+.action-icon {
+    background: url(../../../../assets/icons/action-unfocused.svg);
+}
+
+.action-icon:hover {
+    background: url(../../../../assets/icons/action-accent.svg);
+}
+
+.menu-link {
+    text-decoration: none;
+    color: #212121;
+}
+
+.menu-link:hover {
+    cursor: pointer;
+}
+
+.disabled-action {
+    color: #afafaf;
+}
+
+.download-link {
+    visibility:none;
+}

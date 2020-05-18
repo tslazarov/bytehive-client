@@ -32,6 +32,22 @@ export class ScrapeRequestsService {
         return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_ALL_ENDPOINT}`, { headers, responseType: 'json' });
     }
 
+    getProfileAll(): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_ALL_PROFILE_ENDPOINT}`, { headers, responseType: 'json' });
+    }
+
+    getProfileScrapeRequest(id: string): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_DETAIL_PROFILE_ENDPOINT}?id=${id}`, { headers, responseType: 'json' });
+    }
+
     getScrapeRequest(id: string): Observable<any> {
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
@@ -46,5 +62,21 @@ export class ScrapeRequestsService {
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
         return this.http.delete(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_DELETE_ENDPOINT}?id=${id}`, { headers, responseType: 'json' });
+    }
+
+    unlockScrapeRequest(id: string): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.put(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_UNLOCK_ENDPOINT}?id=${id}`, {}, { headers, responseType: 'json' });
+    }
+
+    downloadScrapeRequest(id: string): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_FILE_ENDPOINT}/${id}`, { headers, responseType: 'arraybuffer' });
     }
 }

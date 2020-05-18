@@ -36,15 +36,20 @@ export class Constants {
     static readonly SCRAPE_REQUEST_SERVICE_BASE_ENDPOINT = 'api/scraperequests';
     static readonly SCRAPE_REQUEST_SERVICE_CREATE_ENDPOINT = 'api/scraperequests/create';
     static readonly SCRAPE_REQUEST_SERVICE_ALL_ENDPOINT = 'api/scraperequests/all';
+    static readonly SCRAPE_REQUEST_SERVICE_ALL_PROFILE_ENDPOINT = 'api/scraperequests/all/profile';
     static readonly SCRAPE_REQUEST_SERVICE_DETAIL_ENDPOINT = 'api/scraperequests/detail';
+    static readonly SCRAPE_REQUEST_SERVICE_DETAIL_PROFILE_ENDPOINT = 'api/scraperequests/detail/profile';
     static readonly SCRAPE_REQUEST_SERVICE_FILE_ENDPOINT = 'api/scraperequests/file';
     static readonly SCRAPE_REQUEST_SERVICE_DELETE_ENDPOINT = 'api/scraperequests/delete';
+    static readonly SCRAPE_REQUEST_SERVICE_UNLOCK_ENDPOINT = 'api/scraperequests/unlock';
 
     static readonly PAYMENT_SERVICE_BASE_ENDPOINT = 'api/payment';
     static readonly PAYMENT_SERVICE_CREATE_ENDPOINT = 'api/payment/create';
+    static readonly PAYMENT_SERVICE_DELETE_ENDPOINT = 'api/payment/delete';
     static readonly PAYMENT_SERVICE_AUTHORIZE_ENDPOINT = 'api/payment/authorize';
     static readonly PAYMENT_SERVICE_VERIFY_ENDPOINT = 'api/payment/verify';
     static readonly PAYMENT_SERVICE_ALL_ENDPOINT = 'api/payment/all';
+    static readonly PAYMENT_SERVICE_ALL_PROFILE_ENDPOINT = 'api/payment/all/profile';
     static readonly PAYMENT_SERVICE_DETAIL_ENDPOINT = 'api/payment/detail';
     static readonly PAYMENT_SERVICE_TIER_ALL_ENDPOINT = 'api/payment/tier/all';
     static readonly PAYMENT_SERVICE_TIER_DETAIL_ENDPOINT = 'api/payment/tier/detail';

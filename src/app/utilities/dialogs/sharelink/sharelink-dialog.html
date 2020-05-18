@@ -1,0 +1,17 @@
+<div>
+    <div class="row pb-3">
+        <div class="col-10">
+        </div>
+        <div class="col-2 right">
+            <button class="close-button" mat-button (click)="close()">
+                <span class="icon close-icon large-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="manual-wrapper pt-1 pb-3">
+        <mat-form-field class="pb-4 link-field">
+            <input #downloadLink matInput autocomplete="off" ngModel="{{data.downloadLink}}">
+            <span matSuffix (click)="copyClipboard(downloadLink)" class="icon clipboard-icon medium-icon"></span>
+        </mat-form-field>
+    </div>
+</div>

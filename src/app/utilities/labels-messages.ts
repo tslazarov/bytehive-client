@@ -55,6 +55,10 @@ export class LabelsMessages {
                 'en': 'Pricing',
                 'bg': 'Цени'
             },
+            'pricingTooltipLabel': {
+                'en': '1 pollen = 100 results',
+                'bg': '1 прашец = 100 резултата'
+            },
             'workerLabel': {
                 'en': 'Worker',
                 'bg': 'Работник'
@@ -290,6 +294,90 @@ export class LabelsMessages {
             'serverErrorLabel': {
                 'en': 'Error occured. Please try again later.',
                 'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            }
+        },
+        'orders-profile': {
+            'ordersLabel': {
+                'en': 'My orders',
+                'bg': 'Моите поръчки'
+            },
+            'creationDateLabel': {
+                'en': 'Created on',
+                'bg': 'Създадена на'
+            },
+            'priceLabel': {
+                'en': 'Price',
+                'bg': 'Цена'
+            },
+            'currencyLabel': {
+                'en': 'eur',
+                'bg': 'евро'
+            },
+            'pricingTierLabel': {
+                'en': 'Package tier',
+                'bg': 'Пакет'
+            },
+            'valueLabel': {
+                'en': 'Value',
+                'bg': 'Стойност'
+            },
+            'pollenLabel': {
+                'en': 'pollen',
+                'bg': 'прашец'
+            }
+        },
+        'requests-profile': {
+            'requestsLabel': {
+                'en': 'My requests',
+                'bg': 'Моите заявки'
+            },
+            'creationDateLabel': {
+                'en': 'Created on',
+                'bg': 'Създадена на'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'entriesCountLabel': {
+                'en': 'Records count',
+                'bg': 'Брой записи'
+            },
+            'entriesLabel': {
+                'en': 'records',
+                'bg': 'записа'
+            },
+            'detailsLabel': {
+                'en': 'Details',
+                'bg': 'Детайли'
+            },
+            'unlockLabel': {
+                'en': 'Unlock',
+                'bg': 'Отключи'
+            },
+            'downloadLabel': {
+                'en': 'Download',
+                'bg': 'Свали'
+            },
+            'shareLabel': {
+                'en': 'Share',
+                'bg': 'Сподели'
+            },
+            'confirmUnlockScrapeRequestLabel': {
+                'en': 'Are you sure you want to unlock this request? This would cost',
+                'bg': 'Сигурни ли сте, че искате да отключите тази заявка? Това ще струва'
+            },
+            'pollenLabel': {
+                'en': 'pollen',
+                'bg': 'прашец'
+            },
+            'unlockRequestSuccessLabel': {
+                'en': 'The request was unlocked successfully.',
+                'bg': 'Заявката беше отключена успешно.'
+            },
+            'unlockRequestErrorLabel': {
+                'en': 'Error occured. Please check your balance or try again later.',
+                'bg': 'Възникна грешка. Моля проверете вашия баланс или опитайте по-късно.'
             }
         },
         'settings-profile': {
@@ -797,7 +885,7 @@ export class LabelsMessages {
                 'en': 'Delete',
                 'bg': 'Изтрий'
             },
-            'confirmDeleteScrapeRequestLabel': {
+            'confirmDeletePaymentLabel': {
                 'en': 'Are you sure you want to delete this payment?',
                 'bg': 'Сигурни ли сте, че искате да изтриете това плащане?'
             }
@@ -1123,6 +1211,48 @@ export class LabelsMessages {
                 'en': 'Markup',
                 'bg': 'Маркер'
             }
+        },
+        'paymentdetail-dialog': {
+            'fromLabel': {
+                'en': 'from',
+                'bg': 'от'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'currencyLabel': {
+                'en': 'eur',
+                'bg': 'евро'
+            },
+            'providerLabel': {
+                'en': 'Provider',
+                'bg': 'Източник'
+            },
+            'externalIdLabel': {
+                'en': 'Payment number',
+                'bg': 'Номер на плащане'
+            },
+            'nameLabel': {
+                'en': 'Name',
+                'bg': 'Име'
+            },
+            'skuLabel': {
+                'en': 'SKU',
+                'bg': 'SKU'
+            },
+            'priceLabel': {
+                'en': 'Price',
+                'bg': 'Стойност'
+            },
+            'valueLabel': {
+                'en': 'Value',
+                'bg': 'Стойност'
+            },
+            'pollenLabel': {
+                'en': 'pollen',
+                'bg': 'прашец'
+            },
         },
         'paypalpayment-dialog': {
             'serverErrorLabel': {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, ElementRef } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from 'saturn-datepicker';
 import { Subscription } from 'rxjs';
@@ -14,6 +14,7 @@ import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-mo
 import { RequestStatus } from '../../models/enums/requeststatus.enum';
 import { RequestDetailData, RequestDetailDialog } from '../../utilities/dialogs/requestdetail/requestdetail.dialog';
 import { environment } from '../../../environments/environment';
+import { FileManagerHelper } from '../../utilities/helpers/filemanager-helper';
 
 export const CONDITIONS_FUNCTIONS = {
     'contains': function (value, filteredValue) {
@@ -43,6 +44,7 @@ export class ScrapeRequestsComponent implements OnInit, OnDestroy {
 
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: false }) sort: MatSort;
+    @ViewChild('downloadFileLink', { static: false }) downloadFileLink: ElementRef;
 
     displayedColumns: string[] = ['creationDate', 'email', 'status', 'entries', 'downloadUrl', 'action'];
 
@@ -83,6 +85,7 @@ export class ScrapeRequestsComponent implements OnInit, OnDestroy {
     constructor(private formBuilder: FormBuilder,
         private router: Router,
         private dialog: MatDialog,
+        private fileManagerHelper: FileManagerHelper,
         private scrapeRequestsService: ScrapeRequestsService,
         private translationService: TranslationService,
         private communicationService: CommunicationService) { }
@@ -222,14 +225,7 @@ export class ScrapeRequestsComponent implements OnInit, OnDestroy {
     showDetail(id: string): void {
         this.scrapeRequestsService.getScrapeRequest(id).subscribe(result => {
             if (result) {
-                let requestDetailData = new RequestDetailData();
-                requestDetailData.id = result.id;
-                requestDetailData.creationDate = result.creationDate;
-                requestDetailData.data = result.data;
-                requestDetailData.email = result.email;
-                requestDetailData.exportType = result.exportType;
-                requestDetailData.scrapeType = result.scrapeType;
-                requestDetailData.status = result.status;
+                let requestDetailData = result as RequestDetailData;
 
                 let dialogRef = this.dialog.open(RequestDetailDialog, { width: '700px', minHeight: '450px', autoFocus: false, data: requestDetailData });
 
@@ -243,7 +239,7 @@ export class ScrapeRequestsComponent implements OnInit, OnDestroy {
     delete(id: string): void {
 
         let confirmationData = new ConfirmationData();
-        confirmationData.message = this.translationService.localizeValue('confirmDeleteUserLabel', 'users', 'label');
+        confirmationData.message = this.translationService.localizeValue('confirmDeleteScrapeRequestLabel', 'scraperequests', 'label');
 
         let dialogRef = this.dialog.open(ConfirmationDialog, { width: '40vw', minHeight: '200px', autoFocus: false, data: confirmationData });
 
@@ -262,6 +258,20 @@ export class ScrapeRequestsComponent implements OnInit, OnDestroy {
                     });
             }
         });
+    }
+
+    download(fileName: string, contentType: string, id: string): void {
+        this.scrapeRequestsService.downloadScrapeRequest(id)
+            .subscribe((result) => {
+                let url = this.fileManagerHelper.downLoadFileUrl(result, contentType);
+
+                const link = this.downloadFileLink.nativeElement;
+                link.href = url;
+                link.download = fileName;
+                link.click();
+
+                window.URL.revokeObjectURL(url);
+            });
     }
 
     navigate(route: string): void {
