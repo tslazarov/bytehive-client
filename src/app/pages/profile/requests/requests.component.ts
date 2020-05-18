@@ -12,6 +12,7 @@ import { ConfirmationData, ConfirmationDialog } from '../../../utilities/dialogs
 import { NotifierService } from 'angular-notifier';
 import { FileManagerHelper } from '../../../utilities/helpers/filemanager-helper';
 import { RequestDetailData, RequestDetailDialog } from '../../../utilities/dialogs/requestdetail/requestdetail.dialog';
+import { ShareLinkDialog, ShareLinkData } from '../../../utilities/dialogs/sharelink/sharelink.dialog';
 
 @Component({
     selector: 'bh-profile-requests',
@@ -160,5 +161,14 @@ export class RequestsComponent implements OnInit, OnDestroy {
 
                 window.URL.revokeObjectURL(url);
             });
+    }
+
+    share(downloadLink: string): void {
+        let shareLinkData = new ShareLinkData();
+        shareLinkData.downloadLink = downloadLink;
+
+        let dialogRef = this.dialog.open(ShareLinkDialog, { width: '40vw', minHeight: '200px', autoFocus: false, data: shareLinkData });
+
+        dialogRef.afterClosed().subscribe();
     }
 }

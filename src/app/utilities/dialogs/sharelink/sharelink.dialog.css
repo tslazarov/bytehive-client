@@ -1,0 +1,22 @@
+.close-icon {
+    background: url(../../../../assets/icons/close-accent.svg);
+}
+
+.close-button {
+    background-color: #ffffff;
+}
+
+.clipboard-icon {
+    margin-bottom: -6px;
+    margin-left: 6px;
+    background: url(../../../../assets/icons/clipboard-enabled.svg);
+}
+
+.link-field {
+    width: 100%;
+    padding: 0px 20px;
+}
+
+.clipboard-icon:hover {
+    cursor: pointer;
+}

@@ -23,6 +23,7 @@ import { RequestDetailDialog } from './requestdetail/requestdetail.dialog';
 import { PayPalPaymentDialog } from './paypalpayment/paypalpayment.dialog';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { PaymentDetailDialog } from './paymentdetail/paymentdetail.dialog';
+import { ShareLinkDialog } from './sharelink/sharelink.dialog';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { PaymentDetailDialog } from './paymentdetail/paymentdetail.dialog';
         RequestDetailDialog,
         PaymentDetailDialog,
         PayPalPaymentDialog,
+        ShareLinkDialog,
         ProxyWrapperComponent
     ],
     imports: [
@@ -68,7 +70,8 @@ import { PaymentDetailDialog } from './paymentdetail/paymentdetail.dialog';
         EmailChangeDialog,
         RequestDetailDialog,
         PaymentDetailDialog,
-        PayPalPaymentDialog
+        PayPalPaymentDialog,
+        ShareLinkDialog
     ],
     providers: [
         TranslationService,
