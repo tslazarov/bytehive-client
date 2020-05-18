@@ -11,6 +11,7 @@ import { Constants } from '../../../utilities/constants';
 import { ConfirmationData, ConfirmationDialog } from '../../../utilities/dialogs/confirmation/confirmation.dialog';
 import { NotifierService } from 'angular-notifier';
 import { FileManagerHelper } from '../../../utilities/helpers/filemanager-helper';
+import { RequestDetailData, RequestDetailDialog } from '../../../utilities/dialogs/requestdetail/requestdetail.dialog';
 
 @Component({
     selector: 'bh-profile-requests',
@@ -131,6 +132,20 @@ export class RequestsComponent implements OnInit, OnDestroy {
                 }
             });
         }
+    }
+
+    showDetail(id: string): void {
+        this.scrapeRequestsService.getScrapeRequest(id).subscribe(result => {
+            if (result) {
+                let requestDetailData = result as RequestDetailData;
+
+                let dialogRef = this.dialog.open(RequestDetailDialog, { width: '700px', minHeight: '450px', autoFocus: false, data: requestDetailData });
+
+                dialogRef.afterClosed().subscribe();
+            }
+        }, (error) => {
+
+        });
     }
 
     download(fileName: string, contentType: string, id: string): void {

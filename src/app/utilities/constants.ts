@@ -38,6 +38,7 @@ export class Constants {
     static readonly SCRAPE_REQUEST_SERVICE_ALL_ENDPOINT = 'api/scraperequests/all';
     static readonly SCRAPE_REQUEST_SERVICE_ALL_PROFILE_ENDPOINT = 'api/scraperequests/all/profile';
     static readonly SCRAPE_REQUEST_SERVICE_DETAIL_ENDPOINT = 'api/scraperequests/detail';
+    static readonly SCRAPE_REQUEST_SERVICE_DETAIL_PROFILE_ENDPOINT = 'api/scraperequests/detail/profile';
     static readonly SCRAPE_REQUEST_SERVICE_FILE_ENDPOINT = 'api/scraperequests/file';
     static readonly SCRAPE_REQUEST_SERVICE_DELETE_ENDPOINT = 'api/scraperequests/delete';
     static readonly SCRAPE_REQUEST_SERVICE_UNLOCK_ENDPOINT = 'api/scraperequests/unlock';
