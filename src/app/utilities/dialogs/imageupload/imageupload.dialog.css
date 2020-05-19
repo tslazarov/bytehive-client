@@ -1,0 +1,69 @@
+.close-icon {
+    background: url(../../../../assets/icons/close-accent.svg);
+}
+
+.close-button {
+    background-color: #ffffff;
+}
+
+.close-button:hover {
+    background-color: #efefef;
+}
+
+.container {
+    width: 100%;
+    height: 260px;
+    padding: 2rem;
+    text-align: center;
+    border: dashed 1px #dfdfdf;
+    position: relative;
+    margin: 0 auto;
+}
+.container input {
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+  
+.container label {
+    min-width: 150px;
+    border-radius: 2px;
+    background-color: #FFEB3B;
+    color: #ffffff;
+    line-height: 36px;
+}
+
+.container input:hover {
+    cursor: pointer;
+}
+
+.confirm {
+    min-width: 150px;
+    background-color: #FFEB3B;
+    color: #ffffff;
+}
+
+.confirm:hover {
+    background-color: #FFEB3B;
+    color: #212121;
+}
+
+.cancel {
+    min-width: 150px;
+    background-color: #efefef;
+    color: #666666;
+}
+
+.cancel:hover {
+    background-color: #efefef;
+    color: #212121;
+}
+
+.cropper .resize .square {
+    background: #FFEB3B !important;
+    border: 1px solid #FFEB3B !important;
+}

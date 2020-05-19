@@ -6,6 +6,8 @@ import { AccountService } from '../../services/account.service';
 import { AuthLocalService } from '../../services/utilities/auth.service';
 import { AuthService } from 'angularx-social-login';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { ImageUploadDialog, ImageUploadData } from '../../utilities/dialogs/imageupload/imageupload.dialog';
 
 @Component({
     selector: 'app-profile',
@@ -35,6 +37,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     constructor(private renderer: Renderer,
         private router: Router,
+        private dialog: MatDialog,
         private communicationService: CommunicationService,
         private translationService: TranslationService,
         private accountService: AccountService,
@@ -113,5 +116,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     profileChange() {
         this.fetchProfile();
+    }
+
+    changeAvatar() {
+        let imageUploadData = new ImageUploadData();
+
+        let dialogRef = this.dialog.open(ImageUploadDialog, { width: '800px', minHeight: '450px', autoFocus: false, data: imageUploadData });
+
+        dialogRef.afterClosed().subscribe();
     }
 }
