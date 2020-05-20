@@ -53,7 +53,7 @@ export class ImageUploadDialog {
     }
 
     confirm(): void {
-        this.dialogRef.close(true);
+        this.dialogRef.close(this.croppedImage);
     }
 
     onFileDropped($event): void {
@@ -72,7 +72,6 @@ export class ImageUploadDialog {
 
     imageCropped(event: ImageCroppedEvent) {
         this.croppedImage = event.base64;
-        console.log(this.croppedImage);
     }
     imageLoaded() {
         // show cropper
@@ -83,8 +82,4 @@ export class ImageUploadDialog {
     loadImageFailed() {
         // show message
     }
-}
-
-export class ImageUploadData {
-    test: string;
 }

@@ -19,6 +19,7 @@ export class Constants {
     static readonly ACCOUNT_SERVICE_CHANGE_SETTINGS_ENDPOINT = 'api/account/settings';
     static readonly ACCOUNT_SERVICE_CHANGE_INFORMATION_ENDPOINT = 'api/account/information';
     static readonly ACCOUNT_SERVICE_CHANGE_EMAIL_ENDPOINT = 'api/account/email';
+    static readonly ACCOUNT_SERVICE_CHANGE_AVATAR_ENDPOINT = 'api/account/avatar';
 
     static readonly USER_SERVICE_BASE_ENDPOINT = 'api/users/';
     static readonly USER_SERVICE_ALL_ENDPOINT = 'api/users/all';

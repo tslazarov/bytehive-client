@@ -7,7 +7,9 @@ import { AuthLocalService } from '../../services/utilities/auth.service';
 import { AuthService } from 'angularx-social-login';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { ImageUploadDialog, ImageUploadData } from '../../utilities/dialogs/imageupload/imageupload.dialog';
+import { ImageUploadDialog } from '../../utilities/dialogs/imageupload/imageupload.dialog';
+import { AvatarChange } from '../../models/avatarchange.model';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
     selector: 'app-profile',
@@ -19,6 +21,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     @ViewChild('requestOption', { static: false }) requestOption: ElementRef;
 
     // common
+    notifier: NotifierService;
     profile: any = {};
     lastAction: any;
     selectedAction: string;
@@ -38,11 +41,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
     constructor(private renderer: Renderer,
         private router: Router,
         private dialog: MatDialog,
+        private notifierService: NotifierService,
         private communicationService: CommunicationService,
         private translationService: TranslationService,
         private accountService: AccountService,
         private authLocalService: AuthLocalService,
-        private authService: AuthService) { }
+        private authService: AuthService) {
+        this.notifier = notifierService;
+    }
 
     ngOnInit(): void {
         this.selectedAction = 'request';
@@ -50,6 +56,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.setLabelsMessages();
 
         this.fetchProfile();
+        this.fetchAvatar();
 
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
             this.setLabelsMessages();
@@ -70,6 +77,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
         }, (error) => {
 
         });
+    }
+
+    fetchAvatar() {
+        console.log('fetch avatar');
     }
 
     setLabelsMessages(): void {
@@ -119,10 +130,20 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
 
     changeAvatar() {
-        let imageUploadData = new ImageUploadData();
+        let dialogRef = this.dialog.open(ImageUploadDialog, { width: '800px', minHeight: '450px', autoFocus: false, });
 
-        let dialogRef = this.dialog.open(ImageUploadDialog, { width: '800px', minHeight: '450px', autoFocus: false, data: imageUploadData });
+        dialogRef.afterClosed().subscribe((image) => {
+            if (image) {
+                let avatarChange = new AvatarChange();
+                avatarChange.imageBase64 = image;
+                this.accountService.changeAvatar(avatarChange).subscribe((result) => {
+                    this.notifier.notify("success", this.translationService.localizeValue('unlockRequestSuccessLabel', 'requests-profile', 'label'));
 
-        dialogRef.afterClosed().subscribe();
+                    this.fetchAvatar();
+                }, (error) => {
+                    this.notifier.notify("error", this.translationService.localizeValue('unlockRequestErrorLabel', 'requests-profile', 'label'));
+                })
+            }
+        });
     }
 }

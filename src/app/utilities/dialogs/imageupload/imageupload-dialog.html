@@ -10,14 +10,14 @@
     </div>
     <div class="manual-wrapper pt-1">
         <div *ngIf="!shouldCropImage" class="container" dragdrop (fileDropped)="onFileDropped($event)">
-            <input type="file" #fileDropRef id="fileDropRef" single (change)="fileBrowseHandler($event)" accept=".png" />
+            <input type="file" #fileDropRef id="fileDropRef" single (change)="fileBrowseHandler($event)" accept=".png, .jpg" />
             <img src="../../../../assets/icons/upload-accent.svg" width="80px" class="p-1">
             <h6 class="pt-2">{{dragDropLabel | localize: 'dragDropLabel':'fileupload':'label'}}</h6>
             <h6 class="pb-2">{{orLabel | localize: 'orLabel':'fileupload':'label'}}</h6>
             <label for="fileDropRef">{{browseFileLabel | localize: 'browseFileLabel':'fileupload':'label' | uppercase}}</label>
         </div>
-        <image-cropper *ngIf="shouldCropImage" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1/1"
-            format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+        <image-cropper resizeToWidth="500" *ngIf="shouldCropImage" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+            [aspectRatio]="1/1" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
             (loadImageFailed)="loadImageFailed()"></image-cropper>
     </div>
     <div class="row pt-3">
