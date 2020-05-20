@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Renderer, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { TranslationService } from '../../services/utilities/translation.service';
 import { Subscription } from 'rxjs';
 import { CommunicationService } from '../../services/utilities/communication.service';
@@ -10,6 +10,8 @@ import { MatDialog } from '@angular/material';
 import { ImageUploadDialog } from '../../utilities/dialogs/imageupload/imageupload.dialog';
 import { AvatarChange } from '../../models/avatarchange.model';
 import { NotifierService } from 'angular-notifier';
+import { Constants } from '../../utilities/constants';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-profile',
@@ -25,6 +27,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     profile: any = {};
     lastAction: any;
     selectedAction: string;
+    image: string;
 
     // subscriptions
     languageChangeSubscription: Subscription;
@@ -56,7 +59,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.setLabelsMessages();
 
         this.fetchProfile();
-        this.fetchAvatar();
 
         this.languageChangeSubscription = this.communicationService.languageChangeEmitted.subscribe(() => {
             this.setLabelsMessages();
@@ -74,13 +76,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
     fetchProfile() {
         this.accountService.getProfile().subscribe((result) => {
             this.profile = result;
+            if (this.profile.image) {
+                this.image = `${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_IMAGE_ENDPOINT}/${this.profile.image}`;
+            }
         }, (error) => {
 
         });
-    }
-
-    fetchAvatar() {
-        console.log('fetch avatar');
     }
 
     setLabelsMessages(): void {
@@ -139,7 +140,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
                 this.accountService.changeAvatar(avatarChange).subscribe((result) => {
                     this.notifier.notify("success", this.translationService.localizeValue('unlockRequestSuccessLabel', 'requests-profile', 'label'));
 
-                    this.fetchAvatar();
+                    this.profileChange();
                 }, (error) => {
                     this.notifier.notify("error", this.translationService.localizeValue('unlockRequestErrorLabel', 'requests-profile', 'label'));
                 })

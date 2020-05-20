@@ -8,6 +8,7 @@ export class Constants {
 
     static readonly ACCOUNT_SERVICE_BASE_ENDPOINT = 'api/account/';
     static readonly ACCOUNT_SERVICE_PROFILE_ENDPOINT = 'api/account/profile';
+    static readonly ACCOUNT_SERVICE_IMAGE_ENDPOINT = 'api/account/image';
     static readonly ACCOUNT_SERVICE_SIGNUP_ENDPOINT = 'api/account/signup';
     static readonly ACCOUNT_SERVICE_SIGNIN_ENDPOINT = 'api/account/signin';
     static readonly ACCOUNT_SERVICE_SIGNIN_EXTERNAL_ENDPOINT = 'api/account/signinExternal';
