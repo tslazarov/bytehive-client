@@ -1,0 +1,33 @@
+<div>
+    <div class="row pb-3">
+        <div class="col-10">
+        </div>
+        <div class="col-2 right">
+            <button class="close-button" mat-button (click)="close()">
+                <span class="icon close-icon large-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="manual-wrapper pt-1">
+        <div *ngIf="!shouldCropImage" class="container" dragdrop (fileDropped)="onFileDropped($event)">
+            <input type="file" #fileDropRef id="fileDropRef" single (change)="fileBrowseHandler($event)" accept=".png, .jpg" />
+            <img src="../../../../assets/icons/upload-accent.svg" width="80px" class="p-1">
+            <h6 class="pt-2">{{dragDropLabel | localize: 'dragDropLabel':'fileupload':'label'}}</h6>
+            <h6 class="pb-2">{{orLabel | localize: 'orLabel':'fileupload':'label'}}</h6>
+            <label for="fileDropRef">{{browseFileLabel | localize: 'browseFileLabel':'fileupload':'label' | uppercase}}</label>
+        </div>
+        <image-cropper resizeToWidth="500" *ngIf="shouldCropImage" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
+            [aspectRatio]="1/1" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+            (loadImageFailed)="loadImageFailed()"></image-cropper>
+    </div>
+    <div class="row pt-3">
+        <div class="col-12 right">
+            <button class="cancel mr-3" disableRipple mat-flat-button (click)="close()">
+                <span>{{cancelLabel | localize: 'cancelLabel':'confirmation-dialog':'label' | uppercase}}</span>
+            </button>
+            <button class="confirm" disableRipple mat-flat-button (click)="confirm()">
+                <span>{{confirmLabel | localize: 'confirmLabel':'confirmation-dialog':'label' | uppercase}}</span>
+            </button>
+        </div>
+    </div>
+</div>

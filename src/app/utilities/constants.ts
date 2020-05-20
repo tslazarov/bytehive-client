@@ -8,6 +8,7 @@ export class Constants {
 
     static readonly ACCOUNT_SERVICE_BASE_ENDPOINT = 'api/account/';
     static readonly ACCOUNT_SERVICE_PROFILE_ENDPOINT = 'api/account/profile';
+    static readonly ACCOUNT_SERVICE_IMAGE_ENDPOINT = 'api/account/image';
     static readonly ACCOUNT_SERVICE_SIGNUP_ENDPOINT = 'api/account/signup';
     static readonly ACCOUNT_SERVICE_SIGNIN_ENDPOINT = 'api/account/signin';
     static readonly ACCOUNT_SERVICE_SIGNIN_EXTERNAL_ENDPOINT = 'api/account/signinExternal';
@@ -19,6 +20,7 @@ export class Constants {
     static readonly ACCOUNT_SERVICE_CHANGE_SETTINGS_ENDPOINT = 'api/account/settings';
     static readonly ACCOUNT_SERVICE_CHANGE_INFORMATION_ENDPOINT = 'api/account/information';
     static readonly ACCOUNT_SERVICE_CHANGE_EMAIL_ENDPOINT = 'api/account/email';
+    static readonly ACCOUNT_SERVICE_CHANGE_AVATAR_ENDPOINT = 'api/account/avatar';
 
     static readonly USER_SERVICE_BASE_ENDPOINT = 'api/users/';
     static readonly USER_SERVICE_ALL_ENDPOINT = 'api/users/all';

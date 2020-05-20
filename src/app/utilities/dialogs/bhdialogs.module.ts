@@ -5,6 +5,7 @@ import { TranslationService } from '../../services/utilities/translation.service
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { ImageCropperModule } from 'ngx-image-cropper';
 import { CodeViewDialog } from './codeview/codeview.dialog';
 import { CodeDialog } from './code/code.dialog';
 import { VisualDialog } from './visual/visual.dialog';
@@ -24,6 +25,7 @@ import { PayPalPaymentDialog } from './paypalpayment/paypalpayment.dialog';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { PaymentDetailDialog } from './paymentdetail/paymentdetail.dialog';
 import { ShareLinkDialog } from './sharelink/sharelink.dialog';
+import { ImageUploadDialog } from './imageupload/imageupload.dialog';
 
 @NgModule({
     declarations: [
@@ -42,6 +44,7 @@ import { ShareLinkDialog } from './sharelink/sharelink.dialog';
         PaymentDetailDialog,
         PayPalPaymentDialog,
         ShareLinkDialog,
+        ImageUploadDialog,
         ProxyWrapperComponent
     ],
     imports: [
@@ -52,6 +55,7 @@ import { ShareLinkDialog } from './sharelink/sharelink.dialog';
         ReactiveFormsModule,
         MonacoEditorModule,
         BhFieldsModule,
+        ImageCropperModule,
         NgxPayPalModule
     ],
     exports: [
@@ -71,7 +75,8 @@ import { ShareLinkDialog } from './sharelink/sharelink.dialog';
         RequestDetailDialog,
         PaymentDetailDialog,
         PayPalPaymentDialog,
-        ShareLinkDialog
+        ShareLinkDialog,
+        ImageUploadDialog
     ],
     providers: [
         TranslationService,

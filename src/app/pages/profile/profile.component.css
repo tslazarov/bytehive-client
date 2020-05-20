@@ -126,3 +126,25 @@
 .signout-icon {
     background: url(../../../assets/icons/signout-accent.svg);
 }
+
+.add {
+    bottom: 15px;
+    cursor: pointer;
+    position: absolute;
+    right: -25px;
+    text-align: center;
+    z-index: 3;
+    background-color: #FFEB3B;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: 3px solid white;
+}
+
+.add .add-icon {
+    background: url(../../../assets/icons/add-white.svg);
+}
+
+.add:hover .add-icon {
+    background: url(../../../assets/icons/add-accent.svg);
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Renderer, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { TranslationService } from '../../services/utilities/translation.service';
 import { Subscription } from 'rxjs';
 import { CommunicationService } from '../../services/utilities/communication.service';
@@ -6,6 +6,12 @@ import { AccountService } from '../../services/account.service';
 import { AuthLocalService } from '../../services/utilities/auth.service';
 import { AuthService } from 'angularx-social-login';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { ImageUploadDialog } from '../../utilities/dialogs/imageupload/imageupload.dialog';
+import { AvatarChange } from '../../models/avatarchange.model';
+import { NotifierService } from 'angular-notifier';
+import { Constants } from '../../utilities/constants';
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-profile',
@@ -17,9 +23,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
     @ViewChild('requestOption', { static: false }) requestOption: ElementRef;
 
     // common
+    notifier: NotifierService;
     profile: any = {};
     lastAction: any;
     selectedAction: string;
+    image: string;
 
     // subscriptions
     languageChangeSubscription: Subscription;
@@ -35,11 +43,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     constructor(private renderer: Renderer,
         private router: Router,
+        private dialog: MatDialog,
+        private notifierService: NotifierService,
         private communicationService: CommunicationService,
         private translationService: TranslationService,
         private accountService: AccountService,
         private authLocalService: AuthLocalService,
-        private authService: AuthService) { }
+        private authService: AuthService) {
+        this.notifier = notifierService;
+    }
 
     ngOnInit(): void {
         this.selectedAction = 'request';
@@ -64,6 +76,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     fetchProfile() {
         this.accountService.getProfile().subscribe((result) => {
             this.profile = result;
+            if (this.profile.image) {
+                this.image = `${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_IMAGE_ENDPOINT}/${this.profile.image}`;
+            }
         }, (error) => {
 
         });
@@ -113,5 +128,23 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     profileChange() {
         this.fetchProfile();
+    }
+
+    changeAvatar() {
+        let dialogRef = this.dialog.open(ImageUploadDialog, { width: '800px', minHeight: '450px', autoFocus: false, });
+
+        dialogRef.afterClosed().subscribe((image) => {
+            if (image) {
+                let avatarChange = new AvatarChange();
+                avatarChange.imageBase64 = image;
+                this.accountService.changeAvatar(avatarChange).subscribe((result) => {
+                    this.notifier.notify("success", this.translationService.localizeValue('unlockRequestSuccessLabel', 'requests-profile', 'label'));
+
+                    this.profileChange();
+                }, (error) => {
+                    this.notifier.notify("error", this.translationService.localizeValue('unlockRequestErrorLabel', 'requests-profile', 'label'));
+                })
+            }
+        });
     }
 }
