@@ -790,6 +790,44 @@ export class LabelsMessages {
                 'bg': 'Сигурни ли сте, че искате да изтриете този потребител?'
             }
         },
+        'usersdetail': {
+            'requestsLabel': {
+                'en': 'Requests',
+                'bg': 'Заявки'
+            },
+            'creationDateLabel': {
+                'en': 'Created on',
+                'bg': 'Създадена на'
+            },
+            'statusLabel': {
+                'en': 'Status',
+                'bg': 'Статус'
+            },
+            'entriesCountLabel': {
+                'en': 'Records count',
+                'bg': 'Брой записи'
+            },
+            'entriesLabel': {
+                'en': 'records',
+                'bg': 'записа'
+            },
+            'linkLabel': {
+                'en': 'Link',
+                'bg': 'Линк'
+            },
+            'paymentsLabel': {
+                'en': 'Payments',
+                'bg': 'Плащания'
+            },
+            'priceLabel': {
+                'en': 'Price',
+                'bg': 'Стойност'
+            },
+            'externalIdLabel': {
+                'en': 'Payment number',
+                'bg': 'Номер на плащане'
+            }
+        },
         'scraperequests': {
             'statusesLabel': {
                 'en': 'Statuses',
