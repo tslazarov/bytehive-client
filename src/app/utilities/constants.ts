@@ -58,4 +58,6 @@ export class Constants {
 
     static readonly STATISTICS_SERVICE_BASE_ENDPOINT = 'api/statistics';
     static readonly STATISTICS_SERVICE_SUMMARY_ENDPOINT = 'api/statistics/summary';
+    static readonly STATISTICS_SERVICE_USERS_ENDPOINT = 'api/statistics/users';
+    static readonly STATISTICS_SERVICE_REQUESTS_ENDPOINT = 'api/statistics/requests';
 }

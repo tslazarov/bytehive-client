@@ -83,8 +83,17 @@
     </div>
     <div class="row main">
         <div class="col-md-6 col-xs-12">
-            <div class="mat-elevation-z3">
-                Last users
+            <div class="mat-elevation-z3 p-4">
+                <div class="tile-header pb-3">
+                    Last 5 users
+                </div>
+                <div class="row pb-1" *ngFor="let user of users | slice:0:5">
+                    <div class="col-6">{{user.email}}</div>
+                    <div class="col-6 right">{{user.registrationDate | localizedDate :'dd MMM yyyy HH:mm:ss'}}</div>
+                </div>
+                <div class="right pt-3">
+                    <span class="view-all bold" (click)="navigate('administration/users')">View all</span>
+                </div>
             </div>
         </div>
         <div class="col-md-6 col-xs-12">

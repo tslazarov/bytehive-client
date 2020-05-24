@@ -11,6 +11,18 @@
     color: #AFAFAF;
 }
 
+.tile-header {
+    font-size: 20px;
+}
+
+.view-all {
+    font-size: 16px;
+}
+
+.view-all:hover { 
+    cursor: pointer;
+}
+
 .main {
     padding-top: 30px;
 }
