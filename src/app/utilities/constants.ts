@@ -55,4 +55,7 @@ export class Constants {
     static readonly PAYMENT_SERVICE_DETAIL_ENDPOINT = 'api/payment/detail';
     static readonly PAYMENT_SERVICE_TIER_ALL_ENDPOINT = 'api/payment/tier/all';
     static readonly PAYMENT_SERVICE_TIER_DETAIL_ENDPOINT = 'api/payment/tier/detail';
+
+    static readonly STATISTICS_SERVICE_BASE_ENDPOINT = 'api/statistics';
+    static readonly STATISTICS_SERVICE_SUMMARY_ENDPOINT = 'api/statistics/summary';
 }

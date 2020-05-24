@@ -24,6 +24,7 @@ import { ScrapeRequestsService } from '../services/scraperequests.service';
 import { PaymentsComponent } from './payments/payments.component';
 import { PaymentsService } from '../services/payments.service';
 import { FileManagerHelper } from '../utilities/helpers/filemanager-helper';
+import { StatisticsService } from '../services/statistics.service';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -52,6 +53,7 @@ registerLocaleData(localeBg, 'bg');
         UsersService,
         ScrapeRequestsService,
         PaymentsService,
+        StatisticsService,
         AuthLocalService,
         AuthAdminGuardService,
         HttpHeaderHelper,

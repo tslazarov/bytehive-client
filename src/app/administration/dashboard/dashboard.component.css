@@ -1,0 +1,179 @@
+.card-value {
+    font-size: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #212121;
+}
+
+.card-label {
+    font-size: 20px;
+    text-align: center;
+    color: #AFAFAF;
+}
+
+.main {
+    padding-top: 30px;
+}
+
+.header-detail {
+    text-align: right;
+}
+
+.custom-date-picker {
+    text-align: center !important;
+    font-size: 16px !important;
+    background-color: transparent;
+    border-width: 0 0 1px 0;
+    border-radius: 0px;
+}
+
+.custom-date-picker:focus {
+    background-color: transparent;
+}
+
+.checkboxes-wrapper {
+    margin-bottom: 10px;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+    width: 1.5em !important;
+    padding-bottom: 2px;
+}
+
+.form-control[readonly] {
+    background-color: transparent;
+}
+
+.form-control[readonly]:hover {
+    cursor: pointer;
+}
+
+.mat-datepicker-toggle-active {
+    color: inherit;
+}
+
+.timeline-dates {
+    margin-top: 25px;
+}
+
+.timeline-wrapper {
+    margin-top: 30px;
+    margin-bottom: 20px !important;
+}
+
+.dashboard-wrapper {
+    margin-top: -20px;
+}
+
+.nav-link.dropdown-toggle {
+    cursor: pointer;
+}
+
+::ng-deep .reading-block {
+    font-size: 26px !important;
+    margin-top: -5px !important;
+}
+
+::ng-deep .reading-label {
+    margin-top: -5px !important;
+}
+
+@media (max-width: 767.98px)
+{
+    .header-detail {
+        text-align: left;
+    }
+}
+
+::ng-deep .mat-card-header-text {
+    width: 100%;
+}
+
+::ng-deep .mat-radio-label-content {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: #98A6AD;
+    padding: 0px 8px !important;
+}
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #FFEB3B;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #FFEB3B;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    opacity: 0 !important;
+}
+
+::ng-deep .mat-radio-outer-circle {
+    border-color: #98A6AD;
+    border-width: 1.7px !important;
+}
+
+::ng-deep .mat-card-footer {
+    height: 10px;
+    background-color: #FFEB3B;
+    color: #FFEB3B;
+    line-height: 10px;
+    margin: 0 -16px -20px -16px !important; 
+}
+
+::ng-deep .mat-progress-bar {
+    height: 10px !important;
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+    background-color: #FFEB3B;
+}
+
+::ng-deep .legend-items-container>div::-webkit-scrollbar-track
+{
+	background-color: #E3EAEF;
+}
+
+::ng-deep .legend-items-container>div::-webkit-scrollbar
+{
+    background-color: #E3EAEF;
+    height: 10px;
+}
+
+::ng-deep .legend-items-container>div::-webkit-scrollbar-thumb
+{
+  background-color: #FFEB3B;
+}
+
+::ng-deep .legend-items-container>div>div.legend-item {
+    margin-bottom: 15px;
+}
+
+::ng-deep .advanced-pie-legend .total-label {
+    margin-bottom: 15px;
+    margin-top: -5px;
+}
+
+::ng-deep .date-field .mat-form-field-underline {
+    height: 1.5px !important;
+}
+
+::ng-deep .mat-calendar-body-today
+{
+    border-width: 0px !important;
+    box-shadow: none !important;
+}
+
+::ng-deep .mat-calendar-cell-semi-selected {
+    background-color: rgba(0,0,0,.04);
+}
+
+::ng-deep .mat-calendar-body-begin-range:not(.mat-calendar-body-end-range) {
+    border-radius: 100% 0 0 100%;
+    background-color: rgba(0,0,0,.04);
+}
+
+::ng-deep .mat-calendar-body-end-range:not(.mat-calendar-body-begin-range) {
+    border-radius: 0 100% 100% 0;
+    background-color: rgba(0,0,0,.04);
+}
