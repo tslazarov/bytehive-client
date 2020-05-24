@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
     ngOnInit(): void {
         this.fetchSummary();
         this.fetchUsersSummary();
+        this.fetchRequestsSummary();
     }
 
     fetchSummary() {
@@ -41,6 +42,13 @@ export class DashboardComponent implements OnInit {
         this.statisticsService.getUsersSummary()
             .subscribe((result) => {
                 this.users = result;
+            });
+    }
+
+    fetchRequestsSummary() {
+        this.statisticsService.getRequestsSummary()
+            .subscribe((result) => {
+                this.requests = result;
             });
     }
 
