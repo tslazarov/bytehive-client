@@ -69,15 +69,20 @@
             </mat-card>
         </div>
     </div>
-    <div class="row main">
+    <div *ngIf="requests" class="row main">
         <div class="col-md-9 col-xs-12">
             <div class="mat-elevation-z3">
-                Line chart
             </div>
         </div>
         <div class="col-md-3 col-xs-12">
-            <div class="mat-elevation-z3">
-                Pie chart
+            <div class="mat-elevation-z3 p-4">
+                <div class="tile-header pb-3">
+                    Export types
+                </div>
+                <div class="chart-wrapper">
+                    <ngx-charts-pie-chart [arcWidth]="0.3" [legend]="false" [doughnut]="true" [scheme]="colorSchemeChart" [results]="exportUsageChartData">
+                    </ngx-charts-pie-chart>
+                </div>
             </div>
         </div>
     </div>

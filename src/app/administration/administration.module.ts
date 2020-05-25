@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { MaterialModule } from '../utilities/libraries/material.module';
@@ -37,7 +38,8 @@ registerLocaleData(localeBg, 'bg');
         MaterialModule,
         PipesModule,
         DirectivesModule,
-        BhDialogsModule
+        BhDialogsModule,
+        NgxChartsModule
     ],
     declarations: [
         DashboardComponent,

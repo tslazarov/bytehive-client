@@ -47,6 +47,11 @@
     margin-bottom: 10px;
 }
 
+.chart-wrapper {
+    width: 100%;
+    min-height: 200px;
+}
+
 .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
     width: 1.5em !important;
     padding-bottom: 2px;
