@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { MaterialModule } from '../utilities/libraries/material.module';
@@ -24,6 +25,7 @@ import { ScrapeRequestsService } from '../services/scraperequests.service';
 import { PaymentsComponent } from './payments/payments.component';
 import { PaymentsService } from '../services/payments.service';
 import { FileManagerHelper } from '../utilities/helpers/filemanager-helper';
+import { StatisticsService } from '../services/statistics.service';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -36,7 +38,8 @@ registerLocaleData(localeBg, 'bg');
         MaterialModule,
         PipesModule,
         DirectivesModule,
-        BhDialogsModule
+        BhDialogsModule,
+        NgxChartsModule
     ],
     declarations: [
         DashboardComponent,
@@ -52,6 +55,7 @@ registerLocaleData(localeBg, 'bg');
         UsersService,
         ScrapeRequestsService,
         PaymentsService,
+        StatisticsService,
         AuthLocalService,
         AuthAdminGuardService,
         HttpHeaderHelper,

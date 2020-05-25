@@ -252,6 +252,10 @@ body {
     font-size: 12px;
 }
 
+.user-wrapper .mat-tab-label {
+    font-size: 18px !important;
+}
+
 /* Bootstrap customizations */
 
 button:focus {
