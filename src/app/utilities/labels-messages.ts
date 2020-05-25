@@ -790,6 +790,52 @@ export class LabelsMessages {
                 'bg': 'Сигурни ли сте, че искате да изтриете този потребител?'
             }
         },
+        'dashboard': {
+            'usersLabel': {
+                'en': 'users',
+                'bg': 'потребители'
+            },
+            'requestsLabel': {
+                'en': 'requests',
+                'bg': 'заявки'
+            },
+            'entriesCountLabel': {
+                'en': 'entries',
+                'bg': 'резултати'
+            },
+            'earningsLabel': {
+                'en': 'earnings',
+                'bg': 'печалба'
+            },
+            'currencyLabel': {
+                'en': 'eur',
+                'bg': 'евро'
+            },
+            'requestsLast30DaysLabel': {
+                'en': 'Requests for the last 30 days',
+                'bg': 'Заявки за последните 30 дни'
+            },
+            'exportTypesLabel': {
+                'en': 'Export types',
+                'bg': 'Експортирани типове'
+            },
+            'last5UsersLabel': {
+                'en': 'Last 5 users',
+                'bg': 'Последни 5 потребители'
+            },
+            'last5RequestsLabel': {
+                'en': 'Last 5 requests',
+                'bg': 'Последни 5 заявки'
+            },
+            'byLabel': {
+                'en': 'by',
+                'bg': 'от'
+            },
+            'viewAllLabel': {
+                'en': 'View all',
+                'bg': 'Виж всички'
+            }
+        },
         'usersdetail': {
             'requestsLabel': {
                 'en': 'Requests',

@@ -9,7 +9,7 @@
                         {{summary.usersCount}}
                     </div>
                     <div class="card-label">
-                        users
+                        {{usersLabel | localize: 'usersLabel':'dashboard':'label'}}
                     </div>
                 </mat-card-content>
                 <mat-card-footer>
@@ -26,7 +26,7 @@
                         {{summary.requestsCount}}
                     </div>
                     <div class="card-label">
-                        requests
+                        {{requestsLabel | localize: 'requestsLabel':'dashboard':'label'}}
                     </div>
                 </mat-card-content>
                 <mat-card-footer>
@@ -43,7 +43,7 @@
                         {{summary.entriesCount}}
                     </div>
                     <div class="card-label">
-                        entries count
+                        {{entriesCountLabel | localize: 'entriesCountLabel':'dashboard':'label'}}
                     </div>
                 </mat-card-content>
                 <mat-card-footer>
@@ -60,7 +60,7 @@
                         {{summary.paymentsTotal}}
                     </div>
                     <div class="card-label">
-                        earnings
+                        {{earningsLabel | localize: 'earningsLabel':'dashboard':'label'}} ({{currencyLabel | localize: 'currencyLabel':'dashboard':'label'}})
                     </div>
                 </mat-card-content>
                 <mat-card-footer>
@@ -73,7 +73,7 @@
         <div class="col-md-9 col-xs-12">
             <div class="mat-elevation-z3 p-4">
                 <div class="tile-header pb-3">
-                    Requests from last 30 days
+                    {{requestsLast30DaysLabel | localize: 'requestsLast30DaysLabel':'dashboard':'label'}}
                 </div>
                 <div class="chart-wrapper">
                     <ngx-charts-bar-vertical-stacked [scheme]="colorSchemeBarChart" [results]="requestsChartData" [yAxisTickFormatting]="yAxisTickFormatting"
@@ -85,7 +85,7 @@
         <div class="col-md-3 col-xs-12">
             <div class="mat-elevation-z3 p-4">
                 <div class="tile-header pb-3">
-                    Export types
+                    {{exportTypesLabel | localize: 'exportTypesLabel':'dashboard':'label'}}
                 </div>
                 <div class="chart-wrapper">
                     <ngx-charts-pie-chart [arcWidth]="0.3" [legend]="false" [doughnut]="true" [scheme]="colorSchemeChart" [results]="exportUsageChartData">
@@ -98,28 +98,30 @@
         <div class="col-md-6 col-xs-12">
             <div class="mat-elevation-z3 p-4">
                 <div class="tile-header pb-3">
-                    Last 5 users
+                    {{last5UsersLabel | localize: 'last5UsersLabel':'dashboard':'label'}}
                 </div>
                 <div class="row pb-1" *ngFor="let user of users | slice:0:5">
                     <div class="col-6">{{user.email}}</div>
                     <div class="col-6 right">{{user.registrationDate | localizedDate :'dd MMM yyyy HH:mm:ss'}}</div>
                 </div>
                 <div class="right pt-3">
-                    <span class="view-all bold" (click)="navigate('administration/users')">View all</span>
+                    <span class="view-all bold" (click)="navigate('administration/users')">{{viewAllLabel | localize: 'viewAllLabel':'dashboard':'label'}}</span>
                 </div>
             </div>
         </div>
         <div class="col-md-6 col-xs-12">
             <div class="mat-elevation-z3 p-4">
                 <div class="tile-header pb-3">
-                    Last 5 requests
+                    {{last5RequestsLabel | localize: 'last5RequestsLabel':'dashboard':'label'}}
                 </div>
                 <div class="row pb-1" *ngFor="let request of requests | slice:0:5">
                     <div class="col-6">{{request.creationDate | localizedDate :'dd MMM yyyy HH:mm:ss'}}</div>
-                    <div class="col-6 right">by {{request.email}}</div>
+                    <div class="col-6 right">{{byLabel | localize: 'byLabel':'dashboard':'label'}} {{request.email}}</div>
                 </div>
                 <div class="right pt-3">
-                    <span class="view-all bold" (click)="navigate('administration/requests')">View all</span>
+                    <span class="view-all bold" (click)="navigate('administration/requests')">{{viewAllLabel | localize:
+                        'viewAllLabel':'dashboard':'label'}}
+                    </span>
                 </div>
             </div>
         </div>
