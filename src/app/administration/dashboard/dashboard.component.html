@@ -71,7 +71,15 @@
     </div>
     <div *ngIf="requests" class="row main">
         <div class="col-md-9 col-xs-12">
-            <div class="mat-elevation-z3">
+            <div class="mat-elevation-z3 p-4">
+                <div class="tile-header pb-3">
+                    Requests from last 30 days
+                </div>
+                <div class="chart-wrapper">
+                    <ngx-charts-bar-vertical-stacked [scheme]="colorSchemeBarChart" [results]="requestsChartData" [yAxisTickFormatting]="yAxisTickFormatting"
+                        xAxis="true" yAxis="true" [tooltipDisabled]="true">
+                    </ngx-charts-bar-vertical-stacked>
+                </div>
             </div>
         </div>
         <div class="col-md-3 col-xs-12">
