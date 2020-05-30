@@ -60,4 +60,12 @@ export class Constants {
     static readonly STATISTICS_SERVICE_SUMMARY_ENDPOINT = 'api/statistics/summary';
     static readonly STATISTICS_SERVICE_USERS_ENDPOINT = 'api/statistics/users';
     static readonly STATISTICS_SERVICE_REQUESTS_ENDPOINT = 'api/statistics/requests';
+
+    static readonly FAQ_SERVICE_BASE_ENDPOINT = 'api/faq';
+    static readonly FAQ_SERVICE_ALL_ENDPOINT = 'api/faq/all';
+    static readonly FAQ_SERVICE_ALL_CATEGORY_ENDPOINT = 'api/faq/all/category';
+    static readonly FAQ_SERVICE_DETAIL_ENDPOINT = 'api/faq/detail';
+    static readonly FAQ_SERVICE_CREATE_ENDPOINT = 'api/faq/create';
+    static readonly FAQ_SERVICE_EDIT_ENDPOINT = 'api/faq/edit';
+    static readonly FAQ_SERVICE_DELETE_ENDPOINT = 'api/faq/delete';
 }

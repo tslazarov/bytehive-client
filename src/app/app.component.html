@@ -34,6 +34,12 @@
                     <span>{{paymentsLabel | localize: 'paymentsLabel':'navigation':'label'}}</span>
                 </button>
             </div>
+            <div mat-menu-item (click)="navigate('/administration/faqs')">
+                <button disableRipple mat-button>
+                    <span class="icon requests-icon left-icon small-icon"></span>
+                    <span>{{faqLabel | localize: 'faqLabel':'navigation':'label'}}</span>
+                </button>
+            </div>
         </mat-menu>
 
         <button disableRipple mat-flat-button class="language-picker" [matMenuTriggerFor]="language">

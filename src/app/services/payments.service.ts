@@ -40,7 +40,7 @@ export class PaymentsService {
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
-        return this.http.get(`${environment.apiBaseUrl}${Constants.PAYMENT_SERVICE_DETAIL_ENDPOINT}?id=${id}`, { headers, responseType: 'json' });
+        return this.http.get(`${environment.apiBaseUrl}${Constants.PAYMENT_SERVICE_DETAIL_ENDPOINT}/${id}`, { headers, responseType: 'json' });
     }
 
     deletePayment(id: string): Observable<any> {
@@ -48,6 +48,6 @@ export class PaymentsService {
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
-        return this.http.delete(`${environment.apiBaseUrl}${Constants.PAYMENT_SERVICE_DELETE_ENDPOINT}?id=${id}`, { headers, responseType: 'json' });
+        return this.http.delete(`${environment.apiBaseUrl}${Constants.PAYMENT_SERVICE_DELETE_ENDPOINT}/${id}`, { headers, responseType: 'json' });
     }
 }

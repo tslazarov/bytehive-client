@@ -924,6 +924,16 @@ export class LabelsMessages {
                 'bg': 'Сигурни ли сте, че искате да изтриете тази заявка?'
             }
         },
+        'faqs': {
+            'categoriesLabel': {
+                'en': 'Categories',
+                'bg': 'Категории'
+            },
+            'searchLabel': {
+                'en': 'Search',
+                'bg': 'Търси'
+            }
+        },
         'payments': {
             'statusesLabel': {
                 'en': 'Statuses',
