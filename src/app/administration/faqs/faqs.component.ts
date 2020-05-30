@@ -10,6 +10,7 @@ import { ListFaqCategory } from '../../models/listfaqcategory.model';
 import { id } from '@swimlane/ngx-charts/release/utils';
 import { FaqCreateDialog } from '../../utilities/dialogs/faqcreate/faqcreate.dialog';
 import { NotifierService } from 'angular-notifier';
+import { ListFaq } from '../../models/listfaq.model';
 
 export const CONDITIONS_FUNCTIONS = {
     'contains': function (value, filteredValue) {
@@ -39,7 +40,7 @@ export class FaqsComponent implements OnInit, OnDestroy {
 
     dataSource: MatTableDataSource<any>;
     faqCategories: ListFaqCategory[];
-    faqs: ListPayment[];
+    faqs: ListFaq[];
     triggerStatusUpdate: boolean;
     filterValue: string;
     notifier: NotifierService;
@@ -52,6 +53,10 @@ export class FaqsComponent implements OnInit, OnDestroy {
     languageChangeSubscription: Subscription;
 
     // labels
+    questionLabel: string;
+    answerLabel: string;
+    editLabel: string;
+    deleteLabel: string;
     categoriesLabel: string;
     searchLabel: string;
     createLabel: string;
@@ -72,6 +77,28 @@ export class FaqsComponent implements OnInit, OnDestroy {
             this.triggerStatusUpdate = this.triggerStatusUpdate === true ? false : true;
         });
 
+        this.fetchFaqs();
+        this.fetchCategories();
+    }
+
+    ngOnDestroy(): void {
+        this.languageChangeSubscription.unsubscribe();
+    }
+
+    fetchFaqs(): void {
+        this.faqs = [];
+        this.faqsService.getAll()
+            .subscribe(result => {
+                result.forEach(faq => {
+                    var listFaq = faq as ListFaq;
+                    this.faqs.push(listFaq);
+                });
+
+                this.bindDataSource(this.faqs);
+            });
+    }
+
+    fetchCategories(): void {
         this.faqCategories = [];
         this.faqsService.getCategoriesAll()
             .subscribe(result => {
@@ -89,11 +116,17 @@ export class FaqsComponent implements OnInit, OnDestroy {
             })
     }
 
-    ngOnDestroy(): void {
-        this.languageChangeSubscription.unsubscribe();
+    bindDataSource(data: any): void {
+        this.dataSource = new MatTableDataSource<ListFaq>(data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
     }
 
     setLabelsMessages(): void {
+        this.questionLabel = this.translationService.localizeValue('questionLabel', 'faqs', 'label');
+        this.answerLabel = this.translationService.localizeValue('answerLabel', 'faqs', 'label');
+        this.editLabel = this.translationService.localizeValue('editLabel', 'faqs', 'label');
+        this.deleteLabel = this.translationService.localizeValue('deleteLabel', 'faqs', 'label');
         this.categoriesLabel = this.translationService.localizeValue('categoriesLabel', 'faqs', 'label');
         this.searchLabel = this.translationService.localizeValue('searchLabel', 'faqs', 'label');
         this.createLabel = this.translationService.localizeValue('createLabel', 'faqs', 'label');

@@ -937,6 +937,22 @@ export class LabelsMessages {
                 'en': 'Create FAQ',
                 'bg': 'Създай въпрос'
             },
+            'questionLabel': {
+                'en': 'Question',
+                'bg': 'Въпрос'
+            },
+            'answerLabel': {
+                'en': 'Answer',
+                'bg': 'Отговор'
+            },
+            'editLabel': {
+                'en': 'Edit',
+                'bg': 'Промени'
+            },
+            'deleteLabel': {
+                'en': 'Delete',
+                'bg': 'Изтрий'
+            },
             'faqCreateSuccessLabel': {
                 'en': 'The FAQ was created successfully.',
                 'bg': 'Въпросът беше създаден успешно.'
