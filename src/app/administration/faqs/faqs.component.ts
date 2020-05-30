@@ -133,7 +133,54 @@ export class FaqsComponent implements OnInit, OnDestroy {
     }
 
     categoryChange(category: any): void {
+        let filteredRequests = category.value == 'all' ? this.faqs : this.faqs.filter(faq => { return faq.categoryId == category.value });
 
+        this.bindDataSource(filteredRequests);
+    }
+
+    setOrPredicate(): void {
+        this.dataSource.filterPredicate = (c: ListFaq, filter: any) => {
+            let result = false;
+            let keys = Object.keys(c);
+
+            for (const key of keys) {
+                let searchCondition = filter.conditions[key]; // get search filter method
+                if (searchCondition && searchCondition !== 'none') {
+                    if (filter.methods[searchCondition](c[key], filter.values[key]) === true) { // invoke search filter 
+                        result = true // if one of the filters method not succeed the row will be remove from the filter result 
+                        break;
+                    }
+                }
+            }
+
+            return result
+        };
+    }
+
+    applyGlobalFilter(filterValue: string): void {
+        this.searchValue = {};
+        this.searchCondition = {};
+
+        this.setOrPredicate();
+
+        let language = this.translationService.getLanguage();
+
+        if (language == 'en') {
+            this.searchValue = { 'questionEN': filterValue, 'answerEN': filterValue };
+            this.searchCondition = { 'questionEN': 'contains', 'answerEN': 'contains' };
+        }
+        else if (language == 'bg') {
+            this.searchValue = { 'questionBG': filterValue, 'answerBG': filterValue };
+            this.searchCondition = { 'questionBG': 'contains', 'answerBG': 'contains' };
+        }
+
+        let searchFilter: any = {
+            values: this.searchValue,
+            conditions: this.searchCondition,
+            methods: this.filterMethods
+        }
+
+        this.dataSource.filter = searchFilter;
     }
 
     createFaq(): void {
@@ -141,7 +188,8 @@ export class FaqsComponent implements OnInit, OnDestroy {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this.notifier.notify("success", this.translationService.localizeValue('faqCreateSuccessLabel', 'faqs', 'label'));
+                this.notifier.notify('success', this.translationService.localizeValue('faqCreateSuccessLabel', 'faqs', 'label'));
+                this.fetchFaqs();
             }
         });
     }

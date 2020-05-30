@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
 import { AuthLocalService } from '../utilities/auth.service';
-import { Router } from "@angular/router"
+import { Router } from '@angular/router'
 import { Observable } from 'rxjs';
 import { map, concatMap } from 'rxjs/operators';
 

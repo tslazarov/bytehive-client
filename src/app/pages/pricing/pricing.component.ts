@@ -106,7 +106,7 @@ export class PricingComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this.notifier.notify("success", this.translationService.localizeValue('paymentSuccessLabel', 'pricing', 'label'));
+                this.notifier.notify('success', this.translationService.localizeValue('paymentSuccessLabel', 'pricing', 'label'));
             }
         });
     }

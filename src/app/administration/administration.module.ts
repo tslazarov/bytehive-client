@@ -6,7 +6,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { MaterialModule } from '../utilities/libraries/material.module';
 import { PipesModule } from '../utilities/pipes/pipes.module';
-import { registerLocaleData } from "@angular/common";
+import { registerLocaleData } from '@angular/common';
 import localeBg from '@angular/common/locales/bg';
 import { CommunicationService } from '../services/utilities/communication.service';
 import { ClientService } from '../services/client.service';

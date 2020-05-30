@@ -9,7 +9,7 @@ import { CommunicationService } from '../../services/utilities/communication.ser
 import { ConfirmationDialog, ConfirmationData } from '../../utilities/dialogs/confirmation/confirmation.dialog';
 
 export const CONDITIONS_FUNCTIONS = {
-    "contains": function (value, filteredValue) {
+    'contains': function (value, filteredValue) {
         if (value != null && filteredValue != null) {
             return value.toLowerCase().includes(filteredValue.toLowerCase());
         }
@@ -87,7 +87,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
 
     fetchProviders(): void {
-        this.providers = ["All"];
+        this.providers = ['All'];
 
         this.providers = this.providers.concat(this.users.map(u => u.provider).filter((value, index, self) => {
             return self.indexOf(value) === index;
@@ -112,7 +112,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
 
     providerChange(provider: any): void {
-        let filteredUsers = provider.value == "All" ? this.users : this.users.filter(user => { return user.provider == provider.value });
+        let filteredUsers = provider.value == 'All' ? this.users : this.users.filter(user => { return user.provider == provider.value });
 
         this.bindDataSource(filteredUsers);
     }
@@ -142,8 +142,8 @@ export class UsersComponent implements OnInit, OnDestroy {
 
         this.setOrPredicate();
 
-        this.searchValue = { "email": filterValue, "firstName": filterValue, "lastName": filterValue };
-        this.searchCondition = { "email": "contains", "name": "contains", "car": "contains" };
+        this.searchValue = { 'email': filterValue, 'firstName': filterValue, 'lastName': filterValue };
+        this.searchCondition = { 'email': 'contains', 'name': 'contains', 'car': 'contains' };
 
         let searchFilter: any = {
             values: this.searchValue,

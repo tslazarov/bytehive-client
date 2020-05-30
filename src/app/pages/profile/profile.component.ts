@@ -138,11 +138,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
                 let avatarChange = new AvatarChange();
                 avatarChange.imageBase64 = image;
                 this.accountService.changeAvatar(avatarChange).subscribe((result) => {
-                    this.notifier.notify("success", this.translationService.localizeValue('unlockRequestSuccessLabel', 'requests-profile', 'label'));
+                    this.notifier.notify('success', this.translationService.localizeValue('unlockRequestSuccessLabel', 'requests-profile', 'label'));
 
                     this.profileChange();
                 }, (error) => {
-                    this.notifier.notify("error", this.translationService.localizeValue('unlockRequestErrorLabel', 'requests-profile', 'label'));
+                    this.notifier.notify('error', this.translationService.localizeValue('unlockRequestErrorLabel', 'requests-profile', 'label'));
                 })
             }
         });

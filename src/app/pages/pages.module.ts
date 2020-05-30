@@ -8,7 +8,7 @@ import { MaterialModule } from '../utilities/libraries/material.module';
 import { BhFieldsModule } from '../utilities/fields/bhfields.module';
 import { PipesModule } from '../utilities/pipes/pipes.module';
 import { BhDialogsModule } from '../utilities/dialogs/bhdialogs.module';
-import { registerLocaleData } from "@angular/common";
+import { registerLocaleData } from '@angular/common';
 import localeBg from '@angular/common/locales/bg';
 import { HomeComponent } from './home/home.component';
 import { HiveComponent } from './hive/hive.component';
