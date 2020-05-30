@@ -1,0 +1,42 @@
+.close-icon {
+    background: url(../../../../assets/icons/close-accent.svg);
+}
+
+.close-button {
+    background-color: #ffffff;
+}
+
+.close-button:hover {
+    background-color: #efefef;
+}
+
+.faqcreate-field {
+    min-width: 400px;
+}
+
+.create {
+    min-width: 400px;
+    background-color: #FFEB3B;
+    color: #ffffff;
+}
+
+.create.disabled {
+    min-width: 400px;
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.create:hover {
+    background-color: #FFEB3B;
+    color: #212121;
+}
+
+.create.disabled:hover {
+    background-color: #dfdfdf;
+    color: #ffffff;
+}
+
+.textarea-input {
+    resize: none;
+    word-wrap: break-word;
+}

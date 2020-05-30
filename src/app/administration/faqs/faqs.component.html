@@ -18,7 +18,9 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-2 col-sm-12">
-            CREATE
+            <button disableRipple mat-flat-button class="add full-width" (click)="createFaq()">
+                {{createLabel | localize: 'createLabel':'faqs':'label' | uppercase }}
+            </button>
         </div>
     </div>
 </div>

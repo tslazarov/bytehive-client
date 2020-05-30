@@ -8,6 +8,8 @@ import { CommunicationService } from '../../services/utilities/communication.ser
 import { FaqsService } from '../../services/faqs.service';
 import { ListFaqCategory } from '../../models/listfaqcategory.model';
 import { id } from '@swimlane/ngx-charts/release/utils';
+import { FaqCreateDialog } from '../../utilities/dialogs/faqcreate/faqcreate.dialog';
+import { NotifierService } from 'angular-notifier';
 
 export const CONDITIONS_FUNCTIONS = {
     'contains': function (value, filteredValue) {
@@ -40,6 +42,7 @@ export class FaqsComponent implements OnInit, OnDestroy {
     faqs: ListPayment[];
     triggerStatusUpdate: boolean;
     filterValue: string;
+    notifier: NotifierService;
 
     searchValue: any = {};
     searchCondition: any = {};
@@ -51,11 +54,15 @@ export class FaqsComponent implements OnInit, OnDestroy {
     // labels
     categoriesLabel: string;
     searchLabel: string;
+    createLabel: string;
 
     constructor(private dialog: MatDialog,
+        private notifierService: NotifierService,
         private faqsService: FaqsService,
         private translationService: TranslationService,
-        private communicationService: CommunicationService) { }
+        private communicationService: CommunicationService) {
+        this.notifier = notifierService;
+    }
 
     ngOnInit() {
         this.setLabelsMessages();
@@ -89,9 +96,20 @@ export class FaqsComponent implements OnInit, OnDestroy {
     setLabelsMessages(): void {
         this.categoriesLabel = this.translationService.localizeValue('categoriesLabel', 'faqs', 'label');
         this.searchLabel = this.translationService.localizeValue('searchLabel', 'faqs', 'label');
+        this.createLabel = this.translationService.localizeValue('createLabel', 'faqs', 'label');
     }
 
     categoryChange(category: any): void {
 
+    }
+
+    createFaq(): void {
+        let dialogRef = this.dialog.open(FaqCreateDialog, { width: '600px', minHeight: '100px', autoFocus: false, data: {} });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.notifier.notify("success", this.translationService.localizeValue('faqCreateSuccessLabel', 'faqs', 'label'));
+            }
+        });
     }
 }

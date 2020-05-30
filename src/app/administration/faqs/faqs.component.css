@@ -44,3 +44,17 @@ tr.mat-row:hover .faq-action-picker {
 .full-width {
     width: 100%;
 }
+
+.markup-option.disabled {
+    color: #dfdfdf;
+}
+
+.add {
+    background-color: #FFEB3B;
+    color: #ffffff;
+}
+
+.add:hover {
+    background-color: #FFEB3B;
+    color: #212121;
+}
