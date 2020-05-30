@@ -11,6 +11,7 @@ import { id } from '@swimlane/ngx-charts/release/utils';
 import { FaqCreateDialog } from '../../utilities/dialogs/faqcreate/faqcreate.dialog';
 import { NotifierService } from 'angular-notifier';
 import { ListFaq } from '../../models/listfaq.model';
+import { ConfirmationDialog, ConfirmationData } from '../../utilities/dialogs/confirmation/confirmation.dialog';
 
 export const CONDITIONS_FUNCTIONS = {
     'contains': function (value, filteredValue) {
@@ -190,6 +191,30 @@ export class FaqsComponent implements OnInit, OnDestroy {
             if (result) {
                 this.notifier.notify('success', this.translationService.localizeValue('faqCreateSuccessLabel', 'faqs', 'label'));
                 this.fetchFaqs();
+            }
+        });
+    }
+
+    delete(id: string): void {
+
+        let confirmationData = new ConfirmationData();
+        confirmationData.message = this.translationService.localizeValue('confirmDeleteFaqLabel', 'faqs', 'label');
+
+        let dialogRef = this.dialog.open(ConfirmationDialog, { width: '40vw', minHeight: '200px', autoFocus: false, data: confirmationData });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.faqsService.deleteFaq(id)
+                    .subscribe((result) => {
+                        if (result) {
+                            let deletedScrapeRequestIndex = this.faqs.map(i => i.id).indexOf(id);
+
+                            this.faqs.splice(deletedScrapeRequestIndex, 1);
+                            this.bindDataSource(this.faqs);
+                        }
+                    }, (error) => {
+                        //TODO: Show error message;
+                    });
             }
         });
     }

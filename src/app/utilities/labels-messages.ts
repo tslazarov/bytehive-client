@@ -956,6 +956,10 @@ export class LabelsMessages {
             'faqCreateSuccessLabel': {
                 'en': 'The FAQ was created successfully.',
                 'bg': 'Въпросът беше създаден успешно.'
+            },
+            'confirmDeleteFaqLabel': {
+                'en': 'Are you sure you want to delete this FAQ?',
+                'bg': 'Сигурни ли сте, че искате да изтриете този въпрос?'
             }
         },
         'payments': {

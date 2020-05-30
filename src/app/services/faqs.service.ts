@@ -34,4 +34,12 @@ export class FaqsService {
 
         return this.http.post(`${environment.apiBaseUrl}${Constants.FAQ_SERVICE_CREATE_ENDPOINT}`, faq, { headers, responseType: 'json' });
     }
+
+    deleteFaq(id: string): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
+        headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
+
+        return this.http.delete(`${environment.apiBaseUrl}${Constants.FAQ_SERVICE_DELETE_ENDPOINT}/${id}`, { headers, responseType: 'json' });
+    }
 }
