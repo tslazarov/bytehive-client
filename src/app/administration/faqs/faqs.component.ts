@@ -12,6 +12,7 @@ import { FaqCreateDialog } from '../../utilities/dialogs/faqcreate/faqcreate.dia
 import { NotifierService } from 'angular-notifier';
 import { ListFaq } from '../../models/listfaq.model';
 import { ConfirmationDialog, ConfirmationData } from '../../utilities/dialogs/confirmation/confirmation.dialog';
+import { FaqEditData, FaqEditDialog } from '../../utilities/dialogs/faqedit/faqedit.dialog';
 
 export const CONDITIONS_FUNCTIONS = {
     'contains': function (value, filteredValue) {
@@ -184,7 +185,7 @@ export class FaqsComponent implements OnInit, OnDestroy {
         this.dataSource.filter = searchFilter;
     }
 
-    createFaq(): void {
+    create(): void {
         let dialogRef = this.dialog.open(FaqCreateDialog, { width: '600px', minHeight: '100px', autoFocus: false, data: {} });
 
         dialogRef.afterClosed().subscribe(result => {
@@ -195,8 +196,27 @@ export class FaqsComponent implements OnInit, OnDestroy {
         });
     }
 
-    delete(id: string): void {
+    edit(id: string): void {
+        this.faqsService.getFaq(id).subscribe(result => {
+            if (result) {
+                let faqEditData = result as FaqEditData;
 
+                let dialogRef = this.dialog.open(FaqEditDialog, { width: '600px', minHeight: '100px', autoFocus: false, data: faqEditData });
+
+                dialogRef.afterClosed().subscribe(result => {
+                    if (result) {
+                        this.fetchFaqs();
+                    }
+                }, (error) => {
+
+                });
+            }
+        }, (error) => {
+
+        });
+    }
+
+    delete(id: string): void {
         let confirmationData = new ConfirmationData();
         confirmationData.message = this.translationService.localizeValue('confirmDeleteFaqLabel', 'faqs', 'label');
 

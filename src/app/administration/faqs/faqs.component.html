@@ -18,7 +18,7 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-2 col-sm-12">
-            <button disableRipple mat-flat-button class="add full-width" (click)="createFaq()">
+            <button disableRipple mat-flat-button class="add full-width" (click)="create()">
                 {{createLabel | localize: 'createLabel':'faqs':'label' | uppercase }}
             </button>
         </div>
@@ -40,7 +40,7 @@
                         <span class="action-icon icon medium-icon"></span>
                     </button>
                     <mat-menu class="action-menu" #action="matMenu">
-                        <div mat-menu-item (click)="showDetail(element.id)">
+                        <div mat-menu-item (click)="edit(element.id)">
                             <button disableRipple mat-button>
                                 <span class="pl-1">{{editLabel | localize: 'editLabel':'faqs':'label'}}</span>
                             </button>

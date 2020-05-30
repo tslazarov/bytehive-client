@@ -1380,6 +1380,52 @@ export class LabelsMessages {
                 'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
+        'faqedit-dialog': {
+            'questionEnLabel': {
+                'en': 'Question (English)',
+                'bg': 'Въпрос (Английски)'
+            },
+            'questionEnRequiredErrorLabel': {
+                'en': 'Please enter a question (English)',
+                'bg': 'Моля въведете въпрос (Английски)'
+            },
+            'questionBgLabel': {
+                'en': 'Question (Bulgarian)',
+                'bg': 'Въпрос (Български)'
+            },
+            'questionBgRequiredErrorLabel': {
+                'en': 'Please enter a question (Bulgarian)',
+                'bg': 'Моля въведете въпрос (Български)'
+            },
+            'answerEnLabel': {
+                'en': 'Answer (English)',
+                'bg': 'Отговор (Английски)'
+            },
+            'answerEnRequiredErrorLabel': {
+                'en': 'Please enter an answer (English)',
+                'bg': 'Моля въведете отговор (Английски)'
+            },
+            'answerBgLabel': {
+                'en': 'Answer (Bulgarian)',
+                'bg': 'Отговор (Български)'
+            },
+            'answerBgRequiredErrorLabel': {
+                'en': 'Please enter an answer (Bulgarian)',
+                'bg': 'Моля въведете отговор (Български)'
+            },
+            'categoriesLabel': {
+                'en': 'Categories',
+                'bg': 'Категории'
+            },
+            'editLabel': {
+                'en': 'Edit',
+                'bg': 'Редактирай'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            }
+        },
         'paymentdetail-dialog': {
             'fromLabel': {
                 'en': 'from',

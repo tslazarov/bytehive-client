@@ -1,0 +1,73 @@
+<div class="p-2">
+    <div class="row pb-3">
+        <div class="col-10">
+        </div>
+        <div class="col-2 right">
+            <button class="close-button" mat-button (click)="close()">
+                <span class="icon close-icon large-icon"></span>
+            </button>
+        </div>
+    </div>
+    <div class="dialog-wrapper pt-1">
+        <div *ngIf="showLoading" class="loading-wrapper">
+            <mat-spinner></mat-spinner>
+        </div>
+        <bh-errormessage class="pb-3" *ngIf="showErrorMessage" message="{{errorMessageLabel}}" width="300px"></bh-errormessage>
+        <div *ngIf="!showLoading" [formGroup]="faqFormGroup" class="center">
+            <div>
+                <mat-form-field floatLabel="never" class="pb-4 faqedit-field">
+                    <mat-label>{{questionEnLabel | localize: 'questionEnLabel':'faqedit-dialog':'label' }}</mat-label>
+                    <input matInput autocomplete="off" formControlName="questionEN">
+                    <mat-error *ngIf="faqFormGroup.hasError('required', 'questionEN')">
+                        {{questionEnRequiredErrorLabel | localize: 'questionEnRequiredErrorLabel':'faqedit-dialog':'label' }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field floatLabel="never" class="pb-4 faqedit-field">
+                    <mat-label>{{questionBgLabel | localize: 'questionBgLabel':'faqedit-dialog':'label' }}</mat-label>
+                    <input matInput autocomplete="off" formControlName="questionBG">
+                    <mat-error *ngIf="faqFormGroup.hasError('required', 'questionBG')">
+                        {{questionBgRequiredErrorLabel | localize: 'questionBgRequiredErrorLabel':'faqedit-dialog':'label' }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field floatLabel="never" class="pb-4 faqedit-field">
+                    <mat-label>{{answerEnLabel | localize: 'answerEnLabel':'faqedit-dialog':'label' }}</mat-label>
+                    <textarea class="textarea-input" matInput formControlName="answerEN" autocomplete="off" rows="3"></textarea>
+                    <mat-error *ngIf="faqFormGroup.hasError('required', 'answerEN')">
+                        {{answerEnRequiredErrorLabel | localize: 'answerEnRequiredErrorLabel':'faqedit-dialog':'label' }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field floatLabel="never" class="pb-4 faqedit-field">
+                    <mat-label>{{answerBgLabel | localize: 'answerBgLabel':'faqedit-dialog':'label' }}</mat-label>
+                    <textarea class="textarea-input" matInput formControlName="answerBG" autocomplete="off" rows="3"></textarea>
+                    <mat-error *ngIf="faqFormGroup.hasError('required', 'answerBG')">
+                        {{answerBgRequiredErrorLabel | localize: 'answerBgRequiredErrorLabel':'faqedit-dialog':'label' }}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field floatLabel="never" class="pb-4 faqedit-field">
+                    <mat-label>{{categoriesLabel | localize: 'categoriesLabel':'faqedit-dialog':'label'}}</mat-label>
+                    <mat-select formControlName="categoryId">
+                        <mat-option *ngFor="let faqCategory of faqCategories" [value]="faqCategory.id">
+                            {{faqCategory | faqcategoryconvert:triggerStatusUpdate }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col-12 center">
+            <button *ngIf="!showLoading" [ngClass]="faqFormGroup.invalid ? 'edit disabled': 'edit'" disableRipple mat-flat-button (click)="edit()"
+                [disabled]="faqFormGroup.invalid">
+                <span>{{editLabel | localize: 'editLabel':'faqedit-dialog':'label' | uppercase}}</span>
+            </button>
+        </div>
+    </div>
+</div>

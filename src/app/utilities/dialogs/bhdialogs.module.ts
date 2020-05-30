@@ -27,6 +27,7 @@ import { PaymentDetailDialog } from './paymentdetail/paymentdetail.dialog';
 import { ShareLinkDialog } from './sharelink/sharelink.dialog';
 import { ImageUploadDialog } from './imageupload/imageupload.dialog';
 import { FaqCreateDialog } from './faqcreate/faqcreate.dialog';
+import { FaqEditDialog } from './faqedit/faqedit.dialog';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { FaqCreateDialog } from './faqcreate/faqcreate.dialog';
         ShareLinkDialog,
         ImageUploadDialog,
         FaqCreateDialog,
+        FaqEditDialog,
         ProxyWrapperComponent
     ],
     imports: [
@@ -79,7 +81,8 @@ import { FaqCreateDialog } from './faqcreate/faqcreate.dialog';
         PayPalPaymentDialog,
         ShareLinkDialog,
         ImageUploadDialog,
-        FaqCreateDialog
+        FaqCreateDialog,
+        FaqEditDialog
     ],
     providers: [
         TranslationService,
