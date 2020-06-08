@@ -1,0 +1,73 @@
+.sticky {
+    position: fixed;
+    top: 50;
+    width: 100%;
+}
+
+.tile-wrapper {
+    min-height: 550px;
+}
+
+.tile-content-wrapper {
+    min-height: 695px;
+}
+
+.menu-item {
+    padding: 15px 30px 15px 30px;
+    height: 60px;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+    background-color: #f7f7f7;
+}
+
+.menu-item.selected {
+    border-left: 5px solid #FFEB3B;
+    background-color: #f7f7f7;
+    padding: 15px 30px 15px 25px;
+}
+
+.menu-item .menu-icon {
+    vertical-align: middle;
+}
+
+.menu-item .menu-title {
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+/* icons */
+
+.general {
+    background: url(../../../assets/icons/information-accent.svg);
+}
+
+.menu-item.selected .general {
+    background: url(../../../assets/icons/information-solid.svg);
+}
+
+.services {
+    background: url(../../../assets/icons/services-accent.svg);
+}
+
+.menu-item.selected .services {
+    background: url(../../../assets/icons/services-solid.svg);
+}
+
+.account {
+    background: url(../../../assets/icons/profile-accent.svg);
+}
+
+.menu-item.selected .account {
+    background: url(../../../assets/icons/profile-solid.svg);
+}
+
+.pricing-and-plans {
+    background: url(../../../assets/icons/payment-accent.svg);
+}
+
+.menu-item.selected .pricing-and-plans {
+    background: url(../../../assets/icons/payment-solid.svg);
+}
+

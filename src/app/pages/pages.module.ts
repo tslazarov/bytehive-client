@@ -35,6 +35,7 @@ import { PaymentsService } from '../services/payments.service';
 import { OrdersComponent } from './profile/orders/orders.component';
 import { RequestsComponent } from './profile/requests/requests.component';
 import { FileManagerHelper } from '../utilities/helpers/filemanager-helper';
+import { FaqsService } from '../services/faqs.service';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -73,6 +74,7 @@ registerLocaleData(localeBg, 'bg');
         AccountService,
         ScrapeRequestsService,
         PaymentsService,
+        FaqsService,
         AuthLocalService,
         AuthGuardService,
         SignGuardService,

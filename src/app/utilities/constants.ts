@@ -20,7 +20,7 @@ export class Constants {
     static readonly ACCOUNT_SERVICE_CHANGE_SETTINGS_ENDPOINT = 'api/account/settings';
     static readonly ACCOUNT_SERVICE_CHANGE_INFORMATION_ENDPOINT = 'api/account/information';
     static readonly ACCOUNT_SERVICE_CHANGE_EMAIL_ENDPOINT = 'api/account/email';
-    static readonly ACCOUNT_SERVICE_CHANGE_AVATAR_ENDPOINT = 'api/account/avatar';
+    static readonly ACCOUNT_SERVICE_CHANGE_IMAGE_ENDPOINT = 'api/account/image';
 
     static readonly USER_SERVICE_BASE_ENDPOINT = 'api/users/';
     static readonly USER_SERVICE_ALL_ENDPOINT = 'api/users/all';
@@ -63,7 +63,7 @@ export class Constants {
 
     static readonly FAQ_SERVICE_BASE_ENDPOINT = 'api/faq';
     static readonly FAQ_SERVICE_ALL_ENDPOINT = 'api/faq/all';
-    static readonly FAQ_SERVICE_ALL_CATEGORY_ENDPOINT = 'api/faq/all/category';
+    static readonly FAQ_SERVICE_ALL_CATEGORY_ENDPOINT = 'api/faq/category/all';
     static readonly FAQ_SERVICE_DETAIL_ENDPOINT = 'api/faq/detail';
     static readonly FAQ_SERVICE_CREATE_ENDPOINT = 'api/faq/create';
     static readonly FAQ_SERVICE_EDIT_ENDPOINT = 'api/faq/edit';

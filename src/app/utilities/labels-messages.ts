@@ -46,8 +46,38 @@ export class LabelsMessages {
                 'bg': 'Заявки'
             },
             'paymentsLabel': {
-                'en': 'Payments',
-                'bg': 'Плащания'
+                'en': 'Pricing plans',
+                'bg': 'Ценoви планове'
+            }
+        },
+        'home': {
+            'headerLabel': {
+                'en': 'Get your data in three easy steps!',
+                'bg': 'Получи своите данни в три лесни стъпки!'
+            },
+            'stepOneTitleLabel': {
+                'en': 'Select your data source and settings',
+                'bg': 'Избери източник на данни и настройки'
+            },
+            'stepOneDescriptionLabel': {
+                'en': 'Use the easy interface to select your data source and settings and choose the desired format of the final result.',
+                'bg': 'Използвай лесния интерфейс за избор на източник на данни, настройки и желан формат на крайния резултат.'
+            },
+            'stepTwoTitleLabel': {
+                'en': 'Wait for your data to be collected',
+                'bg': 'Изчакай твоите данни да бъдат събрани'
+            },
+            'stepTwoDescriptionLabel': {
+                'en': 'The hardworking bees will make sure that your data is collected and processed in a timely manner.',
+                'bg': 'Работливите пчелички ще се погрижат твоите данни да бъдат събрани и обработени в най-кратък срок.'
+            },
+            'stepThreeTitleLabel': {
+                'en': 'Receive your data',
+                'bg': 'Получи своите данни'
+            },
+            'stepThreeDescriptionLabel': {
+                'en': 'Once the data is collected and processed, you would receive the final result in your desired format.',
+                'bg': 'Когато данните са събрани и обработени, ще получиш крайния резултат в желания от теб формат.'
             }
         },
         'pricing': {

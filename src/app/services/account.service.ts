@@ -13,7 +13,7 @@ import { ChangePassword } from '../models/changepassword.model';
 import { ChangeSettings } from '../models/changesettings.model';
 import { ChangeInformation } from '../models/changeinformation.model';
 import { EmailChange } from '../models/emailchange.model';
-import { AvatarChange } from '../models/avatarchange.model';
+import { ImageChange } from '../models/imagechange.model';
 
 @Injectable()
 export class AccountService {
@@ -105,11 +105,11 @@ export class AccountService {
         return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_CHANGE_EMAIL_ENDPOINT}`, emailChange, { headers, responseType: 'json' });
     }
 
-    changeAvatar(avatarChange: AvatarChange): Observable<any> {
+    changeImage(imageChange: ImageChange): Observable<any> {
         let headers = new HttpHeaders();
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
-        return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_CHANGE_AVATAR_ENDPOINT}`, avatarChange, { headers, responseType: 'json' });
+        return this.http.put(`${environment.apiBaseUrl}${Constants.ACCOUNT_SERVICE_CHANGE_IMAGE_ENDPOINT}`, imageChange, { headers, responseType: 'json' });
     }
 }

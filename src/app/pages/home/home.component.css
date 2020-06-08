@@ -1,0 +1,14 @@
+.image {
+    max-width: 400px;
+}
+
+.text-wrapper {
+    margin: auto 0px;
+}
+
+@media (max-width: 991px)
+{
+    .image-side {
+        display: none;
+    }
+}

@@ -1,3 +1,35 @@
 <div class="page-content mat-elevation-z3">
-    <h1>Home</h1>
+    <div class="row center pt-4 pb-4">
+        <h1 class="full-width">{{headerLabel | localize: 'headerLabel':'home':'label'}}</h1>
+    </div>
+    <div class="row pt-3">
+        <div class="col-lg-2 col-md-1"></div>
+        <div class="col-lg-4 col-md-10 pl-5 text-wrapper">
+            <h3>{{stepOneTitleLabel | localize: 'stepOneTitleLabel':'home':'label'}}</h3>
+            <p>{{stepOneDescriptionLabel | localize: 'stepOneDescriptionLabel':'home':'label'}}</p>
+        </div>
+        <div class="col-lg-4 col-md-12 pl-5 center image-side">
+            <img src="/assets/images/step-1.jpg" class="image" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-md-1"></div>
+        <div class="col-lg-4 col-md-10 center image-side">
+            <img src="/assets/images/step-2.jpg" class="image" />
+        </div>
+        <div class="col-lg-4 col-md-10 pl-5 text-wrapper">
+            <h3>{{stepTwoTitleLabel | localize: 'stepTwoTitleLabel':'home':'label'}}</h3>
+            <p>{{stepTwoDescriptionLabel | localize: 'stepTwoDescriptionLabel':'home':'label'}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-md-1"></div>
+        <div class="col-lg-4 col-md-10 pl-5 text-wrapper">
+            <h3>{{stepThreeTitleLabel | localize: 'stepThreeTitleLabel':'home':'label'}}</h3>
+            <p>{{stepThreeDescriptionLabel | localize: 'stepThreeDescriptionLabel':'home':'label'}}</p>
+        </div>
+        <div class="col-lg-4 col-md-10 pl-5 center image-side">
+            <img src="/assets/images/step-3.jpg" class="image" />
+        </div>
+    </div>
 </div>
