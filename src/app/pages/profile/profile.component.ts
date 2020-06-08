@@ -8,7 +8,7 @@ import { AuthService } from 'angularx-social-login';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { ImageUploadDialog } from '../../utilities/dialogs/imageupload/imageupload.dialog';
-import { AvatarChange } from '../../models/avatarchange.model';
+import { ImageChange } from '../../models/imagechange.model';
 import { NotifierService } from 'angular-notifier';
 import { Constants } from '../../utilities/constants';
 import { environment } from '../../../environments/environment';
@@ -130,19 +130,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.fetchProfile();
     }
 
-    changeAvatar() {
+    changeImage() {
         let dialogRef = this.dialog.open(ImageUploadDialog, { width: '800px', minHeight: '450px', autoFocus: false, });
 
         dialogRef.afterClosed().subscribe((image) => {
             if (image) {
-                let avatarChange = new AvatarChange();
+                let avatarChange = new ImageChange();
                 avatarChange.imageBase64 = image;
-                this.accountService.changeAvatar(avatarChange).subscribe((result) => {
-                    this.notifier.notify("success", this.translationService.localizeValue('unlockRequestSuccessLabel', 'requests-profile', 'label'));
+                this.accountService.changeImage(avatarChange).subscribe((result) => {
+                    this.notifier.notify('success', this.translationService.localizeValue('unlockRequestSuccessLabel', 'requests-profile', 'label'));
 
                     this.profileChange();
                 }, (error) => {
-                    this.notifier.notify("error", this.translationService.localizeValue('unlockRequestErrorLabel', 'requests-profile', 'label'));
+                    this.notifier.notify('error', this.translationService.localizeValue('unlockRequestErrorLabel', 'requests-profile', 'label'));
                 })
             }
         });

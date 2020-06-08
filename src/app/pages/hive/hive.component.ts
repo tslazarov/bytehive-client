@@ -229,7 +229,7 @@ export class HiveComponent implements OnInit, OnDestroy {
         this.scrapeRequestsService.createScrapeRequest(scrapeRequestCreateModel).subscribe((result) => {
             this.showSuccess = true;
         }, (error) => {
-            this.notifier.notify("error", this.translationService.localizeValue('serverErrorLabel', 'hive', 'label'));
+            this.notifier.notify('error', this.translationService.localizeValue('serverErrorLabel', 'hive', 'label'));
         });
     }
 

@@ -41,7 +41,6 @@ export const CONDITIONS_FUNCTIONS = {
 })
 export class PaymentsComponent implements OnInit, OnDestroy {
 
-
     @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: false }) sort: MatSort;
 

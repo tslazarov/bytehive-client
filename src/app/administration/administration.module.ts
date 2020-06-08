@@ -6,7 +6,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { MaterialModule } from '../utilities/libraries/material.module';
 import { PipesModule } from '../utilities/pipes/pipes.module';
-import { registerLocaleData } from "@angular/common";
+import { registerLocaleData } from '@angular/common';
 import localeBg from '@angular/common/locales/bg';
 import { CommunicationService } from '../services/utilities/communication.service';
 import { ClientService } from '../services/client.service';
@@ -26,6 +26,8 @@ import { PaymentsComponent } from './payments/payments.component';
 import { PaymentsService } from '../services/payments.service';
 import { FileManagerHelper } from '../utilities/helpers/filemanager-helper';
 import { StatisticsService } from '../services/statistics.service';
+import { FaqsComponent } from './faqs/faqs.component';
+import { FaqsService } from '../services/faqs.service';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -46,7 +48,8 @@ registerLocaleData(localeBg, 'bg');
         UsersComponent,
         ScrapeRequestsComponent,
         UsersDetailComponent,
-        PaymentsComponent],
+        PaymentsComponent,
+        FaqsComponent],
     entryComponents: [],
     providers: [
         CommunicationService,
@@ -56,6 +59,7 @@ registerLocaleData(localeBg, 'bg');
         ScrapeRequestsService,
         PaymentsService,
         StatisticsService,
+        FaqsService,
         AuthLocalService,
         AuthAdminGuardService,
         HttpHeaderHelper,

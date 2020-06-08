@@ -8,7 +8,7 @@ import { MaterialModule } from '../utilities/libraries/material.module';
 import { BhFieldsModule } from '../utilities/fields/bhfields.module';
 import { PipesModule } from '../utilities/pipes/pipes.module';
 import { BhDialogsModule } from '../utilities/dialogs/bhdialogs.module';
-import { registerLocaleData } from "@angular/common";
+import { registerLocaleData } from '@angular/common';
 import localeBg from '@angular/common/locales/bg';
 import { HomeComponent } from './home/home.component';
 import { HiveComponent } from './hive/hive.component';
@@ -35,6 +35,7 @@ import { PaymentsService } from '../services/payments.service';
 import { OrdersComponent } from './profile/orders/orders.component';
 import { RequestsComponent } from './profile/requests/requests.component';
 import { FileManagerHelper } from '../utilities/helpers/filemanager-helper';
+import { FaqsService } from '../services/faqs.service';
 
 registerLocaleData(localeBg, 'bg');
 
@@ -73,6 +74,7 @@ registerLocaleData(localeBg, 'bg');
         AccountService,
         ScrapeRequestsService,
         PaymentsService,
+        FaqsService,
         AuthLocalService,
         AuthGuardService,
         SignGuardService,

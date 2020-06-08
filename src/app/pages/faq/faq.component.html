@@ -1,1 +1,35 @@
-<p>faq works!</p>
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-4 col-lg-3 tile-wrapper">
+            <div class="mat-elevation-z3 tile-menu-wrapper">
+                <div #menuOption *ngFor="let faqCategory of faqCategories; let i = index" [ngClass]="i == 0 ? 'menu-item selected' : 'menu-item'"
+                    (click)="open($event, faqCategory.id)">
+                    <span [ngClass]="[faqCategory.categoryName]" class="icon left-icon large-icon menu-icon"></span>
+                    <span class="menu-title">{{faqCategory | faqcategoryconvert:triggerStatusUpdate }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-9">
+            <div class="tile-content-wrapper content-wrapper mat-elevation-z3">
+                <div *ngFor="let category of groupedFaqs | properties" class="pt-3">
+                    <div *ngIf="category == selectedCategory">
+                        <mat-accordion>
+                            <div *ngFor="let faq of groupedFaqs[category]" class="pl-4 pr-4">
+                                <mat-expansion-panel class="mat-elevation-z0 expansion-panel" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title class="expansion-header">
+                                            <span class="bold">
+                                                {{faq | faqconvert:'question':triggerStatusUpdate }}
+                                            </span>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <span>{{faq | faqconvert:'answer':triggerStatusUpdate }}</span>
+                                </mat-expansion-panel>
+                            </div>
+                        </mat-accordion>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

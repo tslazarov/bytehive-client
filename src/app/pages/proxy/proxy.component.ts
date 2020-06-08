@@ -41,7 +41,7 @@ export class ProxyComponent implements OnInit, OnDestroy {
         this.urlSubscription = this.route.queryParams.subscribe(params => {
             this.url = params['url'];
 
-            if (this.url != "") {
+            if (this.url != '') {
                 this.showLoading = true;
                 this.clientService.getPageMarkup(this.url, true)
                     .subscribe((result) => {
@@ -83,7 +83,7 @@ export class ProxyComponent implements OnInit, OnDestroy {
 
         } else {
             this.hostRectangle = null;
-            this.selectedText = "";
+            this.selectedText = '';
             this.selectedElement = null;
             this.selectedElementName = null;
             this.indicator.nativeElement.style = 'display:none';
@@ -95,6 +95,6 @@ export class ProxyComponent implements OnInit, OnDestroy {
 
         document.getSelection().removeAllRanges();
         this.hostRectangle = null;
-        this.selectedText = "";
+        this.selectedText = '';
     }
 }

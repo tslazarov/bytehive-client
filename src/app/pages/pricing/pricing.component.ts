@@ -55,8 +55,11 @@ export class PricingComponent implements OnInit {
                     paymentTier.description = tier.description;
                     paymentTier.price = tier.price;
                     paymentTier.value = tier.value;
+                    paymentTier.image = `${tier.name.toLowerCase()}`;
 
                     this.paymentTiers.push(paymentTier);
+
+                    console.log(this.paymentTiers);
                 });
             })
 
@@ -106,7 +109,7 @@ export class PricingComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this.notifier.notify("success", this.translationService.localizeValue('paymentSuccessLabel', 'pricing', 'label'));
+                this.notifier.notify('success', this.translationService.localizeValue('paymentSuccessLabel', 'pricing', 'label'));
             }
         });
     }
@@ -126,4 +129,5 @@ export class PaymentTier {
     price: number;
     value: number;
     description: string;
+    image: string;
 } 

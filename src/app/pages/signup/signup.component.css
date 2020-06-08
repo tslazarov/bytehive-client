@@ -1,12 +1,12 @@
 .signup-side {
     border-right: 1px solid #dfdfdf;
-    margin-top: 10vh;
+    margin-top: 5vh;
     margin-bottom: 5vh;
     min-height: 40vh;
 }
 
 .image-side {
-    margin-top: 10vh;
+    margin-top: 20vh;
     margin-bottom: 5vh;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .image {
-    max-width: 300px;
+    max-width: 400px;
 }
 
 .required {
@@ -60,4 +60,15 @@
 
 .password-disabled-icon:hover {
     cursor: pointer;
+}
+
+@media (max-width: 991px)
+{
+    .image-side {
+        display: none;
+    }
+
+    .signup-side {
+        border-right: 1px solid transparent;
+    }
 }

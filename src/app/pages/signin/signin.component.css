@@ -1,6 +1,6 @@
 .signin-side {
     border-right: 1px solid #dfdfdf;
-    margin-top: 10vh;
+    margin-top: 5vh;
     margin-bottom: 5vh;
     min-height: 50vh;
 }
@@ -13,7 +13,7 @@
 }
 
 .image-side {
-    margin-top: 10vh;
+    margin-top: 15vh;
     margin-bottom: 5vh;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .image {
-    max-width: 300px;
+    max-width: 400px;
 }
 
 .required {
@@ -91,4 +91,16 @@
 
 .mid-width {
     width: 50%;
+}
+
+
+@media (max-width: 991px)
+{
+    .image-side {
+        display: none;
+    }
+
+    .signin-side {
+        border-right: 1px solid transparent;
+    }
 }

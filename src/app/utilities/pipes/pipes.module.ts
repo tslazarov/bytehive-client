@@ -7,6 +7,9 @@ import { ScrapeStatusConvertionPipe } from './scrape-status.convertion.pipe';
 import { ExportTypeConvertionPipe } from './export-type.convertion.pipe';
 import { ScrapeTypeConvertionPipe } from './scrape-type.convertion.pipe';
 import { PaymentStatusConvertionPipe } from './payment-status.convertion.pipe';
+import { FaqCategoryConvertionPipe } from './faq-category.convertion.pipe';
+import { FaqConvertionPipe } from './faq.convertion.pipe';
+import { PropertiesPipe } from './properties.pipe';
 
 @NgModule({
     declarations: [
@@ -17,7 +20,10 @@ import { PaymentStatusConvertionPipe } from './payment-status.convertion.pipe';
         ScrapeStatusConvertionPipe,
         PaymentStatusConvertionPipe,
         ExportTypeConvertionPipe,
-        ScrapeTypeConvertionPipe
+        ScrapeTypeConvertionPipe,
+        FaqCategoryConvertionPipe,
+        FaqConvertionPipe,
+        PropertiesPipe
     ],
     exports: [
         LocalizationPipe,
@@ -28,6 +34,9 @@ import { PaymentStatusConvertionPipe } from './payment-status.convertion.pipe';
         PaymentStatusConvertionPipe,
         ExportTypeConvertionPipe,
         ScrapeTypeConvertionPipe,
+        FaqCategoryConvertionPipe,
+        FaqConvertionPipe,
+        PropertiesPipe
     ]
 })
 export class PipesModule {

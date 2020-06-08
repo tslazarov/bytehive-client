@@ -11,7 +11,7 @@
 }
 
 .top-navbar {
-    background-color: #ffffff;
+    background-color: transparent;
     z-index: 100;
 }
 
@@ -152,6 +152,15 @@
 .requests-icon {
     background: url(../assets/icons/requests-accent.svg);
 }
+
+.payments-icon {
+    background: url(../assets/icons/payment-accent.svg);
+}
+
+.faqs-icon {
+    background: url(../assets/icons/information-accent.svg);
+}
+
 
 .language-label {
     display: inline-block;

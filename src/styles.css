@@ -12,6 +12,7 @@ body {
 .page-content {
     margin: 100px 50px 50px 50px;
     padding: 20px 0px;
+    background-color: #FFFFFF; 
 }
 
 .loading-wrapper {

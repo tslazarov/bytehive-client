@@ -45,7 +45,7 @@ export class ScrapeRequestsService {
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
-        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_DETAIL_PROFILE_ENDPOINT}?id=${id}`, { headers, responseType: 'json' });
+        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_DETAIL_PROFILE_ENDPOINT}/${id}`, { headers, responseType: 'json' });
     }
 
     getScrapeRequest(id: string): Observable<any> {
@@ -53,7 +53,7 @@ export class ScrapeRequestsService {
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
-        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_DETAIL_ENDPOINT}?id=${id}`, { headers, responseType: 'json' });
+        return this.http.get(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_DETAIL_ENDPOINT}/${id}`, { headers, responseType: 'json' });
     }
 
     deleteScrapeRequest(id: string): Observable<any> {
@@ -61,7 +61,7 @@ export class ScrapeRequestsService {
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
-        return this.http.delete(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_DELETE_ENDPOINT}?id=${id}`, { headers, responseType: 'json' });
+        return this.http.delete(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_DELETE_ENDPOINT}/${id}`, { headers, responseType: 'json' });
     }
 
     unlockScrapeRequest(id: string): Observable<any> {
@@ -69,7 +69,7 @@ export class ScrapeRequestsService {
         headers = this.httpHeaderHelper.setContentTypeHeader(headers, 'json');
         headers = this.httpHeaderHelper.setAuthorizationHeader(headers);
 
-        return this.http.put(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_UNLOCK_ENDPOINT}?id=${id}`, {}, { headers, responseType: 'json' });
+        return this.http.put(`${environment.apiBaseUrl}${Constants.SCRAPE_REQUEST_SERVICE_UNLOCK_ENDPOINT}/${id}`, {}, { headers, responseType: 'json' });
     }
 
     downloadScrapeRequest(id: string): Observable<any> {

@@ -46,8 +46,38 @@ export class LabelsMessages {
                 'bg': 'Заявки'
             },
             'paymentsLabel': {
-                'en': 'Payments',
-                'bg': 'Плащания'
+                'en': 'Pricing plans',
+                'bg': 'Ценoви планове'
+            }
+        },
+        'home': {
+            'headerLabel': {
+                'en': 'Get your data in three easy steps!',
+                'bg': 'Получи своите данни в три лесни стъпки!'
+            },
+            'stepOneTitleLabel': {
+                'en': 'Select your data source and settings',
+                'bg': 'Избери източник на данни и настройки'
+            },
+            'stepOneDescriptionLabel': {
+                'en': 'Use the easy interface to select your data source and settings and choose the desired format of the final result.',
+                'bg': 'Използвай лесния интерфейс за избор на източник на данни, настройки и желан формат на крайния резултат.'
+            },
+            'stepTwoTitleLabel': {
+                'en': 'Wait for your data to be collected',
+                'bg': 'Изчакай твоите данни да бъдат събрани'
+            },
+            'stepTwoDescriptionLabel': {
+                'en': 'The hardworking bees will make sure that your data is collected and processed in a timely manner.',
+                'bg': 'Работливите пчелички ще се погрижат твоите данни да бъдат събрани и обработени в най-кратък срок.'
+            },
+            'stepThreeTitleLabel': {
+                'en': 'Receive your data',
+                'bg': 'Получи своите данни'
+            },
+            'stepThreeDescriptionLabel': {
+                'en': 'Once the data is collected and processed, you would receive the final result in your desired format.',
+                'bg': 'Когато данните са събрани и обработени, ще получиш крайния резултат в желания от теб формат.'
             }
         },
         'pricing': {
@@ -924,6 +954,44 @@ export class LabelsMessages {
                 'bg': 'Сигурни ли сте, че искате да изтриете тази заявка?'
             }
         },
+        'faqs': {
+            'categoriesLabel': {
+                'en': 'Categories',
+                'bg': 'Категории'
+            },
+            'searchLabel': {
+                'en': 'Search',
+                'bg': 'Търси'
+            },
+            'createLabel': {
+                'en': 'Create FAQ',
+                'bg': 'Създай въпрос'
+            },
+            'questionLabel': {
+                'en': 'Question',
+                'bg': 'Въпрос'
+            },
+            'answerLabel': {
+                'en': 'Answer',
+                'bg': 'Отговор'
+            },
+            'editLabel': {
+                'en': 'Edit',
+                'bg': 'Промени'
+            },
+            'deleteLabel': {
+                'en': 'Delete',
+                'bg': 'Изтрий'
+            },
+            'faqCreateSuccessLabel': {
+                'en': 'The FAQ was created successfully.',
+                'bg': 'Въпросът беше създаден успешно.'
+            },
+            'confirmDeleteFaqLabel': {
+                'en': 'Are you sure you want to delete this FAQ?',
+                'bg': 'Сигурни ли сте, че искате да изтриете този въпрос?'
+            }
+        },
         'payments': {
             'statusesLabel': {
                 'en': 'Statuses',
@@ -1294,6 +1362,98 @@ export class LabelsMessages {
             'markupLabel': {
                 'en': 'Markup',
                 'bg': 'Маркер'
+            }
+        },
+        'faqcreate-dialog': {
+            'questionEnLabel': {
+                'en': 'Question (English)',
+                'bg': 'Въпрос (Английски)'
+            },
+            'questionEnRequiredErrorLabel': {
+                'en': 'Please enter a question (English)',
+                'bg': 'Моля въведете въпрос (Английски)'
+            },
+            'questionBgLabel': {
+                'en': 'Question (Bulgarian)',
+                'bg': 'Въпрос (Български)'
+            },
+            'questionBgRequiredErrorLabel': {
+                'en': 'Please enter a question (Bulgarian)',
+                'bg': 'Моля въведете въпрос (Български)'
+            },
+            'answerEnLabel': {
+                'en': 'Answer (English)',
+                'bg': 'Отговор (Английски)'
+            },
+            'answerEnRequiredErrorLabel': {
+                'en': 'Please enter an answer (English)',
+                'bg': 'Моля въведете отговор (Английски)'
+            },
+            'answerBgLabel': {
+                'en': 'Answer (Bulgarian)',
+                'bg': 'Отговор (Български)'
+            },
+            'answerBgRequiredErrorLabel': {
+                'en': 'Please enter an answer (Bulgarian)',
+                'bg': 'Моля въведете отговор (Български)'
+            },
+            'categoriesLabel': {
+                'en': 'Categories',
+                'bg': 'Категории'
+            },
+            'createLabel': {
+                'en': 'Create',
+                'bg': 'Създай'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
+            }
+        },
+        'faqedit-dialog': {
+            'questionEnLabel': {
+                'en': 'Question (English)',
+                'bg': 'Въпрос (Английски)'
+            },
+            'questionEnRequiredErrorLabel': {
+                'en': 'Please enter a question (English)',
+                'bg': 'Моля въведете въпрос (Английски)'
+            },
+            'questionBgLabel': {
+                'en': 'Question (Bulgarian)',
+                'bg': 'Въпрос (Български)'
+            },
+            'questionBgRequiredErrorLabel': {
+                'en': 'Please enter a question (Bulgarian)',
+                'bg': 'Моля въведете въпрос (Български)'
+            },
+            'answerEnLabel': {
+                'en': 'Answer (English)',
+                'bg': 'Отговор (Английски)'
+            },
+            'answerEnRequiredErrorLabel': {
+                'en': 'Please enter an answer (English)',
+                'bg': 'Моля въведете отговор (Английски)'
+            },
+            'answerBgLabel': {
+                'en': 'Answer (Bulgarian)',
+                'bg': 'Отговор (Български)'
+            },
+            'answerBgRequiredErrorLabel': {
+                'en': 'Please enter an answer (Bulgarian)',
+                'bg': 'Моля въведете отговор (Български)'
+            },
+            'categoriesLabel': {
+                'en': 'Categories',
+                'bg': 'Категории'
+            },
+            'editLabel': {
+                'en': 'Edit',
+                'bg': 'Редактирай'
+            },
+            'serverErrorLabel': {
+                'en': 'Error occured. Please try again later.',
+                'bg': 'Възникна грешка. Моля опитайте малко по-късно.'
             }
         },
         'paymentdetail-dialog': {
